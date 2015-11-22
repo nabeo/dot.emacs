@@ -1,6 +1,3 @@
-;; last update is ....
-;; Time-stamp: "Sun Dec 16 23:54:28 JST 2012"
-
 ;; 本家
 ;; http://cx4a.org/software/auto-complete/index.ja.html
 ;; emacswiki
