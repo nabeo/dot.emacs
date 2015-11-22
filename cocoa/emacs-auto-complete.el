@@ -9,8 +9,8 @@
 
 (require 'auto-complete)
 (require 'auto-complete-config)
-(add-to-list 'ac-dictionary-directories
-             "/Users/nabeo/local/emacs/site-lisp/auto-complete/ac-dict")
+;; (add-to-list 'ac-dictionary-directories
+;;              "/Users/nabeo/local/emacs/site-lisp/auto-complete/ac-dict")
 (ac-config-default)
 
 ;; グローバルでauto-completeを使用
@@ -31,7 +31,7 @@
 
 ;; 補完推測機能用の辞書
 (setq ac-comphist-file
-      "/Users/nabeo/local/emacs/site-lisp/auto-complete/ac-comphist.data")
+      "~/.emacs.d/cache/ac-comphist.data")
 
 ;; my config
 ;; (setq ac-sources 
