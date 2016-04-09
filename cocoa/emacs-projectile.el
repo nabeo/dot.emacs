@@ -1,14 +1,10 @@
-;; last update is ....
-;; Time-stamp: "Sun Nov 15 15:14:09 JST 2015"
+(require 'projectile)
 
 (cond ((and (locate-library "helm") (locate-library "helm-projectile"))
        (setq projectile-completion-system 'helm)
-       (define-key projectile-command-map (kbd "a") 'helm-projectile-ag)
-       (define-key projectile-command-map (kbd "r") 'helm-projectile-recentf)
+       (define-key projectile-mode-map (kbd "a") 'helm-projectile-ag)
+       (define-key projectile-mode-map (kbd "r") 'helm-projectile-recentf)
        (helm-projectile-on)))
-
-(cond ((locate-library "neotree")
-       (setq projectile-switch-project-action 'neotree-projectile-action)))
 
 ;; caching
 (setq projectile-indexing-method 'native)
@@ -23,8 +19,8 @@
 (add-to-list 'projectile-globally-ignored-directories "build")
 (add-to-list 'projectile-globally-ignored-directories ".cask")
 (add-to-list 'projectile-globally-ignored-directories ".vagrant")
-(add-to-list 'projectile-globally-ignored-file ".gitignore")
-(add-to-list 'projectile-globally-ignored-file ".gitkeep")
+(add-to-list 'projectile-globally-ignored-files ".gitignore")
+(add-to-list 'projectile-globally-ignored-files ".gitkeep")
 
 ;; enable projectile
 (add-hook 'prog-mode-hook 'projectile-mode)
