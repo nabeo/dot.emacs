@@ -79,7 +79,7 @@
 ;;       (load-safe "~/.emacs.d/cocoa/emacs-auto-install.el")))
 
 ;; have-network-interface-pが使えない
-(load-safe "~/.emacs.d/emacs-navi2ch.el")
+;; (load-safe "~/.emacs.d/emacs-navi2ch.el")
 (load-safe "~/.emacs.d/emacs-twittering.el")
 ;; auto-installは使わない
 ;; (load-safe "~/.emacs.d/cocoa/emacs-auto-install.el")
