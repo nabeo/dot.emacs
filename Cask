@@ -24,7 +24,6 @@
 (depends-on "helm-ag-r")
 (depends-on "helm-core")
 (depends-on "helm-flycheck")
-(depends-on "helm-gist")
 (depends-on "helm-git")
 (depends-on "helm-git-files")
 (depends-on "helm-git-grep")
