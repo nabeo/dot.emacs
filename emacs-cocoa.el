@@ -138,35 +138,3 @@
 
 ;; customize file for cocoa emacs
 (setq custom-file "~/.emacs.d/cocoa/my-customize.el")
-
-;; 透明度の設定
-;; アクティブ : 98% (ほとんど透けない)
-;; 非アクティブ : 20% (デフォルトの最低値)
-;; (add-to-list 'default-frame-alist '(alpha . (98 20)))
-;; (add-to-list 'default-frame-alist '(alpha . (95 35)))
-;; カレント・ウィンドウだけを設定するには下記をevalする
-;; (set-frame-parameter nil 'alpha '(100 nil))
-;; 透明度の最低値 (デフォルトでは20%)
-;; (setq frame-alpha-lower-limit 15)
-
-;; 辞書.appをEmacsから使う -> emacs-w3mが起動してしまう。
-;; http://sakito.jp/mac/dictionary.html#emacs
-;; (defun dictionary ()
-;;   "dictionary.app"
-;;   (interactive)
-;;   (let ((editable (not buffer-read-only))
-;;         (pt (save-excursion (mouse-set-point last-nonmenu-event)))
-;;         beg end)
-;;     (if (and mark-active
-;;              (<= (region-beginning) pt) (<= pt (region-end)) )
-;;         (setq beg (region-beginning)
-;;               end (region-end))
-;;       (save-excursion
-;;         (goto-char pt)
-;;         (setq end (progn (forward-word) (point)))
-;;         (setq beg (progn (backward-word) (point)))
-;;         ))
-;;     (browse-url
-;;      (concat "dict:///"
-;;              (url-hexify-string (buffer-substring-no-properties beg end))))))
-;; (define-key global-map (kbd "C-c w") 'dictionary)
