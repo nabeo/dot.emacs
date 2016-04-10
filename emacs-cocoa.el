@@ -26,6 +26,7 @@
 (load-safe "~/.emacs.d/emacs-wl.el")
 (load-safe "~/.emacs.d/emacs-dired.el")
 (load-safe "~/.emacs.d/emacs-ruby.el")
+(load-safe "~/.emacs.d/emcas-golang.el")
 (load-safe "~/.emacs.d/emacs-view.el")
 (load-safe "~/.emacs.d/emacs-w3m.el")
 ;; (load-safe "~/.emacs.d/emacs-unique.el") ; 何かおかしい
