@@ -1,6 +1,3 @@
-;; last update is ....
-;; Time-stamp: "Sat Jun 01 18:58:58 JST 2013"
-
 (require 'elscreen)
 (require 'elscreen-gf)
 (require 'elscreen-dnd)
@@ -10,12 +7,27 @@
 (require 'elscreen-speedbar)
 
 ;; elscreen-gf
-(setq elscreen-gf-grep-program-name "/usr/bin/grep")
-(setq elscreen-gf-idutils-gid-program-name "/Users/nabeo/local/idutils/bin/gid")
-(setq elscreen-gf-idutils-mkid-program-name "/Users/nabeo/local/idutils/bin/mkid")
-(setq elscreen-gf-cscope-program-name "/opt/local/bin/cscope")
-(setq elscreen-gf-global-program-name "/Users/nabeo/local/gtags/bin/global")
-(setq elscreen-gf-global-gtags-program-name "/Users/nabeo/local/gtags/bin/gtags")
+(if (file-executable-p "/usr/bin/grep")
+    (setq elscreen-gf-grep-program-name "/usr/bin/grep")
+  (setq elscreen-gf-grep-program-name "grep"))
+(if (file-executable-p "/opt/local/bin/cscope")
+    (setq elscreen-gf-cscope-program-name "/opt/local/bin/cscope")
+  (setq elscreen-gf-cscope-program-name "cscope"))
+(if (file-executable-p (expand-file-name "~/local/idutils/bin/gid"))
+    (setq elscreen-gf-idutils-gid-program-name
+          (expand-file-name "~/local/idutils/bin/gid"))
+  (setq elscreen-gf-idutils-gid-program-name "gid"))
+(if (file-executable-p (expand-file-name "~/local/idutils/bin/mkid"))
+    (setq elscreen-gf-idutils-mkid-program-name
+          (expand-file-name "~/local/idutils/bin/mkid"))
+    (setq elscreen-gf-idutils-mkid-program-name "mkid"))
+(if (file-executable-p (expand-file-name "~/local/gtags/bin/global"))
+    (setq elscreen-gf-global-program-name (expand-file-name "~/local/gtags/bin/global"))
+  (setq elscreen-gf-global-program-name "global"))
+(if (file-executable-p (expand-file-name "~/local/gtags/bin/gtags"))
+    (setq elscreen-gf-global-gtags-program-name
+          (expand-file-name "~/local/gtags/bin/gtags"))
+  (setq elscreen-gf-global-gtags-program-name "gtags"))
 
 ;; elscreen
 (setq elscreen-display-tab nil)
