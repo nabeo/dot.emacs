@@ -2,8 +2,8 @@
 
 (cond ((and (locate-library "helm") (locate-library "helm-projectile"))
        (setq projectile-completion-system 'helm)
-       (define-key projectile-mode-map (kbd "a") 'helm-projectile-ag)
-       (define-key projectile-mode-map (kbd "r") 'helm-projectile-recentf)
+       (define-key projectile-mode-map (kbd "C-c p a") 'helm-projectile-ag)
+       (define-key projectile-mode-map (kbd "C-c p r") 'helm-projectile-recentf)
        (helm-projectile-on)))
 
 ;; caching
