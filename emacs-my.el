@@ -100,8 +100,10 @@
 
 ;; 圧縮されたファイルも編集できるようにする
 (auto-compression-mode t)
+
 ;; ビジブル・ベルを使う
-(setq visible-bell t)
+;; (setq visible-bell t)
+
 ;; タブは4文字
 (setq default-tab-width 4)
 ;; C-nで新しい行を追加しない
