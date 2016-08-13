@@ -29,6 +29,10 @@
 (define-key ac-menu-map "\C-n" 'ac-next)
 (define-key ac-menu-map "\C-p" 'ac-previous)
 
+(cond ((locate-library "fuzzy")
+       ;; 曖昧マッチ
+       (setq ac-use-fuzzy t)))
+
 ;; 補完推測機能用の辞書
 (setq ac-comphist-file
       "~/.emacs.d/cache/ac-comphist.data")
