@@ -1,6 +1,3 @@
-;; Last update is ....
-;; Time-stamp: "Sun Jan 20 01:18:43 JST 2013"
-
 (set-language-environment 'Japanese)
 
 ;; http://nijino.homelinux.net/emacs/emacs23-ja.html
@@ -28,3 +25,8 @@
 (prefer-coding-system 'utf-8)
 (if (eq emacs24-p 'nil)
     (setq default-input-method "MacOSX"))
+
+;; 日本語入力時のちらつきを抑制する
+;; http://qiita.com/takaxp/items/e07bb286d80fa9dd8e05
+(cond ((boundp 'mac-ime-cursor-type)
+       (setq mac-ime-cursor-type '(bar . 2))))
