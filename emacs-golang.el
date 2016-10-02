@@ -15,14 +15,21 @@
 (setq go-command "/opt/local/bin/go")
 (setq gofmt-command "/opt/local/bin/gofmt")
 (setq godoc-command "/opt/local/bin/go doc")
-(setq godef-command "/Users/nabeo/Development/golang/bin/godef")
-(setq godoc-and-godef-command "/Users/nabeo/Development/golang/bin/godoc")
+(setq godoc-and-godef-command "/opt/local/bin/godoc")
+;; install by `go get github.com/rogpeppe/godef`
+(cond ((file-executable-p (concat (getenv "GOPATH") "/bin/godef"))
+       (setq godef-command (concat (getenv "GOPATH") "/bin/godef"))))
 
 (cond ((locate-library "go-autocomplete")
        (require 'go-autocomplete)
        (require 'auto-complete-config)))
 (cond ((locate-library "go-eldoc")
+       (cond ((file-executable-p (concat (getenv "GOPATH") "/bin/gocode"))
+              (setq go-eldoc-gocode (concat (getenv "GOPATH") "/bin/gocode"))))
        (add-hook 'go-mode-hook 'go-eldoc-setup)))
+
+(with-eval-after-load 'projectile
+  (require 'go-projectile))
 
 (add-hook 'go-mode-hook (lambda ()
                           (local-set-key (kbd "M-.") 'godef-jump)))
