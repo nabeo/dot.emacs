@@ -86,7 +86,9 @@
 ;; (load-safe "~/.emacs.d/cocoa/emacs-auto-install.el")
 
 ;; 全てのelispのloadが終了したあとに読み込む外部ファイル
-(when (and (locate-library "wl") (locate-library "bbdb") (locate-library "auto-complete"))
+(when (and (locate-library "wl")
+           (locate-library "bbdb")
+           (locate-library "auto-complete"))
   (load-safe "~/.emacs.d/wl/bbdb-complete.el"))
 
 ;; Cocoa Emacs 特有の設定
