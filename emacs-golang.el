@@ -12,10 +12,13 @@
        ))
 
 ;; set commands
-(setq go-command "/opt/local/bin/go")
-(setq gofmt-command "/opt/local/bin/gofmt")
-(setq godoc-command "/opt/local/bin/go doc")
-(setq godoc-and-godef-command "/opt/local/bin/godoc")
+(cond ((file-executable-p "/opt/local/bin/go")
+       (setq go-command "/opt/local/bin/go")
+       (setq godoc-command "/opt/local/bin/go doc")))
+(cond ((file-executable-p "/opt/local/bin/gofmt")
+       (setq gofmt-command "/opt/local/bin/gofmt")))
+(cond ((file-executable-p "/opt/local/bin/godoc")
+       (setq godoc-and-godef-command "/opt/local/bin/godoc")))
 ;; install by `go get github.com/rogpeppe/godef`
 (cond ((file-executable-p (concat (getenv "GOPATH") "/bin/godef"))
        (setq godef-command (concat (getenv "GOPATH") "/bin/godef"))))
