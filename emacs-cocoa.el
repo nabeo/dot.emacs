@@ -2,7 +2,7 @@
 (my-load-path "~/site-lisp/cocoa")
 
 ;; (my-load-path "~/site-lisp/cocoa/auto-install") ; いつの日かコメントアウトする!!
-(cond ((or emacs-bzr-p emacs24-p)
+(cond ((or emacs-bzr-p emacs24-p emacs25-p)
        (load-safe "~/.emacs.d/emacs-cocoa-bzr.el"))
       (emacs23.4-p
        (load-safe "~/.emacs.d/emacs-cocoa-23.4.el")))
@@ -21,7 +21,7 @@
 ;; (load-safe "~/.emacs.d/emacs-pukiwiki.el")
 (load-safe "~/.emacs.d/emacs-migemo.el")
 (load-safe "~/.emacs.d/emacs-shell.el")
-(load-safe "~/.emacs.d/emacs-javascript.el")
+;; (load-safe "~/.emacs.d/emacs-javascript.el")
 
 (load-safe "~/.emacs.d/emacs-wl.el")
 (load-safe "~/.emacs.d/emacs-dired.el")
