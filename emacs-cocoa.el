@@ -76,6 +76,7 @@
 ;; (load-safe "~/.emacs.d/cocoa/emacs-pos-tip.el")
 (load-safe "~/.emacs.d/cocoa/emacs-id-manager.el")
 (load-safe "~/.emacs.d/cocoa/emacs-projectile.el")
+(load-safe "~/.emacs.d/cocoa/emacs-yasnippet.el")
 
 ;; ネットワークに接続しているときに読み込む
 ;; (if (eq (have-network-interface-p '("en0" "en1" "en2" "ppp0")) t)
