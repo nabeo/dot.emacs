@@ -85,3 +85,11 @@
        (if (file-executable-p "/opt/local/bin/svn")
            (setq helm-ghq-command-svn "/opt/local/bin/svn"))
        ))
+
+;; helm-c-yasnippet
+(cond ((and (locate-library "helm-c-yasnippet") (locate-library "yasnippet"))
+       (eval-after-load "yasnippet"
+         '(progn
+            (setq helm-yas-space-match-any-greedy t)
+            (global-set-key (kbd "C-c y") 'helm-yas-complete)
+            ))))
