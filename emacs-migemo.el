@@ -1,7 +1,5 @@
-;; Last update is ....
-;; Time-stamp: "Mon Dec 13 17:32:03 JST 2010"
-
-(load "~/site-lisp/migemo.el")
+(require 'migemo)
+;; (load "~/site-lisp/migemo.el")
 ;; cmigemoを使うための設定
 (setq migemo-command "/opt/local/bin/cmigemo")
 (setq migemo-options '("-q" "--emacs"))
