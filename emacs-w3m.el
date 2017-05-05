@@ -1,6 +1,4 @@
-;; last update is ....
-;; Time-stamp: "Fri Feb 11 21:21:11 JST 2011"
-(require 'w3m-load)
+(require 'w3m)
 
 (autoload 'w3m-find-file "w3m" "w3m interface function for local file." t)
 (setq browse-url-browser-function 'w3m-browse-url)

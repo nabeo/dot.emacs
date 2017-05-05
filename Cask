@@ -84,6 +84,7 @@
 (depends-on "twittering-mode")
 (depends-on "use-package")
 (depends-on "vdiff")
+(depends-on "w3m")
 (depends-on "wanderlust")
 (depends-on "with-editor")
 (depends-on "yafolding")
