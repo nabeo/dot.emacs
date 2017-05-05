@@ -1,10 +1,7 @@
-;; Last update is ....
-;; Time-stamp: "Sat Jan 19 21:46:56 JST 2013"
-
 ;; http://d.hatena.ne.jp/m2ym/20110120/1295524932
 ;; https://github.com/m2ym/popwin-el.git
 
-(require 'popwin)                       ; ~/local/emacs/site-lisp/popwin/popwin.el
+(require 'popwin)
 
 (setq display-buffer-function 'popwin:display-buffer)
 (setq popwin:popup-window-height 10)
