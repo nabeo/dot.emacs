@@ -9,12 +9,11 @@
 (global-set-key [remap find-file] 'helm-find-files)
 (global-set-key [remap occur] 'helm-occur)
 (global-set-key (kbd "M-x") 'helm-M-x)
-;; (define-key lisp-interaction-mode-map
-;;   [remap indent-for-tab-command]
-;;   'helm-lisp-completion-at-point-or-indent)
-;; (define-key emacs-lisp-mode-map
-;;   [remap indent-for-tab-command]
-;;   'helm-lisp-completion-at-point-or-indent)
+(unless (boundp 'completion-in-region-function)
+  (define-key lisp-interaction-mode-map
+    [remap completion-at-point] 'helm-lisp-completion-at-point)
+  (define-key emacs-lisp-mode-map
+    [remap completion-at-point] 'helm-lisp-completion-at-point))
 
 (define-key helm-map (kbd "C-h") 'delete-backward-char)
 (define-key helm-find-files-map (kbd "C-h") 'delete-backward-char)
