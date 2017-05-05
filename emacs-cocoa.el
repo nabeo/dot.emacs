@@ -16,6 +16,9 @@
 ;;       ((or emacs23-p emacs22-p)
 ;;        (load-safe "~/.emacs.d/cocoa/emacs-auto-install.el")))
 
+;; use-package
+(load-safe "~/.emacs.d/cocoa/emacs-use-package.el")
+
 ;; 共通で使用する
 ;; (load-safe "~/.emacs.d/emacs-pukiwiki.el")
 (load-safe "~/.emacs.d/emacs-migemo.el")
