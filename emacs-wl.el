@@ -236,36 +236,15 @@
 ;;(define-key wl-summary-mode-map "" 'wl-summary-refile-prev-destination)
 
 ;; 新着レス順にソートする
-;; Summaryモードでソート(S)した時の候補に reply-date がでる
-;; http://gist.github.com/153020
-(defun wl-summary-overview-entity-compare-by-reply-date (a b)
-  "Compare entity X and Y by latest date of replies."
-  (flet ((string-max2
-          (x y)
-          (cond ((string< x y) y)
-                ('t x)))
-         (elmo-entity-to-number
-          (x)
-          (elt (cdr x) 0))
-         (thread-number-get-date
-          (x)
-          (timezone-make-date-sortable (elmo-msgdb-overview-entity-get-date (elmo-message-entity wl-summary-buffer-elmo-folder x))))
-         (thread-get-family
-          (x)
-          (cons x (wl-thread-entity-get-descendant (wl-thread-get-entity x))))
-         (max-reply-date
-          (x)
-          (cond ((eq 'nil x)
-                 'nil)
-                ((eq 'nil (cdr x))
-                 (thread-number-get-date (car x)))
-                ('t
-                 (string-max2 (thread-number-get-date (car x))
-                              (max-reply-date (cdr x)))))))
-    (string<
-     (max-reply-date (thread-get-family (elmo-entity-to-number a)))
-     (max-reply-date (thread-get-family (elmo-entity-to-number b))))))
-(add-to-list 'wl-summary-sort-specs 'reply-date)
+;; http://ikazuhiro.s206.xrea.com/article.php/20140920115345919
+(defun wl-summary-overview-entity-compare-by-reply-number (a b)
+  "Compare entity A and B by latest number of replies."
+  (let ((fx #'(lambda (x)
+                (setq x (elmo-message-entity-number x))
+                (apply 'max x (wl-thread-entity-get-descendant 
+                               (wl-thread-get-entity x))))))
+    (< (funcall fx a) (funcall fx b))))
+(add-to-list 'wl-summary-sort-specs 'reply-number)
 
 ;; 文字化け対策
 ;; http://d.hatena.ne.jp/kiwanami/20091103/1257243524
