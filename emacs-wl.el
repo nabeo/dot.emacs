@@ -1,5 +1,3 @@
-;; last update is ....
-;; Time-stamp: "Sun Oct 12 20:47:21 JST 2014"
 ; xcite.elを使う
 ;(load "~/.emacs.d/emacs-xcite.el")
 
@@ -24,14 +22,12 @@
 (autoload 'wl-util "wl-util" "utilities for Wanderlust." t)
 
 ;; メールアカウント関係
-(cond ((or emacs23.4-p emacs24-p emacs-bzr-p)
+(cond ((or emacs23.4-p emacs24-p emacs25-p emacs-bzr-p)
        (load-safe "~/.emacs.d/wl/wl-account-tls.el"))
       (load-safe "~/.emacs.d/wl/wl-account.el"))
 
 ;; wl-icondirectory
-(cond ((or emacs24-p emacs-bzr-p)
-       (setq wl-icon-directory "~/local/emacs/etc/wl/icons"))
-      (emacs23.3-p
+(cond (emacs23.3-p
        (setq wl-icon-directory "~/Applications/Emacs-23.3.app/Contents/Resources/etc/wl/icons")))
 
 ;; 自分の環境にあわせる
@@ -88,16 +84,6 @@
 ;; (require 'cp5022x)
 ;; (add-to-list 'mime-charset-coding-system-alist '(shift_jis . cp932))
 ;; (add-to-list 'mime-charset-coding-system-alist '(iso-2022-jp . cp50220))
-
-;; スレッドの表示関連
-(setq wl-thread-indent-level 2)
-(setq wl-thread-have-younger-brother-str "|")
-(setq wl-thread-have-younger-child-str "`")
-(setq wl-thread-youngest-child-str "`")
-(setq wl-thread-vertical-str "|")
-(setq wl-thread-horizontal-str "-")
-(setq wl-thread-space-str " ")
-(setq wl-summary-incorporate-marks '("N" "U" "!" "A" "F" "$"))
 
 ;; draft mode
 (setq wl-draft-use-frame t)
@@ -169,6 +155,19 @@
      (ad-set-arg 0 (eword-encode-string (ad-get-arg 0)))))
 
 ;; summaryモードの各種設定
+;; requres
+(require 'wl-summary)
+
+;; スレッドの表示関連
+(setq wl-thread-indent-level 2)
+(setq wl-thread-have-younger-brother-str "|")
+(setq wl-thread-have-younger-child-str "`")
+(setq wl-thread-youngest-child-str "`")
+(setq wl-thread-vertical-str "|")
+(setq wl-thread-horizontal-str "-")
+(setq wl-thread-space-str " ")
+(setq wl-summary-incorporate-marks '("N" "U" "!" "A" "F" "$"))
+
 ;;; 表示は切り詰めない
 (setq wl-summary-width nil)
 (setq wl-summary-length-limit nil)
@@ -224,7 +223,7 @@
 ;; (setq elmo-search-namazu-default-index-path "~/.namazu/wanderlust")
 
 ;; bbdb
-(load-file "~/.emacs.d/wl/wl-bbdb.el")
+;; (load-file "~/.emacs.d/wl/wl-bbdb.el")
 
 ;; Summary モードで n,p で読み進めて最後か最初までいったとき
 ;; フォルダを抜けないようにする (2ch Wanderlust その5)
