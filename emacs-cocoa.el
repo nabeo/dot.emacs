@@ -55,6 +55,7 @@
 (load-safe "~/.emacs.d/cocoa/emacs-lookup.el")
 (load-safe "~/.emacs.d/cocoa/emacs-markdown.el")
 (load-safe "~/.emacs.d/cocoa/emacs-outline.el")
+(load-safe "~/.emacs.d/cocoa/emacs-yafolding.el")
 (load-safe "~/.emacs.d/cocoa/emacs-epa.el") ; gnupg でないと動かない
 (if (eq nox-p 'nil)
     (load-safe "~/.emacs.d/cocoa/emacs-elscreen.el"))
