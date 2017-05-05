@@ -1,6 +1,9 @@
 ;; cocoa用のload-pathを追加
 (my-load-path "~/site-lisp/cocoa")
 
+;; customize file for cocoa emacs
+(setq custom-file "~/.emacs.d/cocoa/my-customize.el")
+
 (cond ((or emacs-bzr-p emacs24-p emacs25-p)
        (load-safe "~/.emacs.d/emacs-cocoa-bzr.el"))
       (emacs23.4-p
@@ -140,6 +143,3 @@
 
 ;; Quartz 2Dのアンチエイリアスを利用する
 (setq mac-allow-anti-aliasing t)
-
-;; customize file for cocoa emacs
-(setq custom-file "~/.emacs.d/cocoa/my-customize.el")
