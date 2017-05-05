@@ -54,7 +54,6 @@
 (load-safe "~/.emacs.d/cocoa/emacs-auctex.el")
 (load-safe "~/.emacs.d/cocoa/emacs-print.el")
 (load-safe "~/.emacs.d/cocoa/emacs-howm.el")
-(load-safe "~/.emacs.d/cocoa/emacs-lookup.el")
 (load-safe "~/.emacs.d/cocoa/emacs-markdown.el")
 (load-safe "~/.emacs.d/cocoa/emacs-outline.el")
 (load-safe "~/.emacs.d/cocoa/emacs-yafolding.el")
