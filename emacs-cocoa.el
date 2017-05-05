@@ -60,7 +60,7 @@
     (load-safe "~/.emacs.d/cocoa/emacs-elscreen.el"))
 (load-safe "~/.emacs.d/cocoa/emacs-recentf.el")
 (cond ((or emacs25-p emacs24-p emacs23.4-p emacs-bzr-p)
-       (load-safe "~/.emacs.d/cocoa/emacs-magit.el")))
+       (load-safe "~/.emacs.d/cocoa/emacs-git.el")))
 (if (file-exists-p "~/local/gtags")
     (load-safe "~/.emacs.d/cocoa/emacs-gtags.el"))
 (load-safe "~/.emacs.d/cocoa/emacs-eshell.el")
