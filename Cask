@@ -82,6 +82,7 @@
 (depends-on "simple-httpd")
 (depends-on "skewer-mode")
 (depends-on "twittering-mode")
+(depends-on "use-package")
 (depends-on "vdiff")
 (depends-on "wanderlust")
 (depends-on "with-editor")
