@@ -119,6 +119,7 @@
         "^X-Proofpoint-.*" "^X-Virus-.*" "^X-Google-DKIM-Signature"
 		"^List-Software:" "^List-Post:" "^List-Owner:"
 		"^List-Help:" "^List-Unsubscribe:" "^List-Archive:"
+        "^ARC-Seal:" "^ARC-Message-Signature:" "^ARC-Authentication-Results:"
 		"^List-Subscribe"))
 
 ;; 日本語の添付ファイルを扱えるようにする
