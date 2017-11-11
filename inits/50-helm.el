@@ -27,6 +27,15 @@
   :config
   (helm-mode 1)
   (helm-autoresize-mode 1)
+  (defvar my/helm-external-pkgs
+    '(helm-ag helm-ag-r helm-c-yasnippet helm-core helm-flycheck
+              helm-ghq helm-git helm-git-files helm-git-grep
+              helm-gitignore helm-go-package helm-gtags helm-ls-git
+              helm-ls-hg helm-ls-svn helm-migemo helm-package
+              helm-projectile helm-rb helm-swoop))
+  (dolist (pkg my/helm-external-pkgs)
+    (unless (package-installed-p pkg)
+      (package-install pkg)))
   )
 
 (use-package helm-etags+
