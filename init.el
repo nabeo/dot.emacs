@@ -23,7 +23,7 @@
 (use-package init-loader
   :ensure t
   :config
-  (setq init-loader-show-log-after-init t)
+  (setq init-loader-show-log-after-init nil)
   (init-loader-load "~/.emacs.d/inits"))
 
 (global-font-lock-mode t)
