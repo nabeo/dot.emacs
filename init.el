@@ -6,7 +6,7 @@
 ;; You may delete these explanatory comments.
 (package-initialize)
 
-(setq custom-file "~/.emacs.d/cocoa/my-customize.el")
+(setq custom-file "~/.emacs.d/my-customize.el")
 
 (require 'package)
 (let* ((no-ssl (and (memq system-type '(windows-nt ms-dos))
