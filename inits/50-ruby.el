@@ -32,7 +32,6 @@
   )
 
 (use-package ruby-style
-  :ensure t
   :config
   (add-hook 'c-mode-hook 'ruby-style-c-mode)
   (add-hook 'c++-mode-hook 'ruby-style-c-mode)
