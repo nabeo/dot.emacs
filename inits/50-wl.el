@@ -4,6 +4,7 @@
 ;; tls.elを使う
 ;; (require 'tls)
 ;; (set-alist 'elmo-network-stream-type-alist "!opentls" '(opentls nil open-tls-stream))
+(package-install 'wanderlust)
 
 ;; htmlパートを表示しない
 (setq mime-setup-enable-inline-html nil)
