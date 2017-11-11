@@ -31,7 +31,6 @@
 
 (use-package helm-etags+
   :ensure helm-etags-plus
-  :bind
   :config
   (setq helm-etags+-use-short-file-name nil)
   (setq tags-table-list '("~/git/utilities/ruby/tags"))
@@ -61,7 +60,6 @@
   )
 (use-package helm-c-yasnippet
   :ensure t
-  :bind
   :config
   (setq helm-yas-space-match-any-greedy t)
   )
