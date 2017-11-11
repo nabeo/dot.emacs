@@ -20,7 +20,7 @@
   )
 
 (use-package helm-etags+
-  :ensure t
+  :ensure helm-etags-plus
   :bind
   (("M-." . helm-etags+-select-one-key)
    ("M-*" . helm-etags+-history)
