@@ -6,6 +6,10 @@
    ([remap list-buffers] . helm-buffers-list)
    ([remap find-file] . helm-find-files)
    ([remap occur] . helm-occur)
+   :map helm-map
+   ("C-h" . delete-backward-char)
+   :map helm-find-files-map
+   ("C-h" . delete-backward-char)
    :map lisp-interaction-mode-map
    ([remap completion-at-point] . helm-lisp-completion-at-point)
    :map emacs-lisp-mode-map
