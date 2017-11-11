@@ -3,6 +3,16 @@
   :bind
   (("C-h" . delete-backward-char)
    ("M-x" . helm-M-x)
+   ;; helm-swoop
+   ("M-i" . helm-swoop)
+   ("C-x M-i" . helm-multi-swoop)
+   ;; helm-etags-plus
+   ("M-." . helm-etags+-select-one-key)
+   ("M-*" . helm-etags+-history)
+   ("M-," . helm-etags+-history-action-go-back)
+   ("M-/" . helm-etags+-history-action-go-forward)
+   ;; helm-c-yasnippet
+   ("C-c y" . helm-yas-complete)
    ([remap list-buffers] . helm-buffers-list)
    ([remap find-file] . helm-find-files)
    ([remap occur] . helm-occur)
@@ -22,14 +32,10 @@
 (use-package helm-etags+
   :ensure helm-etags-plus
   :bind
-  (("M-." . helm-etags+-select-one-key)
-   ("M-*" . helm-etags+-history)
-   ("M-," . helm-etags+-history-action-go-back)
-   ("M-/" . helm-etags+-history-action-go-forward))
   :config
   (setq helm-etags+-use-short-file-name nil)
   (setq tags-table-list '("~/git/utilities/ruby/tags"))
-)
+  )
 (use-package helm-elscreen
   :ensure t
   :config
@@ -39,16 +45,8 @@
   )
 (use-package helm-swoop
   :ensure t
-  :bind
-  (;; basic key-bind
-   ("M-i" . helm-swoop)
-   ("C-x M-i" . helm-multi-swoop)
-   ;; When doing isearch, hand the word over to helm-swoop
-   ("M-i" . helm-swoop-from-isearch)
-   ;; from helm-swoop to helm-multi-swoop-all
-   ("M-i" . helm-multi-swoop-all-from-helm-swoop))
   :config
-)
+  )
 (use-package helm-ghq
   :ensure t
   :config
@@ -64,7 +62,6 @@
 (use-package helm-c-yasnippet
   :ensure t
   :bind
-  (("C-c y" . helm-yas-complete))
   :config
   (setq helm-yas-space-match-any-greedy t)
   )
