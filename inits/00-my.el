@@ -177,29 +177,3 @@
 (if (not (memq 'time-stamp-with-locale-c write-file-hooks))
 	(add-hook 'write-file-hooks 'time-stamp-with-locale-c))
 (setq time-stamp-format "%3a %3b %02d %02H:%02M:%02S %Z %:y")
-
-;; http://moyashi.air-nifty.com/hitori/2007/12/emacscarbon_ema_5f82.html
-;; http://sakito.jp/mac/dictionary.html#emacs <- こっちを使っている
-;; Mac OS Xの辞書.appで単語を調べる
-(defun my-search-at-dictionary-app ()
-  "dictionary.app" 
-  (interactive)
-  
-  (let ((editable (not buffer-read-only))
-        (pt (save-excursion (mouse-set-point last-nonmenu-event)))
-        beg end)
-    
-    (if (and mark-active
-             (<= (region-beginning) pt) (<= (region-end)) )
-        (setq beg (region-beginning)
-              end (region-end))
-      (save-excursion
-        (goto-char pt)
-        (setq end (progn (forward-word) (point)))
-        (setq beg (progn (backward-word) (point)))
-        ))
-    
-    (browse-url
-     (concat "dict://"
-             (url-hexify-string (buffer-substring-no-properties beg end))))))
-(global-set-key "\C-c\C-d" 'my-search-at-dictionary-app)
