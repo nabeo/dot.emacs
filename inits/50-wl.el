@@ -4,8 +4,6 @@
 ;; tls.elを使う
 ;; (require 'tls)
 ;; (set-alist 'elmo-network-stream-type-alist "!opentls" '(opentls nil open-tls-stream))
-;; (unless (package-installed-p 'wanderlust)
-;;   (package-install 'wanderlust))
 
 (use-package mime-setup
   :ensure semi
@@ -19,14 +17,56 @@
         (convert-standard-filename "~/.emacs.d/wl/mime-example.el"))
   )
 
+(use-package std11
+  :ensure flim
+  :config
+  ;; ファイル名が日本語の添付ファイルをエンコードする [semi-gnus-ja: 6046]
+  (defadvice std11-wrap-as-quoted-string 
+      (before encode-string activate)
+    "Encode a string."
+    (require 'eword-encode)
+    (ad-set-arg 0 (eword-encode-string (ad-get-arg 0))))
+  )
+
+(use-package mime
+  :ensure flim
+  :config
+  ;; 日本語の添付ファイルを扱えるようにする
+  (defvar my-mime-filename-coding-system-for-decode
+    '(iso-2022-jp japanese-shift-jis japanese-iso-8bit))
+  (defun my-mime-decode-filename (filename)
+    (let ((rest (eword-decode-string filename)))
+      (or (when (and my-mime-filename-coding-system-for-decode
+                     (string= rest filename))
+            (let ((dcs (mapcar (function coding-system-base)
+                               (detect-coding-string filename))))
+              (unless (memq 'emacs-mule dcs)
+                (let ((pcs my-mime-filename-coding-system-for-decode))
+                  (while pcs
+                    (if (memq (coding-system-base (car pcs)) dcs)
+                        (setq rest (decode-coding-string filename (car pcs))
+                              pcs nil)
+                      (setq pcs (cdr pcs))))))))
+          rest)))
+
+  (defadvice mime-entity-filename (after eword-decode-for-broken-MUA activate)
+    "Decode encoded file name for BROKEN MUA."
+    (when (stringp ad-return-value)
+      (setq ad-return-value (my-mime-decode-filename ad-return-value))))
+  )
+
+(use-package cp5022x
+  :ensure t
+  :config
+  ;; cp932の設定
+  (add-to-list 'mime-charset-coding-system-alist '(shift_jis . cp932))
+  (add-to-list 'mime-charset-coding-system-alist '(iso-2022-jp . cp50220))
+  )
+
 (use-package wl
   :ensure wanderlust
+  :commands (wl-draft wl-other-frame wl-util)
   :config
-  ;; (autoload 'wl "wl" "Wanderlust" t)
-  ;; (autoload 'wl-draft "wl-draft" "Write draft with Wanderlust." t)
-  ;; (autoload 'wl-other-frame "wl" "Wanderlust on new frame." t)
-  ;; (autoload 'wl-util "wl-util" "utilities for Wanderlust." t)
-
   ;; メールアカウント関係
   (cond ((or emacs23.4-p emacs24-p emacs25-p emacs-bzr-p)
          (load-safe "~/.emacs.d/wl/wl-account-tls.el"))
@@ -70,14 +110,6 @@
   ;; HTMLファイルは表示しない
   (setq mime-setup-enable-inline-html nil)
 
-  ;; cp932の設定
-  (use-package cp5022x
-    :config
-    ;; (require 'cp5022x)
-    (add-to-list 'mime-charset-coding-system-alist '(shift_jis . cp932))
-    (add-to-list 'mime-charset-coding-system-alist '(iso-2022-jp . cp50220))
-    )
-
   ;; draft mode
   (setq wl-draft-use-frame t)
   ;; signature
@@ -115,39 +147,6 @@
           "^ARC-Seal:" "^ARC-Message-Signature:" "^ARC-Authentication-Results:"
           "^List-Subscribe"))
 
-  ;; 日本語の添付ファイルを扱えるようにする
-  (defvar my-mime-filename-coding-system-for-decode
-    '(iso-2022-jp japanese-shift-jis japanese-iso-8bit))
-  (defun my-mime-decode-filename (filename)
-    (let ((rest (eword-decode-string filename)))
-      (or (when (and my-mime-filename-coding-system-for-decode
-                     (string= rest filename))
-            (let ((dcs (mapcar (function coding-system-base)
-                               (detect-coding-string filename))))
-              (unless (memq 'emacs-mule dcs)
-                (let ((pcs my-mime-filename-coding-system-for-decode))
-                  (while pcs
-                    (if (memq (coding-system-base (car pcs)) dcs)
-                        (setq rest (decode-coding-string filename (car pcs))
-                              pcs nil)
-                      (setq pcs (cdr pcs))))))))
-          rest)))
-
-  (eval-after-load "mime"
-    '(defadvice mime-entity-filename (after eword-decode-for-broken-MUA activate)
-       "Decode encoded file name for BROKEN MUA."
-       (when (stringp ad-return-value)
-         (setq ad-return-value (my-mime-decode-filename ad-return-value)))))
-  (require 'std11)
-
-  ;; ファイル名が日本語の添付ファイルをエンコードする [semi-gnus-ja: 6046]
-  (eval-after-load "std11"
-    '(defadvice std11-wrap-as-quoted-string 
-         (before encode-string activate)
-       "Encode a string."
-       (require 'eword-encode)
-       (ad-set-arg 0 (eword-encode-string (ad-get-arg 0)))))
-
   ;; summaryモードの各種設定
   ;; requres
   (require 'wl-summary)
@@ -162,16 +161,16 @@
   (setq wl-thread-space-str " ")
   (setq wl-summary-incorporate-marks '("N" "U" "!" "A" "F" "$"))
 
-;;; 表示は切り詰めない
+  ;; 表示は切り詰めない
   (setq wl-summary-width nil)
   (setq wl-summary-length-limit nil)
-;;; subjectが変ったら、スレッドを切る
+  ;; subjectが変ったら、スレッドを切る
   ;;(setq wl-summary-divide-thread-when-subject-changed t)
 
   ;; サマリの表示拡張
-;;; 自分宛のメールには>を付ける (Gmail風)
+  ;; 自分宛のメールには>を付ける (Gmail風)
   (setq wl-user-mail-address-regexp
-        "watanabe\.michikazu@gmail\.com")
+        "watanabe\\.michikazu@gmail\\.com")
   (defun wl-summary-line-for-me ()
     (if (catch 'found
           (let ((to (elmo-message-entity-field wl-message-entity 'to))
@@ -187,11 +186,11 @@
         ">"
       ""))
 
-;;; 添付ファイルがあるメールには@をつける
+  ;; 添付ファイルがあるメールには@をつける
   (setq elmo-msgdb-extra-fields
         (cons "content-type" elmo-msgdb-extra-fields))
 
-;;; 拡張したサマリを反映
+  ;; 拡張したサマリを反映
   (require 'wl-vars)
   (setq wl-summary-line-format-spec-alist
         (append wl-summary-line-format-spec-alist
@@ -202,19 +201,6 @@
         "%n%T%P%1@%1>%M/%D(%W)%h:%m %t%[%17(%c %f%) %] %#%~%s")
   ;; (setq wl-summary-line-format 
   ;;       "%n%T%P%1@%M/%D(%W)%h:%m %t%[%17(%c %f%) %] %#%~%s")
-
-  ;; Spotlightでメールを検索可能にする -> うまく動かないからnamazuに切り替え(2008/3/26)
-;;; http://www.heavenwolf.org/archives/2006/12/10/1224.php
-  ;;(require 'elmo-search-spotlight)
-  ;;(setq elmo-search-default-engine 'spotlight)
-
-  ;; Namazuを使ったメールの検索
-;;; namazuのパスを設定
-  ;; (setq exec-path (cons "/usr/local/namazu/bin" exec-path))
-;;; indexの指示
-  ;; (setq elmo-search-namazu-index-alias-alist 
-  ;; 	  '(("pict" . "~/.namazu/wanderlust")))
-  ;; (setq elmo-search-namazu-default-index-path "~/.namazu/wanderlust")
 
   ;; bbdb
   ;; (load-file "~/.emacs.d/wl/wl-bbdb.el")
@@ -244,27 +230,3 @@
   ;; http://d.hatena.ne.jp/kiwanami/20091103/1257243524
   (add-to-list 'mime-charset-coding-system-alist '(iso-2022-jp . cp50220))
   )
-
-;; メッセージ中の text/html パートを w3m で表示する
-;; (require 'mime-w3m)
-
-
-;; wl-icondirectory
-;; (cond (emacs23.3-p
-;;        (setq wl-icon-directory "~/Applications/Emacs-23.3.app/Contents/Resources/etc/wl/icons")))
-
-;; (setq wl-message-id-domain "graminc.co.jp")
-
-;; (setq wl-default-spec "%")
-;; (setq wl-default-folder "%inbox")
-
-
-
-;;; Spam Filter
-;; (require 'wl-spam)
-;;; bogofilter
-;; (setq elmo-spam-scheme 'bogofilter
-;; 	  wl-spam-auto-check-folder-regexp-list '("\\+inbox")
-;; 	  elmo-spam-bogofilter-debug 'nil)
-
-
