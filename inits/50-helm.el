@@ -13,6 +13,7 @@
    ("M-/" . helm-etags+-history-action-go-forward)
    ;; helm-c-yasnippet
    ("C-c y" . helm-yas-complete)
+   ;; remap key-bind
    ([remap list-buffers] . helm-buffers-list)
    ([remap find-file] . helm-find-files)
    ([remap occur] . helm-occur)
