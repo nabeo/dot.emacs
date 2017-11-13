@@ -8,6 +8,8 @@
 ;; auto-complete v 1.3.1
 (use-package auto-complete
   :ensure t
+  :bind
+  (("C-c TAB" . auto-complete))
   :config
   (use-package auto-complete-config)
   ;; (add-to-list 'ac-dictionary-directories
