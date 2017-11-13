@@ -41,8 +41,8 @@
       (package-install pkg)))
   )
 
-(use-package helm-etags+
-  :ensure helm-etags-plus
+(use-package helm-etags-plus
+  :ensure t
   :config
   (setq helm-etags+-use-short-file-name nil)
   (setq tags-table-list '("~/git/utilities/ruby/tags"))
