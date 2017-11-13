@@ -225,8 +225,4 @@
                                  (wl-thread-get-entity x))))))
       (< (funcall fx a) (funcall fx b))))
   (add-to-list 'wl-summary-sort-specs 'reply-number)
-
-  ;; 文字化け対策
-  ;; http://d.hatena.ne.jp/kiwanami/20091103/1257243524
-  (add-to-list 'mime-charset-coding-system-alist '(iso-2022-jp . cp50220))
   )
