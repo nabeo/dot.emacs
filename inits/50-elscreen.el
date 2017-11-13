@@ -1,5 +1,7 @@
 (use-package elscreen
   :ensure t
+  :init
+  (setq elscreen-prefix-key (kbd "C-z"))
   :config
   ;; elscreen
   (setq elscreen-display-tab nil)
@@ -22,6 +24,7 @@
             (lambda ()
               (define-key howm-mode-map (kbd "C-c C-s") 'howm-save-and-kill-buffer/screen)
               ))
+  (elscreen-start)
   )
 
 (use-package elscreen-gf
