@@ -11,8 +11,10 @@
    ("M-*" . helm-etags+-history)
    ("M-," . helm-etags+-history-action-go-back)
    ("M-/" . helm-etags+-history-action-go-forward)
+   ;; helm-elscreen
+   ("C-z SPC" . helm-elscreen)
    ;; helm-c-yasnippet
-   ("C-c y" . helm-yas-complete)
+   ;; ("C-c y" . helm-yas-complete)
    ;; remap key-bind
    ([remap list-buffers] . helm-buffers-list)
    ([remap find-file] . helm-find-files)
@@ -48,9 +50,6 @@
 (use-package helm-elscreen
   :ensure t
   :config
-  (eval-after-load "elscreen"
-  '(progn
-     (global-set-key (kbd "C-z SPC") 'helm-elscreen)))
   )
 (use-package helm-swoop
   :ensure t
@@ -70,9 +69,9 @@
   )
 (use-package helm-c-yasnippet
   :ensure t
+  :disabled t
   :config
   (setq helm-yas-space-match-any-greedy t)
   )
-
 ;; (require 'helm-config)
 ;; (require 'helm-bbdb)
