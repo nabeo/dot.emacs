@@ -30,6 +30,10 @@
                             (local-set-key (kbd "M-.") 'godef-jump)))
   )
 
+(use-package go-snippets
+  :ensure t
+  :disabled t)
+
 (use-package go-autocomplete
   :ensure t
   :config
