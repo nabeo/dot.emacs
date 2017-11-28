@@ -145,7 +145,7 @@
           "^List-Software:" "^List-Post:" "^List-Owner:"
           "^List-Help:" "^List-Unsubscribe:" "^List-Archive:"
           "^ARC-Seal:" "^ARC-Message-Signature:" "^ARC-Authentication-Results:"
-          "^X-Gm-Message-State:" "^X-Google-Smtp-Source:"
+          "^X-Gm-Message-State:" "^X-Google-Smtp-Source:" "^X-Google-Smtp-Source:"
           "^List-Subscribe"))
 
   ;; summaryモードの各種設定
