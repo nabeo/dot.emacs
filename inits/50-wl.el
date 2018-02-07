@@ -67,6 +67,8 @@
   :ensure wanderlust
   :commands (wl-draft wl-other-frame wl-util)
   :config
+  ;; use auth-source as login password manager
+  (setq elmo-passwd-storage-type 'auth-source)
   ;; メールアカウント関係
   (cond ((or emacs23.4-p emacs24-p emacs25-p emacs-bzr-p)
          (load-safe "~/.emacs.d/wl/wl-account-tls.el"))

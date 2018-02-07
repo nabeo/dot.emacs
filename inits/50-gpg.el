@@ -3,4 +3,14 @@
   (epa-file-enable)
   ;; MacPortsでgnupg2をインストールしている場合
   ;; (setq epg-gpg-program "/opt/local/bin/gpg2")
-)
+  )
+
+(use-package pinentry
+  :init
+  (setenv "INSIDE_EMACS" "t")
+  :config
+  (pinentry-start))
+  
+(use-package auth-source
+  :init
+  (setq auth-sources '("~/.emacs.d/secret/authinfo.gpg")))
