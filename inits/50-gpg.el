@@ -4,4 +4,3 @@
   ;; MacPortsでgnupg2をインストールしている場合
   ;; (setq epg-gpg-program "/opt/local/bin/gpg2")
 )
-
