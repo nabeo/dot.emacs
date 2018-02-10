@@ -22,3 +22,18 @@
   ;; パスワードの保存先(gpgで暗号化されている)
   (setq idm-database-file "~/.emacs.d/secret/idm-db.gpg")
   )
+
+(use-package pass
+  :ensure t
+  :if (executable-find "pass")
+  :init
+  :config
+  )
+
+(use-package helm-pass
+  :ensure t
+  :if (executable-find "pass")
+  :after (pass helm)
+  :init
+  :config
+  )
