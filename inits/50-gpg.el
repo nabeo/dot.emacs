@@ -30,6 +30,12 @@
   :config
   )
 
+(use-package password-store
+  :if (executable-find "pass")
+  :init
+  :config
+  )
+
 (use-package helm-pass
   :ensure t
   :if (executable-find "pass")
