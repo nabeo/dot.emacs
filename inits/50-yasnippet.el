@@ -1,24 +1,31 @@
 (use-package yasnippet
   :ensure t
-  :commands (yas-minor-mode yas-global-mode)
-  :diminish yas-minor-mode
-  :disabled t
-  ;; :bind (:map
-  ;;        yas-minor-mode-map
-  ;;        ("C-x i i" . yas-insert-snippet)
-  ;;        ("C-x i n" . yas-new-snippet)
-  ;;        ("C-x i v" . yas-visit-snippet-file)
-  ;;        ("C-x i l" . yas-describe-tables)
-  ;;        ("C-x i g" . yas-reload-all)) 
+  :diminish (yas-global-mode yas-minor-mode)
+  :commands (yas-minor-mode)
+  ;; :commands (yas-reload-all yas-minor-mode)
+  :bind
+  ((:map yas-minor-mode-map
+    ("C-x i i" . yas-insert-snippet)
+    ("C-x i n" . yas-new-snippet)
+    ("C-x i v" . yas-visit-snippet-file)))
   :init
-  (progn
-    (setq yas-snippet-dirs nil)
-    (add-hook 'prog-mode-hook 'yas-minor-mode)
-    (add-hook 'go-mode-hook 'yas-minor-mode)
-    (add-hook 'emacs-lisp-mode-hook 'yas-minor-mode))
+  (add-hook 'prog-mode-hook #'yas-minor-mode)
   :config
-  (setq yas-snippet-dirs '("~/.emacs.d/snippets"
-                           yas-installed-snippets-dir))
-  (yas-global-mode 1)
+  (setq yas-snippet-dirs '("~/.emacs.d/snippets"))
+  (yas-initialize)
   (yas-reload-all)
-  )  
+)
+
+(use-package yasnippet-snippets
+  :ensure t
+  :config
+  (add-to-list 'yas-snippet-dirs yasnippet-snippets-dir)
+  )
+
+(use-package helm-c-yasnippet
+  :ensure t
+  :bind
+  (("C-c y" . helm-yas-complete))
+  :config
+  (setq helm-yas-space-match-any-greedy t)
+  )
