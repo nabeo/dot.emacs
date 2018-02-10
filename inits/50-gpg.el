@@ -43,3 +43,13 @@
   :init
   :config
   )
+
+(use-package auth-password-store
+  :ensure t
+  :if (executable-find "pass")
+  :disabled t
+  :after (pass)
+  :init
+  :config
+  (auth-pass-enable)
+  )
