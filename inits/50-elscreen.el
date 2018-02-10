@@ -1,9 +1,7 @@
 (use-package elscreen
   :ensure t
-  :init
-  (setq elscreen-prefix-key (kbd "C-z"))
   :config
-  ;; elscreen
+  (setq elscreen-prefix-key (kbd "C-z"))
   (setq elscreen-display-tab nil)
 
   ;; 自動でスクリーンを作成する
@@ -28,39 +26,43 @@
   )
 
 (use-package elscreen-gf
-  :disabled t                           ; apel is required
+  :after (elscreen)
   :config
-  ;; elscreen-gf
-  (if (file-executable-p "/usr/bin/grep")
-      (setq elscreen-gf-grep-program-name "/usr/bin/grep")
-    (setq elscreen-gf-grep-program-name "grep"))
-  (if (file-executable-p "/opt/local/bin/cscope")
-      (setq elscreen-gf-cscope-program-name "/opt/local/bin/cscope")
-    (setq elscreen-gf-cscope-program-name "cscope"))
-  (if (file-executable-p (expand-file-name "~/local/idutils/bin/gid"))
-      (setq elscreen-gf-idutils-gid-program-name
-            (expand-file-name "~/local/idutils/bin/gid"))
-    (setq elscreen-gf-idutils-gid-program-name "gid"))
-  (if (file-executable-p (expand-file-name "~/local/idutils/bin/mkid"))
-      (setq elscreen-gf-idutils-mkid-program-name
-            (expand-file-name "~/local/idutils/bin/mkid"))
-    (setq elscreen-gf-idutils-mkid-program-name "mkid"))
-  (if (file-executable-p (expand-file-name "~/local/gtags/bin/global"))
-      (setq elscreen-gf-global-program-name (expand-file-name "~/local/gtags/bin/global"))
-    (setq elscreen-gf-global-program-name "global"))
-  (if (file-executable-p (expand-file-name "~/local/gtags/bin/gtags"))
-      (setq elscreen-gf-global-gtags-program-name
-            (expand-file-name "~/local/gtags/bin/gtags"))
-    (setq elscreen-gf-global-gtags-program-name "gtags"))
+  (if (executable-find "grep")
+      (setq elscreen-gf-grep-program-name (executable-find "grep")))
+  (if (executable-find "cscope")
+      (setq elscreen-gf-cscope-program-name (executable-find "cscope")))
+  (if (executable-find "global")
+      (setq elscreen-gf-global-program-name (executable-find "global")))
+  (if (executable-find "gtags")
+      (setq elscreen-gf-global-gtags-program-name (executable-find "gtags")))
+  )
+
+(use-package helm-elscreen :ensure t
+  :after (helm elscreen)
+  :bind
+  (("C-z SPC" . helm-elscreen))
   )
 
 (use-package elscreen-dnd)
 
-(use-package elscreen-wl)
+(use-package elscreen-wl
+  :after (elscreen wl))
 
-(use-package elscreen-howm)
+(use-package elscreen-howm
+  :after (elscreen howm)
+  :config
+  (add-hook 'howm-mode-hook
+            (lambda ()
+              (define-key howm-mode-map
+                (kbd "C-c C-c") nil)
+              (define-key howm-mode-map
+                (kbd "C-c C-s") 'howm-save-and-kill-buffer/screen)
+              )))
 
-(use-package elscreen-w3m)
+(use-package elscreen-w3m
+  :disabled t)
 
-(use-package elscreen-speedbar)
+(use-package elscreen-speedbar
+  :disabled t)
 
