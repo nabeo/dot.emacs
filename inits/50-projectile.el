@@ -27,6 +27,9 @@
   (add-to-list 'projectile-globally-ignored-directories "build")
   (add-to-list 'projectile-globally-ignored-directories ".cask")
   (add-to-list 'projectile-globally-ignored-directories ".vagrant")
+  (add-to-list 'projectile-globally-ignored-directories "elpa")
+  (add-to-list 'projectile-globally-ignored-directories "cache")
+  (add-to-list 'projectile-globally-ignored-directories "auto-save-list")
   (add-to-list 'projectile-globally-ignored-files ".gitignore")
   (add-to-list 'projectile-globally-ignored-files ".gitkeep")
 
