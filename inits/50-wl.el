@@ -65,7 +65,6 @@
 
 (use-package wl
   :ensure wanderlust
-  :commands (wl-draft wl-other-frame wl-util)
   :config
   ;; use auth-source as login password manager
   (setq elmo-passwd-storage-type 'auth-source)
