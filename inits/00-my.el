@@ -74,7 +74,6 @@
 
 ;; load-pothの追加設定
 (my-load-path "/opt/local/share/emacs/site-lisp")
-(my-load-path "~/site-lisp")
 
 ;; デフォルトの窓の大きさを変更する
 ;;(setq default-frame-alist
