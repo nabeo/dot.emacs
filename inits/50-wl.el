@@ -143,6 +143,7 @@
           "^X-NetworkBox-BounceSign-.*" "^X-NetworkBox-HamSign"
           "^X-TM-AS-Product-Ver:" "^X-TM-AS-Result" "^X-imss-scan-details"
           "^X-Proofpoint-.*" "^X-Virus-.*" "^X-Google-DKIM-Signature"
+          "^X-GitHub"
           "^List-Software:" "^List-Post:" "^List-Owner:"
           "^List-Help:" "^List-Unsubscribe:" "^List-Archive:"
           "^ARC-Seal:" "^ARC-Message-Signature:" "^ARC-Authentication-Results:"
