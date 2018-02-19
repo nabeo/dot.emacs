@@ -1,29 +1,10 @@
-; xcite.elを使う
-;(load "~/.emacs.d/emacs-xcite.el")
-
-;; tls.elを使う
-;; (require 'tls)
-;; (set-alist 'elmo-network-stream-type-alist "!opentls" '(opentls nil open-tls-stream))
-
 (use-package mime-setup
   :ensure semi
   :init
-  ;; htmlパートを表示しない
-  (setq mime-setup-enable-inline-html nil)
+  (setq mime-view-text/html-preview 'shr)
   (setq mime-situation-examples-file
-        (convert-standard-filename "~/.emacs.d/wl/mime-example.el"))
-  :config
-  )
-
-(use-package std11
-  :ensure flim
-  :init
-  ;; ファイル名が日本語の添付ファイルをエンコードする [semi-gnus-ja: 6046]
-  (defadvice std11-wrap-as-quoted-string 
-      (before encode-string activate)
-    "Encode a string."
-    (require 'eword-encode)
-    (ad-set-arg 0 (eword-encode-string (ad-get-arg 0))))
+        (expand-file-name (concat user-emacs-directory "wl/mime-example.el")))
+  (setq mime-edit-split-message nil)
   :config
   )
 
@@ -47,132 +28,52 @@
                               pcs nil)
                       (setq pcs (cdr pcs))))))))
           rest)))
-
+  :config
   (defadvice mime-entity-filename (after eword-decode-for-broken-MUA activate)
     "Decode encoded file name for BROKEN MUA."
     (when (stringp ad-return-value)
       (setq ad-return-value (my-mime-decode-filename ad-return-value))))
-  :config
   )
 
-(use-package cp5022x
-  :ensure t
+(use-package std11
+  :ensure flim
   :config
-  ;; cp932の設定
-  (add-to-list 'mime-charset-coding-system-alist '(shift_jis . cp932))
-  (add-to-list 'mime-charset-coding-system-alist '(iso-2022-jp . cp50220))
+  (defadvice std11-wrap-as-quoted-string
+      (before encode-string activate)
+    "Encode a string."
+    (require 'eword-encode)
+    (ad-set-arg 0 (eword-encode-string (ad-get-arg 0))))
   )
 
-(use-package wl
+(use-package wl-summary
   :ensure wanderlust
-  :config
-  ;; use auth-source as login password manager
-  (setq elmo-passwd-storage-type 'auth-source)
-  ;; メールアカウント関係
-  (cond ((or emacs23.4-p emacs24-p emacs25-p emacs-bzr-p)
-         (load-safe "~/.emacs.d/wl/wl-account-tls.el"))
-        (load-safe "~/.emacs.d/wl/wl-account.el"))
-
-  ;; 自分の環境にあわせる
-  ;; .folders
-  (setq wl-folders-file "~/.emacs.d/wl/folders")
-  ;; .addresses
-  (setq wl-address-file "~/.emacs.d/wl/addresses")
-  (setq mail-from-style 'angles)
-  ;; elmo-prefix
-  (setq elmo-maildir-folder-path "~/mail")
-
-  (setq elmo-cache-expire-by-size 10240000)
-
-  ;; メールの受信
-  ;; biff関係
-  (setq wl-biff-check-folder-list '("%inbox")
-        wl-biff-check-interval 300)
-
-  ;; メールの送信
-  ;; 大きいメッセージを分割しない
-  (setq mime-edit-split-message nil)
-  ;; 送ったメールは指定するディレクトリに保存しておく
-  (setq wl-fcc "+backup")
-
-  ;; メールの作成
-  ;; Bccを自動的に付与する
-  ;; (setq wl-bcc "watanabe.michikazu@gmail.com")
-  ;; To,Ccから自分のメールアドレスを削除する
-  ;; (setq wl-drat-always-delete-myself t)
-  (setq wl-drat-always-delete-myself nil)
-
-  ;; 外部ファイルの読み込み
-  (load "~/.emacs.d/wl/ml-list.el") ; 参加しているMLのリスト
-  (load "~/.emacs.d/wl/wl-refile-rule.el") ; リファイルルール(wl-refile-rule.el)
-  ;; (load "~/.emacs.d/wl/elmo-refile-rule.el") ; elmoを使ったリファイル
-
-  ;; メールの閲覧
-  ;; HTMLファイルは表示しない
-  (setq mime-setup-enable-inline-html nil)
-
-  ;; draft mode
-  (setq wl-draft-use-frame t)
-  ;; signature
-  (setq signature-file-name "~/.emacs.d/wl/signature-gmail")
-  (setq signature-inset-at-eof t)
-  (setq signature-delete-blank-lines-at-eof t)
-
-  ;; メッセージヘッダの表示
-  ;; ヘッダの表示はHでトグルする
-  ;; MIMEエンコードの有無はM
-  ;; 表示を戻すときは.
-  (setq wl-message-ignored-field-list
-        '(".*Received:" ".*Path:" "^References:"
-          "^Delivered-To:" "^Received-SPF:"
-          "^Replied:" "^Errors-To" "^Lines:" ".*Host:"
-          "^Message-ID:" "^MIME-Version:"
-          "^Reply-To:" "^Message-ID:" "^Content-Transfer-Encoding:"
-          "^List-ID:" "^X-Auto-Response-Suppress:"
-          "^Authentication-Results:" "^DKIM-Signature:" 
-          "^DomainKey-Signature:"
-          "^Content-Type:"  "^Content-class:" "^Precedence:" "^Status:"
-          "^X-Mozilla-.*:" "^X-Account-Key:" "^X-UIDL:"
-          "^X-MLServer:" "^X-ML-Info:" "^X-Original-To:"
-          "^X-Enigmail-Version" "^X-Distribute:"
-          "^X-BeenThere:" "^X-Mailman-Version:"
-          "^X-Nifty-.*:" "^X-MimeOLE:" "^X-MS-.*"
-          "^X-IronPort.*" "^X-Spam.*" "^X-GDX-Token:" "^X-TimeCertificate:"
-          "^X-ASJ" "^X-AntiAbuse:" "^X-Source:" "^X-Source-.*:"
-          "^X-Accept-Language" "^X-AuditID:" "^X-Mailer:" "X-MIMETrack:"
-          "^X-Brightmail-Tracker:"
-          "^X-OriginalArrivalTime" "^X-Scanned-By-hitachihk.*"
-          "^X-NetworkBox-BounceSign-.*" "^X-NetworkBox-HamSign"
-          "^X-TM-AS-Product-Ver:" "^X-TM-AS-Result" "^X-imss-scan-details"
-          "^X-Proofpoint-.*" "^X-Virus-.*" "^X-Google-DKIM-Signature"
-          "^X-GitHub" "^X-Feedback-ID:" "^X-SG-EID:"
-          "^List-Software:" "^List-Post:" "^List-Owner:"
-          "^List-Help:" "^List-Unsubscribe:" "^List-Archive:"
-          "^ARC-Seal:" "^ARC-Message-Signature:" "^ARC-Authentication-Results:"
-          "^X-Gm-Message-State:" "^X-Google-Smtp-Source:" "^X-Google-Smtp-Source:"
-          "^List-Subscribe"))
-
-  ;; summaryモードの各種設定
-  ;; スレッドの表示関連
+  :init
+  ;; メッセージ番号で並び替えする
+  (defun wl-summary-overview-entity-compare-by-reply-number (a b)
+    "Compare entity A and B by latest number of replies."
+    (let ((fx #'(lambda (x)
+                  (setq x (elmo-message-entity-number x))
+                  (apply 'max x (wl-thread-entity-get-descendant
+                                 (wl-thread-get-entity x))))))
+      (< (funcall fx a) (funcall fx b))))
+  (setq wl-summary-divide-thread-when-subject-changed t)
+  (setq wl-summary-indent-length-limit nil)
+  (setq wl-summary-width nil)
+  (setq wl-auto-select-first nil)
+  (setq wl-auto-select-next nil)
+  (setq wl-summary-move-order 'unread)
+  (setq wl-default-spec "+")
+  ;; 全てのメッセージをプリフェッチする (オフラインアクセス用)
+  (setq wl-summary-incorporate-marks '("N" "U" "!" "A" "F" "$"))
+  ;; thread face
   (setq wl-thread-indent-level 2)
   (setq wl-thread-have-younger-brother-str "|")
-  (setq wl-thread-have-younger-child-str "`")
-  (setq wl-thread-youngest-child-str "`")
-  (setq wl-thread-vertical-str "|")
-  (setq wl-thread-horizontal-str "-")
-  (setq wl-thread-space-str " ")
-  (setq wl-summary-incorporate-marks '("N" "U" "!" "A" "F" "$"))
+  (setq wl-thread-youngest-child-str       "`")
+  (setq wl-thread-vertical-str             "|")
+  (setq wl-thread-horizontal-str           "-")
+  (setq wl-thread-space-str                " ")
 
-  ;; 表示は切り詰めない
-  (setq wl-summary-width nil)
-  (setq wl-summary-length-limit nil)
-  ;; subjectが変ったら、スレッドを切る
-  ;;(setq wl-summary-divide-thread-when-subject-changed t)
-
-  ;; サマリの表示拡張
-  ;; 自分宛のメールには>を付ける (Gmail風)
-  (setq wl-user-mail-address-regexp
-        "watanabe\\.michikazu@gmail\\.com")
+  ;; 自分宛のメールには>をつける (GMail風)
   (defun wl-summary-line-for-me ()
     (if (catch 'found
           (let ((to (elmo-message-entity-field wl-message-entity 'to))
@@ -188,43 +89,102 @@
         ">"
       ""))
 
-  ;; 添付ファイルがあるメールには@をつける
-  (setq elmo-msgdb-extra-fields
-        (cons "content-type" elmo-msgdb-extra-fields))
-
-  ;; 拡張したサマリを反映
-  (require 'wl-vars)
-  (setq wl-summary-line-format-spec-alist
-        (append wl-summary-line-format-spec-alist
-                '((?@ (wl-summary-line-attached))
-                  (?> (wl-summary-line-for-me)))
-                ))
-  (setq wl-summary-line-format 
-        "%n%T%P%1@%1>%M/%D(%W)%h:%m %t%[%17(%c %f%) %] %#%~%s")
-  ;; (setq wl-summary-line-format 
-  ;;       "%n%T%P%1@%M/%D(%W)%h:%m %t%[%17(%c %f%) %] %#%~%s")
-
-  ;; bbdb
-  ;; (load-file "~/.emacs.d/wl/wl-bbdb.el")
-
-  ;; Summary モードで n,p で読み進めて最後か最初までいったとき
-  ;; フォルダを抜けないようにする (2ch Wanderlust その5)
+  ;; n, pで読み進めて最後か最初までいったとき、フォルダを抜けないようにする
   (add-hook 'wl-summary-mode-hook
             '(lambda ()
-               (setq wl-summary-buffer-prev-folder-function 'ignore
-                     wl-summary-buffer-next-folder-function 'ignore)))
-
-  ;; wl-summary-refile-prev-destinationのキーバインドを"M-o"から変更する
-  ;;(define-key wl-summary-mode-map "" 'wl-summary-refile-prev-destination)
-
-  ;; 新着レス順にソートする
-  ;; http://ikazuhiro.s206.xrea.com/article.php/20140920115345919
-  (defun wl-summary-overview-entity-compare-by-reply-number (a b)
-    "Compare entity A and B by latest number of replies."
-    (let ((fx #'(lambda (x)
-                  (setq x (elmo-message-entity-number x))
-                  (apply 'max x (wl-thread-entity-get-descendant 
-                                 (wl-thread-get-entity x))))))
-      (< (funcall fx a) (funcall fx b))))
+               (setq wl-summary-buffer-prev-folder-function 'ignore)
+               (setq wl-summary-buffer-next-folder-function 'ignore)))
+  :config
   (add-to-list 'wl-summary-sort-specs 'reply-number)
+  ;; summaryモードの拡張
+  (setq wl-summary-line-format-spec-alist
+        (append wl-summary-line-format-spec-alist
+                '((?> (wl-summary-line-for-me)))))
+  (setq wl-summary-line-format "%T%P%1@%M/%D(%W)%h:%m %t[%17(%c %f%) %] %#%~%s")
+  )
+
+(use-package wl-folder
+  :ensure wanderlust
+  :init
+  (setq wl-folder-check-async t)
+  (setq wl-folder-buffer-name "Folder")
+  :config
+  )
+
+(use-package wl
+  :ensure wanderlust
+  :commands (wl-other-frame wl-draft wl-util wl-e21)
+  :after (auth-source)
+  :init
+  (setq elmo-passwd-storage-type 'auth-source)
+  (setq wl-folders-file (expand-file-name
+                         (concat user-emacs-directory "wl/folders")))
+  (setq wl-address-file (expand-file-name
+                         (concat user-emacs-directory "wl/address")))
+  (setq elmo-maildir-folder-path "~/mail")
+  ;; 転送メールのsubjectの先頭につける文字列を変更する
+  (setq wl-forward-subject-prefix "Fwd: ")
+  ;; Fcc: で保存したメッセージを既読にする
+  (setq wl-fcc-force-as-read t)
+  ;; 自分あてのメールに返信する場合は To と Cc から自分のメールアドレスを削除
+  (setq wl-draft-always-delete-myself t)
+  (setq mime-view-text/html-entity-score -1)
+  :config
+  ;; message mode
+  (setq wl-message-ignored-field-list
+        '("^Received-SPF:" "Authentication-Results:" "^In-Reply-To:"
+          "^Repied:" "^Errors-To" "^Lines:" "^Sender:" ".*Host:"
+          "^Deleiverd-To" "^Message-Id:" "^Content-Transfer-Encoding:"
+          "^X-Mailman-Version:" "^X-Sequence:" "^X-BeenThere:"
+          "^Return-Path:" "^Received:" "^MIME-Version:"
+          "^X-Old-From:" "^X-HopMx-Name:" "^X-Spam:" "^X-MAIL-FROM:"
+          "^X-Virus-.*" "^X-Priority:" "^X-MSMail-Priority:" "^X-MIMEOLE:"
+          "^X-SOURCE-IP:" "^X-AnalysisOut:" "^Precedence:" "^DKIM-Signature:"
+          "^References:" "^Content-Disposition:" "^Reply-To:" "^Content-Type:"
+          "^X-Spam.*" "^X-BigFish:" "^X-Forefront-Antispam-Report:"
+          "^Thread-.*" "^Accept-Language:" "^Content-Language:" "^X-MS-.*"
+          "^X-Microsoft.*" "^X-Exchange" "^SpamDiagnosticOutput:"
+          "^SpamDiagnosticMetadata:"
+          "^acceptlanguage:" "^X-OriginatorOrg:" "^X-MIME-Autoconverted:"
+          "^X-Trac-.*" "^Auto-Submitted:" "^X-URL:" "^X-TERRACE-.*"
+          "^List-Unsubscribe:" "^List-Post:" "^List-Help:" "^List-Subscribe:"
+          "^X-Proofpoint-Virus-Version:" "^X-Proofpoint-Spam-Details:"
+          "^X-Submit-.*" "^X-Referer:" "^X-LANG:" "^X-Proxy:" "^X-MIME:"
+          "^X-Query:" "^X-Google-DKIM-Signature:"
+          "^X-OriginalArrivalTime:" "^X-TM-AS-Product-Ver:" "^X-TM-AS-Result:"
+          "^X-imss-scan-details:" "^X-TMASE-MatchedRID:" "^X-Brightmail-Tracker:"
+          "^X-post-Received:" "^Sun-Java-System-SMTP-Warning" "^X-vs"
+          "^X-Received:" "^X-Gm-Message-State:" "^X-Google-Group-Id:"
+          "^X-Forefront-Antispam-Report-Untrusted:" "^x-securitypolicycheck:"
+          "^x-shieldmailcheckerpolicyversion:" "^x-originating-ip:"
+          "^x-forefront-prvs:" "^X-FOPE-CONNECTOR:" "^X-PlayBackID:"
+          "^X-Google-Sender-Auth:"
+          "^X-Cybozu-Notify-App-.*:" "^X-Cybozu-Notify-Date:" "^X-Cybozu-Notify-Name:"
+          "^X-Cybozu-Notify-Digest:"
+          "^X-Iguazu-Qid:"
+          "^X-CTCH-RefID:" "^X-VR-Cause:" "^X-CMAE-Analysis:" "^X-CMAE-Envelope:"
+          "^X-Auto-Response-Suppress:" "^X-SMTPAPI:"
+          ))
+  (setq wl-message-visible-field-list '("^To:" "^Subject:" "^Cc:" "^Date:"))
+  (setq wl-message-auto-reassemble-message/partial t)
+
+  ;; user-agentを変更
+  (defun my-wl-generate-user-agent-string ()
+    "yet another wl-generate-user-agent-string"
+    (concat (product-string-1 'wl-version t) " "
+            (wl-extended-emacs-version3 "/" t)))
+  (setq wl-generate-mailer-string-function 'my-wl-generate-user-agent-string)
+  (setq wl-generate-user-agent-string 'my-wl-generate-user-agent-string)
+
+  ;; accounts
+  (load-safe (expand-file-name
+              (concat user-emacs-directory "wl/wl-account-tls.el")))
+
+  ;; 参加している ML のリスト
+  (load-safe (expand-file-name
+              (concat user-emacs-directory "wl/ml-list.el")))
+
+  ;; 振り分け
+  (load-safe (expand-file-name
+              (concat user-emacs-directory "wl/wl-refile-rule.el")))
   )
