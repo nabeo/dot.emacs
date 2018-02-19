@@ -10,27 +10,26 @@
   :init
   ;; htmlパートを表示しない
   (setq mime-setup-enable-inline-html nil)
-  :config
-  ;; semi
-  (load "mime-setup")
   (setq mime-situation-examples-file
         (convert-standard-filename "~/.emacs.d/wl/mime-example.el"))
+  :config
   )
 
 (use-package std11
   :ensure flim
-  :config
+  :init
   ;; ファイル名が日本語の添付ファイルをエンコードする [semi-gnus-ja: 6046]
   (defadvice std11-wrap-as-quoted-string 
       (before encode-string activate)
     "Encode a string."
     (require 'eword-encode)
     (ad-set-arg 0 (eword-encode-string (ad-get-arg 0))))
+  :config
   )
 
 (use-package mime
   :ensure flim
-  :config
+  :init
   ;; 日本語の添付ファイルを扱えるようにする
   (defvar my-mime-filename-coding-system-for-decode
     '(iso-2022-jp japanese-shift-jis japanese-iso-8bit))
@@ -53,6 +52,7 @@
     "Decode encoded file name for BROKEN MUA."
     (when (stringp ad-return-value)
       (setq ad-return-value (my-mime-decode-filename ad-return-value))))
+  :config
   )
 
 (use-package cp5022x
@@ -150,9 +150,6 @@
           "^List-Subscribe"))
 
   ;; summaryモードの各種設定
-  ;; requres
-  (require 'wl-summary)
-
   ;; スレッドの表示関連
   (setq wl-thread-indent-level 2)
   (setq wl-thread-have-younger-brother-str "|")
