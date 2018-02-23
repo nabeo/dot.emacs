@@ -72,3 +72,8 @@
 
 ;; PATH の追加
 (setenv "PATH" (concat (getenv "PATH") ":" "/opt/local/bin" ":" "/opt/local/sbin"))
+
+;; 日本語入力時のちらつきを抑制する
+;; http://qiita.com/takaxp/items/e07bb286d80fa9dd8e05
+(cond ((boundp 'mac-ime-cursor-type)
+       (setq mac-ime-cursor-type '(bar . 2))))
