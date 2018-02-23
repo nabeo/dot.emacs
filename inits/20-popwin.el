@@ -15,9 +15,6 @@
   (push '("*Faces*") popwin:special-display-config)
   (push '("*Colors*") popwin:special-display-config)
 
-  ;; id-manager
-  (push '("ID-Password List") popwin:special-display-config)
-
   ;; bbdb
   (push '("*BBDB*") popwin:special-display-config)
   )

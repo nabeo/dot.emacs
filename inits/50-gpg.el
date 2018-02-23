@@ -21,6 +21,7 @@
   :init
   ;; パスワードの保存先(gpgで暗号化されている)
   (setq idm-database-file "~/.emacs.d/secret/idm-db.gpg")
+  (push '("ID-Password List") popwin:special-display-config)
   )
 
 (use-package pass
