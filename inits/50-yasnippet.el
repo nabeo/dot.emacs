@@ -18,6 +18,7 @@
 
 (use-package yasnippet-snippets
   :ensure t
+  :after (yasnippet)
   :config
   (add-to-list 'yas-snippet-dirs yasnippet-snippets-dir)
   )

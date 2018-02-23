@@ -10,6 +10,7 @@
 
   (auto-compression-mode t)
   (setq twittering-icon-storage-file
-        (expand-file-name "~/.emacs.d/twittering-mode/twittering-mode-icons.gz"))
+        (expand-file-name "data/twittering-mode-icons.gz"
+                          user-emacs-directory))
   (setq twittering-use-icon-storage t)
   )

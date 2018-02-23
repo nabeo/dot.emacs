@@ -8,7 +8,9 @@
   (setq ac-auto-start nil)
   (setq ac-dwim t)
   (ac-config-default)
-  (setq ac-comphist-file (concat user-emacs-directory "cache/ac-comphist.dat"))
+  (setq ac-comphist-file (expand-file-name
+                          "data/ac-comphist.data"
+                          user-emacs-directory))
   (setq-default ac-sources '(ac-source-features
                              ac-source-functions
                              ac-source-yasnippet

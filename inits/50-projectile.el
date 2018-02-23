@@ -17,7 +17,12 @@
   ;; caching
   (setq projectile-indexing-method 'native)
   (setq projectile-enable-caching t)
-  (setq projectile-cache-file "~/.emacs.d/projectile/projectile.cache")
+  (setq projectile-cache-file (expand-file-name
+                               "data/projectile.cache"
+                               user-emacs-directory))
+  (setq projectile-known-projects-file (expand-file-name
+                                        "data/projectile-bookmarks.eld"
+                                        user-emacs-directory))
   (setq projectile-file-exists-remote-cache-expire nil)
   (setq projectile-file-exists-local-cache-expire (* 5 60))
 
