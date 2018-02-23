@@ -31,9 +31,10 @@
          ("C-x C-y" . git-gutter+-stage-and-commit-whole-buffer)
          ("C-x U" . git-gutter+-unstage-whole-buffer)
          ))
+  :init
+  (add-hook 'prog-mode-hook 'git-gutter+-mode)
+  (add-hook 'yaml-mode-hook 'git-gutter+-mode)
+  (add-hook 'emacs-lisp-mode-hook 'git-gutter+-mode)
+  (add-hook 'go-mode-hook 'git-gutter+-mode)
   :config
   )
-(add-hook 'prog-mode-hook 'git-gutter+-mode)
-(add-hook 'yaml-mode-hook 'git-gutter+-mode)
-(add-hook 'emacs-lisp-mode-hook 'git-gutter+-mode)
-(add-hook 'go-mode-hook 'git-gutter+-mode)
