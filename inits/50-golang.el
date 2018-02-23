@@ -4,15 +4,17 @@
   :if (executable-find "go")
   :config
   ;; set GOPATH
-  (setq gopath-env (getenv "GOPATH"))
-  (if (and (eq gopath-env nil) (file-exists-p "~/Development/golang"))
-      (setenv "GOPATH" (expand-file-name "~/Development/golang")))
+  (let ((my/gopath-env (getenv "GOPATH")))
+    (if (and (eq my/gopath-env nil) (file-exists-p "~/Development/golang"))
+        (setenv "GOPATH" (expand-file-name "~/Development/golang"))))
 
   ;; set PATH
   (cond ((file-exists-p (concat (getenv "GOPATH") "/bin"))
-         (setq exec-path (append exec-path '((concat (getenv "GOPATH") "/bin"))))
-         (setenv "PATH" (concat (getenv "PATH") ":" (concat (getenv "GOPATH") "/bin")))
-         ))
+         (let ((my/gopath-bin (expand-file-name "bin" (getenv "GOPATH"))))
+           (unless (member my/gopath-bin exec-path)
+             (setq exec-path (cons my/gopath-bin
+                                   exec-path))
+             (setenv "PATH" (concat (getenv "PATH") ":" my/gopath-bin))))))
 
   ;; set commands
   (cond ((file-executable-p "/opt/local/bin/go")
