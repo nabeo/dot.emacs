@@ -79,6 +79,7 @@
 
 (use-package helm-ghq
   :ensure t
-  :if (executable-find "ghq")
+  :if (or (executable-find "ghq")
+          (file-executable-p (expand-file-name "bin/ghq" (getenv "GOPATH"))))
   :after (helm)
   )

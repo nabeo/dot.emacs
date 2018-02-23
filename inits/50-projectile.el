@@ -90,7 +90,7 @@
 ;; go get github.com/direnv/direnv => $GOPATH/bin/direnv
 (use-package projectile-direnv
   :ensure t
-  :if (executable-find "direnv")
+  :if (file-executable-p (concat (getenv "GOPATH") "/bin/direnv"))
   :config
   (add-hook 'pojectile-mode-hook 'projectile-direnv-export-variables)
   )
@@ -98,7 +98,7 @@
 ;; use with pyenv-mode
 (use-package pyenv-mode
   :ensure t
-  :if (executable-find "pyenv")
+  :if (file-executable-p (expand-file-name "~/.pyenv/bin/pyenv"))
   :config
   (defun projectile-pyenv-mode-set ()
     "Set pyenv version matching project name."

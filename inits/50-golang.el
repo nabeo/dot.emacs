@@ -2,7 +2,7 @@
 (use-package go-mode
   :ensure t
   :if (executable-find "go")
-  :config
+  :init
   ;; set GOPATH
   (let ((my/gopath-env (getenv "GOPATH")))
     (if (and (eq my/gopath-env nil) (file-exists-p "~/Development/golang"))
@@ -15,7 +15,7 @@
              (setq exec-path (cons my/gopath-bin
                                    exec-path))
              (setenv "PATH" (concat (getenv "PATH") ":" my/gopath-bin))))))
-
+  :config
   ;; set commands
   (cond ((file-executable-p "/opt/local/bin/go")
          (setq go-command "/opt/local/bin/go")
