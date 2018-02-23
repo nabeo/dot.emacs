@@ -15,6 +15,7 @@
       emacs23-p (string-match "^23" emacs-version)
       emacs24-p (string-match "^24" emacs-version)
       emacs25-p (string-match "^25" emacs-version)
+      emacs26-p (string-match "^26" emacs-version)
       emacs23.0-p (string-match "^23\.0" emacs-version)
       emacs23.1-p (string-match "^23\.1" emacs-version)
       emacs23.2-p (string-match "^23\.2" emacs-version)
@@ -27,6 +28,8 @@
       emacs24.5-p (string-match "^24\.5" emacs-version)
       emacs25.0-p (string-match "^25\.0" emacs-version)
       emacs25.1-p (string-match "^25\.1" emacs-version)
+      emacs25.2-p (string-match "^25\.2" emacs-version)
+      emacs25.3-p (string-match "^25\.3" emacs-version)
       emacs-bzr-p (string-match "^2.\..\.50" emacs-version))
 ;; emacsのsystem-type
 (setq darwin-p  (eq system-type 'darwin)
