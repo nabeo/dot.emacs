@@ -143,7 +143,7 @@
           "^Return-Path:" "^Received:" "^MIME-Version:"
           "^X-Old-From:" "^X-HopMx-Name:" "^X-Spam:" "^X-MAIL-FROM:"
           "^X-Virus-.*" "^X-Priority:" "^X-MSMail-Priority:" "^X-MIMEOLE:"
-          "^X-SOURCE-IP:" "^X-AnalysisOut:" "^Precedence:" "^DKIM-Signature:"
+          "^X-SOURCE-IP:" "^X-AnalysisOut:" "^Precedence:"
           "^References:" "^Content-Disposition:" "^Reply-To:" "^Content-Type:"
           "^X-Spam.*" "^X-BigFish:" "^X-Forefront-Antispam-Report:"
           "^Thread-.*" "^Accept-Language:" "^Content-Language:" "^X-MS-.*"
@@ -154,7 +154,7 @@
           "^List-Unsubscribe:" "^List-Post:" "^List-Help:" "^List-Subscribe:"
           "^X-Proofpoint-Virus-Version:" "^X-Proofpoint-Spam-Details:"
           "^X-Submit-.*" "^X-Referer:" "^X-LANG:" "^X-Proxy:" "^X-MIME:"
-          "^X-Query:" "^X-Google-DKIM-Signature:"
+          "^X-Query:"
           "^X-OriginalArrivalTime:" "^X-TM-AS-Product-Ver:" "^X-TM-AS-Result:"
           "^X-imss-scan-details:" "^X-TMASE-MatchedRID:" "^X-Brightmail-Tracker:"
           "^X-post-Received:" "^Sun-Java-System-SMTP-Warning" "^X-vs"
@@ -162,12 +162,15 @@
           "^X-Forefront-Antispam-Report-Untrusted:" "^x-securitypolicycheck:"
           "^x-shieldmailcheckerpolicyversion:" "^x-originating-ip:"
           "^x-forefront-prvs:" "^X-FOPE-CONNECTOR:" "^X-PlayBackID:"
-          "^X-Google-Sender-Auth:"
+          "^X-Google-Sender-Auth:" "^X-Google-Smtp-Source:" "^X-Google-DKIM-Signature:"
           "^X-Cybozu-Notify-App-.*:" "^X-Cybozu-Notify-Date:" "^X-Cybozu-Notify-Name:"
           "^X-Cybozu-Notify-Digest:"
           "^X-Iguazu-Qid:"
           "^X-CTCH-RefID:" "^X-VR-Cause:" "^X-CMAE-Analysis:" "^X-CMAE-Envelope:"
           "^X-Auto-Response-Suppress:" "^X-SMTPAPI:"
+          ;; DKIM
+          "^DKIM-Signature:"
+          "^ARC-Seal:" "^ARC-Message-Signature:" "^ARC-Authentication-Results:"
           ))
   (setq wl-message-visible-field-list '("^To:" "^Subject:" "^Cc:" "^Date:"))
   (setq wl-message-auto-reassemble-message/partial t)
