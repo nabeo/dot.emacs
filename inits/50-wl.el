@@ -126,8 +126,6 @@
   (setq wl-forward-subject-prefix "Fwd: ")
   ;; 送ったメールは指定するディレクトリに保存しておく
   (setq wl-fcc "+backup")
-  ;; Bcc に自分のアドレスを追加する
-  (setq wl-bcc (and user-mail-address (concat user-mail-address)))
   ;; Fcc: で保存したメッセージを既読にする
   (setq wl-fcc-force-as-read t)
   ;; 自分あてのメールに返信する場合は To と Cc から自分のメールアドレスを削除
@@ -186,6 +184,9 @@
   ;; accounts
   (load-safe (expand-file-name
               (concat user-emacs-directory "wl/wl-account-tls.el")))
+  ;; Bcc に自分のアドレスを追加する
+  (unless (and wl-bcc)
+    (setq wl-bcc (and user-mail-address (concat user-mail-address))))
 
   ;; 参加している ML のリスト
   (load-safe (expand-file-name
