@@ -124,6 +124,10 @@
   (setq elmo-maildir-folder-path "~/mail")
   ;; 転送メールのsubjectの先頭につける文字列を変更する
   (setq wl-forward-subject-prefix "Fwd: ")
+  ;; 送ったメールは指定するディレクトリに保存しておく
+  (setq wl-fcc "+backup")
+  ;; Bcc に自分のアドレスを追加する
+  (setq wl-bcc (and user-mail-address (concat user-mail-address)))
   ;; Fcc: で保存したメッセージを既読にする
   (setq wl-fcc-force-as-read t)
   ;; 自分あてのメールに返信する場合は To と Cc から自分のメールアドレスを削除
