@@ -1,8 +1,3 @@
-;; macemacsjp MLで流れていた
-
-;; http://d.hatena.ne.jp/setoryohei/20110117
-;; 設定例2
-;; kazuさんがうまくいったとMLで言っていた
 (let* ((size 12) ; ASCIIフォントのサイズ [9/10/12/14/15/17/19/20/...]
        (asciifont "Menlo") ; ASCIIフォント
        ;; (asciifont "Ricty") ; ASCIIフォント
