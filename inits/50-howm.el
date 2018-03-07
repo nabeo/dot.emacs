@@ -22,7 +22,7 @@
   ;; 下線を引き直さない
   (setq howm-refresh-after-save nil)
   ;; howmのディレクトリをDropboxにする
-  (setq howm-directory "~/Dropbox/emacs/howm/")
+  (setq howm-directory "~/howm/")
 
   ;; howmの時はauto-fill
   ;; (add-hook 'howm-mode-on-hook 'auto-fill-mode)
