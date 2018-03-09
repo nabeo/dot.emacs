@@ -4,4 +4,7 @@
   :mode (("\\.mdwn" . markdown-mode)
          ("\\.md" . markdown-mode)
          ("\\.mdt" . markdown-mode))
-  :init ())
+  :init
+  (if (executable-find "pandoc")
+      (setq markdown-command "pandoc"))
+  )
