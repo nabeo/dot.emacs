@@ -1,6 +1,7 @@
 (use-package w3m
   :ensure t
   :commands (w3m-find-file w3m-browse-url w3m-search)
+  :disabled t
   :bind
   (("C-x m" . browse-url-at-point))
   :config
