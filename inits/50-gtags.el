@@ -1,5 +1,5 @@
 (use-package gtags
-  :load-path "/opt/local/share/gtags"
+  :load-path "/usr/local/opt/global/share/gtags"
   :if (executable-find "gtags")
   :config
   ;; ruby-modeでgtags.elを使えるようにする
