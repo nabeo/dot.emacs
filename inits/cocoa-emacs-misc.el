@@ -77,3 +77,6 @@
 ;; http://qiita.com/takaxp/items/e07bb286d80fa9dd8e05
 (cond ((boundp 'mac-ime-cursor-type)
        (setq mac-ime-cursor-type '(bar . 2))))
+
+;; UTF-8
+(prefer-coding-system 'utf-8)
