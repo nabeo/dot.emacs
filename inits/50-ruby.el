@@ -32,6 +32,8 @@
   )
 
 (use-package ruby-style
+  :ensure ruby-additional
+  :disabled t
   :config
   (add-hook 'c-mode-hook 'ruby-style-c-mode)
   (add-hook 'c++-mode-hook 'ruby-style-c-mode)
@@ -39,6 +41,7 @@
 
 (use-package ruby-block
   :ensure t
+  :disabled t
   :config
   (ruby-block-mode t)
   ;; do overlay
