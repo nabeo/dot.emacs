@@ -1,10 +1,6 @@
 (use-package mime-setup
   :ensure semi
   :init
-  (setq mime-view-text/html-preview 'shr)
-  (setq mime-situation-examples-file
-        (expand-file-name (concat user-emacs-directory "wl/mime-example.el")))
-  (setq mime-edit-split-message nil)
   :config
   )
 
@@ -62,7 +58,6 @@
   (setq wl-auto-select-first nil)
   (setq wl-auto-select-next nil)
   (setq wl-summary-move-order 'unread)
-  (setq wl-default-spec "+")
   ;; 全てのメッセージをプリフェッチする (オフラインアクセス用)
   (setq wl-summary-incorporate-marks '("N" "U" "!" "A" "F" "$"))
   ;; thread face
@@ -116,6 +111,13 @@
   :commands (wl-other-frame wl-draft wl-util wl-e21)
   :after (auth-source)
   :init
+  ;; for mime-setup
+  (setq mime-view-text/html-preview 'shr)
+  (setq mime-situation-examples-file
+        (expand-file-name (concat user-emacs-directory "wl/mime-example.el")))
+  (setq mime-edit-split-message nil)
+  (setq mime-view-text/html-score 0)
+
   (setq elmo-passwd-storage-type 'auth-source)
   (setq wl-folders-file (expand-file-name
                          (concat user-emacs-directory "wl/folders")))
@@ -130,7 +132,6 @@
   (setq wl-fcc-force-as-read t)
   ;; 自分あてのメールに返信する場合は To と Cc から自分のメールアドレスを削除
   (setq wl-draft-always-delete-myself t)
-  (setq mime-view-text/html-entity-score -1)
   :config
   ;; message mode
   (setq wl-message-ignored-field-list
