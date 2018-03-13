@@ -167,6 +167,7 @@
           "^X-Iguazu-Qid:"
           "^X-CTCH-RefID:" "^X-VR-Cause:" "^X-CMAE-Analysis:" "^X-CMAE-Envelope:"
           "^X-Auto-Response-Suppress:" "^X-SMTPAPI:"
+          "^X-SG-EID:"
           ;; DKIM
           "^DKIM-Signature:"
           "^ARC-Seal:" "^ARC-Message-Signature:" "^ARC-Authentication-Results:"
