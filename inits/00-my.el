@@ -151,8 +151,11 @@
 ;;(menu-bar-mode 0)
 
 ;; pathの設定
-(setq exec-path (cons "/opt/local/bin" exec-path))
-;; (setq exec-path (cons "/Users/nabeo/local/idutils/bin" exec-path))
+(dolist (i '("/opt/local/bin"
+             "/usr/local/bin"
+             "/usr/local/opt/openssl/bin"))
+  (unless (member i exec-path)
+    (setq exec-path (cons i exec-path))))
 
 ;; スケスケ窓
 ;; (setq default-frame-alist
