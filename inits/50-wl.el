@@ -171,6 +171,10 @@
           ;; DKIM
           "^DKIM-Signature:"
           "^ARC-Seal:" "^ARC-Message-Signature:" "^ARC-Authentication-Results:"
+          ;; AWS
+          "^X-MSFBL:" "^X-PVIQ:" "^X-PVIQ:" "^X-Binding:" "^X-MarketoID:"
+          "^X-MktArchive:" "^X-Mailfrom:" "^X-MSYS-API:" "^X-AMAZON-MAIL-RELAY-REDIR:"
+          "^X-SES-Outgoing:" "^Feedback-ID:"
           ))
   (setq wl-message-visible-field-list '("^To:" "^Subject:" "^Cc:" "^Date:"))
   (setq wl-message-auto-reassemble-message/partial t)
