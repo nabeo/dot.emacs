@@ -83,3 +83,9 @@
           (file-executable-p (expand-file-name "bin/ghq" (getenv "GOPATH"))))
   :after (helm)
   )
+
+(use-package helm-mkr
+  :load-path "~/src/github.com/nabeo/helm-mkr"
+  :config
+  (setq mkr-org "hatena")
+  )
