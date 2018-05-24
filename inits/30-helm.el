@@ -45,7 +45,7 @@
    ("M-I" . helm-swoop-back-to-last-point)
    ("C-c M-i" . helm-multi-swoop)
    ("C-c M-I" . helm-multi-swoop-all)
-   :map isearch-mode-map 
+   :map isearch-mode-map
    (("M-i" . heml-swoop-from-isearch)))
   :config
   (setq helm-multi-swoop-edit-save t)
