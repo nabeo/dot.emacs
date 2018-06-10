@@ -30,6 +30,7 @@
       emacs25.1-p (string-match "^25\.1" emacs-version)
       emacs25.2-p (string-match "^25\.2" emacs-version)
       emacs25.3-p (string-match "^25\.3" emacs-version)
+      emacs26.1-p (string-match "^26\.1" emacs-version)
       emacs-bzr-p (string-match "^2.\..\.50" emacs-version))
 ;; emacsのsystem-type
 (setq darwin-p  (eq system-type 'darwin)
@@ -152,10 +153,16 @@
 
 ;; pathの設定
 (dolist (i '("/opt/local/bin"
+             "/opt/local/sbin"
              "/usr/local/bin"
-             "/usr/local/opt/openssl/bin"))
+             "/usr/local/sbin"
+             "/usr/local/opt/openssl/bin"
+             "/usr/local/opt/curl/bin"))
   (unless (member i exec-path)
-    (setq exec-path (cons i exec-path))))
+    (setq exec-path (cons i exec-path)))
+  (unless (member i (split-string (getenv "PATH")))
+    (setenv "PATH" (concat (getenv "PATH") ":" i)))
+    )
 
 ;; スケスケ窓
 ;; (setq default-frame-alist
