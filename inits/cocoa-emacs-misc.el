@@ -70,9 +70,6 @@
              (url-hexify-string (buffer-substring-no-properties beg end))))))
 (global-set-key "\C-c\C-d" 'my-search-at-dictionary-app)
 
-;; PATH の追加
-(setenv "PATH" (concat (getenv "PATH") ":" "/opt/local/bin" ":" "/opt/local/sbin"))
-
 ;; 日本語入力時のちらつきを抑制する
 ;; http://qiita.com/takaxp/items/e07bb286d80fa9dd8e05
 (cond ((boundp 'mac-ime-cursor-type)
