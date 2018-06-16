@@ -86,6 +86,8 @@
 
 (use-package helm-mkr
   :load-path "~/src/github.com/nabeo/helm-mkr"
+  :after (helm)
   :config
-  (setq mkr-org "hatena")
+  (setq mkr-orgs "hatena")
+  (push '("*helm-mkr*" :height 20) popwin:special-display-config)
   )
