@@ -46,7 +46,9 @@
 
 (use-package elscreen-dnd)
 
-(use-package elscreen-wl)
+(use-package elscreen-wl
+  :disabled t
+  )
 
 (use-package elscreen-howm
   :after (elscreen howm)
