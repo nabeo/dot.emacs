@@ -85,7 +85,7 @@
   )
 
 (use-package helm-mkr
-  :load-path "~/src/github.com/nabeo/helm-mkr"
+  ;; :load-path "~/src/github.com/nabeo/helm-mkr"
   :after (helm)
   :config
   (setq mkr-orgs "hatena")
