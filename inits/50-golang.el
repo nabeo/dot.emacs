@@ -6,7 +6,7 @@
   ;; set GOPATH
   (let ((my/gopath-env (getenv "GOPATH")))
     (if (and (eq my/gopath-env nil) (file-exists-p "~/Development/golang"))
-        (setenv "GOPATH" (expand-file-name "~/Development/golang"))))
+      (setenv "GOPATH" (expand-file-name "~/Development/golang"))))
 
   ;; set PATH
   (cond ((file-exists-p (concat (getenv "GOPATH") "/bin"))
@@ -15,6 +15,10 @@
              (setq exec-path (cons my/gopath-bin
                                    exec-path))
              (setenv "PATH" (concat (getenv "PATH") ":" my/gopath-bin))))))
+
+  (if (eq (member (expand-file-name "~") (s-split ":" (getenv "GOPATH"))) nil)
+    (setenv "GOPATH" (concat (getenv "GOPATH") ":" (expand-file-name "~"))))
+
   :config
   ;; set commands
   (cond ((file-executable-p "/opt/local/bin/go")

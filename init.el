@@ -25,6 +25,8 @@
 (package-refresh-contents)
 (package-initialize) ;; You might already have this line
 
+(use-package s
+  :ensure t)
 (use-package use-package)
 (use-package init-loader
   :ensure t
