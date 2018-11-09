@@ -1,8 +1,8 @@
 (use-package projectile
   :ensure t
   :bind
-  (:map projectile-command-map
-   (("m" . helm-make-projectile))
+  (:map projectile-mode-map
+   (("C-c p m" . helm-make-projectile))
    )
   :init
   ;; enable projectile
