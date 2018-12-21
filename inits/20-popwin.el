@@ -4,8 +4,6 @@
   (global-set-key (kbd "C-x p") 'popwin:keymap)
   (popwin-mode 1)
 
-  (setq display-buffer-function 'popwin:display-buffer)
-
   (setq anything-samewindow nil)
   (setq helm-samewindow nil)
 
