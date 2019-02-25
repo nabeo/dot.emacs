@@ -1,3 +1,7 @@
+;;; 50-golang --- golang
+;;; Commentary:
+
+;;; Code:
 ;; http://emacs-jp.github.io/programming/golang.html
 (use-package go-mode
   :ensure t
@@ -34,6 +38,8 @@
 
   (add-hook 'go-mode-hook (lambda ()
                             (local-set-key (kbd "M-.") 'godef-jump)))
+  ;; use with lsp-mode
+  (add-hook 'go-mode-hook #'lsp)
   )
 
 (use-package go-snippets
@@ -59,3 +65,5 @@
   (with-eval-after-load 'projectile
     (require 'go-projectile)))
 
+(provide '50-golang)
+;;; 50-golang ends here
