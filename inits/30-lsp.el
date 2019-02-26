@@ -5,8 +5,13 @@
 (use-package lsp-mode
   :custom ((lsp-inhibit-message t)
          (lsp-message-project-root-warning t)
-         (create-lockfiles nil))
-  :hook (prog-major-mode . lsp-prog-major-mode-enable))
+            (create-lockfiles nil))
+  :init
+  (require 'lsp-clients)
+  :hook ((prog-major-mode . lsp-prog-major-mode-enable)
+          (go-mode . lsp)
+          (python-mode . lsp)
+          ))
 
 (use-package lsp-ui
   :after lsp-mode
