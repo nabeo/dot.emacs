@@ -38,9 +38,6 @@
 
   (add-hook 'go-mode-hook (lambda ()
                             (local-set-key (kbd "M-.") 'godef-jump)))
-  ;; use with lsp-mode
-  ;; go get github.com/saibing/bingo
-  (add-hook 'go-mode-hook #'lsp)
   )
 
 (use-package go-snippets
