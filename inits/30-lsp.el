@@ -15,7 +15,10 @@
     ;; go get -u github.com/saibing/bingo
     (go-mode . lsp)
     ;; pip install 'python-language-server[all]'
-    (python-mode . lsp))
+    (python-mode . lsp)
+    ;; npm i -g typescript-language-server; npm i -g typescript
+    (typescript-mode . lsp)
+    (javascript-mode . lsp))
   )
 
 (use-package lsp-ui
