@@ -1,3 +1,7 @@
+;;; 30-helm --- helm-mode
+;;; Commentary:
+
+;;; Code:
 (use-package helm
   :diminish helm-mode
   :ensure t
@@ -91,3 +95,6 @@
   (setq mkr-orgs "hatena")
   (push '("*helm-mkr*" :height 20) popwin:special-display-config)
   )
+
+(provide '30-helm)
+;;; 30-helm ends here
