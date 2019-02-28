@@ -2,7 +2,7 @@
 ;;; Commentary:
 
 ;;; Code:
-(use-package typescript
+(use-package typescript-mode
   :ensure t
   :mode ("\\.ts\\'" . typescript-mode)
   )
