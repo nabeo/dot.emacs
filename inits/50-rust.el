@@ -1,3 +1,7 @@
+;;; 50-rust --- rust-mode
+;;; Commentary:
+
+;;; Code:
 (use-package rust-mode
   :ensure t
   :mode
@@ -73,3 +77,6 @@
   :commands (ac-racer-setup)
   :config
   )
+
+(provide '50-rust)
+;;; 50-rust ends here
