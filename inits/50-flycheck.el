@@ -9,6 +9,7 @@
   :hook
   (after-init . global-flycheck-mode)
   :init
+  (push '("*Flycheck errors*") popwin:special-display-config)
   :config
   )
 
