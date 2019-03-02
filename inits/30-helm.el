@@ -22,6 +22,7 @@
   :config
   (helm-mode 1)
   (helm-autoresize-mode 1)
+  (setq helm-full-frame nil)
   )
 
 (use-package helm-config)
@@ -31,6 +32,13 @@
 (use-package helm-imenu)
 
 (use-package helm-ring)
+
+(use-package helm-gtags
+  :ensure t
+  :hook
+  ((c-mode . helm-gtags)
+    (c++-mode . helm-gtags)
+    (asm-mode . helm-gtags))
 
 (use-package helm-ag
   :if (executable-find "ag")
