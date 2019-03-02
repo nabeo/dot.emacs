@@ -38,7 +38,7 @@
   :hook
   ((c-mode . helm-gtags)
     (c++-mode . helm-gtags)
-    (asm-mode . helm-gtags))
+    (asm-mode . helm-gtags)))
 
 (use-package helm-ag
   :if (executable-find "ag")
