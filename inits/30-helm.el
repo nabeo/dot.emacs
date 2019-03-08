@@ -23,15 +23,12 @@
   (helm-mode 1)
   (helm-autoresize-mode 1)
   (setq helm-full-frame nil)
+
+  (use-package helm-config)
+  (use-package helm-files)
+  (use-package helm-imenu)
+  (use-package helm-ring)
   )
-
-(use-package helm-config)
-
-(use-package helm-files)
-
-(use-package helm-imenu)
-
-(use-package helm-ring)
 
 (use-package helm-gtags
   :ensure t
