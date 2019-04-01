@@ -12,9 +12,22 @@
 
 (use-package poly-markdown
   :ensure t
-  :mode
-  (("\\.md\\'" . poly-markdown-mode))
-  )
+  ;; :mode
+  ;; (("\\.md\\'" . poly-markdown-mode))
+  :config
+  (add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode)))
+
+(use-package poly-ansible
+  :ensure t)
+
+(use-package poly-ruby
+  :ensure t)
+
+(use-package poly-rst
+  :ensure t)
+
+(use-package poly-erb
+  :ensure t)
 
 (provide '30-poly)
 ;;; 30-poly ends here
