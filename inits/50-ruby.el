@@ -15,6 +15,7 @@
   ;;   hs-toggle-hiding                   C-c @ C-c
   ;;   hs-mouse-toggle-hiding             [(shift mouse-2)]
   ;;   hs-hide-initial-comment-block
+  (setq ruby-insert-encoding-magic-comment nil)
   (add-hook 'ruby-mode-hook
             '(lambda ()
                (hs-minor-mode t)))
