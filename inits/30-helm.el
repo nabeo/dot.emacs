@@ -16,7 +16,8 @@
    ("C-x C-r" . helm-recentf)
    ("C-x C-i" . helm-imenu)
 
-   :map helm-map ("C-h" . delete-backward-char))
+    :map helm-map ("C-h" . delete-backward-char)
+    :map helm-find-files-map ("C-z" . helm-execute-persistent-action))
   :init
   (push '("*helm-mode.*" :height 20) popwin:special-display-config)
   :config
