@@ -189,3 +189,8 @@
 (if (not (memq 'time-stamp-with-locale-c write-file-hooks))
 	(add-hook 'write-file-hooks 'time-stamp-with-locale-c))
 (setq time-stamp-format "%3a %3b %02d %02H:%02M:%02S %Z %:y")
+
+;; 画面がちらつくのでダブルバッファリングを無効にしてみる
+;; https://www.reddit.com/r/emacs/comments/9jm1az/emacs_rendering_is_broken_in_macos_mojave/e6sg9ei/
+(setq default-frame-alist
+      (append default-frame-alist '((inhibit-double-buffering . t))))
