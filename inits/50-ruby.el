@@ -1,3 +1,7 @@
+;;; 50-ruby -- ruby
+;;; Commentary:
+
+;;; Code:
 (use-package ruby-mode
   :ensure t
   :mode
@@ -66,3 +70,6 @@
                      (electric-indent-mode t)
                      (electric-layout-mode t)))))
   )
+
+(provide '50-ruby)
+;;; 50-ruby ends here
