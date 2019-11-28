@@ -103,5 +103,9 @@
   (push '("*helm-mkr*" :height 20) popwin:special-display-config)
   )
 
+(use-package helm-xref
+  :after (helm)
+  :ensure t)
+
 (provide '30-helm)
 ;;; 30-helm ends here
