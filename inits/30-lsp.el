@@ -7,7 +7,8 @@
   ((lsp-inhibit-message t)
     (lsp-message-project-root-warning t)
     (create-lockfiles nil)
-    (lsp-auto-guess-root t))
+    (lsp-auto-guess-root t)
+    (lsp-pyls-server-command (expand-file-name "~/.pyenv/shims/pyls")))
   :init
   (require 'lsp-clients)
   :hook
