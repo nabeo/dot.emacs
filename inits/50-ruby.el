@@ -36,6 +36,13 @@
 
   )
 
+(use-package rbenv
+  :ensure t
+  :config
+  (setenv "PATH" (concat (expand-file-name "~/.rbenv/shims") (getenv "PATH")))
+  (setq rbenv-installation-dir (expand-file-name "~/.rbenv"))
+  )
+
 (use-package ruby-style
   :ensure ruby-additional
   :disabled t
