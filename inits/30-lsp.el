@@ -8,7 +8,11 @@
     (lsp-message-project-root-warning t)
     (create-lockfiles nil)
     (lsp-auto-guess-root t)
-    (lsp-pyls-server-command (expand-file-name "~/.pyenv/shims/pyls")))
+    (lsp-pyls-server-command (expand-file-name "~/.pyenv/shims/pyls"))
+    ;; npm i -g typescript-language-server
+    (lsp-clients-typescript-server "/usr/local/bin/typescript-language-server")
+    ;; npm i -g javascript-typescript-langserver
+    (lsp-clients-javascript-typescript-server "/usr/local/bin/javascript-typescript-stdio"))
   :init
   (require 'lsp-clients)
   :hook
