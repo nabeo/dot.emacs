@@ -1,3 +1,7 @@
+;;; 50-git --- lsp-mode
+;;; Commentary:
+
+;;; Code:
 (use-package magit
   :ensure t
   :bind
@@ -38,3 +42,4 @@
   (add-hook 'go-mode-hook 'git-gutter+-mode)
   :config
   )
+;;; 50-git ends here
