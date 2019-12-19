@@ -4,9 +4,6 @@
 ;;; Code:
 (use-package projectile
   :ensure t
-  :bind
-  (:map projectile-mode-map
-    ("C-c p m" . helm-make-projectile))
   :hook
   ((yaml-mode prog-mode markdwon-mode gfm-mode python-mode) . projectile-mode)
   :config
@@ -48,7 +45,8 @@
   (:map projectile-mode-map
     ("C-c p f" . helm-projectile)
     ("C-c p a" . helm-projectile-ag)
-    ("C-c p r" . helm-projectile-recentf))
+    ("C-c p r" . helm-projectile-recentf)
+    ("C-c p m" . helm-make-projectile))
   :config
   (helm-projectile-on)
   )
