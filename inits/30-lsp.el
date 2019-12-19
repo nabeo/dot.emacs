@@ -15,6 +15,8 @@
   (lsp-clients-typescript-server "/usr/local/bin/typescript-language-server")
   ;; npm i -g javascript-typescript-langserver
   (lsp-clients-javascript-typescript-server "/usr/local/bin/javascript-typescript-stdio")
+  ;; brew install llvm
+  (lsp-clients-clangd-executable "/usr/local/opt/llvm/bin/clangd")
   :init
   (require 'lsp-clients)
   :hook
@@ -30,6 +32,9 @@
   (ruby-mode . lsp)
   ;; rustup component add rls rust-analysis rust-src
   (rust-mode . lsp)
+  ;; for C/C++
+  (c++-mode . lsp)
+  (c-mode . lsp)
   :bind
   (:map lsp-mode-map
     ("C-c r" . lsp-rename))
