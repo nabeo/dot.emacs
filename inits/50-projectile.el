@@ -60,12 +60,6 @@
   (helm-projectile-on)
   )
 
-;; use with neotree
-(use-package neotree
-  :if (locate-library "neotree")
-  :config
-  (setq projectile-switch-project-action 'neotree-projectile-action))
-
 ;; use with ibuffer-projectile
 ;; https://github.com/purcell/ibuffer-projectile
 (use-package ibuffer-projectile
