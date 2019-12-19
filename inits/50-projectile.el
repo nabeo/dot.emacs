@@ -1,21 +1,17 @@
+;;; 50-projectile --- projectile
+;;; Commentary:
+
+;;; Code:
 (use-package projectile
   :ensure t
   :bind
   (:map projectile-mode-map
-   (("C-c p m" . helm-make-projectile))
-   )
-  :init
-  ;; enable projectile
-  (add-hook 'yaml-mode-hook 'projectile-mode)
-  (add-hook 'prog-mode-hook 'projectile-mode)
-  (add-hook 'markdown-mode-hook 'projectile-mode)
-  (add-hook 'gfm-mode-hook 'projectile-mode)
-  (add-hook 'python-mode-hook 'projectile-mode)
+    ("C-c p m" . helm-make-projectile))
+  :hook
+  ((yaml-mode prog-mode markdwon-mode gfm-mode python-mode) . projectile-mode)
   :config
-  (if (locate-library "helm")
-      (setq projectile-indexing-method 'helm))
+  (setq projectile-indexing-method 'helm)
   ;; caching
-  (setq projectile-indexing-method 'native)
   (setq projectile-enable-caching t)
   (setq projectile-cache-file (expand-file-name
                                "data/projectile.cache"
@@ -37,10 +33,6 @@
   (add-to-list 'projectile-globally-ignored-directories "auto-save-list")
   (add-to-list 'projectile-globally-ignored-files ".gitignore")
   (add-to-list 'projectile-globally-ignored-files ".gitkeep")
-
-  ;; use with helm-projectile
-  (cond ((locate-library "helm-projectile")
-         (helm-projectile-on)))
   )
 
 ;; use with neotree
@@ -54,8 +46,9 @@
   :after (helm)
   :bind
   (:map projectile-mode-map
-        (("C-c p a" . helm-projectile-ag)
-         ("C-c p r" . helm-projectile-recentf)))
+    ("C-c p f" . helm-projectile)
+    ("C-c p a" . helm-projectile-ag)
+    ("C-c p r" . helm-projectile-recentf))
   :config
   (helm-projectile-on)
   )
@@ -102,3 +95,6 @@
         (pyenv-mode-unset))))
   (add-hook 'projectile-switch-project-hook 'projectile-pyenv-mode-set)
   )
+
+(provide '50-projectile)
+;;; 50-projectile ends here
