@@ -42,11 +42,12 @@
     (lsp-ui-doc-enable t)
     (lsp-ui-doc-header t)
     (lsp-ui-doc-include-signature t)
-    (lsp-ui-doc-position 'top) ;; top, bottom, or at-point
+    (lsp-ui-doc-position 'bottom) ;; top, bottom, or at-point
     (lsp-ui-doc-max-width 150)
     (lsp-ui-doc-max-height 30)
     (lsp-ui-doc-use-childframe t)
     (lsp-ui-doc-use-webkit t)
+    (lsp-ui-doc-alignment 'window) ;; window or frame
     ;; lsp-ui-flycheck
     (lsp-ui-flycheck-enable nil)
     ;; lsp-ui-sideline
@@ -73,6 +74,7 @@
       ("C-c i" . lsp-ui-peek-find-implementation)
       ("C-c m" . lsp-ui-imenu)
       ("C-c s" . lsp-ui-sideline-mode)
+      ("C-c d" . lsp-ui-doc-show)
       )
     :config
     )
