@@ -1,3 +1,7 @@
+;;; 10-theme --- setup theme
+;;; Commentary:
+
+;;; Code:
 (use-package all-the-icons
   :ensure t
   :config
@@ -21,3 +25,6 @@
   (setq doom-neotree-chevron-size 0.8)
   (setq doom-neotree-line-spacing 1)
   )
+
+(provide '10-theme)
+;;; 10-theme ends here
