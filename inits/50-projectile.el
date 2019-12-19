@@ -4,10 +4,13 @@
 ;;; Code:
 (use-package projectile
   :ensure t
+  :bind
+  (:map projectile-mode-map
+    ("C-c p" . projectile-command-map)
+    )
   :hook
   ((yaml-mode prog-mode markdwon-mode gfm-mode python-mode) . projectile-mode)
   :config
-  (setq projectile-indexing-method 'helm)
   ;; caching
   (setq projectile-enable-caching t)
   (setq projectile-cache-file (expand-file-name
@@ -49,6 +52,7 @@
     ("C-c p m" . helm-make-projectile))
   :config
   (helm-projectile-on)
+  (setq projectile-indexing-method 'helm)
   )
 
 ;; use with ibuffer-projectile
