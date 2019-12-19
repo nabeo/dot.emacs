@@ -31,5 +31,13 @@
     (setq company-quickhelp-delay nil))
   )
 
+(use-package company-box
+  :after (company all-the-icons)
+  :hook
+  (company-mode . company-box-mode)
+  :custom
+  (company-box-icons-alist 'company-box-icons-all-the-icons)
+  (company-box-doc-enable nil))
+
 (provide '30-company)
 ;;; 30-company ends here
