@@ -152,12 +152,14 @@
 ;;(menu-bar-mode 0)
 
 ;; pathの設定
-(dolist (i '("/opt/local/bin"
+(dolist (i '("/usr/bin"
+             "/opt/local/bin"
              "/opt/local/sbin"
              "/usr/local/bin"
              "/usr/local/sbin"
              "/usr/local/opt/openssl/bin"
-             "/usr/local/opt/curl/bin"))
+             "/usr/local/opt/curl/bin"
+             "/usr/local/opt/llvm/bin"))
   (unless (member i exec-path)
     (setq exec-path (cons i exec-path)))
   (unless (member i (split-string (getenv "PATH")))
