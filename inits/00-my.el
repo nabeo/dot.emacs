@@ -152,8 +152,7 @@
 ;;(menu-bar-mode 0)
 
 ;; pathの設定
-(dolist (i '("/usr/bin"
-             "/opt/local/bin"
+(dolist (i '("/opt/local/bin"
              "/opt/local/sbin"
              "/usr/local/bin"
              "/usr/local/sbin"
