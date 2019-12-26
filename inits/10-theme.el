@@ -11,7 +11,7 @@
 (use-package doom-themes
   :ensure t
   :config
-  (load-theme 'doom-one t) ;; or doom-dark, etc.
+  (load-theme 'doom-solarized-dark t) ;; or doom-dark, etc.
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
   ;; for neotree
