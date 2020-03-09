@@ -42,4 +42,16 @@
   (add-hook 'go-mode-hook 'git-gutter+-mode)
   :config
   )
+
+(use-package git-link
+  :ensure t
+  :bind
+  ("C-c g l" . git-link)
+  :init
+  :config
+  (if (file-exists-p "~/.emacs.d/secret/git-link-ghe.el")
+    (load "~/.emacs.d/secret/git-link-ghe.el"))
+  (setq git-link-use-commit t)
+  )
+
 ;;; 50-git ends here
