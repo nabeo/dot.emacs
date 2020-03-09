@@ -193,5 +193,5 @@
 
 ;; 画面がちらつくのでダブルバッファリングを無効にしてみる
 ;; https://www.reddit.com/r/emacs/comments/9jm1az/emacs_rendering_is_broken_in_macos_mojave/e6sg9ei/
-(setq default-frame-alist
-      (append default-frame-alist '((inhibit-double-buffering . t))))
+;; (setq default-frame-alist
+;;       (append default-frame-alist '((inhibit-double-buffering . t))))
