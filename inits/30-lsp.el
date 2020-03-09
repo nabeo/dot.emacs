@@ -51,7 +51,7 @@
     (lsp-ui-doc-max-width 150)
     (lsp-ui-doc-max-height 30)
     (lsp-ui-doc-use-childframe t)
-    (lsp-ui-doc-use-webkit t)
+    (lsp-ui-doc-use-webkit nil)
     (lsp-ui-doc-alignment 'window) ;; window or frame
     ;; lsp-ui-flycheck
     (lsp-ui-flycheck-enable nil)
@@ -90,6 +90,32 @@
   :defines company-backends
   :config
   (push 'company-lsp company-backends)
+  )
+
+(use-package lsp-treemacs
+  :ensure t
+  :commands lsp-treemacs-errors-list
+  :config
+  ;; https://github.com/emacs-lsp/lsp-treemacs
+  (lsp-metals-treeview-enable t)
+  (setq lsp-metals-treeview-show-when-views-received t))
+
+(use-package dap-mode
+  :ensure t
+  :config
+  ;; https://github.com/emacs-lsp/dap-mode
+  (dap-ui-mode 1)
+  (dap-tooltip-mode 1)
+  (tooltip-mode 1)
+  (require 'dap-ruby)
+  (require 'dap-go))
+
+(use-package helm-lsp
+  :ensure t
+  :after (helm lsp-mode)
+  :commands helm-lsp-workspace-symbol
+  :config
+  ;; https://github.com/emacs-lsp/helm-lsp
   )
 
 (provide '30-lsp)
