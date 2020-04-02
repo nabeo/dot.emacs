@@ -4,7 +4,9 @@
 ;;; Code:
 (use-package typescript-mode
   :ensure t
-  :mode ("\\.ts\\'" . typescript-mode)
+  :mode
+  ("\\.ts\\'" . typescript-mode)
+  ("\\.tsx\\'" . typescript-mode)
   )
 
 ;; brew install nodenv
