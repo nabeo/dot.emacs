@@ -7,6 +7,7 @@
   :bind
   (:map projectile-mode-map
     ("C-c p" . projectile-command-map)
+    ("C-c p p" . helm-projectile)
     )
   :hook
   ((yaml-mode prog-mode markdwon-mode gfm-mode python-mode) . projectile-mode)
@@ -52,7 +53,9 @@
     ("C-c p m" . helm-make-projectile))
   :config
   (helm-projectile-on)
-  (setq projectile-indexing-method 'helm)
+  (setq projectile-completion-system 'helm)
+  (setq projectile-switch-project-action 'helm-projectile-find-file)
+  ;; (setq projectile-indexing-method 'helm)
   )
 
 ;; use with ibuffer-projectile

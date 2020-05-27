@@ -79,14 +79,15 @@
 
 ;; use with helm-projectile
 ;; http://tuhdo.github.io/helm-projectile.html
-(use-package helm-projectile
-  :ensure t
-  :unless (locate-library "neotree")
-  :after (helm projectile)
-  :config
-  (setq projectile-completion-system 'helm)
-  (setq projectile-switch-project-action 'helm-projectile-find-file)
-  )
+;; 50-projectile に移動
+;; (use-package helm-projectile
+;;   :ensure t
+;;   :unless (locate-library "neotree")
+;;   :after (helm projectile)
+;;   :config
+;;   (setq projectile-completion-system 'helm)
+;;   (setq projectile-switch-project-action 'helm-projectile-find-file)
+;;   )
 
 (use-package helm-ghq
   :ensure t
