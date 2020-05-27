@@ -6,9 +6,6 @@
  '(company-box-doc-enable nil)
  '(company-box-icons-alist (quote company-box-icons-all-the-icons))
  '(create-lockfiles nil)
-  '(custom-safe-themes
-     (quote
-       ("76bfa9318742342233d8b0b42e824130b3a50dcc732866ff8e47366aed69de11" "229c5cf9c9bd4012be621d271320036c69a14758f70e60385e87880b46d60780" "1ed5c8b7478d505a358f578c00b58b430dde379b856fbcb60ed8d345fc95594e" "f7b230ac0a42fc7e93cd0a5976979bd448a857cd82a097048de24e985ca7e4b2" "e47c0abe03e0484ddadf2ae57d32b0f29f0b2ddfe7ec810bd6d558765d9a6a6c" "92d8a13d08e16c4d2c027990f4d69f0ce0833c844dcaad3c8226ae278181d5f3" "4b0b568d63b1c6f6dddb080b476cfba43a8bbc34187c3583165e8fb5bbfde3dc" default)))
  '(doom-modeline-buffer-file-name-style (quote truncate-with-project))
  '(doom-modeline-icon t)
  '(doom-modeline-major-mode-icon nil)
