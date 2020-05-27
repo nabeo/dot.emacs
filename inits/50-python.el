@@ -5,6 +5,7 @@
 (use-package pyenv-mode
   :init
   (add-to-list 'exec-path (expand-file-name "~/.pyenv/shims"))
+  (add-to-list 'exec-path (expand-file-name "~/.pyenv/bin"))
   :config
   (pyenv-mode))
 
