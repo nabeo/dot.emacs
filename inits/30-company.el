@@ -32,6 +32,7 @@
   )
 
 (use-package company-box
+  :ensure t
   :after (company all-the-icons)
   :hook
   (company-mode . company-box-mode)
