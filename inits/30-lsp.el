@@ -86,6 +86,7 @@
   )
 
 (use-package company-lsp
+  :ensure t
   :after (lsp-mode company)
   :defines company-backends
   :config
