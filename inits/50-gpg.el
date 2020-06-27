@@ -4,6 +4,7 @@
   )
 
 (use-package pinentry
+  :enaure t
   :init
   (setenv "INSIDE_EMACS" "t")
   :config
