@@ -3,6 +3,7 @@
 
 ;;; Code:
 (use-package lsp-mode
+  :ensure t
   :custom
   (lsp-inhibit-message t)
   (lsp-message-project-root-warning t)
@@ -40,6 +41,7 @@
     ("C-c r" . lsp-rename))
   :config
   (use-package lsp-ui
+    :ensure t
     :after lsp-mode
     :custom
     (scroll-margin 0)
