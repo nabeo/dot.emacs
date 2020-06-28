@@ -3,6 +3,7 @@
 
 ;;; Code:
 (use-package pyenv-mode
+  :ensure t
   :init
   (add-to-list 'exec-path (expand-file-name "~/.pyenv/shims"))
   (add-to-list 'exec-path (expand-file-name "~/.pyenv/bin"))
@@ -10,6 +11,7 @@
   (pyenv-mode))
 
 (use-package pyenv-mode-auto
+  :ensure t
   :config
   (defun projectile-pyenv-mode-set ()
     "Set pyenv version matching project name."
