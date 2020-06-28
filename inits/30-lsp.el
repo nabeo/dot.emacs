@@ -95,6 +95,7 @@
 
 (use-package lsp-treemacs
   :ensure t
+  :disabled
   :commands lsp-treemacs-errors-list
   :config
   ;; https://github.com/emacs-lsp/lsp-treemacs
