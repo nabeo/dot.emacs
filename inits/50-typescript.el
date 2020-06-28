@@ -11,7 +11,8 @@
 
 ;; brew install nodenv
 (use-package nodenv
-  :ensure t
+  ;; nodenv mode is gone
+  :ensure nil
   :hook
   (js-mode . nodenv-mode)
   (typescript-mode . nodenv-mode)
