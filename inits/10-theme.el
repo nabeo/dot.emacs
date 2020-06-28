@@ -27,6 +27,7 @@
   )
 
 (use-package doom-modeline
+  :ensure t
   :commands (doom-modeline-def-modeline)
   :hook
   (after-init . doom-modeline-mode)
