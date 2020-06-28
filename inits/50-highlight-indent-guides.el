@@ -3,6 +3,7 @@
 
 ;;; Code:
 (use-package highlight-indent-guides
+  :ensure t
   :diminish
   :hook
   ((prog-mode yaml-mode) . highlight-indent-guides-mode)
