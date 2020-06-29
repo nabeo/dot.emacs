@@ -97,7 +97,6 @@
 
 (use-package lsp-treemacs
   :ensure t
-  :disabled
   :commands lsp-treemacs-errors-list
   :config
   ;; https://github.com/emacs-lsp/lsp-treemacs
@@ -106,6 +105,7 @@
 
 (use-package dap-mode
   :ensure t
+  :after (lsp-treemacs)
   :config
   ;; https://github.com/emacs-lsp/dap-mode
   (dap-ui-mode 1)
