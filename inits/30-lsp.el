@@ -52,7 +52,7 @@
     (lsp-ui-doc-position 'bottom) ;; top, bottom, or at-point
     (lsp-ui-doc-max-width 150)
     (lsp-ui-doc-max-height 30)
-    (lsp-ui-doc-use-childframe t)
+    (lsp-ui-doc-use-childframe nil)
     (lsp-ui-doc-use-webkit nil)
     (lsp-ui-doc-alignment 'window) ;; window or frame
     ;; lsp-ui-flycheck
