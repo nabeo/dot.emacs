@@ -13,6 +13,7 @@
 (use-package nodenv
   ;; nodenv mode is gone
   :ensure nil
+  :disabled
   :hook
   (js-mode . nodenv-mode)
   (typescript-mode . nodenv-mode)
