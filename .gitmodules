@@ -1,0 +1,3 @@
+[submodule "site-lisp/shim"]
+	path = site-lisp/shim
+	url = git@github.com:twlz0ne/shim.el.git
