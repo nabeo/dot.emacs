@@ -22,7 +22,7 @@
  '(lsp-inhibit-message t t)
  '(lsp-message-project-root-warning t t)
  '(lsp-prefer-flymake (quote flymake) t)
- '(lsp-pyls-server-command "/Users/nabeop/.pyenv/shims/pyls")
+ '(lsp-pyls-server-command (expand-file-name "~/.pyenv/shims/pyls"))
  '(lsp-ui-doc-alignment (quote window))
  '(lsp-ui-doc-enable t)
  '(lsp-ui-doc-header t)
