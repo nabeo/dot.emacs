@@ -24,6 +24,8 @@
   :config
   (helm-mode 1)
   (helm-autoresize-mode 1)
+  (helm-migemo-mode 1)
+
   (setq helm-full-frame nil)
 
   (use-package helm-config)
