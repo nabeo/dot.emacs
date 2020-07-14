@@ -11,6 +11,7 @@
   (lsp-auto-guess-root t)
   (lsp-prefer-flymake 'flymake)
   (lsp-completion-at-point nil)
+  ;; pip install 'python-language-server[all]'
   (lsp-pyls-server-command (expand-file-name "~/.pyenv/shims/pyls"))
   ;; npm i -g typescript-language-server
   (lsp-clients-typescript-server "/usr/local/bin/typescript-language-server")
