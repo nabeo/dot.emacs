@@ -97,15 +97,14 @@
   )
 
 (use-package lsp-treemacs
-  :ensure t
+  :ensure nil
+  :disabled
   :commands lsp-treemacs-errors-list
-  :config
-  ;; https://github.com/emacs-lsp/lsp-treemacs
-  (lsp-metals-treeview-enable t)
-  (setq lsp-metals-treeview-show-when-views-received t))
+  )
 
 (use-package dap-mode
-  :ensure t
+  :ensure nil
+  :disabled
   :after (lsp-treemacs)
   :config
   ;; https://github.com/emacs-lsp/dap-mode
@@ -113,10 +112,14 @@
   (dap-tooltip-mode 1)
   (tooltip-mode 1)
   (require 'dap-ruby)
-  (require 'dap-go))
+  (require 'dap-go)
+  ;; pip install "ptvsd>=4.2"
+  (require 'dap-python)
+  )
 
 (use-package helm-lsp
-  :ensure t
+  :ensure nil
+  :disabled
   :after (helm lsp-mode)
   :commands helm-lsp-workspace-symbol
   :config
