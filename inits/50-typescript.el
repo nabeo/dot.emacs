@@ -21,5 +21,10 @@
   (add-to-list 'exec-path (expand-file-name "~/.nodenv/shims"))
   )
 
+;; for npm
+(use-package npm
+  :ensure t
+  )
+
 (provide '50-typescript)
 ;;; 50-typescript ends here
