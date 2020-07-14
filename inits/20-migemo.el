@@ -1,12 +1,19 @@
+;;; 20-migemo --- migemo
+;;; Commentary:
+
+;;; Code:
 (use-package migemo
   :ensure t
   :if (file-executable-p "/usr/local/bin/cmigemo")
+  :custom
+  (migemo-pattern-alist-file (expand-file-name "~/.emacs.d/data/migemo-pattern"))
+  (migemo-frequent-pattern-alist-file (expand-file-name "~/.emacs.d/data/migemo-frequent"))
   :config
   ;; cmigemoを使うための設定
   (setq migemo-command "/usr/local/bin/cmigemo")
   (setq migemo-options '("-q" "--emacs"))
   (setq migemo-dictionary "/usr/local/share/migemo/utf-8/migemo-dict")
-  (setq migemo-user-ditionary nil)
+  (setq migemo-user-dictionary nil)
   (setq migemo-regex-dictionary nil)
   (setq migemo-coding-system 'utf-8-unix)
 
@@ -17,3 +24,6 @@
   ;; migemoの初期化
   (migemo-init)
   )
+
+(provide '20-migemo)
+;;; 20-migemo ends here
