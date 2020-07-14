@@ -6,6 +6,7 @@
 ;; git submodule add https://github.com/twlz0ne/shim.el site-lisp/shim
 (use-package shim
   :load-path "~/.emacs.d/site-lisp/shim"
+  :disabled t
   :hook
   (js-mode . shim-mode)
   (typescript-mode . shim-mode)

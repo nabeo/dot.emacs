@@ -13,7 +13,7 @@
 (use-package nodenv
   ;; nodenv mode is gone
   :ensure nil
-  :disabled
+  :load-path "~/.emacs.d/site-lisp/nodenv"
   :hook
   (js-mode . nodenv-mode)
   (typescript-mode . nodenv-mode)

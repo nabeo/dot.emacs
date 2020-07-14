@@ -1,3 +1,6 @@
 [submodule "site-lisp/shim"]
 	path = site-lisp/shim
 	url = git@github.com:twlz0ne/shim.el.git
+[submodule "site-lisp/nodenv"]
+	path = site-lisp/nodenv
+	url = git@github.com:twlz0ne/nodenv.el.git
