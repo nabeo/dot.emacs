@@ -7,6 +7,8 @@
   :init
   (add-to-list 'exec-path (expand-file-name "~/.pyenv/shims"))
   (add-to-list 'exec-path (expand-file-name "~/.pyenv/bin"))
+  (setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.pyenv/shims")))
+  (setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.pyenv/bin")))
   :config
   (pyenv-mode))
 
