@@ -12,7 +12,7 @@
 (use-package dockerfile-mode
   :ensure t
   :mode
-  ("Dockerfile\\'" . dockefile-mode)
+  ("Dockerfile\\'" . dockerfile-mode)
   :init
   :config
 )
