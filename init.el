@@ -23,7 +23,6 @@
   ;; For important compatibility libraries like cl-lib
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-refresh-contents)
-(package-initialize) ;; You might already have this line
 
 (use-package s
   :ensure t)
