@@ -136,6 +136,8 @@
 ;; *scratch*の文字列をなくす
 (setq initial-scratch-message nil)
 
+(setq default-directory "~/")
+
 ;; モードラインの設定
 ;; 時間を表示
 (setq display-time-24hr-format t)
