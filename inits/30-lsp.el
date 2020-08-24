@@ -20,7 +20,6 @@
   ;; brew install llvm
   (lsp-clients-clangd-executable "/usr/local/opt/llvm/bin/clangd")
   :init
-  (require 'lsp-clients)
   :hook
   (prog-major-mode . lsp-prog-major-mode-enable)
   ;; go get -u github.com/saibing/bingo
