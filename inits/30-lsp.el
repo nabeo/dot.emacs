@@ -20,6 +20,8 @@
   ;; brew install llvm
   (lsp-clients-clangd-executable "/usr/local/opt/llvm/bin/clangd")
   :init
+  (setq gc-cons-threshold 100000000)
+  (setq read-process-output-max (* 1024 1024)) ; 1mb
   :hook
   (prog-major-mode . lsp-prog-major-mode-enable)
   ;; go get -u github.com/saibing/bingo
@@ -40,6 +42,7 @@
   (:map lsp-mode-map
     ("C-c r" . lsp-rename))
   :config
+  (setq lsp-completion-provider :capf)
   (use-package lsp-ui
     :ensure t
     :after lsp-mode
