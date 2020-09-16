@@ -8,4 +8,5 @@
   (terraform-mode . terraform-format-on-save-mode)
   )
 
-;;; 50-terrafrom ends here
+(provide '50-terraform)
+;;; 50-terraform ends here
