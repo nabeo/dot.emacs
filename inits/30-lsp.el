@@ -19,6 +19,8 @@
   (lsp-clients-javascript-typescript-server "/usr/local/bin/javascript-typescript-stdio")
   ;; brew install llvm
   (lsp-clients-clangd-executable "/usr/local/opt/llvm/bin/clangd")
+  ;; go get -u -v github.com/juliosueiras/terraform-lsp
+  (lsp-terraform-server "terraform-lsp")
   :init
   (setq gc-cons-threshold 100000000)
   (setq read-process-output-max (* 1024 1024)) ; 1mb
