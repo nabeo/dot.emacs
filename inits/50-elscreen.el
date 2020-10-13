@@ -1,5 +1,6 @@
 (use-package elscreen
   :ensure t
+  :disabled t
   :config
   (setq elscreen-prefix-key (kbd "C-z"))
   (setq elscreen-display-tab nil)
@@ -27,6 +28,7 @@
 
 (use-package elscreen-gf
   :after (elscreen)
+  :disabled t
   :config
   (if (executable-find "grep")
       (setq elscreen-gf-grep-program-name (executable-find "grep")))
@@ -40,11 +42,14 @@
 
 (use-package helm-elscreen :ensure t
   :after (helm elscreen)
+  :disabled t
   :bind
   (("C-z SPC" . helm-elscreen))
   )
 
-(use-package elscreen-dnd)
+(use-package elscreen-dnd
+  :disabled t
+  )
 
 (use-package elscreen-wl
   :disabled t
@@ -52,6 +57,7 @@
 
 (use-package elscreen-howm
   :after (elscreen howm)
+  :disabled t
   :config
   (add-hook 'howm-mode-hook
             (lambda ()
