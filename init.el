@@ -1,5 +1,7 @@
 ;; customize file for cocoa emacs
 
+(global-unset-key (kbd "C-z"))
+
 ;; user-emacs-directory
 (when load-file-name
   (setq user-emacs-directory (file-name-directory load-file-name)))
