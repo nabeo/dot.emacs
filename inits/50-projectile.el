@@ -33,29 +33,10 @@
   (add-to-list 'projectile-globally-ignored-directories "auto-save-list")
   (add-to-list 'projectile-globally-ignored-files ".gitignore")
   (add-to-list 'projectile-globally-ignored-files ".gitkeep")
-  )
 
-;; use with neotree
-(use-package neotree
-  :if (locate-library "neotree")
-  :config
-  (setq projectile-switch-project-action 'neotree-projectile-action))
-
-(use-package helm-projectile
-  :disabled t
-  :ensure t
-  :after (helm)
-  :bind
-  (:map projectile-mode-map
-    ("C-c p f" . helm-projectile)
-    ("C-c p a" . helm-projectile-ag)
-    ("C-c p r" . helm-projectile-recentf)
-    ("C-c p m" . helm-make-projectile))
-  :config
-  (helm-projectile-on)
-  (setq projectile-completion-system 'helm)
-  (setq projectile-switch-project-action 'helm-projectile-find-file)
-  ;; (setq projectile-indexing-method 'helm)
+  ;; use ivy/counsel
+  (setq projectile-completion-system 'ivy)
+  (setq projectile-switch-project-action 'counsel-projectile-find-file)
   )
 
 ;; use with ibuffer-projectile

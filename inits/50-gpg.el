@@ -37,16 +37,6 @@
   :init
   :config
   )
-
-(use-package helm-pass
-  :disabled t
-  :ensure t
-  :if (executable-find "pass")
-  :after (pass helm)
-  :init
-  :config
-  )
-
 (use-package auth-password-store
   :ensure t
   :if (executable-find "pass")

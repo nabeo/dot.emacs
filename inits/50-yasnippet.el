@@ -22,12 +22,3 @@
   :config
   (add-to-list 'yas-snippet-dirs yasnippet-snippets-dir)
   )
-
-(use-package helm-c-yasnippet
-  :disabled t
-  :ensure t
-  :bind
-  (("C-c y" . helm-yas-complete))
-  :config
-  (setq helm-yas-space-match-any-greedy t)
-  )
