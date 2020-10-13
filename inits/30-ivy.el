@@ -62,5 +62,17 @@
 (use-package ivy-pass
   :ensure t)
 
+(use-package perspective
+  :bind
+  ("C-x b" . 'persp-ivy-switch-buffer)
+  ("C-x C-M-b" . 'persp-bs-show)
+  :custom
+  (persp-state-default-file "~/.emacs.d/data/persp-state-file")
+  :hook
+  (kill-emacs . persp-state-save)
+  :config
+  (persp-mode)
+  )
+
 (provide '30-ivy)
 ;;; 30-ivy ends here
