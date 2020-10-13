@@ -24,6 +24,7 @@
   )
 
 (use-package helm-c-yasnippet
+  :disabled t
   :ensure t
   :bind
   (("C-c y" . helm-yas-complete))

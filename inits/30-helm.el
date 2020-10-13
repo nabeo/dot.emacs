@@ -4,6 +4,7 @@
 ;;; Code:
 (use-package helm
   :diminish helm-mode
+  :disabled t
   :ensure t
   :bind
   (([remap occur] . helm-occur)
@@ -35,6 +36,7 @@
   )
 
 (use-package helm-gtags
+  :disabled t
   :ensure t
   :hook
   ((c-mode . helm-gtags)
@@ -42,6 +44,7 @@
     (asm-mode . helm-gtags)))
 
 (use-package helm-ag
+  :disabled t
   :if (executable-find "ag")
   :ensure t
   :config
@@ -50,6 +53,7 @@
   (setq helm-ag-insert-at-point 'symbol))
 
 (use-package helm-swoop
+  :disabled t
   :ensure t
   :commands (helm-swoop helm-multi-swoop)
   :after (helm)
@@ -69,9 +73,13 @@
   (setq helm-swoop-use-line-number-face t)
 )
 
-(use-package helm-ls-git :ensure t)
+(use-package helm-ls-git
+  :disabled t
+  :ensure t
+)
 
 (use-package helm-make
+  :disabled t
   :ensure t
   :bind
   (("C-c m" . helm-make))
@@ -92,6 +100,7 @@
 ;;   )
 
 (use-package helm-ghq
+  :disabled t
   :ensure t
   :if (or (executable-find "ghq")
           (file-executable-p (expand-file-name "bin/ghq" (getenv "GOPATH"))))
@@ -100,7 +109,7 @@
 
 (use-package helm-mkr
   ;; :load-path "~/src/github.com/nabeo/helm-mkr"
-  :disabled
+  :disabled t
   :after (helm)
   :config
   (setq mkr-orgs "hatena")
@@ -108,6 +117,7 @@
   )
 
 (use-package helm-xref
+  :disabled t
   :after (helm)
   :ensure t)
 

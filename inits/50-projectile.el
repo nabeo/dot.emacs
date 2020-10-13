@@ -7,7 +7,6 @@
   :bind
   (:map projectile-mode-map
     ("C-c p" . projectile-command-map)
-    ("C-c p p" . helm-projectile)
     )
   :hook
   ((yaml-mode prog-mode markdwon-mode gfm-mode python-mode) . projectile-mode)
@@ -43,6 +42,7 @@
   (setq projectile-switch-project-action 'neotree-projectile-action))
 
 (use-package helm-projectile
+  :disabled t
   :ensure t
   :after (helm)
   :bind

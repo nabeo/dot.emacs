@@ -39,6 +39,7 @@
   )
 
 (use-package helm-pass
+  :disabled t
   :ensure t
   :if (executable-find "pass")
   :after (pass helm)
