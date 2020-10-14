@@ -66,7 +66,7 @@
   :bind-keymap
   ("C-z" . perspective-map)
   :bind
-  ("C-x b" . 'persp-ivy-switch-buffer)
+  ("C-x b" . 'persp-counsel-switch-buffer)
   ("C-x C-M-b" . 'persp-bs-show)
   (:map perspective-map
     ("SPC" . persp-switch)
