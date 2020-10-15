@@ -47,6 +47,8 @@
   ;; リスト先頭で `C-p' したらリストの最後に移動する
   (ivy-wrap t)
 
+  ;; `counsel-find-file' で不要なファイルを表示しない
+  (counsel-find-file-ignore-regexp (regexp-opt completion-ignored-extensions))
   :config
   )
 
