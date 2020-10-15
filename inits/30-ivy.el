@@ -50,6 +50,24 @@
   :config
   )
 
+(use-package swiper
+  :ensure t
+  :bind
+  ("C-s" . 'swiper)
+  :custom
+  (swiper-include-line-number-in-search t)
+  :config
+  (use-package avy-migemo
+    :ensure t
+    :config
+    (avy-migemo-mode 1)
+    ;; (require 'avy-migemo-e.g.swiper)
+    )
+  )
+
+(use-package avy
+  :ensure t)
+
 (use-package counsel-projectile
   :ensure t
   :config
