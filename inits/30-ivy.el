@@ -8,7 +8,9 @@
   (:map ivy-minibuffer-map
     ;; ESC でミニバッファを閉じる
     ("<escape>" . 'minibuffer-keyboard-quit))
-  :init
+  :custom
+  (ivy-use-virutal-buffers t)
+  (ivy-count-format "(%d/%d) ")
   :config
   ;; ミニバッファでコマンド発行を認める
   (when (setq enable-recursive-minibuffers t)
@@ -35,9 +37,6 @@
   ("C-x C-b" . 'counsel-ibuffer)
   ("C-M-f" . 'counsel-ag)
   :custom
-  ;; M-o を ivy-hydra-read-action に割り当てる
-  (ivy-read-action-function #'ivy-hydra-read-action)
-
   ;; `ivy-switch-buffer' (C-x b) のリストに recent files と bookmark を含める
   (ivy-use-virtual-buffers t)
 
@@ -50,7 +49,24 @@
   ;; `counsel-find-file' で不要なファイルを表示しない
   (counsel-find-file-ignore-regexp (regexp-opt completion-ignored-extensions))
   :config
+  (use-package ivy-hydra
+    :ensure t
+    :custom
+    ;; M-o を ivy-hydra-read-action に割り当てる
+    (ivy-read-action-function #'ivy-hydra-read-action)
+    )
   )
+
+(use-package all-the-icons-ivy-rich
+  :ensure t
+  :config
+  (all-the-icons-ivy-rich-mode 1)
+  )
+
+(use-package ivy-rich
+  :ensure t
+  :config
+  (ivy-rich-mode 1))
 
 (use-package swiper
   :ensure t
