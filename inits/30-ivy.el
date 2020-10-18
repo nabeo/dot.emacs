@@ -66,7 +66,15 @@
 (use-package ivy-rich
   :ensure t
   :config
-  (ivy-rich-mode 1))
+  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
+  ;; counsel-projectile-find-file
+  ;; (plist-put ivy-rich-display-transformers-list
+  ;;   'counsel-projectile-find-file
+  ;;      (:columns
+  ;;        (
+  ;;          (ivy-read-file-transformer)
+  ;;          (ivy-rich-counsel-find-file-truename (:face font-lock-doc-face)))))
+    (ivy-rich-mode 1))
 
 (use-package swiper
   :ensure t
