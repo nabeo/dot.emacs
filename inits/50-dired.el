@@ -8,6 +8,10 @@
   (define-key dired-mode-map (kbd "RET") 'dired-find-alternate-file)
   (define-key dired-mode-map "a" 'dired-advertised-find-file)
 
+  ;; macOS の `ls' には `--dired' がないので coreutils の `ls' を使う
+  (if (file-executable-p "/usr/local/bin/gls")
+    (setq insert-directory-program "/usr/local/bin/gls"))
+
   ;; 再帰コピーと再帰削除
   (setq dired-recursive-copies 'always)
   (setq dired-recursive-deletes 'always)
