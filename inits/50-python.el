@@ -24,5 +24,14 @@
 
   (add-hook 'projectile-after-switch-project-hook 'projectile-pyenv-mode-set))
 
+(use-package pipenv
+  :ensure t
+  :hook (python-mode . pipenv-mode)
+  :init
+  (setq
+   pipenv-projectile-after-switch-function
+   #'pipenv-projectile-after-switch-extended)
+  )
+
 (provide '50-python)
 ;;; 50-python ends here
