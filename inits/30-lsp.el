@@ -113,14 +113,5 @@
   (require 'dap-python)
   )
 
-(use-package helm-lsp
-  :ensure nil
-  :disabled
-  :after (helm lsp-mode)
-  :commands helm-lsp-workspace-symbol
-  :config
-  ;; https://github.com/emacs-lsp/helm-lsp
-  )
-
 (provide '30-lsp)
 ;;; 30-lsp ends here
