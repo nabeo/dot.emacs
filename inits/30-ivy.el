@@ -128,6 +128,7 @@
     ("C-n" . persp-next)
     ("a" . persp-switch-last)
     ("C-a" . persp-switch-last)
+    ("c" . persp-switch)
     )
   :custom
   (persp-state-default-file "~/.emacs.d/data/persp-state-file")
