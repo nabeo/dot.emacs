@@ -36,6 +36,7 @@
   ("C-M-r" . 'counsel-recentf)
   ("C-x C-b" . 'counsel-ibuffer)
   ("C-M-f" . 'counsel-ag)
+  ("C-x C-i" . 'counsel-semantic-or-imenu)
   :custom
   ;; `ivy-switch-buffer' (C-x b) のリストに recent files と bookmark を含める
   (ivy-use-virtual-buffers t)
