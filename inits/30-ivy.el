@@ -91,6 +91,9 @@
   :custom
   (swiper-include-line-number-in-search t)
   :config
+  ;; counsel-imenu で preview を有効にする
+  (ivy-configure 'counsel-imenu
+    :update-fn 'auto)
   (use-package avy-migemo
     :ensure t
     :config
