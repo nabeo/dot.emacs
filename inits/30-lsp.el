@@ -20,7 +20,9 @@
   ;; brew install llvm
   (lsp-clients-clangd-executable "/usr/local/opt/llvm/bin/clangd")
   ;; go get -u -v github.com/juliosueiras/terraform-lsp
-  (lsp-terraform-server "terraform-lsp")
+  ;; (lsp-terraform-server "terraform-lsp")
+  ;; brew install hashicorp/tap/terraform-ls
+  (lsp-terraform-server "terraform-ls")
   :init
   (setq gc-cons-threshold 100000000)
   (setq read-process-output-max (* 1024 1024)) ; 1mb
