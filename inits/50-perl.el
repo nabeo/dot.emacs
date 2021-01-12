@@ -5,6 +5,7 @@
 ;;; Code:
 (use-package 'plenv
   :ensure t
+  :disabled t
   :config
   (plenv-global "5.26.2")
   )
