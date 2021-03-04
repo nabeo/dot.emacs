@@ -62,6 +62,7 @@
     (lsp-ui-doc-use-childframe nil)
     (lsp-ui-doc-use-webkit nil)
     (lsp-ui-doc-alignment 'window) ;; window or frame
+    (lsp-ui-doc-use-webkit (featurep 'xwidget-internal))
     ;; lsp-ui-flycheck
     (lsp-ui-flycheck-enable nil)
     ;; lsp-ui-sideline
