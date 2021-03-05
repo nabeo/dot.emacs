@@ -103,19 +103,28 @@
   :commands lsp-treemacs-errors-list
   )
 
+;; https://github.com/emacs-lsp/dap-mode
 (use-package dap-mode
-  :ensure nil
+  :ensure t
   :disabled
   :after (lsp-treemacs)
   :config
-  ;; https://github.com/emacs-lsp/dap-mode
   (dap-ui-mode 1)
   (dap-tooltip-mode 1)
   (tooltip-mode 1)
-  (require 'dap-ruby)
-  (require 'dap-go)
+  )
+(use-package dap-ruby
+  :enable t
+  :disabled
+  )
+(use-package dap-go
+  :enable t
+  :disabled
+  )
+(use-package dap-python
   ;; pip install "ptvsd>=4.2"
-  (require 'dap-python)
+  :enable t
+  :disabled
   )
 
 (provide '30-lsp)
