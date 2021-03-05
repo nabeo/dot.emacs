@@ -42,6 +42,8 @@
   ;; for C/C++
   (c++-mode . lsp)
   (c-mode . lsp)
+  ;; use with which-key
+  (lsp-mode . lsp-enable-which-key-integration)
   :bind
   (:map lsp-mode-map
     ("C-c r" . lsp-rename))
