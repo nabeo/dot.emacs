@@ -111,6 +111,10 @@
   :commands lsp-treemacs-errors-list
   )
 
+(use-package lsp-ivy
+  :ensure t
+  )
+
 ;; https://github.com/emacs-lsp/dap-mode
 (use-package dap-mode
   :ensure t
