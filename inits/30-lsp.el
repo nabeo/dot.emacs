@@ -20,7 +20,6 @@
   ;; brew install llvm
   (lsp-clients-clangd-executable "/usr/local/opt/llvm/bin/clangd")
   ;; go get -u -v github.com/juliosueiras/terraform-lsp
-  ;; (lsp-terraform-server "terraform-lsp")
   :init
   (setq gc-cons-threshold 100000000)
   (setq read-process-output-max (* 1024 1024)) ; 1mb
@@ -50,13 +49,14 @@
 
   ;; brew install hashicorp/tap/terraform-ls
   ;; https://github.com/hashicorp/terraform-ls/blob/main/docs/USAGE.md#emacs
-  (if (executable-find "terraform-ls")
-    (lsp-register-client
-      (make-lsp-client
-        :new-connection (lsp-stdio-connection '((executable-find "terraform-ls") "server"))
-        :major-modes '(terrafrom-mode)
-        :server-id 'terraform-ls))
-    (add-hook 'terrform-mode-hook #'lsp))
+  (cond
+    ((executable-find "terraform-ls")
+      (lsp-register-client
+        (make-lsp-client
+          :new-connection (lsp-stdio-connection '("terraform-ls" "server"))
+          :major-modes '(terrafrom-mode)
+          :server-id 'terraform-ls))
+      (add-hook 'terrform-mode-hook #'lsp)))
   )
 
 (use-package lsp-ui
