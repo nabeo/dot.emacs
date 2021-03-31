@@ -33,7 +33,7 @@
   (typescript-mode . lsp)
   (javascript-mode . lsp)
   ;; gem install solargraph
-  (ruby-mode . lsp)
+  ;; (ruby-mode . lsp)
   ;; rustup component add rls rust-analysis rust-src
   (rust-mode . lsp)
   ;; for C/C++
