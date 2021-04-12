@@ -6,6 +6,9 @@
 (when load-file-name
   (setq user-emacs-directory (file-name-directory load-file-name)))
 
+;; (require 'cl) を使っているときに `Package cl is deprecated' の警告を出さない
+(setq byte-compile-warnings '(not cl-functions obsolete))
+
 ;; Added by Package.el.  This must come before configurations of
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
