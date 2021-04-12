@@ -61,7 +61,10 @@
 ;; use projectile-direnv
 ;; https://github.com/christianromney/projectile-direnv
 ;; go get github.com/direnv/direnv => $GOPATH/bin/direnv
+;; this project is archived
+;; use [emacs-direnv project](https://github.com/wbolster/emacs-direnv)
 (use-package projectile-direnv
+  :disabled t
   :ensure t
   :if (file-executable-p (concat (getenv "GOPATH") "/bin/direnv"))
   :config
