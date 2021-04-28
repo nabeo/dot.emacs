@@ -6,6 +6,8 @@
 (when load-file-name
   (setq user-emacs-directory (file-name-directory load-file-name)))
 
+(setq package-user-dir (locate-user-emacs-file (concat "elpa/" emacs-version)))
+
 ;; (require 'cl) を使っているときに `Package cl is deprecated' の警告を出さない
 (setq byte-compile-warnings '(not cl-functions obsolete))
 
