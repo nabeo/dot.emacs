@@ -31,6 +31,9 @@
   (add-to-list 'package-archives '("gnu" . "http://elpa.gnu.org/packages/")))
 (package-refresh-contents)
 
+(unless (package-installed-p 'use-package)
+  (package-install 'use-package))
+
 (use-package s
   :ensure t)
 (use-package use-package)
