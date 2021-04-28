@@ -118,6 +118,7 @@
   :ensure t)
 
 (use-package perspective
+  :ensure t
   :bind-keymap
   ("C-z" . perspective-map)
   :bind
