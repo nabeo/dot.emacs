@@ -10,18 +10,17 @@
     )
   :hook
   ((yaml-mode prog-mode markdwon-mode gfm-mode python-mode) . projectile-mode)
+  :custom
+  (projectile-enable-caching t)
+  (projectile-cache-file (expand-file-name
+                           "data/projectile.cache"
+                           user-emacs-directory))
+  (projectile-known-projects-file (expand-file-name
+                                    "data/projectile-bookmarks.eld"
+                                    user-emacs-directory))
+  (projectile-file-exists-remote-cache-expire nil)
+  (projectile-file-exists-local-cache-expire (* 5 60))
   :config
-  ;; caching
-  (setq projectile-enable-caching t)
-  (setq projectile-cache-file (expand-file-name
-                               "data/projectile.cache"
-                               user-emacs-directory))
-  (setq projectile-known-projects-file (expand-file-name
-                                        "data/projectile-bookmarks.eld"
-                                        user-emacs-directory))
-  (setq projectile-file-exists-remote-cache-expire nil)
-  (setq projectile-file-exists-local-cache-expire (* 5 60))
-
   ;; ignore files and directory
   (add-to-list 'projectile-globally-ignored-directories "tmp")
   (add-to-list 'projectile-globally-ignored-directories "vender")
