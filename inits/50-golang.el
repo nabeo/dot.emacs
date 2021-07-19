@@ -23,6 +23,9 @@
   (if (eq (member (expand-file-name "~") (s-split ":" (getenv "GOPATH"))) nil)
     (setenv "GOPATH" (concat (getenv "GOPATH") ":" (expand-file-name "~"))))
 
+  :hook
+  (( before-save . gofmt-before-save ))
+
   :config
   ;; set commands
   (cond ((file-executable-p "/opt/local/bin/go")
