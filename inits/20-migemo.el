@@ -22,6 +22,7 @@
   (setq migemo-use-frequent-pattern-alist t)
 
   ;; migemoの初期化
+  (load-library "migemo")
   (migemo-init)
   )
 
