@@ -94,12 +94,6 @@
   ;; counsel-imenu で preview を有効にする
   (ivy-configure 'counsel-imenu
     :update-fn 'auto)
-  (use-package avy-migemo
-    :ensure t
-    :config
-    (avy-migemo-mode 1)
-    ;; (require 'avy-migemo-e.g.swiper)
-    )
   )
 
 (use-package avy
