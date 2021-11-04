@@ -53,10 +53,10 @@
     ((executable-find "terraform-ls")
       (lsp-register-client
         (make-lsp-client
-          :new-connection (lsp-stdio-connection '("terraform-ls" "server"))
-          :major-modes '(terrafrom-mode)
+          :new-connection (lsp-stdio-connection '("terraform-ls" "serve"))
+          :major-modes '(terraform-mode)
           :server-id 'terraform-ls))
-      (add-hook 'terrform-mode-hook #'lsp)))
+      (add-hook 'terraform-mode-hook #'lsp)))
   )
 
 (use-package lsp-ui
