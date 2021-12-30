@@ -7,7 +7,6 @@
   :if (executable-find "jsonnet")
   :mode
   ("\\.jsonnet\\'" . jsonnet-mode)
-  :hook
   :init
   :config
   (setq jsonnet-use-smie t)
