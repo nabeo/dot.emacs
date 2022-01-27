@@ -30,4 +30,4 @@
   )
 
 (provide '50-python)
-;;; 50-python ends here
+;;; 50-python.el ends here
