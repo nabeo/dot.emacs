@@ -10,7 +10,19 @@
   (setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.pyenv/shims")))
   (setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.pyenv/bin")))
   :config
-  (pyenv-mode))
+  (pyenv-mode)
+
+  ;; use with projectile
+  ;; https://github.com/pythonic-emacs/pyenv-mode#projectile-integration
+  (defun projectile-pyenv-mode-set ()
+    "Set pyenv version matching project name."
+    (let ((project (projectile-project-name)))
+      (if (member project (pyenv-mode-versions))
+        (pyenv-mode-set project)
+        (pyenv-mode-unset))))
+
+  (add-hook 'projectile-after-switch-project-hook 'projectile-pyenv-mode-set)
+  )
 
 (use-package pyenv-mode-auto
   :ensure t
