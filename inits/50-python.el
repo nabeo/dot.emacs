@@ -24,15 +24,6 @@
 
   (add-hook 'projectile-after-switch-project-hook 'projectile-pyenv-mode-set))
 
-(use-package pipenv
-  :ensure t
-  :hook (python-mode . pipenv-mode)
-  :init
-  (setq
-   pipenv-projectile-after-switch-function
-   #'pipenv-projectile-after-switch-extended)
-  )
-
 (use-package py-yapf
   :ensure t
   :hook (python-mode . py-yapf-enable-on-save)
