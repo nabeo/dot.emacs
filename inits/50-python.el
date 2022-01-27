@@ -41,5 +41,8 @@
   :hook (python-mode . py-yapf-enable-on-save)
   )
 
+(use-package pyvenv
+  :ensure t)
+
 (provide '50-python)
 ;;; 50-python.el ends here
