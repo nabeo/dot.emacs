@@ -95,7 +95,7 @@
   (setq wl-summary-line-format-spec-alist
         (append wl-summary-line-format-spec-alist
                 '((?> (wl-summary-line-for-me)))))
-  (setq wl-summary-line-format "%T%P%1@%M/%D(%W)%h:%m %t[%17(%c %f%) %] %#%~%s")
+  (setq wl-summary-line-format "%T%P%1@%1>%M/%D(%W)%h:%m %t[%17(%c %f%) %] %#%~%s")
   )
 
 (use-package wl-folder
