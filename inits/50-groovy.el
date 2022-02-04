@@ -12,10 +12,10 @@
   (("groovy" . groovy-mode))
   :config
   (add-hook 'groovy-mode-hook
-    '(lambda ()
+    #'(lambda ()
        (require 'groovy-electric)
        (groovy-electric-mode)))
   )
 
 (provide '50-groovy)
-;;; 50-groovy ends here
+;;; 50-groovy.el ends here

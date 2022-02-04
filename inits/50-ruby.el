@@ -21,18 +21,18 @@
   ;;   hs-hide-initial-comment-block
   (setq ruby-insert-encoding-magic-comment nil)
   (add-hook 'ruby-mode-hook
-            '(lambda ()
-               (hs-minor-mode t)))
+    #'(lambda ()
+        (hs-minor-mode t)))
   (let ((ruby-mode-hs-info
-         '(ruby-mode
-           "class\\|module\\|def\\|if\\|unless\\|case\\|while\\|until\\|for\\|begin\\|do"
-           "end"
-           "#"
-           ruby-move-to-block
-           nil)))
+          '(ruby-mode
+             "class\\|module\\|def\\|if\\|unless\\|case\\|while\\|until\\|for\\|begin\\|do"
+             "end"
+             "#"
+             ruby-move-to-block
+             nil)))
     (if (not (member ruby-mode-hs-info hs-special-modes-alist))
-        (setq hs-special-modes-alist
-              (cons ruby-mode-hs-info hs-special-modes-alist))))
+      (setq hs-special-modes-alist
+        (cons ruby-mode-hs-info hs-special-modes-alist))))
 
   )
 
@@ -69,15 +69,15 @@
   :ensure t
   :config
   (add-hook 'ruby-mode-hook
-            '(lambda ()
-               (ruby-electric-mode t)
-               (if (eq emacs-bzr-p t)
-                   (progn
-                     (abbrev-mode 1)
-                     (electric-pair-mode t)
-                     (electric-indent-mode t)
-                     (electric-layout-mode t)))))
+    #'(lambda ()
+        (ruby-electric-mode t)
+        (if (eq emacs-bzr-p t)
+          (progn
+            (abbrev-mode 1)
+            (electric-pair-mode t)
+            (electric-indent-mode t)
+            (electric-layout-mode t)))))
   )
 
 (provide '50-ruby)
-;;; 50-ruby ends here
+;;; 50-ruby.el ends here
