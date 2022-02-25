@@ -2,12 +2,6 @@
 ;;; Commentary:
 
 ;;; Code:
-(use-package mime-setup
-  :ensure semi
-  :init
-  :config
-  )
-
 (use-package mime
   :ensure flim
   :init
@@ -118,7 +112,6 @@
   (add-to-list 'mime-charset-coding-system-alist '(iso-2022-jp . cp50220))
 
   ;; for mime-setup
-  (setq mime-view-text/html-preview 'shr)
   (setq mime-situation-examples-file
     (expand-file-name (concat user-emacs-directory "wl/mime-example.el")))
   (setq mime-edit-split-message nil)
@@ -186,12 +179,7 @@
   (setq wl-message-auto-reassemble-message/partial t)
 
   ;; user-agentを変更
-  (defun my-wl-generate-user-agent-string ()
-    "yet another wl-generate-user-agent-string"
-    (concat (product-string-1 'wl-version t) " "
-      (wl-extended-emacs-version3 "/" t)))
-  (setq wl-generate-mailer-string-function 'my-wl-generate-user-agent-string)
-  (setq wl-generate-user-agent-string 'my-wl-generate-user-agent-string)
+  (setq wl-generate-mailer-string-function 'wl-generate-user-agent-string-1)
 
   ;; accounts
   (load-safe (expand-file-name
