@@ -115,6 +115,8 @@
   :commands (wl-other-frame wl-draft wl-util wl-e21)
   :after (auth-source)
   :init
+  (add-to-list 'mime-charset-coding-system-alist '(iso-2022-jp . cp50220))
+
   ;; for mime-setup
   (setq mime-view-text/html-preview 'shr)
   (setq mime-situation-examples-file
