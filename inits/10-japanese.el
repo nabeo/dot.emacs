@@ -20,7 +20,16 @@
 ;;        (get 'japanese-ucs-jis-to-cp932-map 'translation-table)
 ;;        (coding-system-plist 'utf-8))
 ;; (set-terminal-coding-system 'utf-8-for-putty)
-(require 'cp5022x)                      ; 機種依存文字
+
+; 機種依存文字
+(use-package cp5022x
+  :ensure t
+  :init
+  :config
+  (set-charset-priority 'ascii 'japanese-jisx0208 'latin-jisx0201
+                        'katakana-jisx0201 'iso-8859-1 'unicode)
+  (set-coding-system-priority 'utf-8 'euc-jp 'iso-2022-jp 'cp932)
+)
 
 (prefer-coding-system 'utf-8)
 (if (eq emacs24-p 'nil)
