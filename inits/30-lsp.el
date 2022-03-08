@@ -142,4 +142,4 @@
   )
 
 (provide '30-lsp)
-;;; 30-lsp ends here
+;;; 30-lsp.el ends here
