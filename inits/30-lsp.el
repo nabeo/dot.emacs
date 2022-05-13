@@ -39,6 +39,9 @@
   ;; for C/C++
   (c++-mode . lsp)
   (c-mode . lsp)
+  ;; for Terraform
+  ;; brew install terraform-lsp
+  (terraform-mode . lsp)
   ;; use with which-key
   (lsp-mode . lsp-enable-which-key-integration)
   :bind
@@ -46,17 +49,6 @@
     ("C-c r" . lsp-rename))
   :config
   (setq lsp-completion-provider :capf)
-
-  ;; brew install hashicorp/tap/terraform-ls
-  ;; https://github.com/hashicorp/terraform-ls/blob/main/docs/USAGE.md#emacs
-  (cond
-    ((executable-find "terraform-ls")
-      (lsp-register-client
-        (make-lsp-client
-          :new-connection (lsp-stdio-connection '("terraform-ls" "serve"))
-          :major-modes '(terraform-mode)
-          :server-id 'terraform-ls))
-      (add-hook 'terraform-mode-hook #'lsp)))
   )
 
 (use-package lsp-ui
