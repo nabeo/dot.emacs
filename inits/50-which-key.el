@@ -5,7 +5,9 @@
 (use-package which-key
   :ensure t
   :diminish which-key-mode
-  :hook (after-init . which-key-mode))
+  :config
+  (which-key-mode)
+  )
 
 (provide '50-which-key)
-;;; 50-which-key ends here
+;;; 50-which-key.el ends here
