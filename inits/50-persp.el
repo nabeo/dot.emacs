@@ -3,6 +3,7 @@
 
 ;;; Code:
 (use-package perspective
+  :disabled
   :ensure t
   :bind-keymap
   ("C-z" . perspective-map)
