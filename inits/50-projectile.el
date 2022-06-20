@@ -70,19 +70,5 @@
   (add-hook 'pojectile-mode-hook 'projectile-direnv-export-variables)
   )
 
-;; use with pyenv-mode
-(use-package pyenv-mode
-  :ensure t
-  :if (file-executable-p (expand-file-name "~/.pyenv/bin/pyenv"))
-  :config
-  (defun projectile-pyenv-mode-set ()
-    "Set pyenv version matching project name."
-    (let ((project (projectile-project-name)))
-      (if (member project (pyenv-mode-versions))
-          (pyenv-mode-set project)
-        (pyenv-mode-unset))))
-  (add-hook 'projectile-switch-project-hook 'projectile-pyenv-mode-set)
-  )
-
 (provide '50-projectile)
 ;;; 50-projectile ends here
