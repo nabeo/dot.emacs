@@ -17,6 +17,13 @@
 (use-package magit-find-file
   :ensure t
   )
+(use-package forge
+  :ensure t
+  :after magit
+  :custom
+  (forge-database-file (expand-file-name "data/forge-database.sqlite" user-emacs-directory))
+  )
+
 (use-package git-gutter+
   :ensure t
   :bind
