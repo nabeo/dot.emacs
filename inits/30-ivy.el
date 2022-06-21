@@ -60,29 +60,15 @@
 
 (use-package all-the-icons-ivy-rich
   :ensure t
-  :config
-  ;; counsel-projectile-find-file
-  (plist-put all-the-icons-ivy-rich-display-transformers-list
-    'counsel-projectile-find-file
-    '(:columns
-       (
-         (ivy-read-file-transformer)
-         (ivy-rich-counsel-find-file-truename (:face font-lock-doc-face)))))
+  :init
   (all-the-icons-ivy-rich-mode 1)
   )
 
 (use-package ivy-rich
   :ensure t
-  :config
-  (setcdr (assq t ivy-format-functions-alist) #'ivy-format-function-line)
-  ;; counsel-projectile-find-file
-  (plist-put ivy-rich-display-transformers-list
-    'counsel-projectile-find-file
-    '(:columns
-       (
-         (ivy-read-file-transformer)
-         (ivy-rich-counsel-find-file-truename (:face font-lock-doc-face)))))
-  (ivy-rich-mode 1))
+  :init
+  (ivy-rich-mode 1)
+  )
 
 (use-package swiper
   :ensure t
@@ -101,7 +87,7 @@
 
 (use-package counsel-projectile
   :ensure t
-  :config
+  :init
   (counsel-projectile-mode 1)
   )
 
