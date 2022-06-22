@@ -45,5 +45,13 @@
     '(misc-info persp-name debug minor-modes input-method major-mode process vcs checker))
 )
 
+(use-package powerline
+  :ensure t
+  :after (all-the-icons)
+  :disabled t
+  :config
+  (powerline-default-theme))
+
+
 (provide '10-theme)
 ;;; 10-theme.el ends here
