@@ -1,14 +1,20 @@
-;; Last update is ....
-;; Time-stamp: "Sun Apr 06 15:55:17 JST 2014"
+;;; 50-web --- web-mode
+;;; Commentary:
 
+;;; Code:
 ;; http://web-mode.org/
-(require 'web-mode)
+(use-package "web-mode"
+  :ensure t
+  :mode
+  ("\\.html?\\'" . web-mode)
+  ("\\.phtml\\'" . web-mode)
+  ("\\.tmpl\\.php\\'" . web-mode)
+  ("\\.jsp\\'" . web-mode)
+  ("\\.as[cp]x\\'" . web-mode)
+  ("\\.erb\\'" . web-mode)
+  ("\\.mustache\\'" . web-mode)
+  ("\\.djhtml\\'" . web-mode)
+)
 
-(add-to-list 'auto-mode-alist '("\\.html?\\'"     . web-mode))
-(add-to-list 'auto-mode-alist '("\\.phtml\\'"     . web-mode))
-(add-to-list 'auto-mode-alist '("\\.tpl\\.php\\'" . web-mode))
-(add-to-list 'auto-mode-alist '("\\.jsp\\'"       . web-mode))
-(add-to-list 'auto-mode-alist '("\\.as[cp]x\\'"   . web-mode))
-(add-to-list 'auto-mode-alist '("\\.erb\\'"       . web-mode))
-(add-to-list 'auto-mode-alist '("\\.mustache\\'"  . web-mode))
-(add-to-list 'auto-mode-alist '("\\.djhtml\\'"    . web-mode))
+(provide '50-web)
+;;; 50-web.el ends here
