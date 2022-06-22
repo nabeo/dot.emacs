@@ -46,4 +46,4 @@
 )
 
 (provide '10-theme)
-;;; 10-theme ends here
+;;; 10-theme.el ends here
