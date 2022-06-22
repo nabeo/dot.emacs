@@ -1,5 +1,6 @@
 (use-package twittering-mode
   :ensure t
+  :disabled t
   :config
   ;; for debuggin (ignore certficate file)
   ;; (setq twittering-allow-insecure-server-cert t)
