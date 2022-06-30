@@ -5,6 +5,7 @@
 (use-package ivy
   :ensure t
   :bind
+  ("C-x b" . 'ivy-switch-buffer)
   (:map ivy-minibuffer-map
     ;; ESC でミニバッファを閉じる
     ("<escape>" . 'minibuffer-keyboard-quit))
