@@ -15,7 +15,10 @@
   (lsp-clients-javascript-typescript-server "/usr/local/bin/javascript-typescript-stdio")
   ;; brew install llvm
   (lsp-clients-clangd-executable "/usr/local/opt/llvm/bin/clangd")
-  ;; go get -u -v github.com/juliosueiras/terraform-lsp
+  ;; https://emacs-lsp.github.io/lsp-mode/page/lsp-terraform-ls/#server-note
+  (lsp-disabled-clients '(tfls))
+  ;; https://github.com/emacs-lsp/lsp-mode/issues/3713
+  (create-lockfiles nil)
   :init
   (setq gc-cons-threshold 100000000)
   (setq read-process-output-max (* 1024 1024)) ; 1mb
@@ -37,8 +40,9 @@
   (c++-mode . lsp)
   (c-mode . lsp)
   ;; for Terraform
-  ;; brew install terraform-lsp
-  (terraform-mode . lsp)
+  ;; brew install terraform-ls
+  ;; https://github.com/hashicorp/terraform-ls/blob/main/docs/USAGE.md#emacs
+  (terraform-mode . lsp-deferred)
   ;; use with which-key
   (lsp-mode . lsp-enable-which-key-integration)
   :bind
