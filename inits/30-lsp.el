@@ -39,6 +39,9 @@
   ;; for C/C++
   (c++-mode . lsp)
   (c-mode . lsp)
+  ;; for Json
+  ;; npm -g --prefix ~/.emacs.d/.cache/lsp/npm/vscode-langservers-extracted install vscode-langservers-extracted
+  (json-mode . lsp)
   ;; for Terraform
   ;; brew install terraform-ls
   ;; https://github.com/hashicorp/terraform-ls/blob/main/docs/USAGE.md#emacs
