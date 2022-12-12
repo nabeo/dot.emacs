@@ -7,8 +7,8 @@
   :custom
   ;; (create-lockfiles nil)
   (lsp-auto-guess-root t)
-  ;; pip install 'python-language-server[all]'
-  (lsp-pyls-server-command (expand-file-name "~/.pyenv/shims/pyls"))
+  ;; brew install python-lsp-server
+  (lsp-pyls-server-command (expand-file-name "/usr/local/bin/pylsp"))
   ;; npm i -g typescript-language-server
   (lsp-clients-typescript-server "/usr/local/bin/typescript-language-server")
   ;; npm i -g javascript-typescript-langserver
