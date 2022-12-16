@@ -26,6 +26,7 @@
 
 (use-package pyenv-mode-auto
   :ensure t
+  :disabled t
   :config
   (defun projectile-pyenv-mode-set ()
     "Set pyenv version matching project name."
