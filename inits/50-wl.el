@@ -134,7 +134,7 @@
   :config
   ;; message mode
   (setq wl-message-ignored-field-list
-    '("^Received-SPF:" "Authentication-Results:" "^In-Reply-To:"
+    '( "Authentication-Results:" "^In-Reply-To:"
        "^Repied:" "^Errors-To" "^Lines:" "^Sender:" ".*Host:"
        "^Deleiverd-To" "^Message-Id:" "^Content-Transfer-Encoding:"
        "^X-Mailman-Version:" "^X-Sequence:" "^X-BeenThere:"
@@ -169,13 +169,14 @@
        "^X-SG-EID:"
        ;; DKIM
        "^DKIM-Signature:"
-       "^ARC-Seal:" "^ARC-Message-Signature:" "^ARC-Authentication-Results:"
+       "^ARC-Seal:" "^ARC-Message-Signature:"
        ;; AWS
        "^X-MSFBL:" "^X-PVIQ:" "^X-PVIQ:" "^X-Binding:" "^X-MarketoID:"
        "^X-MktArchive:" "^X-Mailfrom:" "^X-MSYS-API:" "^X-AMAZON-MAIL-RELAY-REDIR:"
        "^X-SES-Outgoing:" "^Feedback-ID:"
        ))
-  (setq wl-message-visible-field-list '("^To:" "^Subject:" "^Cc:" "^Date:"))
+  (setq wl-message-visible-field-list '("^To:" "^Subject:" "^Cc:" "^Date:"
+                                         "^ARC-Authentication-Results:" "^Received-SPF:"))
   (setq wl-message-auto-reassemble-message/partial t)
 
   ;; user-agentを変更
