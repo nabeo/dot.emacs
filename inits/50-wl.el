@@ -179,8 +179,10 @@
        "^X-SM-SUB-ROUTING-ID:" "^X-SM-COMMUNICATION-ARN:"
        ;; ISISPP SuretyMail
        "^X-PM-IP:" "^X-IADB-IP:" "^X-IADB-IP-REVERSE:"
-       ;; 
+       ;;
        "^X-PM-Message-Id:" "^X-PM-RCPT:" "^X-PM-Message-Options:" "^X-PM-MTA-Pool:"
+       ;; AWS
+       "^x-amz-sns-message-id:" "^x-amz-sns-subscription-arn:"
        ))
   (setq wl-message-visible-field-list '("^To:" "^Subject:" "^Cc:" "^Date:" "^X-Mailer:"
                                          "^ARC-Authentication-Results:" "^Received-SPF:"))
