@@ -174,6 +174,8 @@
        "^X-MSFBL:" "^X-PVIQ:" "^X-PVIQ:" "^X-Binding:" "^X-MarketoID:"
        "^X-MktArchive:" "^X-Mailfrom:" "^X-MSYS-API:" "^X-AMAZON-MAIL-RELAY-REDIR:"
        "^X-SES-Outgoing:" "^Feedback-ID:"
+       "^X-SM-COMMUNICATION:" "^X-SM-COMMUNICATION-TYPE:" "^X-SM-DEDUPING-ID:" "^X-SM-ROUTING-ID:"
+       "^X-SM-SUB-ROUTING-ID:" "^X-SM-COMMUNICATION-ARN:"
        ))
   (setq wl-message-visible-field-list '("^To:" "^Subject:" "^Cc:" "^Date:"
                                          "^ARC-Authentication-Results:" "^Received-SPF:"))
