@@ -183,6 +183,9 @@
        "^X-PM-Message-Id:" "^X-PM-RCPT:" "^X-PM-Message-Options:" "^X-PM-MTA-Pool:"
        ;; AWS
        "^x-amz-sns-message-id:" "^x-amz-sns-subscription-arn:"
+       ;; Zuora
+       "^X-Zuora-GlobalTenantId:" "^X-Zuora-TenantId:" "^X-Zuora-EntityId:" "^X-Zuora-NotificationId:"
+
        ))
   (setq wl-message-visible-field-list '("^To:" "^Subject:" "^Cc:" "^Date:" "^X-Mailer:"
                                          "^ARC-Authentication-Results:" "^Received-SPF:"))
