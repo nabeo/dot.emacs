@@ -176,8 +176,12 @@
        "^X-SES-Outgoing:" "^Feedback-ID:"
        "^X-SM-COMMUNICATION:" "^X-SM-COMMUNICATION-TYPE:" "^X-SM-DEDUPING-ID:" "^X-SM-ROUTING-ID:"
        "^X-SM-SUB-ROUTING-ID:" "^X-SM-COMMUNICATION-ARN:"
+       ;; ISISPP SuretyMail
+       "^X-PM-IP:" "^X-IADB-IP:" "^X-IADB-IP-REVERSE:"
+       ;; 
+       "^X-PM-Message-Id:" "^X-PM-RCPT:" "^X-PM-Message-Options:" "^X-PM-MTA-Pool:"
        ))
-  (setq wl-message-visible-field-list '("^To:" "^Subject:" "^Cc:" "^Date:"
+  (setq wl-message-visible-field-list '("^To:" "^Subject:" "^Cc:" "^Date:" "^X-Mailer:"
                                          "^ARC-Authentication-Results:" "^Received-SPF:"))
   (setq wl-message-auto-reassemble-message/partial t)
 
