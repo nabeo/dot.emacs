@@ -183,6 +183,8 @@
        "^X-PM-Message-Id:" "^X-PM-RCPT:" "^X-PM-Message-Options:" "^X-PM-MTA-Pool:"
        ;; AWS
        "^x-amz-sns-message-id:" "^x-amz-sns-subscription-arn:"
+       ;; Google Cloud
+       "^X-Google-Appengine-App-Id:" "^X-Google-Appengine-App-Id-Alias"
        ;; Zuora
        "^X-Zuora-GlobalTenantId:" "^X-Zuora-TenantId:" "^X-Zuora-EntityId:" "^X-Zuora-NotificationId:"
 
