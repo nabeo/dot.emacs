@@ -138,7 +138,7 @@
        "^Repied:" "^Errors-To" "^Lines:" "^Sender:" ".*Host:"
        "^Deleiverd-To" "^Message-Id:" "^Content-Transfer-Encoding:"
        "^X-Mailman-Version:" "^X-Sequence:" "^X-BeenThere:"
-       "^Return-Path:" "^Received:" "^MIME-Version:"
+       "^Received:" "^MIME-Version:"
        "^X-Old-From:" "^X-HopMx-Name:" "^X-Spam:" "^X-MAIL-FROM:"
        "^X-Virus-.*" "^X-Priority:" "^X-MSMail-Priority:" "^X-MIMEOLE:"
        "^X-SOURCE-IP:" "^X-AnalysisOut:" "^Precedence:"
@@ -190,6 +190,8 @@
 
        ))
   (setq wl-message-visible-field-list '("^To:" "^Subject:" "^Cc:" "^Date:" "^X-Mailer:"
+                                         "^X-Original-Sender:" "^X-Original-From:" "^Delivered-To:" "^Return-Path:"
+                                         "^X-Forwarded-To:" "^X-Forwarded-For:"
                                          "^ARC-Authentication-Results:" "^Received-SPF:"))
   (setq wl-message-auto-reassemble-message/partial t)
 
