@@ -4,6 +4,7 @@
 ;;; Code:
 (use-package ivy
   :ensure t
+  :bind
   (:map ivy-minibuffer-map
     ;; ESC でミニバッファを閉じる
     ("<escape>" . 'minibuffer-keyboard-quit))
@@ -50,12 +51,13 @@
   ;; `counsel-find-file' で不要なファイルを表示しない
   (counsel-find-file-ignore-regexp (regexp-opt completion-ignored-extensions))
   :config
-  (use-package ivy-hydra
-    :ensure t
-    :custom
-    ;; M-o を ivy-hydra-read-action に割り当てる
-    (ivy-read-action-function #'ivy-hydra-read-action)
-    )
+  )
+
+(use-package ivy-hydra
+  :ensure t
+  :custom
+  ;; M-o を ivy-hydra-read-action に割り当てる
+  (ivy-read-action-function #'ivy-hydra-read-action)
   )
 
 (use-package all-the-icons-ivy-rich
