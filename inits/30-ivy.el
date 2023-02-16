@@ -4,8 +4,6 @@
 ;;; Code:
 (use-package ivy
   :ensure t
-  :bind
-  ("C-x b" . 'ivy-switch-buffer)
   (:map ivy-minibuffer-map
     ;; ESC でミニバッファを閉じる
     ("<escape>" . 'minibuffer-keyboard-quit))
@@ -33,6 +31,7 @@
   :bind
   ("M-x" . 'counsel-M-x)
   ("M-y" . 'counsel-yank-pop)
+  ("C-x b" . 'counsel-switch-buffer)
   ("C-M-z" . 'counsel-fzf)
   ("C-M-r" . 'counsel-recentf)
   ("C-x C-b" . 'counsel-ibuffer)
