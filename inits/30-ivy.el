@@ -56,8 +56,9 @@
 (use-package ivy-hydra
   :ensure t
   :custom
-  ;; M-o を ivy-hydra-read-action に割り当てる
-  (ivy-read-action-function #'ivy-hydra-read-action)
+  (with-eval-after-load 'ivy
+    ;; M-o を ivy-hydra-read-action に割り当てる
+    (ivy-read-action-function #'ivy-hydra-read-action))
   )
 
 (use-package all-the-icons-ivy-rich
