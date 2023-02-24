@@ -119,18 +119,14 @@
 ;; https://github.com/emacs-lsp/dap-mode
 (use-package dap-mode
   :ensure t
-  :disabled
   :after (lsp-treemacs)
   :config
   (dap-ui-mode 1)
   (dap-tooltip-mode 1)
   (tooltip-mode 1)
+  (require 'dap-dlv-go)
   )
 (use-package dap-ruby
-  :enable t
-  :disabled
-  )
-(use-package dap-go
   :enable t
   :disabled
   )
