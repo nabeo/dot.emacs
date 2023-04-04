@@ -46,6 +46,8 @@
   ;; brew install terraform-ls
   ;; https://github.com/hashicorp/terraform-ls/blob/main/docs/USAGE.md#emacs
   (terraform-mode . lsp-deferred)
+  ;; for yaml
+  (yaml-mode . lsp)
   ;; use with which-key
   (lsp-mode . lsp-enable-which-key-integration)
   :bind
