@@ -61,6 +61,7 @@
 (use-package lsp-ui
   :ensure t
   :commands lsp-ui-mode
+  :after lsp-mode
   :custom
   ;; (scroll-margin 0)
   ;; lsp-ui-doc
@@ -111,11 +112,15 @@
   :ensure nil
   ;; :disabled
   :commands lsp-treemacs-errors-list
+  :after lsp-mode
+  :config
+  (lsp-treemacs-sync-mode 1)
   )
 
 (use-package lsp-ivy
   :ensure t
   :commands lsp-ivy-workspace-symbol
+  :after lsp-mode
   )
 
 ;; https://github.com/emacs-lsp/dap-mode
@@ -123,6 +128,7 @@
   :ensure t
   :after (lsp-treemacs)
   :config
+  (dap-auto-configure-mode 1)
   (dap-ui-mode 1)
   (dap-tooltip-mode 1)
   (tooltip-mode 1)
