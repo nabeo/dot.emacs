@@ -34,15 +34,15 @@
   :custom
   (doom-modeline-buffer-file-name-style 'truncate-with-project)
   (doom-modeline-icon t)
-  (doom-modeline-major-mode-icon nil)
+  (doom-modeline-major-mode-icon t)
   (doom-modeline-minor-modes nil)
+  (doom-modeline-workspace-name t)
+  (doom-modeline-vcs-max-length 12)
+  (doom-modeline-time t)
+  (doom-modeline-env-version t)
   :config
   (line-number-mode 0)
   (column-number-mode 0)
-  (doom-modeline-def-modeline
-    'main
-    '(bar window-number matches buffer-info remote-host buffer-position parrot selection-info)
-    '(misc-info persp-name debug minor-modes input-method major-mode process vcs checker))
 )
 
 (use-package powerline
