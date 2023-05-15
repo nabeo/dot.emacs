@@ -36,7 +36,7 @@
          ("C-x r" . git-gutter+-revert-hunks)
          ;; Stage hunk at point.
          ;; If region is active, stage all hunk lines within the region.
-         ("C-x t" . git-gutter+-stage-hunks)
+         ("C-x T" . git-gutter+-stage-hunks)
          ("C-x c" . git-gutter+-commit)
          ("C-x C" . git-gutter+-stage-and-commit)
          ("C-x C-y" . git-gutter+-stage-and-commit-whole-buffer)
