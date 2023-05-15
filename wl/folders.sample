@@ -1,0 +1,23 @@
+#
+# Folder definition file
+# This file is generated automatically by Wanderlust/2.15.9 (Almost Unreal).
+#
+# If you edit this file by hand, be sure that comment lines
+# will be washed out by wl-fldmgr.
+#
+
+example.com{
+	%INBOX	"INBOX"
+}
+GMail{
+	%[Gmail]/すべてのメール
+	%[Gmail]/スター付き
+	%[Gmail]/送信済みメール
+	%[Gmail]/下書き
+	%[Gmail]/ゴミ箱
+	%[Gmail]/迷惑メール
+}
+
+# petname definition (access group, folder in access group)
+
+# end of file.
