@@ -100,4 +100,10 @@
   :after (treemacs)
   :ensure t
   :config (treemacs-set-scope-type 'Tabs))
+
+(use-package treemacs-nerd-icons
+  :ensure t
+  :after (treemacs nerd-icons)
+  :config
+  (treemacs-load-theme "nerd-icons"))
 ;;; 50-treemacs.el ends here
