@@ -4,9 +4,13 @@
 ;;; Code:
 (use-package all-the-icons
   :ensure t
+  :disabled t
   :config
   (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes"))
   )
+
+(use-package nerd-icons
+  :ensure t)
 
 (use-package doom-themes
   :ensure t
