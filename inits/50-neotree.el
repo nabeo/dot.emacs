@@ -1,6 +1,7 @@
 ;; source : https://github.com/jaypei/emacs-neotree
 (use-package neotree
   :ensure t
+  :disabled t
   :after (all-the-icons)
   :bind (("<f8>" . neotree-toggle))
   :config

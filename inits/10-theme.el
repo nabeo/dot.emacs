@@ -19,7 +19,11 @@
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
   ;; for neotree
-  (doom-themes-neotree-config)
+  (if (featurep 'neotree)
+      (doom-themes-neotree-config))
+  ;; for treemacs
+  (if (featurep 'treemacs)
+      (doom-themes-treemacs-config))
   ;; (setq doom-neotree-enable-file-icons t)
   ;; (setq doom-neotree-enable-folder-icons t)
   ;; (setq doom-neotree-enable-chvron-icons t)
