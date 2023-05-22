@@ -152,7 +152,8 @@
 
 ;; メニューバーとツールバーの表示設定
 (tool-bar-mode 0)
-;;(menu-bar-mode 0)
+(if (eq nox-p t)
+    (menu-bar-mode 0))
 
 ;; pathの設定
 (dolist (i '("/opt/local/bin"
