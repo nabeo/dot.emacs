@@ -4,3 +4,6 @@
 [submodule "site-lisp/nodenv"]
 	path = site-lisp/nodenv
 	url = git@github.com:twlz0ne/nodenv.el.git
+[submodule "site-lisp/swiper-migemo"]
+	path = site-lisp/swiper-migemo
+	url = git@github.com:tam17aki/swiper-migemo.git
