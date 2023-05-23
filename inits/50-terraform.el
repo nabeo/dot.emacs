@@ -9,4 +9,4 @@
   )
 
 (provide '50-terraform)
-;;; 50-terraform ends here
+;;; 50-terraform.el ends here
