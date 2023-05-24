@@ -54,10 +54,7 @@
 
 (use-package go-eldoc
   :ensure t
-  :config
-  (cond ((file-executable-p (concat (getenv "GOPATH") "/bin/gocode"))
-         (setq go-eldoc-gocode (concat (getenv "GOPATH") "/bin/gocode"))))
-  (add-hook 'go-mode-hook 'go-eldoc-setup))
+  :hook (go-mode . go-eldoc-setup))
 
 (use-package go-projectile
   :ensure t
