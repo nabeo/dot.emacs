@@ -25,7 +25,7 @@
   (setq lsp-keymap-prefix "C-c l")
   :hook
   (prog-major-mode . lsp-prog-major-mode-enable)
-  ;; go get -u github.com/saibing/bingo
+  ;; brew install gopls
   (go-mode . lsp)
   ;; pip install 'python-language-server[all]'
   (python-mode . lsp)
