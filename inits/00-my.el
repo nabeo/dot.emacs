@@ -1,3 +1,7 @@
+;;; 00-my --- my config
+;;; Commentary:
+
+;;; Code:
 ; load-pathを追加するための関数
 ;; http://d.hatena.ne.jp/kazu-yamamoto/20080219/1203423707
 ;;; ex) (my-load-path "foo")
@@ -211,3 +215,6 @@
 
 ;; nsm.el
 (setq nsm-settings-file (expand-file-name "secret/network-security.data" user-emacs-directory))
+
+(provide '00-my)
+;;; 00-my.el ends here
