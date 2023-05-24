@@ -1,3 +1,8 @@
+;;; 50-dired --- dired-mode
+;;; Commentary:
+
+;;; Code:
+
 (use-package dired
   :init
   (load "dired-x")
@@ -31,3 +36,6 @@
   ;; 					  ;; (dired-omit-mode 1)
   ;; 					  )))
   )
+
+(provide '50-dired)
+;;; 50-dired.el ends here
