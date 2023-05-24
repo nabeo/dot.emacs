@@ -12,4 +12,4 @@
   (direnv-mode))
 
 (provide '50-direnv)
-;;; 50-direnv ends here
+;;; 50-direnv.el ends here
