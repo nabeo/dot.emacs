@@ -66,9 +66,8 @@
 (use-package go-projectile
   :ensure t
   :if (locate-library "projectile")
-  :config
-  (with-eval-after-load 'projectile
-    (require 'go-projectile)))
+  :after (projectile)
+)
 
 (provide '50-golang)
 ;;; 50-golang ends here
