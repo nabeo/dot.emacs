@@ -1,3 +1,7 @@
+;;; 50-auctex --- auctex-mode
+;;; Commentary:
+
+;;; Code:
 (use-package auctex
   :ensure t
   :disabled t
@@ -18,3 +22,6 @@
   ;; PATHの設定 (TeXLive 2010をisoからインストール)
   (setq exec-path (cons "/usr/local/texlive/2010/bin/universal-darwin" exec-path))
   )
+
+(provide '50-auctex)
+;;; 50-auctex.el ends here
