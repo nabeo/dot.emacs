@@ -24,4 +24,4 @@
   :hook (diff-mode . diff-mode-refine-automatically))
 
 (provide '50-ediff)
-;;; 50-ediff ends here
+;;; 50-ediff.el ends here
