@@ -41,4 +41,4 @@
   (company-box-doc-enable nil))
 
 (provide '30-company)
-;;; 30-company ends here
+;;; 30-company.el ends here
