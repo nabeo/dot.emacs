@@ -1,3 +1,7 @@
+;;; 10-japanese --- language
+;;; Commentary:
+
+;;; Code:
 (set-language-environment 'Japanese)
 
 ;; http://nijino.homelinux.net/emacs/emacs23-ja.html
@@ -34,3 +38,6 @@
 (prefer-coding-system 'utf-8)
 (if (eq emacs24-p 'nil)
     (setq default-input-method "MacOSX"))
+
+(provide '10-japanese)
+;;; 10-japanese.el ends here
