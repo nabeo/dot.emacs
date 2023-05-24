@@ -32,14 +32,10 @@
          (setq go-command "/opt/local/bin/go")
           (setq godoc-command "/opt/local/bin/go doc")))
   (cond
-    ;; go get golang.org/x/tools/cmd/goimports
+    ;; go install golang.org/x/tools/cmd/goimports@latest
     ((executable-find "goimports")
-      (setq gofmt-command "goimports"))
-    ((file-executable-p "/opt/local/bin/gofmt")
-      (setq gofmt-command "/opt/local/bin/gofmt")))
-  (cond ((file-executable-p "/opt/local/bin/godoc")
-         (setq godoc-and-godef-command "/opt/local/bin/godoc")))
-  ;; install by `go get github.com/rogpeppe/godef`
+      (setq gofmt-command "goimports")))
+  ;; go install github.com/rogpeppe/godef@latest
   (cond ((file-executable-p (concat (getenv "GOPATH") "/bin/godef"))
          (setq godef-command (concat (getenv "GOPATH") "/bin/godef"))))
 
