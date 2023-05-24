@@ -47,11 +47,6 @@
   :ensure t
   :disabled t)
 
-(use-package go-autocomplete
-  :ensure t
-  :config
-  (require 'go-autocomplete))
-
 (use-package go-eldoc
   :ensure t
   :hook (go-mode . go-eldoc-setup))

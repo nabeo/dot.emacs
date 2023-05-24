@@ -15,9 +15,6 @@
         )
   :config
   (add-hook 'racer-mode-hook 'eldoc-mode)
-  (add-hook 'racer-mode-hook
-            (lambda ()
-              (ac-racer-setup)))
   )
 
 (use-package cargo
@@ -70,12 +67,6 @@
                       ((eq linux-p t)
                        "stable-x86_64-unknown-linux-gnu/"))
                 "lib/rustlib/src/rust/src"))
-  )
-
-(use-package ac-racer
-  :ensure t
-  :commands (ac-racer-setup)
-  :config
   )
 
 (provide '50-rust)
