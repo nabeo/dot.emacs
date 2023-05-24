@@ -30,4 +30,4 @@
   :ensure t)
 
 (provide '30-poly)
-;;; 30-poly ends here
+;;; 30-poly.el ends here
