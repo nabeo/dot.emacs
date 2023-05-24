@@ -18,4 +18,4 @@
   )
 
 (provide '40-shim)
-;;; 40-shim ends here
+;;; 40-shim.el ends here
