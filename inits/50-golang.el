@@ -70,4 +70,4 @@
 )
 
 (provide '50-golang)
-;;; 50-golang ends here
+;;; 50-golang.el ends here
