@@ -105,4 +105,4 @@
   :ensure t)
 
 (provide '30-ivy)
-;;; 30-ivy ends here
+;;; 30-ivy.el ends here
