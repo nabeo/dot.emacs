@@ -16,5 +16,6 @@
   :init
   :config
 )
+
 (provide '50-docker)
-;;; 50-docker ends here
+;;; 50-docker.el ends here
