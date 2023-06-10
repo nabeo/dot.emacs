@@ -52,6 +52,15 @@
       windows-p (or cygwin-p nt-p meadow-p)
       nox-p     (eq window-system nil))
 
+;; homebrew のプレフィックスを探して、`my/homebrew-prefix' として設定する
+(setq my/homebrew-prefix
+      (let (homebrew-prefix)
+        (dolist (homebrew-prefix-cadidate '("/opt/homebrew"
+                                            "/usr/local/opt"))
+          (if (file-executable-p (concat homebrew-prefix-cadidate "/bin/brew"))
+              (setq homebrew-prefix homebrew-prefix-cadidate)))
+        homebrew-prefix))
+
 ;; http://www.sodan.org/~knagano/emacs/dotemacs.html
 (defmacro exec-if-bound (sexplist)
   "関数が存在する時だけ、実行する。(car の fboundp を調べるだけ)"
