@@ -8,13 +8,9 @@
   ;; (create-lockfiles nil)
   (lsp-auto-guess-root t)
   ;; brew install python-lsp-server
-  (lsp-pyls-server-command (expand-file-name "/usr/local/bin/pylsp"))
-  ;; npm i -g typescript-language-server
-  (lsp-clients-typescript-server "/usr/local/bin/typescript-language-server")
-  ;; npm i -g javascript-typescript-langserver
-  (lsp-clients-javascript-typescript-server "/usr/local/bin/javascript-typescript-stdio")
+  (lsp-pyls-server-command (expand-file-name (concat my/homebrew-prefix "/bin/pylsp")))
   ;; brew install llvm
-  (lsp-clients-clangd-executable "/usr/local/opt/llvm/bin/clangd")
+  (lsp-clients-clangd-executableb (expand-file-name (concat my/homebrew-prefix "/opt/llvm/bin/clangd")))
   ;; https://emacs-lsp.github.io/lsp-mode/page/lsp-terraform-ls/#server-note
   (lsp-disabled-clients '(tfls))
   ;; https://github.com/emacs-lsp/lsp-mode/issues/3713
@@ -31,7 +27,7 @@
   (go-mode . lsp)
   ;; pip install 'python-language-server[all]'
   (python-mode . lsp)
-  ;; npm i -g typescript-language-server; npm i -g typescript
+  ;; https://emacs-lsp.github.io/lsp-mode/page/lsp-typescript/#installation
   (typescript-mode . lsp)
   (javascript-mode . lsp)
   ;; gem install solargraph
