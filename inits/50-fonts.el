@@ -1,3 +1,7 @@
+;;; 50-fonts --- setup font
+;;; Commentary:
+
+;;; Code:
 (let* 
   (
     (asciifont "Monaco")
@@ -37,3 +41,6 @@
   "Return X logical font description (XLFD) of the font at the point."
   (interactive "d")
   (message (xlfd-at pos)))
+
+(provide '50-fonts)
+;;; 50-fonts.el ends here
