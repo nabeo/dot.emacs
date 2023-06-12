@@ -5,6 +5,8 @@
 ;; http://web-mode.org/
 (use-package "web-mode"
   :ensure t
+  :hook
+  (web-mode . lsp)
   :mode
   ("\\.html?\\'" . web-mode)
   ("\\.phtml\\'" . web-mode)
@@ -14,6 +16,7 @@
   ("\\.erb\\'" . web-mode)
   ("\\.mustache\\'" . web-mode)
   ("\\.djhtml\\'" . web-mode)
+  ("\\.ts[x]?\\'" . web-mode)
 )
 
 (provide '50-web)
