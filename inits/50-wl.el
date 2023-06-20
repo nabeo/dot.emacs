@@ -187,7 +187,8 @@
        "^X-Google-Appengine-App-Id:" "^X-Google-Appengine-App-Id-Alias"
        ;; Zuora
        "^X-Zuora-GlobalTenantId:" "^X-Zuora-TenantId:" "^X-Zuora-EntityId:" "^X-Zuora-NotificationId:"
-
+       ;; Salesforce
+       "^X-SFDC-.*:" "^X-SFDCOrgRelay:" "^X-SFDCRelayAddr:" "^X-SFDCRelayPort:" "^X-SFDCTLS:"
        ))
   (setq wl-message-visible-field-list '("^To:" "^Subject:" "^Cc:" "^Date:" "^X-Mailer:"
                                          "^X-Original-Sender:" "^X-Original-From:" "^Delivered-To:" "^Return-Path:"
