@@ -15,8 +15,8 @@
   (lsp-disabled-clients '(tfls))
   ;; https://github.com/emacs-lsp/lsp-mode/issues/3713
   (create-lockfiles nil)
-  ;; brew install kotlin-language-server
-  (lsp-clients-kotlin-server-executable (expand-file-name (concat my/homebrew-prefix "/bin/kotlin-language-server")))
+  ;; M-x lsp-install-server RET kotolin RET or brew install kotolin-language-server
+  (lsp-clients-kotlin-server-executable "kotlin-language-server")
   :init
   (setq gc-cons-threshold 100000000)
   (setq read-process-output-max (* 1024 1024)) ; 1mb
@@ -46,6 +46,8 @@
   (terraform-mode . lsp-deferred)
   ;; for yaml
   (yaml-mode . lsp)
+  ;; for kotlin
+  (kotlin-mode . lsp-deferred)
   ;; use with which-key
   (lsp-mode . lsp-enable-which-key-integration)
   :bind
