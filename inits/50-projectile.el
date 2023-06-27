@@ -63,7 +63,7 @@
 (use-package projectile-direnv
   :disabled t
   :ensure t
-  :if (file-executable-p (concat (getenv "GOPATH") "/bin/direnv"))
+  :if (executable-find "direnv")
   :config
   (add-hook 'pojectile-mode-hook 'projectile-direnv-export-variables)
   )
