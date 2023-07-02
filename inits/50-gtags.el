@@ -3,11 +3,16 @@
 
 ;;; Code:
 (use-package gtags
-  :load-path "/usr/local/opt/global/share/gtags"
+  ;; brew install global
+  :load-path (expand-file-name (concat my/homebrew-prefix "/share/gtags"))
   :if (executable-find "gtags")
   :config
   ;; ruby-modeでgtags.elを使えるようにする
   (add-hook 'ruby-mode-hook
+            '(lambda ()
+               (gtags-mode 1)))
+  ;; kotlin-mode で gtags.el を使う
+  (add-hook 'kotlin-mode-hook
             '(lambda ()
                (gtags-mode 1)))
   )
