@@ -46,8 +46,6 @@
   (terraform-mode . lsp-deferred)
   ;; for yaml
   (yaml-mode . lsp)
-  ;; for kotlin
-  (kotlin-mode . lsp-deferred)
   ;; use with which-key
   (lsp-mode . lsp-enable-which-key-integration)
   :bind
