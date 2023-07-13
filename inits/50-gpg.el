@@ -1,6 +1,11 @@
+;;; 50-gpg --- GnuPG
+;;; Commentary:
+
+;;; Code:
 (use-package epa
   :config
   (epa-file-enable)
+  (setq epa-pinentry-mode 'loopback)
   )
 
 (use-package pinentry
@@ -46,3 +51,6 @@
   :config
   (auth-pass-enable)
   )
+
+(provide '50-gpg)
+;;; 50-gpg.el ends here
