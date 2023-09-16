@@ -2,7 +2,6 @@
 ;;; Commentary:
 
 ;;; Code:
-
 (use-package treesit
   :demand t
   :disabled (< emacs-major-version 29)
