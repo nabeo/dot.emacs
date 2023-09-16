@@ -4,6 +4,7 @@
 ;;; Code:
 (use-package highlight-indent-guides
   :ensure t
+  :disabled (>= emacs-major-version 29)
   :diminish
   :hook
   ((prog-mode yaml-mode) . highlight-indent-guides-mode)
@@ -14,4 +15,4 @@
   )
 
 (provide '50-highlight-indent-guides)
-;;; 50-highlight-indent-guides ends here
+;;; 50-highlight-indent-guides.el ends here
