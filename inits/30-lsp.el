@@ -4,6 +4,7 @@
 ;;; Code:
 (use-package lsp-mode
   :ensure t
+  :disabled t
   :custom
   ;; (create-lockfiles nil)
   (lsp-auto-guess-root t)
@@ -58,6 +59,7 @@
 
 (use-package lsp-ui
   :ensure t
+  :disabled t
   :commands lsp-ui-mode
   :after lsp-mode
   :custom
@@ -108,7 +110,7 @@
 
 (use-package lsp-treemacs
   :ensure nil
-  ;; :disabled
+  :disabled t
   :commands lsp-treemacs-errors-list
   :after lsp-mode
   :config
@@ -117,6 +119,7 @@
 
 (use-package lsp-ivy
   :ensure t
+  :disabled t
   :commands lsp-ivy-workspace-symbol
   :after lsp-mode
   )
@@ -124,6 +127,7 @@
 ;; https://github.com/emacs-lsp/dap-mode
 (use-package dap-mode
   :ensure t
+  :disabled t
   :after (lsp-treemacs)
   :config
   (dap-auto-configure-mode 1)
