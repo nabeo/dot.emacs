@@ -9,9 +9,9 @@
   :init
   ;; treesit-language-source-alist
   (add-to-list
-   'treesit-language-source-alist '(terraform . ("https://github.com/MichaHoffmann/tree-sitter-hcl" nil "dialects/terraform/src")))
+   'treesit-language-source-alist '(terraform . ("https://github.com/MichaHoffmann/tree-sitter-hcl" "main" "dialects/terraform/src")))
   (add-to-list
-   'treesit-language-source-alist '(hcl . ("https://github.com/MichaHoffmann/tree-sitter-hcl" nil "src")))
+   'treesit-language-source-alist '(hcl . ("https://github.com/MichaHoffmann/tree-sitter-hcl" "main" "src")))
   )
 
 (provide '50-tree-sitter)
