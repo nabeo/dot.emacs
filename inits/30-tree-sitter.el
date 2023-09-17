@@ -14,5 +14,12 @@
    'treesit-language-source-alist '(hcl . ("https://github.com/MichaHoffmann/tree-sitter-hcl" "main" "src")))
   )
 
-(provide '50-tree-sitter)
+(use-package treesit-auto
+  :ensure t
+  :disabled (< emacs-major-version 29)
+  :config
+  (setq treesit-auto-install 'prompt)
+  (global-treesit-auto-mode))
+
+(provide '30-tree-sitter)
 ;;; 30-tree-sitter.el ends here
