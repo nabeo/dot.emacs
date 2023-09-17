@@ -11,6 +11,14 @@
    'treesit-language-source-alist '(hcl . ("https://github.com/MichaHoffmann/tree-sitter-hcl" "main" "src")))
   )
 
+(use-package terraform-ts-mode
+  :ensure t
+  :disabled (< emacs-major-version 29)
+  :vc (terraform-ts-mode
+       :fetcher github
+       :repo "kgrotel/terraform-ts-mode")
+  )
+
 (use-package treesit-auto
   :ensure t
   :disabled (< emacs-major-version 29)
