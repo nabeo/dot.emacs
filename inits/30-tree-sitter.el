@@ -1,4 +1,4 @@
-;;; 50-tree-sitter --- treesit
+;;; 30-tree-sitter --- treesit
 ;;; Commentary:
 
 ;;; Code:
@@ -15,4 +15,4 @@
   )
 
 (provide '50-tree-sitter)
-;;; 50-tree-sitter.el ends here
+;;; 30-tree-sitter.el ends here
