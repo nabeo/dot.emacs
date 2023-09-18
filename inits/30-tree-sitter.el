@@ -4,28 +4,31 @@
 ;;; Code:
 (use-package treesit
   :demand t
-  :disabled (< emacs-major-version 29)
-  :init
+  :if (>= emacs-major-version 29)
+  :config
   ;; treesit-language-source-alist
   (add-to-list
    'treesit-language-source-alist '(hcl . ("https://github.com/MichaHoffmann/tree-sitter-hcl" "main" "src")))
+  (setq treesit-font-lock-level 4)
   )
 
 (use-package terraform-ts-mode
   :ensure t
-  :disabled (< emacs-major-version 29)
+  :demand t
+  :if (>= emacs-major-version 29)
   :vc (terraform-ts-mode
-       :fetcher github
-       :repo "kgrotel/terraform-ts-mode")
+       :url "https://github.com/kgrotel/terraform-ts-mode"
+       :branch "main")
   )
 
 (use-package treesit-auto
   :ensure t
-  :disabled (< emacs-major-version 29)
+  :demand t
+  :if (>= emacs-major-version 29)
   :config
   (setq treesit-auto-install 'prompt)
-  (global-treesit-auto-mode)
-  (add-to-list 'treesit-auto-receipe-list
+  ;; treesit-auto-recipe-list
+  (add-to-list 'treesit-auto-recipe-list
                (make-treesit-auto-recipe
                 :lang 'terraform
                 :ts-mode 'terraform-ts-mode
@@ -34,6 +37,9 @@
                 :revision "main"
                 :source-dir "dialects/terraform/src"
                 ))
+  ;; majro-mode-remap-alist
+  (add-to-list 'major-mode-remap-alist '(go-mode . go-ts-mode))
+  (global-treesit-auto-mode)
 )
 
 (provide '30-tree-sitter)
