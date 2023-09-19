@@ -13,6 +13,11 @@
   (json-mode . eglot-ensure)
   (terraform-mode . eglot-ensure)
   (yaml-mode . eglot-ensure)
+  :config
+  ;; for terraform-ls (brew install terraform-ls)
+  (add-to-list
+   'eglot-server-programs
+   `((terraform-mode terraform-ts-mode) . ("terraform-ls" "serve")))
   )
 
 (provide '30-eglot)
