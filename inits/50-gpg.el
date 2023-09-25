@@ -2,6 +2,11 @@
 ;;; Commentary:
 
 ;;; Code:
+(use-package epg
+  :init
+  (fset 'epg-wait-for-status 'ignore)
+)
+
 (use-package epa
   :config
   (epa-file-enable)
