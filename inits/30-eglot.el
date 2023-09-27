@@ -3,6 +3,7 @@
 
 ;;; Code:
 (use-package eglot
+  :commands (eglot-ensure)
   :hook
   (prog-major-mode . eglot-ensure)
   (go-mode . eglot-ensure)
