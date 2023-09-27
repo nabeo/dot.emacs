@@ -18,6 +18,19 @@
   (add-to-list
    'eglot-server-programs
    `((terraform-mode terraform-ts-mode) . ("terraform-ls" "serve")))
+
+  ;; for yaml-language-server (brew install yaml-language-server)
+  (add-to-list
+   'eglot-workspace-configuration
+   ;; https://github.com/redhat-developer/yaml-language-server#language-server-settings
+   '((:yaml.schemaStore.enable . t)
+     (:yaml.schemaStore.url . "https://www.schemastore.org/api/json/catalog.json")
+     (:yaml.format.enable . t)
+     (:yaml.format.singleQuote . t)
+     (:yaml.format.bracketSpacing . t)
+     (:yaml.validate . t)
+     (:yaml.hover . t)
+     (:yaml.completion . t)))
   )
 
 (provide '30-eglot)
