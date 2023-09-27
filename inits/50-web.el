@@ -14,7 +14,6 @@
   ("\\.erb\\'" . web-mode)
   ("\\.mustache\\'" . web-mode)
   ("\\.djhtml\\'" . web-mode)
-  ("\\.ts[x]?\\'" . web-mode)
 )
 
 (provide '50-web)
