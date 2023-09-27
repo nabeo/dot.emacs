@@ -34,5 +34,12 @@
      (:yaml.completion . t)))
   )
 
+(use-package flycheck-eglot
+  :ensure t
+  :after (flycheck eglot)
+  :custom (flycheck-eglot-exclusive nil)
+  :config
+  (global-flycheck-eglot-mode 1))
+
 (provide '30-eglot)
 ;;; 30-eglot.el ends here
