@@ -29,5 +29,11 @@ See `https://github.com/aws-cloudformation/cfn-python-lint'."
   (add-to-list 'flycheck-checkers 'cfn-lint)
   )
 
+(use-package flycheck-inline
+  :ensure t
+  :after (flycheck)
+  :hook
+  (flycheck-mode . flycheck-inline-mode))
+
 (provide '50-flycheck)
 ;;; 50-flycheck.el ends here
