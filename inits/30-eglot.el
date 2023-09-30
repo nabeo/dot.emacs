@@ -8,10 +8,10 @@
   (prog-major-mode . eglot-ensure)
   (go-mode . eglot-ensure)
   (python-mode . eglot-ensure)
-  (typescript-mode . eglot-ensure)
+  (typescript-mode . eglot-ensure)      ; npm i -g typescript-language-server
   (javascript-mode . eglot-ensure)
   (rust-mode . eglot-ensure)
-  (json-mode . eglot-ensure)
+  (json-mode . eglot-ensure)            ; npm i -g vscode-json-languageserver
   (terraform-mode . eglot-ensure)
   (yaml-mode . eglot-ensure)
   :config
