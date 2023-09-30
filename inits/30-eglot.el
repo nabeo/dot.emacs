@@ -37,6 +37,12 @@
   (add-to-list
    'eglot-server-programs
    `((python-mode python-ts-mode) . ("pylsp")))
+
+  ;; for vscode-json-languageserver (npm i -g vscode-json-languageserver)
+  ;; https://www.npmjs.com/package/vscode-json-languageserver
+  (add-to-list
+   'eglot-server-programs
+   `((json-mode json-ts-mode) . ("vscode-json-languageserver" "--stdio")))
   )
 
 (use-package flycheck-eglot
