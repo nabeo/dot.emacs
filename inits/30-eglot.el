@@ -13,6 +13,7 @@
   (json-mode . eglot-ensure)            ; npm i -g vscode-json-languageserver
   (terraform-mode . eglot-ensure)       ; brew install terraform-ls
   (yaml-mode . eglot-ensure)            ; brew install yaml-language-server
+  (markdown-modde . eglot-ensure)       ; brew install marksman
   :config
   ;; for terraform-ls (brew install terraform-ls)
   (add-to-list
@@ -42,6 +43,11 @@
   (add-to-list
    'eglot-server-programs
    `((json-mode json-ts-mode) . ("vscode-json-languageserver" "--stdio")))
+
+  ;; for marksman (brew install marksman)
+  (add-to-list
+   'eglot-server-programs
+   `((markdown-mode) . ("marksman")))
   )
 
 (use-package flycheck-eglot
