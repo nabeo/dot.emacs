@@ -2,14 +2,13 @@
 ;;; Commentary:
 
 ;;; Code:
-(use-package direnv
+(use-package envrc
   :ensure t
   :if (or (executable-find "direnv")
-        (file-executable-p (concat (getenv "GOPATH") "/bin/direnv")))
-  :custom
-  (direnv-always-show-summary t)
-  :config
-  (direnv-mode))
+          (file-executable-p (concat (getenv "GOPATH") "/bin/direnv")))
+  :hook
+  (after-init . envrc-global-mode)
+)
 
 (provide '50-direnv)
 ;;; 50-direnv.el ends here
