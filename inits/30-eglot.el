@@ -32,6 +32,11 @@
      (:yaml.validate . t)
      (:yaml.hover . t)
      (:yaml.completion . t)))
+
+  ;; for python (brew install python-lsp-server)
+  (add-to-list
+   'eglot-server-programs
+   `((python-mode python-ts-mode) . ("pylsp")))
   )
 
 (use-package flycheck-eglot
