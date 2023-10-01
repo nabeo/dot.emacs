@@ -14,6 +14,9 @@
   (terraform-mode . eglot-ensure)       ; brew install terraform-ls
   (yaml-mode . eglot-ensure)            ; brew install yaml-language-server
   (markdown-modde . eglot-ensure)       ; brew install marksman
+  :bind
+  (:map eglot-mode-map
+        ("C-c r" . eglot-rename))
   :config
   ;; for terraform-ls (brew install terraform-ls)
   (add-to-list
