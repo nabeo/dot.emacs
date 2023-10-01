@@ -43,6 +43,10 @@
   (add-to-list
    'eglot-server-programs
    `((json-mode json-ts-mode) . ("vscode-json-languageserver" "--stdio")))
+  (add-to-list
+   'eglot-workspace-configuration
+   ;; https://github.com/microsoft/vscode/tree/main/extensions/json-language-features/server#settings
+   '((:json.format.enable . t)))
 
   ;; for marksman (brew install marksman)
   (add-to-list
