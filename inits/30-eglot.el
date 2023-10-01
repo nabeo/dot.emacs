@@ -8,7 +8,7 @@
   (go-mode . eglot-ensure)              ; brew install gopls
   (python-mode . eglot-ensure)          ; brew install python-lsp-server
   (typescript-mode . eglot-ensure)      ; npm i -g typescript-language-server
-  (javascript-mode . eglot-ensure)
+  (javascript-mode . eglot-ensure)      ; npm i -g typescript-language-server
   (rust-mode . eglot-ensure)
   (json-mode . eglot-ensure)            ; npm i -g vscode-json-languageserver
   (terraform-mode . eglot-ensure)       ; brew install terraform-ls
