@@ -14,6 +14,8 @@
   (terraform-mode . eglot-ensure)       ; brew install terraform-ls
   (yaml-mode . eglot-ensure)            ; brew install yaml-language-server
   (markdown-modde . eglot-ensure)       ; brew install marksman
+  (c-mode . eglot-ensure)
+  (c++-mode . eglot-ensure)
   :bind
   (:map eglot-mode-map
         ("C-c r" . eglot-rename))
@@ -50,6 +52,21 @@
    'eglot-workspace-configuration
    ;; https://github.com/microsoft/vscode/tree/main/extensions/json-language-features/server#settings
    '((:json.format.enable . t)))
+
+  ;; for C/C++
+  (add-to-list
+   'eglot-server-programs
+   '((c-mode c++-mode) . ("clangd"
+                          "-j=8"
+                          "--log=error"
+                          "--malloc-trim"
+                          "--background-index"
+                          "--clang-tidy"
+                          "--cross-file-rename"
+                          "--completion-style=detailed"
+                          "--pch-storage=memory"
+                          "--header-insertion=never"
+                          "--header-insertion-decorators=0")))
 
   ;; for marksman (brew install marksman)
   (add-to-list
