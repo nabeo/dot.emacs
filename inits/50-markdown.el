@@ -4,15 +4,18 @@
 ;;; Code:
 (use-package markdown-mode
   :ensure t
-  :commands (markdown-mode gfm-mode)
   :mode (("\\.mdwn" . markdown-mode)
          ("\\.md" . markdown-mode)
-         ("\\.mdt" . markdown-mode))
+         ("\\.mdt" . markdown-mode)
+         ("README\\.md\\'" . gfm-mode))
+  :bind
+  (:map markdown-mode-map
+        ("C-c C-e" . markdown-do))
   :init
-  (if (executable-find "pandoc")
-    (setq markdown-command "pandoc"))
+  (if (executable-find "multimarkdown")
+    (setq markdown-command "multimarkdown"))
   (add-hook 'markdown-mode-hook
-    #'(lambda () (outline-minor-mode t)))
+            #'(lambda () (outline-minor-mode t)))
   )
 
 ;;; 50-markdown.el ends here
