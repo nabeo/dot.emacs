@@ -4,7 +4,6 @@
 ;;; Code:
 (use-package treesit
   :demand t
-  :if (>= emacs-major-version 29)
   :config
   ;; treesit-language-source-alist
   (add-to-list
@@ -15,7 +14,6 @@
 (use-package terraform-ts-mode
   :ensure t
   :demand t
-  :if (>= emacs-major-version 29)
   :vc (terraform-ts-mode
        :url "https://github.com/kgrotel/terraform-ts-mode"
        :branch "main")
@@ -24,7 +22,6 @@
 (use-package treesit-auto
   :ensure t
   :demand t
-  :if (>= emacs-major-version 29)
   :config
   (setq treesit-auto-install 'prompt)
   ;; treesit-auto-recipe-list
