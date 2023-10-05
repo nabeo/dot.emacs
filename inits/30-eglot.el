@@ -16,6 +16,7 @@
   (markdown-modde . eglot-ensure)       ; brew install marksman
   (c-mode . eglot-ensure)
   (c++-mode . eglot-ensure)
+  (kotlin-mode . eglot-ensure)          ; brew install kotlin-language-server
   :bind
   (:map eglot-mode-map
         ("C-c r" . eglot-rename))
@@ -72,6 +73,11 @@
   (add-to-list
    'eglot-server-programs
    `((markdown-mode) . ("marksman")))
+
+  ;; for kotlin (brew install kotlin-language-server)
+  (add-to-list
+   'eglot-server-programs
+   `((kotlin-mode) . ("kotlin-language-server")))
   )
 
 (use-package flycheck-eglot
