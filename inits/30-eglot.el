@@ -21,6 +21,7 @@
   (:map eglot-mode-map
         ("C-c r" . eglot-rename))
   :config
+  (setq eglot-connect-timeout 60)
   ;; for terraform-ls (brew install terraform-ls)
   (add-to-list
    'eglot-server-programs
