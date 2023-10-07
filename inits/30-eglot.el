@@ -9,7 +9,7 @@
   (python-mode . eglot-ensure)          ; brew install python-lsp-server
   (typescript-mode . eglot-ensure)      ; npm i -g typescript-language-server
   (javascript-mode . eglot-ensure)      ; npm i -g typescript-language-server
-  (rust-mode . eglot-ensure)
+  (rust-mode . eglot-ensure)            ; brew install rust-analyzer
   (json-mode . eglot-ensure)            ; npm i -g vscode-json-languageserver
   (terraform-mode . eglot-ensure)       ; brew install terraform-ls
   (yaml-mode . eglot-ensure)            ; brew install yaml-language-server
