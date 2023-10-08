@@ -5,6 +5,8 @@
 ;; Enable vertico
 (use-package vertico
   :ensure t
+  :hook
+  (after-init . vertico-mode)
   :init
   (vertico-mode)
 
@@ -23,6 +25,8 @@
 
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
+  :hook
+  (after-init . savehist-mode)
   :init
   (savehist-mode))
 
@@ -176,6 +180,8 @@
 ;; Enable rich annotations using the Marginalia package
 (use-package marginalia
   :ensure t
+  :hook
+  (after-init . marginalia-mode)
   ;; Bind `marginalia-cycle' locally in the minibuffer.  To make the binding
   ;; available in the *Completions* buffer, add it to the
   ;; `completion-list-mode-map'.
