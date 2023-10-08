@@ -13,6 +13,7 @@
   :ensure t
   :mode
   ("Dockerfile\\'" . dockerfile-mode)
+  ("Dockerfile.*\\'" . dockerfile-mode)
   :init
   :config
 )
