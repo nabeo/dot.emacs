@@ -29,8 +29,8 @@
   :bind
   ((:map git-gutter+-mode-map
          ;; Jump between hunks
-         ("C-x n" . git-gutter+-next-hunk)
-         ("C-x p" . git-gutter+-previous-hunk)
+         ("M-n" . git-gutter+-next-hunk)
+         ("M-p" . git-gutter+-previous-hunk)
          ;; Act on hunks
          ("C-x v =" . git-gutter+-show-hunk)
          ("C-x r" . git-gutter+-revert-hunks)
