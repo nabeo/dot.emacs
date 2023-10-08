@@ -32,8 +32,8 @@
   (add-to-list 'projectile-globally-ignored-files ".gitkeep")
 
   ;; use ivy/counsel
-  (setq projectile-completion-system 'ivy)
-  (setq projectile-switch-project-action 'counsel-projectile-find-file)
+  ;; (setq projectile-completion-system 'ivy)
+  ;; (setq projectile-switch-project-action 'counsel-projectile-find-file)
   )
 
 ;; use with ibuffer-projectile

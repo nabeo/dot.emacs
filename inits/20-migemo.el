@@ -28,6 +28,7 @@
 
 (use-package swiper-migemo
   :load-path "~/.emacs.d/site-lisp/swiper-migemo"
+  :disabled t
   :config
   (migemo-kill)
   (migemo-init)

@@ -4,6 +4,7 @@
 ;;; Code:
 (use-package ivy
   :ensure t
+  :disabled t
   :bind
   (:map ivy-minibuffer-map
     ;; ESC でミニバッファを閉じる
@@ -23,6 +24,7 @@
 
 (use-package counsel
   :ensure t
+  :disabled t
   :diminish ivy-mode counsel-mode
   :defines
   (projectile-completion-system magit-completing-read-function)
@@ -55,6 +57,7 @@
 
 (use-package ivy-hydra
   :ensure t
+  :disabled t
   :custom
   (with-eval-after-load 'ivy
     ;; M-o を ivy-hydra-read-action に割り当てる
@@ -63,6 +66,7 @@
 
 (use-package ivy-xref
   :ensure t
+  :disabled t
   :init
   ;; xref initialization is different in Emacs 27 - there are two different
   ;; variables which can be set rather than just one
@@ -82,6 +86,7 @@
 
 (use-package nerd-icons-ivy-rich
   :ensure t
+  :disabled t
   :init
   (nerd-icons-ivy-rich-mode 1)
   (ivy-rich-mode 1))
@@ -91,6 +96,7 @@
 
 (use-package swiper
   :ensure t
+  :disabled t
   :bind
   ("C-s" . 'swiper)
   :custom
@@ -102,19 +108,20 @@
   )
 
 (use-package avy
-  :ensure t)
+  :ensure t :disabled t)
 
 (use-package counsel-projectile
   :ensure t
+  :disabled t
   :init
   (counsel-projectile-mode 1)
   )
 
 (use-package ivy-yasnippet
-  :ensure t)
+  :ensure t :disabled t)
 
 (use-package ivy-pass
-  :ensure t)
+  :ensure t :disabled t)
 
 (provide '30-ivy)
 ;;; 30-ivy.el ends here
