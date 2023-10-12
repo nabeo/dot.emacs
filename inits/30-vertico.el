@@ -177,6 +177,43 @@
   ;; (setq consult-project-function nil)
 )
 
+(use-package consult-company
+  :ensure t
+  :after (consult company)
+  :bind
+  (:map company-mode-map
+        ([remap completion-at-point] . consult-company))
+  )
+
+(use-package consult-eglot
+  :ensure t
+  :after (consult eglot)
+  :bind
+  ([remap xref-find-apropos] . consult-eglot-symbols)
+  )
+
+(use-package consult-ghq
+  :ensure t
+  :if (executable-find "ghq")
+  :config
+  (setq consult-ghq-find-function #'consult-find)
+  (setq consult-ghq-grep-function #'consult-grep)
+  )
+
+(use-package consult-ls-git
+  :ensure t
+  :bind
+  (("C-c g f" . #'consult-ls-git)
+   ("C-c g F" . #'consult-ls-git-other-window))
+  )
+
+(use-package consult-ls-git
+  :ensure t
+  :bind
+  (("C-c g f" . #'consult-ls-git)
+   ("C-c g F" . #'consult-ls-git-other-window))
+  )
+
 ;; Enable rich annotations using the Marginalia package
 (use-package marginalia
   :ensure t
