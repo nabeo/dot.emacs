@@ -92,7 +92,8 @@
   (ivy-rich-mode 1))
 
 (use-package ivy-rich
-  :ensure t)
+  :ensure t
+  :disabled t)
 
 (use-package swiper
   :ensure t
