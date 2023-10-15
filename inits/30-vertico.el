@@ -45,6 +45,12 @@
         (expand-file-name "data/history" user-emacs-directory))
   (savehist-mode))
 
+(use-package project
+  :init
+  (setq project-list-file
+        (expand-file-name "data/projects" user-emacs-directory))
+  )
+
 ;; A few more useful configurations...
 (use-package emacs
   :init
