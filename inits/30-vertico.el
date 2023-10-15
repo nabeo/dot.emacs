@@ -41,6 +41,8 @@
   :hook
   (after-init . savehist-mode)
   :init
+  (setq savehist-file
+        (expand-file-name "data/history" user-emacs-directory))
   (savehist-mode))
 
 ;; A few more useful configurations...
