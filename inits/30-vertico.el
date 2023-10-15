@@ -23,6 +23,19 @@
   (setq vertico-cycle t)
   )
 
+;; Configure directory extension.
+(use-package vertico-directory
+  :after vertico
+  :ensure nil
+  ;; More convenient directory navigation commands
+  :bind (:map vertico-map
+              ("RET" . vertico-directory-enter)
+              ("DEL" . vertico-directory-delete-char)
+              ("C-l" . vertico-directory-delete-word))
+  ;; Tidy shadowed file names
+  :hook (rfn-eshadow-update-overlay . vertico-directory-tidy)
+  )
+
 ;; Persist history over Emacs restarts. Vertico sorts by history position.
 (use-package savehist
   :hook
