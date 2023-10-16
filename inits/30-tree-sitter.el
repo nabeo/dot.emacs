@@ -36,7 +36,7 @@
                 ))
   ;; majro-mode-remap-alist
   (add-to-list 'major-mode-remap-alist '(go-mode . go-ts-mode))
-  (add-to-list 'major-mode-remap-alist '(terraform-mode . terraform-ts-mode))
+  ;; (add-to-list 'major-mode-remap-alist '(terraform-mode . terraform-ts-mode))
   (add-to-list 'major-mode-remap-alist '(yaml-mode . yaml-ts-mode))
   (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
   (add-to-list 'major-mode-remap-alist '(rust-mode . rust-ts-mode))
