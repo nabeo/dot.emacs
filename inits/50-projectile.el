@@ -55,18 +55,5 @@
   (setq projectile-git-autofetch-projects :current)
   )
 
-;; use projectile-direnv
-;; https://github.com/christianromney/projectile-direnv
-;; go get github.com/direnv/direnv => $GOPATH/bin/direnv
-;; this project is archived
-;; use [emacs-direnv project](https://github.com/wbolster/emacs-direnv)
-(use-package projectile-direnv
-  :disabled t
-  :ensure t
-  :if (executable-find "direnv")
-  :config
-  (add-hook 'pojectile-mode-hook 'projectile-direnv-export-variables)
-  )
-
 (provide '50-projectile)
 ;;; 50-projectile.el ends here
