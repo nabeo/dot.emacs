@@ -44,27 +44,6 @@
   (setq rbenv-installation-dir (expand-file-name "~/.rbenv"))
   )
 
-(use-package ruby-style
-  :ensure ruby-additional
-  :disabled t
-  :config
-  (add-hook 'c-mode-hook 'ruby-style-c-mode)
-  (add-hook 'c++-mode-hook 'ruby-style-c-mode)
-  )
-
-(use-package ruby-block
-  :ensure t
-  :disabled t
-  :config
-  (ruby-block-mode t)
-  ;; do overlay
-  ;; (setq ruby-block-highlight-toggle 'overlay)
-  ;; display to minibuffer
-  ;; (setq ruby-block-highlight-toggle 'minibuffer)
-  ;; do overlay and display to minibuffer
-  (setq ruby-block-highlight-toggle t)
-  )
-
 (use-package ruby-electric
   :ensure t
   :config
