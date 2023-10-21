@@ -2,13 +2,6 @@
 ;;; Commentary:
 
 ;;; Code:
-(use-package all-the-icons
-  :ensure t
-  :disabled t
-  :config
-  (add-to-list 'custom-theme-load-path (concat user-emacs-directory "themes"))
-  )
-
 (use-package nerd-icons
   :ensure t)
 
@@ -52,14 +45,6 @@
   (line-number-mode 0)
   (column-number-mode 0)
 )
-
-(use-package powerline
-  :ensure t
-  :after (all-the-icons)
-  :disabled t
-  :config
-  (powerline-default-theme))
-
 
 (provide '10-theme)
 ;;; 10-theme.el ends here
