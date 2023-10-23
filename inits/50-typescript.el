@@ -19,6 +19,7 @@
   (typescript-mode . nodenv-mode)
   :init
   (add-to-list 'exec-path (expand-file-name "~/.nodenv/shims"))
+  (setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.nodenv/shims")))
   )
 
 ;; for npm
