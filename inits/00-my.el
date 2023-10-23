@@ -182,6 +182,10 @@
     (setenv "PATH" (concat (getenv "PATH") ":" i)))
     )
 
+;; for homebrew
+(setenv "PATH" (concat (getenv "PATH") ":" (concat my/homebrew-prefix "/bin")))
+(add-to-list 'exec-path (concat my/homebrew-prefix "/bin"))
+
 ;; スケスケ窓
 ;; (setq default-frame-alist
 ;; 	  (append
