@@ -18,5 +18,8 @@
   :config
 )
 
+(use-package docker-compose-mode
+  :ensure t)
+
 (provide '50-docker)
 ;;; 50-docker.el ends here
