@@ -234,13 +234,6 @@
    ("C-c g F" . #'consult-ls-git-other-window))
   )
 
-(use-package consult-ls-git
-  :ensure t
-  :bind
-  (("C-c g f" . #'consult-ls-git)
-   ("C-c g F" . #'consult-ls-git-other-window))
-  )
-
 ;; Enable rich annotations using the Marginalia package
 (use-package marginalia
   :ensure t
