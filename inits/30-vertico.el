@@ -212,6 +212,10 @@
   :custom
   (consult-git-log-grep-open-function #'magit-show-commit))
 
+(use-package consult-projectile
+  :ensure t
+  :requires (projectile))
+
 (use-package consult-eglot
   :ensure t
   :after (consult eglot)
