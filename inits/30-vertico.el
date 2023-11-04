@@ -206,6 +206,12 @@
         ([remap completion-at-point] . consult-company))
   )
 
+(use-package consult-git-log-grep
+  :ensure t
+  :requires (magit-diff)
+  :custom
+  (consult-git-log-grep-open-function #'magit-show-commit))
+
 (use-package consult-eglot
   :ensure t
   :after (consult eglot)
