@@ -11,6 +11,7 @@
   :bind
   (:map tab-prefix-map
     ("c" . tab-new)
+    ("C-c" . tab-new)
     ("SPC" . tab-bar-select-tab-by-name)
     ("n" . tab-bar-switch-to-next-tab)
     ("C-n" . tab-bar-switch-to-next-tab)
