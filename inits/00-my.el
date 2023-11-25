@@ -121,9 +121,8 @@
 ;; ビジブル・ベルを使う
 ;; (setq visible-bell t)
 
-;; タブは4文字
-;; (setq default-tab-width 4)
-(setq-default tab-width 4)
+;; タブは2文字
+(setq-default tab-width 2)
 ;; C-nで新しい行を追加しない
 (setq next-line-add-newlines nil)
 ;; 終了時にオートセーブファイルを消す
