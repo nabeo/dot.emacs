@@ -41,8 +41,31 @@
   (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
   (add-to-list 'major-mode-remap-alist '(rust-mode . rust-ts-mode))
   (add-to-list 'major-mode-remap-alist '(dockerfile-mode . dockerfile-ts-mode))
+  (add-to-list 'major-mode-remap-alist '(css-mode . css-ts-mode))
+  (add-to-list 'major-mode-remap-alist '(typescript-mode . typescript-ts-mode))
+  (add-to-list 'major-mode-remap-alist '(json-mode . json-ts-mode))
+  (add-to-list 'major-mode-remap-alist '(tsx-mode . tsx-ts-mode))
   (global-treesit-auto-mode)
 )
+
+(use-package combobulate
+  :ensure t
+  :vc (combobulate
+       :url "https://github.com/mickeynp/combobulate"
+       :branch "master")
+  :preface
+  ;; You can customize Combobulate's key prefix here.
+  ;; Note that you may have to restart Emacs for this to take effect!
+  (setq combobulate-key-prefix "C-c t")
+  :hook
+  ((python-ts-mode . combobulate-mode)
+   (js-ts-mode . combobulate-mode)
+   (css-ts-mode . combobulate-mode)
+   (yaml-ts-mode . combobulate-mode)
+   (json-ts-mode . combobulate-mode)
+   (typescript-ts-mode . combobulate-mode)
+   (tsx-ts-mode . combobulate-mode))
+  )
 
 (provide '30-tree-sitter)
 ;;; 30-tree-sitter.el ends here
