@@ -8,5 +8,8 @@
     (k8s-mode . yas-minor-mode)
     )
 
+(use-package kubedoc
+    :ensure t)
+
 (provide '50-k8s)
 ;;; 50-k8s.el ends here
