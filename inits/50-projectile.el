@@ -6,8 +6,12 @@
   :ensure t
   :bind
   (:map projectile-mode-map
-    ("C-c p" . projectile-command-map)
-    )
+        ("C-c p" . projectile-command-map)
+        )
+  (:map projectile-command-map
+        ("C-." . projectile-next-project-buffer)
+        ("C-," . projectile-previous-project-buffer)
+        )
   :hook
   ((yaml-mode prog-mode markdwon-mode gfm-mode python-mode) . projectile-mode)
   :init
