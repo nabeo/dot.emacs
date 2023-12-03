@@ -38,6 +38,12 @@
   ;; use ivy/counsel
   ;; (setq projectile-completion-system 'ivy)
   ;; (setq projectile-switch-project-action 'counsel-projectile-find-file)
+
+  (cond ((featurep 'vterm)
+         ;; projectile-next-buffer/prev-buffer の対象から vterm バッファーをはずす
+         (customize-set-variable 'projectile-globally-ignored-modes
+                                 (let ((newlist projectile-globally-ignored-modes))
+                                   (add-to-list 'newlist "vterm-mode")))))
   )
 
 ;; use with ibuffer-projectile
