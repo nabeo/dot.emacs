@@ -11,5 +11,12 @@
 (use-package kubedoc
     :ensure t)
 
+(use-package kubel
+  :ensure t
+  :after (vterm)
+  :config
+  (kubel-vterm-setup)
+  )
+
 (provide '50-k8s)
 ;;; 50-k8s.el ends here
