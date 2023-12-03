@@ -3,13 +3,13 @@
 
 ;;; Code:
 (use-package k8s-mode
-    :ensure t
-    :hook
-    (k8s-mode . yas-minor-mode)
-    )
+  :ensure t
+  :hook
+  (k8s-mode . yas-minor-mode)
+  )
 
 (use-package kubedoc
-    :ensure t)
+  :ensure t)
 
 (use-package kubel
   :ensure t
