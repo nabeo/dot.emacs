@@ -4,10 +4,13 @@
 ;;; Code:
 (use-package vterm
   :ensure t
+  :bind
+  (:map vterm-mode-map
+        ("<deletechar>" . #'vterm-send-backspace)
+        ("C-h" . #'vterm-send-backspace))
   :custom
   (vterm-max-scrollback 10000000)
   (vterm-buffer-name-string "vterm: %s")
-  (vterm-keymap-exceptions '("C-h" "C-c" "C-x" "C-u" "C-g" "C-h" "C-l" "M-x" "M-o" "C-y" "M-y"))
   )
 
 (use-package vterm-toggle
