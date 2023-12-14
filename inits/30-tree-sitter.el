@@ -21,9 +21,9 @@
 
 (use-package treesit-auto
   :ensure t
-  :demand t
+  :custom
+  (treesit-auto-install 'prompt)
   :config
-  (setq treesit-auto-install 'prompt)
   ;; treesit-auto-recipe-list
   (add-to-list 'treesit-auto-recipe-list
                (make-treesit-auto-recipe
@@ -34,17 +34,7 @@
                 :revision "main"
                 :source-dir "dialects/terraform/src"
                 ))
-  ;; majro-mode-remap-alist
-  (add-to-list 'major-mode-remap-alist '(go-mode . go-ts-mode))
-  ;; (add-to-list 'major-mode-remap-alist '(terraform-mode . terraform-ts-mode))
-  (add-to-list 'major-mode-remap-alist '(yaml-mode . yaml-ts-mode))
-  (add-to-list 'major-mode-remap-alist '(python-mode . python-ts-mode))
-  (add-to-list 'major-mode-remap-alist '(rust-mode . rust-ts-mode))
-  (add-to-list 'major-mode-remap-alist '(dockerfile-mode . dockerfile-ts-mode))
-  (add-to-list 'major-mode-remap-alist '(css-mode . css-ts-mode))
-  (add-to-list 'major-mode-remap-alist '(typescript-mode . typescript-ts-mode))
-  (add-to-list 'major-mode-remap-alist '(json-mode . json-ts-mode))
-  (add-to-list 'major-mode-remap-alist '(tsx-mode . tsx-ts-mode))
+  (treesit-auto-add-to-auto-mode-alist 'all)
   (global-treesit-auto-mode)
 )
 
