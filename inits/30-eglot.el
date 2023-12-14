@@ -17,6 +17,7 @@
   (c-mode . eglot-ensure)
   (c++-mode . eglot-ensure)
   (kotlin-mode . eglot-ensure)          ; brew install kotlin-language-server
+  (dockerfile-mode . eglot-ensure)      ; brew install dockerfile-language-server
   :bind
   (:map eglot-mode-map
         ("C-c r" . eglot-rename))
