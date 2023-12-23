@@ -60,7 +60,7 @@
 (setq my/homebrew-prefix
       (let (homebrew-prefix)
         (dolist (homebrew-prefix-cadidate '("/opt/homebrew"
-                                            "/usr/local/opt"))
+                                            "/usr/local"))
           (if (file-executable-p (concat homebrew-prefix-cadidate "/bin/brew"))
               (setq homebrew-prefix homebrew-prefix-cadidate)))
         homebrew-prefix))
