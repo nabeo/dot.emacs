@@ -6,7 +6,6 @@
   :ensure t
   :bind
   (:map vterm-mode-map
-        ("<deletechar>" . #'vterm-send-backspace)
         ("C-h" . #'vterm-send-backspace))
   :custom
   (vterm-max-scrollback 10000000)
