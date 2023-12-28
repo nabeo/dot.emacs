@@ -8,6 +8,8 @@
   ;; treesit-language-source-alist
   (add-to-list
    'treesit-language-source-alist '(hcl . ("https://github.com/MichaHoffmann/tree-sitter-hcl" "main" "src")))
+  (add-to-list
+   'treesit-language-source-alist '(elisp . ("https://github.com/Wilfred/tree-sitter-elisp" "main")))
   (setq treesit-font-lock-level 4)
   )
 
