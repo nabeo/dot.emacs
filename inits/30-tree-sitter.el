@@ -54,7 +54,9 @@
    (yaml-ts-mode . combobulate-mode)
    (json-ts-mode . combobulate-mode)
    (typescript-ts-mode . combobulate-mode)
-   (tsx-ts-mode . combobulate-mode))
+   (tsx-ts-mode . combobulate-mode)
+   (go-ts-mode . combobulate-mode)
+   (toml-ts-mode . combobulate-mode))
   )
 
 (provide '30-tree-sitter)
