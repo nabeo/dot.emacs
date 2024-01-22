@@ -38,6 +38,7 @@
 
 (use-package rbenv
   :ensure t
+  :disabled t
   :config
   (setenv "PATH" (concat (expand-file-name "~/.rbenv/shims") ":" (getenv "PATH")))
   (add-to-list 'exec-path (expand-file-name "~/.rbenv/shims"))
