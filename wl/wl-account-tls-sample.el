@@ -33,3 +33,7 @@
 (setq wl-trash-folder "%[Gmail]/すべてのメール")
 (setq wl-fcc          "%[Gmail]/送信済みメール")
 (setq wl-default-spec "%INBOX")
+
+;; signature
+;; (setq mail-signature-file (expand-file-name (concat user-emacs-directory "wl/signature")))
+;; (setq signature-file-name mail-signature-file)

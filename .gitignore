@@ -41,6 +41,7 @@
 /wl/certs
 /wl/#bbdb-list#
 /wl/.#bbdb-list
+/wl/signature
 /cocoa/ac
 /cocoa/elpa
 /cocoa/elpa.back
