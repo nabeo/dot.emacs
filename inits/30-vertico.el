@@ -214,7 +214,12 @@
 
 (use-package consult-projectile
   :ensure t
-  :requires (projectile))
+  :bind (
+         ([remap projectile-find-file] . consult-projectile-find-file)
+         ([remap projectile-switch-project] . consult-projectile-switch-project)
+         ([remap projectile-recentf] . consult-projectile-recentf)
+         ([remap projectile-find-dir] . consult-projectile-find-dir)
+         ))
 
 (use-package consult-eglot
   :ensure t
