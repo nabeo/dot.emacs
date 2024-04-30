@@ -9,19 +9,6 @@
   ("\\.tsx\\'" . typescript-ts-mode)
   )
 
-;; brew install nodenv
-(use-package nodenv
-  ;; nodenv mode is gone
-  :ensure nil
-  :load-path "~/.emacs.d/site-lisp/nodenv"
-  :hook
-  (js-mode . nodenv-mode)
-  (typescript-mode . nodenv-mode)
-  :init
-  (add-to-list 'exec-path (expand-file-name "~/.nodenv/shims"))
-  (setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.nodenv/shims")))
-  )
-
 ;; for npm
 (use-package npm
   :ensure t
