@@ -5,8 +5,8 @@
 (use-package typescript-mode
   :ensure t
   :mode
-  ("\\.ts\\'" . typescript-ts-mode)
-  ("\\.tsx\\'" . typescript-ts-mode)
+  ("\\.ts\\'" . typescript-mode)
+  ("\\.tsx\\'" . typescript-mode)
   )
 
 ;; for npm

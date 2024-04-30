@@ -37,6 +37,7 @@
                 :source-dir "dialects/terraform/src"
                 ))
   (treesit-auto-add-to-auto-mode-alist 'all)
+  (delete 'typescript treesit-auto-langs)
   (global-treesit-auto-mode)
 )
 
