@@ -7,6 +7,8 @@
   :mode
   ("\\.ts\\'" . typescript-mode)
   ("\\.tsx\\'" . typescript-mode)
+  :custom
+  (typescript-indent-level 2)
   )
 
 ;; for npm
