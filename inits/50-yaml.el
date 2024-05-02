@@ -6,8 +6,8 @@
   :ensure t
   :init
   :mode
-  ("\\.yaml\\'" . yaml-mode)
-  ("\\.yml\\'" . yaml-mode)
+  ("\\.yaml\\'" . yaml-ts-mode)
+  ("\\.yml\\'" . yaml-ts-mode)
   :config
   ;; https://www.emacswiki.org/emacs/CfnLint
   (define-derived-mode cfn-yaml-mode yaml-mode
