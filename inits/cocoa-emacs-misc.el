@@ -16,16 +16,6 @@
 ;; kill-ringには属性を保持させる
 ;; (setq yank-excluded-properties t)
  
-;; ウィンドウサイズの設定
-(if window-system
-    (progn
-      (setq initial-frame-alist
-            '((top . 0.0)
-              (left . 0.5)
-              (width . 0.5)
-              (height . 1.0)
-              ))))
-
 ;; browse-urlをopenに割り当てる
 (setq browse-url-browser-function 'browse-url-generic)
 (setq browse-url-generic-program

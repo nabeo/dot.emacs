@@ -161,11 +161,15 @@
 (add-to-list 'exec-path (concat my/homebrew-prefix "/bin"))
 
 ;; frame の設定
-(setq default-frame-alist
-	    (append
-       (list
-		    '(alpha . 95)
-		    ) default-frame-alist))
+(if window-system
+    (progn
+      (setq initial-frame-alist
+            '((top . 0.0)
+              (left . 0.5)
+              (width . 0.5)
+              (height . 1.0)
+              (alpha . (95 . 20))
+              ))))
 
 ;; アンチアンチエイリアス
 ;;(setq mac-allow-anti-aliasing nil)
