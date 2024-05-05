@@ -32,13 +32,6 @@
       (if (file-exists-p "/usr/bin/open")
           "/usr/bin/open"))
 
-;; emacs 23.2からの機能
-(when (>= emacs-minor-version 2)
-  (setq default-file-name-coding-system "utf-8-hfs")
-  ;; Shift+何かを入力したときにShiftキーをIMに渡す
-  ;; (mac-add-key-passed-to-system 'shift)
-  )
-
 ;; Quartz 2Dのアンチエイリアスを利用する
 (setq mac-allow-anti-aliasing t)
 
