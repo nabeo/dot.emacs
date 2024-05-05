@@ -11,7 +11,7 @@
          (let ((my/cargo-bin (expand-file-name "~/.cargo/bin")))
            (unless (member my/cargo-bin exec-path)
              (setq exec-path (cons my/cargo-bin exec-path))
-             (setenv "PATH" (concat (getenv "PATH") ":" my/cargo-bin)))))
+             (setenv "PATH" (concat my/cargo-bin ":" (getenv "PATH"))))))
         )
   :config
   (add-hook 'racer-mode-hook 'eldoc-mode)

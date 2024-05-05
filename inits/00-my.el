@@ -148,7 +148,7 @@
   (unless (member i exec-path)
     (setq exec-path (cons i exec-path)))
   (unless (member i (split-string (getenv "PATH")))
-    (setenv "PATH" (concat (getenv "PATH") ":" i)))
+    (setenv "PATH" (concat i ":" (getenv "PATH"))))
     )
 
 ;; frame の設定

@@ -7,7 +7,7 @@
   :hook
   (after-init . global-mise-mode)
   :init
-  (setenv "PATH" (concat (getenv "PATH") ":" (expand-file-name "~/.local/share/mise/shims")))
+  (setenv "PATH" (concat (expand-file-name "~/.local/share/mise/shims") ":" (getenv "PATH")))
   (add-to-list 'exec-path (expand-file-name "~/.local/share/mise/shims"))
 )
 
