@@ -22,11 +22,14 @@
 ;; (setq yank-excluded-properties t)
  
 ;; ウィンドウサイズの設定
-(if window-system 
+(if window-system
     (progn
-      (setq initial-frame-alist 
-            '((width . 90) (height . 50)
-              (top . 0) (left . 0)))))
+      (setq initial-frame-alist
+            '((top . 0.0)
+              (left . 0.5)
+              (width . 0.5)
+              (height . 1.0)
+              ))))
 
 ;; browse-urlをopenに割り当てる
 (setq browse-url-browser-function 'browse-url-generic)
