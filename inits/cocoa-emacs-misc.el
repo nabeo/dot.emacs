@@ -2,11 +2,6 @@
 (setq ns-command-modifier (quote meta))
 (setq ns-alternate-modifier (quote super))
 
-;; ショートカットキーをシステムに取られないようにする
-(setq mac-pass-control-to-system nil)
-(setq mac-pass-command-to-system nil)
-(setq mac-pass-option-to-system nil)
-
 ;; D'n'Dでファイルを開く
 (define-key global-map [ns-drag-file] 'ns-find-file)
 ;; D'n'Dでファイルを開くときに新しい窓を開かない
