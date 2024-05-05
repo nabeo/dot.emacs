@@ -42,8 +42,6 @@
   (doom-modeline-time t)
   (doom-modeline-env-version t)
   :config
-  (line-number-mode 0)
-  (column-number-mode 0)
 )
 
 (provide '10-theme)
