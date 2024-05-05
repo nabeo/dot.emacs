@@ -1,6 +1,12 @@
 ;;; 50-term --- terminal emulator for emacs
 ;;; Commentary:
 
+;; in your .zshrc
+;; if [[ "$INSIDE_EMACS" = 'vterm' ]] && [[ -n ${EMACS_VTERM_PATH} ]] && [[ -f ${EMACS_VTERM_PATH}/etc/emacs-vterm-zsh.sh ]]; then
+;;   source ${EMACS_VTERM_PATH}/etc/emacs-vterm-zsh.sh
+;;   print -Pn "\e]2;%m:%2~\a"
+;; fi
+
 ;;; Code:
 (use-package vterm
   :ensure t
