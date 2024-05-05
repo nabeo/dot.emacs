@@ -4,6 +4,9 @@
 ;;; Code:
 (use-package mise
   :ensure t
+  :if (and
+       (executable-find "mise")
+       (file-exists-p "~/.local/share/mise/shims"))
   :hook
   (after-init . global-mise-mode)
   :init
