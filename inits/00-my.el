@@ -65,15 +65,6 @@
               (setq homebrew-prefix homebrew-prefix-cadidate)))
         homebrew-prefix))
 
-;; http://www.sodan.org/~knagano/emacs/dotemacs.html
-(defmacro exec-if-bound (sexplist)
-  "関数が存在する時だけ、実行する。(car の fboundp を調べるだけ)"
-  `(if (fboundp (car ',sexplist))
-       ,sexplist))
-(defmacro defun-add-hook (hookname &rest sexplist)
-  "add-hook のエイリアス。引数を関数にバックして hook に追加する。"
-  `(add-hook ,hookname
-             (function (lambda () ,@sexplist))))
 (defun load-safe (loadlib)
   "安全な load。読み込みに失敗してもそこで止まらない。"
   (let ((load-status (load loadlib t)))
@@ -81,24 +72,8 @@
         (message (format "[load-safe] failed %s" loadlib)))
     load-status))
 
-;; ネットワークインターフェースにアドレスが付いているかチェックする
-(defun have-network-interface-p (network-interface-names)
-  "Return t if at least one NETWORK-INTERFACE-NAMES has a network address."
-  (interactive "p")
-  (dolist (i network-interface-names)
-    (if (car (network-interface-info i))
-     (return t))))
-
 ;; load-pothの追加設定
 (my-load-path "/opt/local/share/emacs/site-lisp")
-
-;; デフォルトの窓の大きさを変更する
-;;(setq default-frame-alist
-;;      (append
-;;       '((width . 300))
-;;       '((height . 100))
-;;       default-frame-alist))
-
 
 ;;(keyboard-translate ?\C-h ?\C-?)
 
@@ -185,15 +160,12 @@
 (setenv "PATH" (concat (getenv "PATH") ":" (concat my/homebrew-prefix "/bin")))
 (add-to-list 'exec-path (concat my/homebrew-prefix "/bin"))
 
-;; スケスケ窓
-;; (setq default-frame-alist
-;; 	  (append
-;; 	   (list
-;; 		; スケスケ度は0.0〜1.0で設定
-;; 		'(active-alpha . 0.95) ; 窓が最前列にあるときはスケスケにならない
-;; 		'(inactive-alpha . 0.2) ; 窓が後列にあるときはスケスケになる
-;; 		) default-frame-alist)
-;; 	  )
+;; frame の設定
+(setq default-frame-alist
+	    (append
+       (list
+		    '(alpha . 95)
+		    ) default-frame-alist))
 
 ;; アンチアンチエイリアス
 ;;(setq mac-allow-anti-aliasing nil)
