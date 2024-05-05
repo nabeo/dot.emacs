@@ -2,32 +2,33 @@
 ;;; Commentary:
 
 ;;; Code:
-(let* 
-  (
-    (asciifont "Monaco")
-    ;; (asciifont "Source Han Mono-12:weight=normal:slant=normal")
-    (jpfont "Hiragino Kaku Gothic ProN")
-    ;; (jpfont "Hiragino Maru Gothic ProN")
-    ;; (jpfont "Source Han Mono-12:weight=normal:slant=normal")
-    )
 
-  ;; ASCII フォントをベースにしてフォントセットを作る
-  (create-fontset-from-ascii-font
-    asciifont
-    nil
-    "myfontset")
-
-  ;; unicode を丸ごと jpfont で設定する
-  (set-fontset-font
-    "fontset-myfontset"
-    'unicode
-    jpfont
-    nil
-    'append)
-
-  ;; 組み上げたフォントセットをデフォルトフレームに設定する
-  (add-to-list 'default-frame-alist '(font . "fontset-myfontset"))
-  )
+(progn
+  (let* ((my/fontfamilies
+          '(;; HackGen
+            ;; https://github.com/yuru7/HackGen
+            "HackGen Console NF"
+            ;; Moralerspace
+            ;; https://github.com/yuru7/moralerspace
+            "Moralerspace Neon HWNF"
+            "Moralerspace Argon HWNF"
+            "Moralerspace Xenon HWNF"
+            "Moralerspace Radon HWNF"
+            "Moralerspace Krypton HWNF"
+            ;; Cica
+            ;; https://github.com/miiton/Cica
+            "Cica"
+            ;; Source Han Code JP
+            ;; https://github.com/adobe-fonts/source-han-code-jp
+            "Source Han Code JP"))
+         (my/fontfamily (elt my/fontfamilies (- (random (length my/fontfamilies)) 1))))
+    (if (find-font (font-spec :name my/fontfamily))
+        (set-face-attribute 'default nil :family my/fontfamily :height 140)
+      (progn
+        (create-fontset-from-ascii-font "Monaco" nil "fallback")
+        (set-fontset-font "fontset-fallback" 'unicode "Hiragino Kaku Gothic ProN" nil 'append)
+        (add-to-list 'default-frame-alist '(font . "fontset-fallback"))))))
+(setq-default line-spacing 0)
 
 ;; カーソル位置のフォントを判別する
 ;; https://qiita.com/j8takagi/items/01aecdd28f87cdd3cd2c
