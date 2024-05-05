@@ -11,4 +11,5 @@
   (add-info-path "/opt/local/share/info") ; for macports infos
   (add-info-path "~/local/gtags/share/info") ; for local installed global
   (add-info-path "~/local/idutils/share/info") ; for local installed idutils
+  (add-info-path (concat my/homebrew-prefix "/share/info"))
   )
