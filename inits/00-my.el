@@ -144,21 +144,12 @@
 
 ;; pathの設定
 (dolist (i '("/opt/local/bin"
-             "/opt/local/sbin"
-             "/usr/local/bin"
-             "/usr/local/sbin"
-             "/usr/local/opt/openssl/bin"
-             "/usr/local/opt/curl/bin"
-             "/usr/local/opt/llvm/bin"))
+             "/opt/local/sbin"))
   (unless (member i exec-path)
     (setq exec-path (cons i exec-path)))
   (unless (member i (split-string (getenv "PATH")))
     (setenv "PATH" (concat (getenv "PATH") ":" i)))
     )
-
-;; for homebrew
-(setenv "PATH" (concat (getenv "PATH") ":" (concat my/homebrew-prefix "/bin")))
-(add-to-list 'exec-path (concat my/homebrew-prefix "/bin"))
 
 ;; frame の設定
 (if window-system
