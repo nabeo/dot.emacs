@@ -6,10 +6,11 @@
 ;; http://d.hatena.ne.jp/kazu-yamamoto/20080219/1203423707
 ;;; ex) (my-load-path "foo")
 (defun my-load-path (path)
-  "load-path を追加するための関数。"
+  "load-path を追加するための関数。指定された `path' が存在しない場合は追加しない。"
   (let ((epath (expand-file-name path)))
-    (unless (member epath load-path)
-      (setq load-path (cons epath load-path)))))
+    (if (and (not (member epath load-path))
+             (file-exists-p epath))
+        (setq load-path (cons epath load-path)))))
 
 ;; emacsの環境を調べるための変数
 ;; http://d.hatena.ne.jp/tomoya/20090807/1249601308
