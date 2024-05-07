@@ -20,7 +20,10 @@
             "Cica"
             ;; Source Han Code JP
             ;; https://github.com/adobe-fonts/source-han-code-jp
-            "Source Han Code JP"))
+            "Source Han Code JP"
+            ;; M PLUS 1 Code
+            ;; https://mplusfonts.github.io/
+            "M PLUS 1 Code Medium"))
          (my/fontfamily (elt my/fontfamilies (- (random (length my/fontfamilies)) 1))))
     (if (find-font (font-spec :name my/fontfamily))
         (set-face-attribute 'default nil :family my/fontfamily :height 140)
