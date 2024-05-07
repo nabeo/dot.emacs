@@ -24,7 +24,7 @@
             ;; M PLUS 1 Code
             ;; https://mplusfonts.github.io/
             "M PLUS 1 Code Medium"))
-         (my/fontfamily (elt my/fontfamilies (- (random (length my/fontfamilies)) 1))))
+         (my/fontfamily (elt my/fontfamilies (abs (% (random t) (length my/fontfamilies))))))
     (if (find-font (font-spec :name my/fontfamily))
         (set-face-attribute 'default nil :family my/fontfamily :height 140)
       (progn
