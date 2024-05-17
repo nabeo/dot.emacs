@@ -16,18 +16,6 @@
 ;; kill-ringには属性を保持させる
 ;; (setq yank-excluded-properties t)
 
-;; for homebrew
-(dolist (i '("/opt/openssl/bin"
-             "/opt/curl/bin"
-             "/opt/llvm/bin"
-             "/bin"
-             "/sbin"))
-  (let* ((j (concat my/homebrew-prefix i)))
-    (unless (member j exec-path)
-      (setq exec-path (cons j exec-path)))
-    (unless (member j (split-string (getenv "PATH") ":"))
-      (setenv "PATH" (concat j ":" (getenv "PATH"))))))
-
 ;; browse-urlをopenに割り当てる
 (setq browse-url-browser-function 'browse-url-generic)
 (setq browse-url-generic-program

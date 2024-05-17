@@ -66,6 +66,20 @@
               (setq homebrew-prefix homebrew-prefix-cadidate)))
         homebrew-prefix))
 
+;; PATH for homebrew
+(dolist (i '("/opt/openssl/bin"
+             "/opt/curl/bin"
+             "/opt/llvm/bin"
+             "/bin"
+             "/sbin"))
+  (let* ((j (concat my/homebrew-prefix i)))
+    (unless (member j exec-path)
+      (setq exec-path (cons j exec-path)))
+    (unless (member j (split-string (getenv "PATH") ":"))
+      (setenv "PATH" (concat j ":" (getenv "PATH"))))))
+
+
+
 (defun load-safe (loadlib)
   "安全な load。読み込みに失敗してもそこで止まらない。"
   (let ((load-status (load loadlib t)))
