@@ -18,9 +18,6 @@
             ;; Cica
             ;; https://github.com/miiton/Cica
             "Cica"
-            ;; Source Han Code JP
-            ;; https://github.com/adobe-fonts/source-han-code-jp
-            "Source Han Code JP"
             ;; M PLUS 1 Code
             ;; https://mplusfonts.github.io/
             "M PLUS 1 Code Medium"))
