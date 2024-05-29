@@ -13,7 +13,6 @@
             "Moralerspace Neon HWNF"
             "Moralerspace Argon HWNF"
             "Moralerspace Xenon HWNF"
-            "Moralerspace Radon HWNF"
             "Moralerspace Krypton HWNF"
             ;; Cica
             ;; https://github.com/miiton/Cica
