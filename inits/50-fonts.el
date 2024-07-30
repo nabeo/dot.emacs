@@ -19,7 +19,11 @@
             "Cica"
             ;; M PLUS 1 Code
             ;; https://mplusfonts.github.io/
-            "M PLUS 1 Code Medium"))
+            "M PLUS 1 Code Medium"
+            ;; UDEV Gothic
+            ;; https://github.com/yuru7/udev-gothic
+            "UDEV Gothic NF"
+            ))
          (my/fontfamily (elt my/fontfamilies (abs (% (random t) (length my/fontfamilies))))))
     (if (find-font (font-spec :name my/fontfamily))
         (set-face-attribute 'default nil :family my/fontfamily :height 140)
