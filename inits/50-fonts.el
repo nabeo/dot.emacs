@@ -19,10 +19,7 @@
             "Cica"
             ;; M PLUS 1 Code
             ;; https://mplusfonts.github.io/
-            "M PLUS 1 Code Medium"
-            ;; NasuM
-            ;; https://itouhiro.hatenablog.com/entry/20140917/font
-            "NasuM"))
+            "M PLUS 1 Code Medium"))
          (my/fontfamily (elt my/fontfamilies (abs (% (random t) (length my/fontfamilies))))))
     (if (find-font (font-spec :name my/fontfamily))
         (set-face-attribute 'default nil :family my/fontfamily :height 140)
