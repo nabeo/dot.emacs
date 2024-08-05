@@ -59,7 +59,10 @@
       (delete-file
        (buffer-file-name (current-buffer)))))
 
-  ;; markdown-modeと併用する
-  ;; *.howm を markdown-mode で開く
-  (add-to-list 'auto-mode-alist '("\\.howm$" . markdown-mode))
+  ;; *.howm を poly-markdwon-mode もしくは markdown-mode で開く
+  ;; poly-markdown-mode を優先する
+  (cond ((package-installed-p 'poly-markdown)
+         (add-to-list 'auto-mode-alist '("\\.howm$" . poly-markdown-mode)))
+        ((package-installed-p 'markdown-mode)
+         (add-to-list 'auto-mode-alist '("\\.howm$" . markdown-mode))))
   )

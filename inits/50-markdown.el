@@ -4,10 +4,6 @@
 ;;; Code:
 (use-package markdown-mode
   :ensure t
-  :mode (("\\.mdwn" . markdown-mode)
-         ("\\.md" . markdown-mode)
-         ("\\.mdt" . markdown-mode)
-         ("README\\.md\\'" . gfm-mode))
   :bind
   (:map markdown-mode-map
         ("C-c C-e" . markdown-do))

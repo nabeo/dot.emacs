@@ -12,10 +12,11 @@
 
 (use-package poly-markdown
   :ensure t
-  ;; :mode
-  ;; (("\\.md\\'" . poly-markdown-mode))
-  :config
-  (add-to-list 'auto-mode-alist '("\\.md" . poly-markdown-mode)))
+  :mode (("\\.md\\'" . poly-markdown-mode)
+         ("\\.md" . poly-markdown-mode)
+         ("\\.mdt" . poly-markdown-mode)
+         ("README\\.md\\'" . poly-gfm-mode))
+  )
 
 (use-package poly-ansible
   :ensure t)
