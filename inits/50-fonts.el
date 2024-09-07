@@ -28,6 +28,7 @@
     (if (find-font (font-spec :name my/fontfamily))
         (set-face-attribute 'default nil :family my/fontfamily :height 140)
       (progn
+        (message "font not found: `%s'" my/fontfamily)
         (create-fontset-from-ascii-font "Monaco" nil "fallback")
         (set-fontset-font "fontset-fallback" 'unicode "Hiragino Kaku Gothic ProN" nil 'append)
         (add-to-list 'default-frame-alist '(font . "fontset-fallback"))))))
