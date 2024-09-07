@@ -29,6 +29,9 @@
   :bind
   ("M-n" . diff-hl-next-hunk)
   ("M-p" . diff-hl-previous-hunk)
+  :hook
+  (magit-pre-refresh . diff-hl-magit-pre-refresh)
+  (magit-post-refresh . diff-hl-magit-post-refresh)
   :config
   (global-diff-hl-mode))
 
