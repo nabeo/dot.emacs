@@ -18,6 +18,7 @@
   (c++-mode . eglot-ensure)
   (kotlin-mode . eglot-ensure)          ; brew install kotlin-language-server
   (dockerfile-mode . eglot-ensure)      ; brew install dockerfile-language-server
+  (lua-mode . eglot-ensure)             ; brew install lua-language-server
   :bind
   (:map eglot-mode-map
         ("C-c r" . eglot-rename))
@@ -80,6 +81,11 @@
   (add-to-list
    'eglot-server-programs
    `((kotlin-mode) . ("kotlin-language-server")))
+
+  ;; for lua (brew install lua-language-server
+  (add-to-list
+   'eglot-server-programs
+   `((lua-mode) . ("lua-language-server")))
   )
 
 (use-package flycheck-eglot
