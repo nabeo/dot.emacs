@@ -7,8 +7,22 @@
 
 (use-package doom-themes
   :ensure t
+  :init
+  (defun nabeo/randomly-select-doom-theme ()
+    "randomly select doom-theme"
+    (interactive)
+    (progn
+      (let* ((my/doom-themes
+              '(
+                doom-solarized-dark
+                doom-winter-is-coming-dark-blue
+                doom-tokyo-night
+                ))
+             (my/doom-theme (elt my/doom-themes (abs (% (random t) (length my/doom-themes))))))
+        (message "use theme: `%s'" my/doom-theme)
+        (load-theme my/doom-theme t))))
   :config
-  (load-theme 'doom-solarized-dark t) ;; or doom-dark, etc.
+  (nabeo/randomly-select-doom-theme)
   ;; Enable flashing mode-line on errors
   (doom-themes-visual-bell-config)
   ;; for neotree
