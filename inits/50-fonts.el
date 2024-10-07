@@ -3,35 +3,40 @@
 
 ;;; Code:
 
-(progn
-  (let* ((my/fontfamilies
-          '(;; HackGen
-            ;; https://github.com/yuru7/HackGen
-            "HackGen Console NF"
-            ;; Moralerspace
-            ;; https://github.com/yuru7/moralerspace
-            "Moralerspace Neon HWNF"
-            "Moralerspace Argon HWNF"
-            "Moralerspace Xenon HWNF"
-            "Moralerspace Krypton HWNF"
-            ;; Cica
-            ;; https://github.com/miiton/Cica
-            "Cica"
-            ;; M PLUS 1 Code
-            ;; https://mplusfonts.github.io/
-            "M PLUS 1 Code Medium"
-            ;; UDEV Gothic
-            ;; https://github.com/yuru7/udev-gothic
-            "UDEV Gothic NF"
-            ))
-         (my/fontfamily (elt my/fontfamilies (abs (% (random t) (length my/fontfamilies))))))
-    (if (find-font (font-spec :name my/fontfamily))
-        (set-face-attribute 'default nil :family my/fontfamily :height 140)
-      (progn
-        (message "font not found: `%s'" my/fontfamily)
-        (create-fontset-from-ascii-font "Monaco" nil "fallback")
-        (set-fontset-font "fontset-fallback" 'unicode "Hiragino Kaku Gothic ProN" nil 'append)
-        (add-to-list 'default-frame-alist '(font . "fontset-fallback"))))))
+(defun nabeo/set-my-font ()
+  "set my font"
+  (interactive)
+  (progn
+    (let* ((my/fontfamilies
+            '(;; HackGen
+              ;; https://github.com/yuru7/HackGen
+              "HackGen Console NF"
+              ;; Moralerspace
+              ;; https://github.com/yuru7/moralerspace
+              "Moralerspace Neon HWNF"
+              "Moralerspace Argon HWNF"
+              "Moralerspace Xenon HWNF"
+              "Moralerspace Krypton HWNF"
+              ;; Cica
+              ;; https://github.com/miiton/Cica
+              "Cica"
+              ;; M PLUS 1 Code
+              ;; https://mplusfonts.github.io/
+              "M PLUS 1 Code Medium"
+              ;; UDEV Gothic
+              ;; https://github.com/yuru7/udev-gothic
+              "UDEV Gothic NF"
+              ))
+           (my/fontfamily (elt my/fontfamilies (abs (% (random t) (length my/fontfamilies))))))
+      (if (find-font (font-spec :name my/fontfamily))
+          (set-face-attribute 'default nil :family my/fontfamily :height 140)
+        (progn
+          (message "font not found: `%s'" my/fontfamily)
+          (create-fontset-from-ascii-font "Monaco" nil "fallback")
+          (set-fontset-font "fontset-fallback" 'unicode "Hiragino Kaku Gothic ProN" nil 'append)
+          (add-to-list 'default-frame-alist '(font . "fontset-fallback")))))))
+
+(nabeo/set-my-font)
 (setq-default line-spacing 0)
 
 ;; カーソル位置のフォントを判別する
