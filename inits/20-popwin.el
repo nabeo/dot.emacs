@@ -5,6 +5,8 @@
 (use-package popwin
   :ensure t
   :config
+  (setq special-display-function 'popwin:special-display-popup-window)
+
   ;; (global-set-key (kbd "C-x p") 'popwin:keymap)
   (popwin-mode 1)
 
