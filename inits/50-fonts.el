@@ -20,9 +20,6 @@
               ;; Cica
               ;; https://github.com/miiton/Cica
               "Cica"
-              ;; M PLUS 1 Code
-              ;; https://mplusfonts.github.io/
-              "M PLUS 1 Code Medium"
               ;; UDEV Gothic
               ;; https://github.com/yuru7/udev-gothic
               "UDEV Gothic NF"
