@@ -5,19 +5,19 @@
 (use-package eglot
   :commands (eglot-ensure)
   :hook
-  (go-mode . eglot-ensure)              ; brew install gopls
-  (python-mode . eglot-ensure)          ; brew install python-lsp-server
-  (typescript-mode . eglot-ensure)      ; npm i -g typescript-language-server
-  (javascript-mode . eglot-ensure)      ; npm i -g typescript-language-server
-  (rust-mode . eglot-ensure)            ; brew install rust-analyzer
-  (json-mode . eglot-ensure)            ; npm i -g vscode-json-languageserver
-  (terraform-mode . eglot-ensure)       ; brew install terraform-ls
-  (yaml-mode . eglot-ensure)            ; brew install yaml-language-server
+  ((go-mode go-ts-mode) . eglot-ensure) ; brew install gopls
+  ((python-mode python-ts-mode) . eglot-ensure) ; brew install python-lsp-server
+  ((typescript-mode typescript-ts-mode) . eglot-ensure) ; npm i -g typescript-language-server
+  (javascript-mode . eglot-ensure) ; npm i -g typescript-language-server
+  ((rust-mode rust-ts-mode) . eglot-ensure) ; brew install rust-analyzer
+  ((json-mode json-ts-mode) . eglot-ensure) ; npm i -g vscode-json-languageserver
+  ((terraform-mode terraform-ts-mode) . eglot-ensure)       ; brew install terraform-ls
+  ((yaml-mode yaml-ts-mode) . eglot-ensure)            ; brew install yaml-language-server
   ((markdown-modde gfm-mode) . eglot-ensure)       ; brew install marksman
   (c-mode . eglot-ensure)
   (c++-mode . eglot-ensure)
-  (kotlin-mode . eglot-ensure)          ; brew install kotlin-language-server
-  (dockerfile-mode . eglot-ensure)      ; brew install dockerfile-language-server
+  (kotlin-mode . eglot-ensure)   ; brew install kotlin-language-server
+  ((dockerfile-mode dockerfile-ts-mode) . eglot-ensure) ; brew install dockerfile-language-server
   (lua-mode . eglot-ensure)             ; brew install lua-language-server
   ((toml-mode toml-ts-mode) . eglot-ensure) ; brew install taplo
   :bind
