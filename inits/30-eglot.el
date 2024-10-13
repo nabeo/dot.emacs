@@ -19,6 +19,7 @@
   (kotlin-mode . eglot-ensure)          ; brew install kotlin-language-server
   (dockerfile-mode . eglot-ensure)      ; brew install dockerfile-language-server
   (lua-mode . eglot-ensure)             ; brew install lua-language-server
+  ((toml-mode toml-ts-mode) . eglot-ensure) ; brew install taplo
   :bind
   (:map eglot-mode-map
         ("C-c r" . eglot-rename))
@@ -86,6 +87,11 @@
   (add-to-list
    'eglot-server-programs
    `((lua-mode) . ("lua-language-server")))
+
+  ;; for toml (brew install taplo
+  (add-to-list
+   'eglot-server-programs
+   `((toml-mode toml-ts-mode) . ("taplo" "lsp" "stdio")))
   )
 
 (use-package flycheck-eglot
