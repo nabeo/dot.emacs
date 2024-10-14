@@ -55,6 +55,9 @@
   (doom-modeline-vcs-max-length 12)
   (doom-modeline-time t)
   (doom-modeline-env-version t)
+  ;; setup PAT for github
+  ;; https://magit.vc/manual/ghub/Storing-a-Token.html
+  (doom-modeline-github t)
   :config
 )
 
