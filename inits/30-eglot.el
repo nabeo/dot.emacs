@@ -41,7 +41,8 @@
      (:yaml.format.bracketSpacing . t)
      (:yaml.validate . t)
      (:yaml.hover . t)
-     (:yaml.completion . t)))
+     (:yaml.completion . t)
+     (:redhat.telemetry.enabled . nil)))
 
   ;; for python (brew install python-lsp-server)
   (add-to-list
