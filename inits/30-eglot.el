@@ -20,6 +20,7 @@
   ((dockerfile-mode dockerfile-ts-mode) . eglot-ensure) ; brew install dockerfile-language-server
   (lua-mode . eglot-ensure)             ; brew install lua-language-server
   ((toml-mode toml-ts-mode) . eglot-ensure) ; brew install taplo
+  ((graphql-ts-mode) . eglot-ensure)         ; npm install -g graphql-language-service-cli
   :bind
   (:map eglot-mode-map
         ("C-c r" . eglot-rename))
@@ -93,6 +94,11 @@
   (add-to-list
    'eglot-server-programs
    `((toml-mode toml-ts-mode) . ("taplo" "lsp" "stdio")))
+
+  ;; for graphql
+  (add-to-list
+   'eglot-server-programs
+   `((graphql-ts-mode) . ("graphql-lsp" "server" "-m" "stream")))
   )
 
 (use-package flycheck-eglot
