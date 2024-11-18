@@ -1,4 +1,4 @@
-;;; 50-highlight-indent-guides --- highlight-indent-guides.el
+;;; 50-highlight-indent --- highlight-indent.el
 ;;; Commentary:
 
 ;;; Code:
@@ -14,5 +14,5 @@
   (highlight-indent-guides-method 'character)
   )
 
-(provide '50-highlight-indent-guides)
+(provide '50-highlight-indent)
 ;;; 50-highlight-indent-guides.el ends here
