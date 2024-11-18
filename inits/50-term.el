@@ -20,10 +20,12 @@
 
 (use-package vterm-toggle
   :ensure t
-  :bind (:map vterm-mode-map
-              ([remap projectile-previous-project-buffer] . vterm-toggle-forward)
-              ([remap projectile-next-project-buffer] . vterm-toggle-backward)
-              )
+  :bind
+  (("C-c t" . vterm-toggle))
+  (:map vterm-mode-map
+        ([remap projectile-previous-project-buffer] . vterm-toggle-forward)
+        ([remap projectile-next-project-buffer] . vterm-toggle-backward)
+        )
   :custom
   (vterm-toggle-scope 'project)
   :config
