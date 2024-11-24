@@ -14,7 +14,8 @@
     (progn
       (let* ((my/doom-themes
               '(
-                doom-solarized-dark
+                doom-bluloco-dark
+                doom-challenger-deep
                 doom-winter-is-coming-dark-blue
                 doom-tokyo-night
                 ))
