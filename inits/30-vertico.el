@@ -307,5 +307,12 @@
   :hook
   (embark-collect-mode . consult-preview-at-point-mode))
 
+(use-package nerd-icons-completion
+  :after marginalia
+  :hook
+  (marginalia-mode . nerd-icons-completion-marginalia-setup)
+  :config
+  (nerd-icons-completion-mode))
+
 (provide '30-vertico)
 ;;; 30-vertico.el ends here
