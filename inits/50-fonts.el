@@ -28,7 +28,7 @@
       (if (find-font (font-spec :name my/fontfamily))
           (progn
             (message "use font: `%s'" my/fontfamily)
-            (set-face-attribute 'default nil :family my/fontfamily :height 140))
+            (set-face-attribute 'default nil :font (concat my/fontfamily "-14") :height 140 :width 'normal :weight 'normal :slant 'normal))
         (progn
           (message "font not found: `%s'" my/fontfamily)
           (create-fontset-from-ascii-font "Monaco" nil "fallback")
