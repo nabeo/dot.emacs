@@ -7,6 +7,7 @@
   :bind
   (("C-x g" . magit-status))
   :config
+  (setq auto-revert-check-vc-info t)
   )
 (use-package magit-popup
   :ensure t
