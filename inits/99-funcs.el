@@ -8,6 +8,7 @@
   (nabeo/randomly-select-doom-theme)
   (nabeo/set-my-font)
   )
+(global-set-key (kbd "C-c C-r") 'nabeo/randomly-select-theme)
 
 (provide '99-funcs)
 ;;; 99-funcs.el ends here
