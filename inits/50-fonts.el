@@ -23,6 +23,12 @@
               ;; UDEV Gothic
               ;; https://github.com/yuru7/udev-gothic
               "UDEV Gothic NF"
+              ;; Kosugi
+              ;; https://fonts.google.com/specimen/Kosugi/
+              "Kosugi"
+              ;; Kosugi Maru
+              ;; https://fonts.google.com/specimen/Kosugi+Maru
+              "Kosugi Maru"
               ))
            (my/fontfamily (elt my/fontfamilies (abs (% (random t) (length my/fontfamilies))))))
       (if (find-font (font-spec :name my/fontfamily))
