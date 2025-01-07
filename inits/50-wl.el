@@ -168,6 +168,7 @@
        "^X-Auto-Response-Suppress:" "^X-SMTPAPI:"
        "^X-SG-EID:" "^X-SG-ID:"
        "^X-Entity-ID:"
+       "^X-Forwarded-Encrypted:" "^X-Gm-Gg:"
        ;; DKIM
        "^DKIM-Signature:"
        "^ARC-Seal:" "^ARC-Message-Signature:"
