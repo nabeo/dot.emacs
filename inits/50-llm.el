@@ -21,15 +21,15 @@
 	     :embedding-model "codestral:22b-v0.1-q3_K_S"))
   (setopt ellama-summarization-provider
 	    (make-llm-ollama
-	     :chat-model "qwen2.5:3b"
+	     :chat-model "mistral:7b"
 	     :embedding-model "nomic-embed-text"
 	     :default-chat-non-standard-params '(("num_ctx" . 32768))))
   ;; 翻訳用プロバイダー
-  ;; https://ollama.com/library/aya
+  ;; https://ollama.com/library/aya-expanse
   (setopt ellama-translation-provider
 	  (make-llm-ollama
-	   :chat-model "aya:8b-23-q5_K_M"
-	   :embedding-model "aya:8b-23-q5_K_M"))
+	   :chat-model "aya-expanse:8b-q5_K_M"
+	   :embedding-model "aya-expanse:8b-q5_K_M"))
 
   ;; ellama-provider-select で選択できる
   (setopt ellama-providers
