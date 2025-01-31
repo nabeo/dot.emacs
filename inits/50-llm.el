@@ -36,21 +36,22 @@
   (setopt ellama-providers
 	        '(
             ;; https://ollama.com/library/codestral/tags
-            ("codestral" . (make-llm-ollama
-                            :chat-model "codestral:22b-v0.1-q3_K_S"
-                            :embedding-model "codestral:22b-v0.1-q3_K_S"))
-            ;; https://ollama.com/library/gemma2/tags
-            ("gemma2" . (make-llm-ollama
-                         :chat-model "gemma2:27b-instruct-q4_K_S"
-                         :embedding-model "gemma2:27b-instruct-q4_K_S"))
-            ;; https://ollama.com/library/llama3.1/tags
-            ("llama3.1" . (make-llm-ollama
-                           :chat-model "llama3.1:8b"
-                           :embedding-model "llama3.1:8b"))
-            ;; https://ollama.com/incept5/llama3.1-claude
-            ("llama3.1-claude" . (make-llm-ollama
-                                  :chat-model "incept5/llama3.1-claude:latest"
-                                  :embedding-model "incept5/llama3.1-claude:latest"))
+             ("codestral" . (make-llm-ollama
+                              :chat-model "codestral:22b-v0.1-q3_K_S"
+                              :embedding-model "codestral:22b-v0.1-q3_K_S"))
+             ("codellama" . (make-llm-ollama
+                              :chat-model "codellama:13b-code-q4_K_S"
+                              ))
+             ;; https://ollama.com/library/gemma2/tags
+             ("gemma2" . (make-llm-ollama
+                           :chat-model "gemma2:27b-instruct-q4_K_S"
+                           :embedding-model "gemma2:27b-instruct-q4_K_S"))
+             ;; https://ollama.com/library/llama3.1/tags
+             ("llama3.1" . (make-llm-ollama
+                             :chat-model "llama3.1:8b"
+                             :embedding-model "llama3.1:8b"))
+             ("mistral" . (make-llm-ollama
+                            :chat-model "mistral:7b"))
             ))
 
   ;; Naming new sessions with llm
