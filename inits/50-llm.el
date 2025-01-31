@@ -7,6 +7,7 @@
   ;; :if (executable-find "ollama")
   :bind ("C-c e" . ellama-transient-main-menu)
   :init
+  (require 'llm)
   ;; setup key bindings
   ;; (setopt ellama-keymap-prefix "C-c e")
   ;; language you want ellama to translate to
