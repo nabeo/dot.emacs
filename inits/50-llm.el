@@ -14,6 +14,7 @@
   (setopt ellama-language "Japanese")
   ;; could be llm-openai for example
   (require 'llm-ollama)
+  (require 'llm-gemini)
   ;; https://ollama.com/library
   ;; デフォルトのプロバイダー
   (setopt ellama-provider
@@ -52,6 +53,10 @@
                              :embedding-model "llama3.1:8b"))
              ("mistral" . (make-llm-ollama
                             :chat-model "mistral:7b"))
+             ;; Google Gemini
+             ("Gemini 2.0 Flash" . (make-llm-gemini
+                                     :chat-model "gemini-2.0-flash-exp"
+                                     :key (auth-source-pick-first-password :host "gemini")))
             ))
 
   ;; Naming new sessions with llm
