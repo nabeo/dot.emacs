@@ -66,7 +66,7 @@
   (setq ellama-define-word-prompt-template "%s の定義を教えて")
   (setq ellama-summarize-prompt-template "Text:\n%s\n要約して")
   (setq ellama-generate-commit-message-template "あなたは熟練プログラマーです。後の変更点をもとに簡潔なコミットメッセージを書いてください。コミットメッセージの形式は、1行目は変更点の要約、2行目は空行、それ以降の行は変更全体の詳細な説明、です。出力はプロンプト無しで最終的なコミットメッセージだけにしてください。\n\n変更点:\n%s\n")
-  (setq ellama-code-review-prompt-template "以下のコードのレビューと改善案をだして:\n```\n%s\n```")
+  (setq ellama-code-review-prompt-template "以下のコードのレビューと改善案を日本語で教えてください:\n```\n%s\n```")
   )
 
 (provide '50-llm)
