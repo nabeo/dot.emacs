@@ -17,8 +17,8 @@
     ;; C-n, C-pで補完候補を次/前の候補を選択
     ("C-n" . company-select-next)
     ("C-p" . company-select-previous))
-  :init
-  (global-company-mode)
+  :hook
+  (after-init . global-company-mode)
   :config
   (setq company-idle-delay 0)
   (setq company-echo-delay 0)
