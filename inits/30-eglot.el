@@ -26,24 +26,34 @@
         ("C-c r" . eglot-rename))
   :config
   (setq eglot-connect-timeout 60)
+
+  ;; User-specific configuration
+  ;; https://www.gnu.org/software/emacs/manual/html_node/eglot/User_002dspecific-configuration.html
+  (setq-default eglot-workspace-configuration
+    '(
+       ;; terraform-ls
+       ;; https://github.com/hashicorp/terraform-ls/blob/main/docs/SETTINGS.md
+       :terraform
+       (:experimentalFeatures (:prefillRequiredFields t))
+
+       ;; yaml-language-server
+       ;; https://github.com/redhat-developer/yaml-language-server#language-server-settings
+       :yaml
+       (:schemaStore (:enable t :url "https://www.schemastore.org/api/json/catalog.json")
+         :format (:enable t :signleAuote t)
+         :validate t
+         :completion t)
+       :redhat (:telemetry (:enabled t))
+
+       ;; vscode-json-languageserver
+       ;; https://github.com/microsoft/vscode/tree/main/extensions/json-language-features/server#settings
+       :json (:format (:enable t))
+       ))
+
   ;; for terraform-ls (brew install terraform-ls)
   (add-to-list
    'eglot-server-programs
    `((terraform-mode terraform-ts-mode) . ("terraform-ls" "serve")))
-
-  ;; for yaml-language-server (brew install yaml-language-server)
-  (add-to-list
-   'eglot-workspace-configuration
-   ;; https://github.com/redhat-developer/yaml-language-server#language-server-settings
-   '((:yaml.schemaStore.enable . t)
-     (:yaml.schemaStore.url . "https://www.schemastore.org/api/json/catalog.json")
-     (:yaml.format.enable . t)
-     (:yaml.format.singleQuote . t)
-     (:yaml.format.bracketSpacing . t)
-     (:yaml.validate . t)
-     (:yaml.hover . t)
-     (:yaml.completion . t)
-     (:redhat.telemetry.enabled . nil)))
 
   ;; for python (brew install python-lsp-server)
   (add-to-list
@@ -55,10 +65,6 @@
   (add-to-list
    'eglot-server-programs
    `((json-mode json-ts-mode) . ("vscode-json-languageserver" "--stdio")))
-  (add-to-list
-   'eglot-workspace-configuration
-   ;; https://github.com/microsoft/vscode/tree/main/extensions/json-language-features/server#settings
-   '((:json.format.enable . t)))
 
   ;; for C/C++
   (add-to-list
