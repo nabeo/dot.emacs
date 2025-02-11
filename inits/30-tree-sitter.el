@@ -14,6 +14,7 @@
   )
 
 (use-package terraform-ts-mode
+  :disabled t
   :ensure t
   :demand t
   :vc (terraform-ts-mode
