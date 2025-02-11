@@ -55,47 +55,6 @@
              ( :experimentalFeatures ( :validateOnSave t
                                        :prefillRequiredFields t)))))))
 
-  ;; for python (brew install python-lsp-server)
-  (add-to-list
-   'eglot-server-programs
-   `((python-mode python-ts-mode) . ("pylsp")))
-
-  ;; for vscode-json-languageserver (npm i -g vscode-json-languageserver)
-  ;; https://www.npmjs.com/package/vscode-json-languageserver
-  (add-to-list
-   'eglot-server-programs
-   `((json-mode json-ts-mode) . ("vscode-json-languageserver" "--stdio")))
-
-  ;; for C/C++
-  (add-to-list
-   'eglot-server-programs
-   '((c-mode c++-mode) . ("clangd"
-                          "-j=8"
-                          "--log=error"
-                          "--malloc-trim"
-                          "--background-index"
-                          "--clang-tidy"
-                          "--cross-file-rename"
-                          "--completion-style=detailed"
-                          "--pch-storage=memory"
-                          "--header-insertion=never"
-                          "--header-insertion-decorators=0")))
-
-  ;; for marksman (brew install marksman)
-  (add-to-list
-   'eglot-server-programs
-   `((markdown-mode gfm-mode) . ("marksman")))
-
-  ;; for kotlin (brew install kotlin-language-server)
-  (add-to-list
-   'eglot-server-programs
-   `((kotlin-mode) . ("kotlin-language-server")))
-
-  ;; for lua (brew install lua-language-server
-  (add-to-list
-   'eglot-server-programs
-   `((lua-mode) . ("lua-language-server")))
-
   ;; for toml (brew install taplo
   (add-to-list
    'eglot-server-programs
