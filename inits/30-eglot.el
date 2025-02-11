@@ -31,11 +31,6 @@
   ;; https://www.gnu.org/software/emacs/manual/html_node/eglot/User_002dspecific-configuration.html
   (setq-default eglot-workspace-configuration
     '(
-       ;; terraform-ls
-       ;; https://github.com/hashicorp/terraform-ls/blob/main/docs/SETTINGS.md
-       :terraform
-       (:experimentalFeatures (:prefillRequiredFields t))
-
        ;; yaml-language-server
        ;; https://github.com/redhat-developer/yaml-language-server#language-server-settings
        :yaml
@@ -51,9 +46,14 @@
        ))
 
   ;; for terraform-ls (brew install terraform-ls)
-  (add-to-list
-   'eglot-server-programs
-   `((terraform-mode terraform-ts-mode) . ("terraform-ls" "serve")))
+  ;; https://github.com/hashicorp/terraform-ls/blob/main/docs/SETTINGS.md
+  (let ((my/terraform-language-server-program (alist-get 'terraform-mode eglot-server-programs nil nil #'equal)))
+    (if (not (eq my/terraform-language-server-program nil))
+      (setf (alist-get 'terraform-mode eglot-server-programs nil nil #'equal)
+        (append my/terraform-language-server-program
+          '( :initializationOptions
+             ( :experimentalFeatures ( :validateOnSave t
+                                       :prefillRequiredFields t)))))))
 
   ;; for python (brew install python-lsp-server)
   (add-to-list
