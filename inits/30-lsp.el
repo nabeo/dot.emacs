@@ -117,13 +117,6 @@
   (lsp-treemacs-sync-mode 1)
   )
 
-(use-package lsp-ivy
-  :ensure t
-  :disabled t
-  :commands lsp-ivy-workspace-symbol
-  :after lsp-mode
-  )
-
 ;; https://github.com/emacs-lsp/dap-mode
 (use-package dap-mode
   :ensure t
