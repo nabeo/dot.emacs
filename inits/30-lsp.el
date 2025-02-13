@@ -129,15 +129,6 @@
   (tooltip-mode 1)
   (require 'dap-dlv-go)
   )
-(use-package dap-ruby
-  :enable t
-  :disabled
-  )
-(use-package dap-python
-  ;; pip install "ptvsd>=4.2"
-  :enable t
-  :disabled
-  )
 
 (provide '30-lsp)
 ;;; 30-lsp.el ends here
