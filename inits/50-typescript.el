@@ -14,6 +14,7 @@
 ;; for npm
 (use-package npm
   :ensure t
+  :disabled
   )
 
 (provide '50-typescript)
