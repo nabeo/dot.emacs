@@ -53,6 +53,8 @@
                              :embedding-model "llama3.1:8b"))
              ("mistral" . (make-llm-ollama
                             :chat-model "mistral:7b"))
+             ("phi4" . (make-llm-ollama
+                         :chat-model "phi4:14b-q4_K_M"))
              ;; Google Gemini
              ("Gemini 2.0 Flash" . (make-llm-gemini
                                      :chat-model "gemini-2.0-flash-exp"
