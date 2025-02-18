@@ -223,6 +223,7 @@
 
 (use-package consult-eglot
   :ensure t
+  :disabled
   :after (consult eglot)
   :bind
   ([remap xref-find-apropos] . consult-eglot-symbols)
