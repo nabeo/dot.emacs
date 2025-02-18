@@ -50,7 +50,7 @@
   ;; for Terraform
   ;; brew install terraform-ls
   ;; https://github.com/hashicorp/terraform-ls/blob/main/docs/USAGE.md#emacs
-  (terraform-mode . lsp-deferred)
+  (terraform-mode . lsp)
   ;; for yaml
   (yaml-mode . lsp)
   ;; use with which-key
@@ -59,8 +59,10 @@
   (:map lsp-mode-map
     ("C-c r" . lsp-rename))
   :commands lsp
-  ;; :config
-  ;; (setq lsp-completion-provider :capf)
+  :config
+  ;; lsp-terraform-ls
+  (setq lsp-terraform-ls-enable-show-reference t)
+  (setq lsp-terraform-ls-prefill-required-fields t)
   )
 
 (use-package lsp-ui
