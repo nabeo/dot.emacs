@@ -114,6 +114,14 @@
   (lsp-treemacs-sync-mode 1)
   )
 
+(use-package consult-lsp
+  :ensure t
+  :after (consult)
+  :bind
+  (:map lsp-mode-map
+    ([remap xref-find-apropos] . #'consult-lsp-symbols))
+  )
+
 ;; https://github.com/emacs-lsp/dap-mode
 (use-package dap-mode
   :ensure t
