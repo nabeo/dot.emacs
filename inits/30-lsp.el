@@ -17,6 +17,13 @@
   (create-lockfiles nil)
   ;; M-x lsp-install-server RET kotolin RET or brew install kotolin-language-server
   (lsp-clients-kotlin-server-executable "kotlin-language-server")
+  ;; semantic tokens
+  (lsp-semantic-tokens-enable t)
+  (lsp-semantic-tokens-honor-refresh-requests t)
+  ;; Link to documentation
+  (lsp-enable-links t)
+  ;; completion provider
+  (lsp-completion-provider :capf)
   :init
   (setq gc-cons-threshold 100000000)
   (setq read-process-output-max (* 1024 1024)) ; 1mb
