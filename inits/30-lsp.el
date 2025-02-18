@@ -60,6 +60,9 @@
     ("C-c r" . lsp-rename))
   :commands lsp
   :config
+  ;; lsp-copilot
+  (setq lsp-copilot-enabled t)
+
   ;; lsp-terraform-ls
   (setq lsp-terraform-ls-enable-show-reference t)
   (setq lsp-terraform-ls-prefill-required-fields t)
