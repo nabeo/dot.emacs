@@ -4,7 +4,6 @@
 ;;; Code:
 (use-package eglot
   :commands (eglot-ensure)
-  :disabled
   :hook
   ((go-mode go-ts-mode) . eglot-ensure) ; brew install gopls
   ((python-mode python-ts-mode) . eglot-ensure) ; brew install python-lsp-server
@@ -69,7 +68,6 @@
 
 (use-package flycheck-eglot
   :ensure t
-  :disabled
   :after (flycheck eglot)
   :custom (flycheck-eglot-exclusive nil)
   :config
