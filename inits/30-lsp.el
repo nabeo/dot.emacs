@@ -50,7 +50,7 @@
   ;; for Terraform
   ;; brew install terraform-ls
   ;; https://github.com/hashicorp/terraform-ls/blob/main/docs/USAGE.md#emacs
-  (terraform-mode . lsp)
+  (terraform-mode . lsp-deferred)
   ;; for yaml
   (yaml-mode . lsp)
   ;; use with which-key
@@ -58,7 +58,7 @@
   :bind
   (:map lsp-mode-map
     ("C-c r" . lsp-rename))
-  :commands lsp
+  :commands (lsp lsp-deferred)
   :config
   ;; lsp-copilot
   (setq lsp-copilot-enabled t)
