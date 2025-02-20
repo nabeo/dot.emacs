@@ -22,8 +22,9 @@
 (use-package copilot-chat
   :ensure t
   :after copilot
-  :hook
-  (git-commit-mode . copilot-chat-insert-commit-message)
+  :bind
+  (:map git-commit-mode-map
+        ("C-c C-;" . copilot-chat-insert-commit-message))
   :config
   (let ((my/original-prompt copilot-chat-prompt))
     (setq copilot-chat-prompt (concat my/original-prompt "\n出力には日本語を使ってください。")))
