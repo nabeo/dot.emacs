@@ -19,5 +19,17 @@
   (setq copilot-server-executable (executable-find "copilot-language-server"))
   )
 
+(use-package copilot-chat
+  :ensure t
+  :after copilot
+  :hook
+  (git-commit-mode . copilot-chat-insert-commit-message)
+  :config
+  (let ((my/original-prompt copilot-chat-prompt))
+    (setq copilot-chat-prompt (concat my/original-prompt "\n出力には日本語を使ってください。")))
+  (let ((my/original-commit-prompt copilot-chat-commit-prompt))
+    (setq copilot-chat-commit-prompt (concat my/original-commit-prompt "\nコミットメッセージには日本語を使ってください。")))
+  )
+
 (provide '50-copilot)
 ;;; 50-coplit.el ends here
