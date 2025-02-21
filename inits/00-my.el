@@ -169,13 +169,14 @@
 ;; frame の設定
 (if window-system
     (progn
-      (setq initial-frame-alist
-            '((top . 0.0)
-              (left . 0.5)
-              (width . 0.5)
-              (height . 1.0)
-              (alpha . (95 . 75))
-              ))))
+      (setq default-frame-alist
+            '( (top . 1.0)
+               (left . 0.5)
+               (width . 130)
+               (height . 86)
+               (alpha . (95 . 75))
+               ))
+      ))
 
 ;; アンチアンチエイリアス
 ;;(setq mac-allow-anti-aliasing nil)
