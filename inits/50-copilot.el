@@ -16,7 +16,8 @@
     )
   :config
   ;; npm i -g @github/copilot-language-server
-  (setq copilot-server-executable (executable-find "copilot-language-server"))
+  (if (executable-find "copilot-language-server")
+    (setq copilot-server-executable (executable-find "copilot-language-server")))
   )
 
 (use-package copilot-chat
