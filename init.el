@@ -33,8 +33,10 @@
 
 (unless (package-installed-p 'use-package)
   (package-install 'use-package))
-(unless (package-installed-p 'vc-use-package)
+(unless (<= emacs-major-version 30)
   (package-vc-install "https://github.com/slotThe/vc-use-package"))
+(unless (package-installed-p 'gnu-elpa-keyring-update)
+  (package-install 'gnu-elpa-keyring-update))
 
 (use-package s
   :ensure t)
