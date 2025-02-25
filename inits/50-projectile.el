@@ -13,7 +13,7 @@
         ("C-," . projectile-previous-project-buffer)
         )
   :hook
-  ((yaml-mode prog-mode markdwon-mode gfm-mode python-mode) . projectile-mode)
+  (after-init . projectile-mode)
   :init
   (setq projectile-cache-file
     (expand-file-name "data/projectile.cache" user-emacs-directory))
