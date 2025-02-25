@@ -308,6 +308,7 @@
   (embark-collect-mode . consult-preview-at-point-mode))
 
 (use-package nerd-icons-completion
+  :ensure t
   :after marginalia
   :hook
   (marginalia-mode . nerd-icons-completion-marginalia-setup)
