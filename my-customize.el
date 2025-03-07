@@ -8,9 +8,9 @@
        consult-company consult-eglot consult-ghq consult-git-log-grep
        consult-ls-git consult-projectile copilot copilot-chat cp5022x
        diff-hl direx docker docker-compose-mode dockerfile-mode
-       doom-modeline doom-themes ellama embark-consult envrc
-       flycheck-eglot flycheck-inline flycheck-kotlin forge git-link
-       gnu-elpa-keyring-update go-projectile graphql-ts-mode
+       doom-modeline doom-themes editorconfig ellama embark-consult
+       envrc flycheck-eglot flycheck-inline flycheck-kotlin forge
+       git-link gnu-elpa-keyring-update go-projectile graphql-ts-mode
        groovy-mode howm ibuffer-projectile id-manager init-loader
        json-mode jsonnet-mode k8s-mode kotlin-mode kubedoc kubel
        lua-mode magit-find-file magit-popup magit-svn marginalia

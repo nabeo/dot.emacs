@@ -4,6 +4,7 @@
 ;;; Code:
 (use-package editorconfig
   :ensure t
+  :pin melpa
   :config
   (editorconfig-mode 1))
 
