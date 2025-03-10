@@ -15,14 +15,14 @@
        json-mode jsonnet-mode k8s-mode kotlin-mode kubedoc kubel
        lua-mode magit-find-file magit-popup magit-svn marginalia
        mermaid-mode migemo mise nerd-icons-completion orderless pass
-       pgmacs pinentry podcaster poly-ansible poly-erb poly-markdown
-       poly-rst poly-ruby popwin projectile-git-autofetch
-       protobuf-mode puni py-yapf rainbow-delimiters review-mode
-       ruby-electric rust-mode shimbun terraform-mode
-       treemacs-icons-dired treemacs-magit treemacs-nerd-icons
-       treemacs-projectile treemacs-tab-bar treesit-auto
-       typescript-mode vertico vterm-toggle wanderlust web-mode
-       yafolding yasnippet-snippets))
+       pg pgmacs pinentry podcaster poly-ansible poly-erb
+       poly-markdown poly-rst poly-ruby popwin
+       projectile-git-autofetch protobuf-mode puni py-yapf
+       rainbow-delimiters review-mode ruby-electric rust-mode shimbun
+       terraform-mode treemacs-icons-dired treemacs-magit
+       treemacs-nerd-icons treemacs-projectile treemacs-tab-bar
+       treesit-auto typescript-mode vertico vterm-toggle wanderlust
+       web-mode yafolding yasnippet-snippets))
  '(package-vc-selected-packages
     '((pgmacs :url "https://github.com/emarsden/pgmacs" :branch "main")
        (pg :url "https://github.com/emarsden/pg-el" :branch "main")
