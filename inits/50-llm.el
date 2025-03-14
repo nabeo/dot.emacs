@@ -43,6 +43,10 @@
              ("codellama" . (make-llm-ollama
                               :chat-model "codellama:13b-code-q4_K_S"
                               ))
+             ;; https://ollaama.com/library/gemma3/tags
+             ("gemma3" . (make-llm-ollama
+                          :chat-model "gemma3:12b"
+                          :embedding-model "gemma3:12b"))
              ;; https://ollama.com/library/gemma2/tags
              ("gemma2" . (make-llm-ollama
                            :chat-model "gemma2:27b-instruct-q4_K_S"
