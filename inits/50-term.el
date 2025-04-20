@@ -10,6 +10,8 @@
 ;;; Code:
 (use-package vterm
   :ensure t
+  ;; brew install libvterm
+  :if (file-exists-p (concat my/homebrew-prefix "/opt/libvterm/lib/libvterm.0.dylib"))
   :bind
   (:map vterm-mode-map
         ("C-h" . #'vterm-send-backspace))
@@ -20,6 +22,7 @@
 
 (use-package vterm-toggle
   :ensure t
+  :after (vterm)
   :bind
   (("C-c t" . vterm-toggle))
   (:map vterm-mode-map
