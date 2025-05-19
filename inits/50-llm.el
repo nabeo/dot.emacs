@@ -19,8 +19,8 @@
   ;; デフォルトのプロバイダー
   (setopt ellama-provider
 	    (make-llm-ollama
-	     :chat-model "codestral:22b-v0.1-q3_K_S"
-	     :embedding-model "codestral:22b-v0.1-q3_K_S"))
+	     :chat-model "gemma3:12b"
+	     :embedding-model "gemma3:12b"))
   (setopt ellama-summarization-provider
 	    (make-llm-ollama
 	     :chat-model "mistral:7b"
