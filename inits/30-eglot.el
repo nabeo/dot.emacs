@@ -25,7 +25,7 @@
   (:map eglot-mode-map
         ("C-c r" . eglot-rename))
   :config
-  (setq eglot-connect-timeout 60)
+  (setq eglot-connect-timeout 120)
 
   ;; User-specific configuration
   ;; https://www.gnu.org/software/emacs/manual/html_node/eglot/User_002dspecific-configuration.html
@@ -63,7 +63,13 @@
   ;; for graphql
   (add-to-list
    'eglot-server-programs
-   `((graphql-ts-mode) . ("graphql-lsp" "server" "-m" "stream")))
+    `((graphql-ts-mode) . ("graphql-lsp" "server" "-m" "stream")))
+
+  ;; kotlin-lsp (standalonw server)
+  ;; https://github.com/Kotlin/kotlin-lsp
+  (add-to-list
+    'eglot-server-programs
+    `((kotlin-mode kotlin-ts-mode) . (,(concat user-emacs-directory "data/kotlin-lsp/kotlin-lsp.sh") "--stdio")))
   )
 
 (use-package flycheck-eglot
