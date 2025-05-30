@@ -65,7 +65,7 @@
    'eglot-server-programs
     `((graphql-ts-mode) . ("graphql-lsp" "server" "-m" "stream")))
 
-  ;; kotlin-lsp (standalonw server)
+  ;; kotlin-lsp (standalone server)
   ;; https://github.com/Kotlin/kotlin-lsp
   (add-to-list
     'eglot-server-programs
