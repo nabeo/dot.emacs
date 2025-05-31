@@ -9,7 +9,7 @@
   (add-to-list
    'treesit-language-source-alist '(hcl . ("https://github.com/MichaHoffmann/tree-sitter-hcl" "main" "src")))
   (add-to-list
-   'treesit-language-source-alist '(elisp . ("https://github.com/Wilfred/tree-sitter-elisp" "main")))
+    'treesit-language-source-alist '(elisp . ("https://github.com/Wilfred/tree-sitter-elisp" "main")))
   (setq treesit-font-lock-level 4)
   )
 
@@ -29,6 +29,14 @@
   (with-eval-after-load 'treesit
     (add-to-list 'treesit-language-source-alist
                  '(graphql "https://github.com/bkegley/tree-sitter-graphql"))))
+
+(use-package kotlin-ts-mode
+  :ensure t
+  :mode ("\\.kt\\'" "\\.kts\\'")
+  :init
+  (with-eval-after-load 'treesit
+    (add-to-list 'treesit-language-source-alist
+                 '(kotlin  . ("https://github.com/fwcd/tree-sitter-kotlin" "main")))))
 
 (use-package treesit-auto
   :ensure t

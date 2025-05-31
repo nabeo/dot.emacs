@@ -12,11 +12,11 @@
        envrc flycheck-eglot flycheck-inline flycheck-kotlin forge
        git-link gnu-elpa-keyring-update go-projectile graphql-ts-mode
        groovy-mode howm ibuffer-projectile id-manager init-loader
-       json-mode jsonnet-mode k8s-mode kotlin-mode kubedoc kubel
-       lua-mode magit-find-file magit-popup magit-svn marginalia
-       mermaid-mode migemo mise nerd-icons-completion orderless pass
-       pg pgmacs pinentry podcaster poly-ansible poly-erb
-       poly-markdown poly-rst poly-ruby popwin
+       json-mode jsonnet-mode k8s-mode kotlin-mode kotlin-ts-mode
+       kubedoc kubel lua-mode magit-find-file magit-popup magit-svn
+       marginalia mermaid-mode migemo mise nerd-icons-completion
+       orderless pass pg pgmacs pinentry podcaster poly-ansible
+       poly-erb poly-markdown poly-rst poly-ruby popwin
        projectile-git-autofetch protobuf-mode puni py-yapf
        rainbow-delimiters review-mode ruby-electric rust-mode shimbun
        terraform-mode treemacs-icons-dired treemacs-magit
