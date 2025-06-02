@@ -13,7 +13,7 @@
   ((json-mode json-ts-mode) . eglot-ensure) ; npm i -g vscode-json-languageserver
   ((terraform-mode terraform-ts-mode) . eglot-ensure)       ; brew install terraform-ls
   ((yaml-mode yaml-ts-mode) . eglot-ensure)            ; brew install yaml-language-server
-  ((markdown-modde gfm-mode) . eglot-ensure)       ; brew install marksman
+  ((markdown-mode gfm-mode) . eglot-ensure)       ; brew install marksman
   (c-mode . eglot-ensure)
   (c++-mode . eglot-ensure)
   (kotlin-mode . eglot-ensure)   ; brew install kotlin-language-server
