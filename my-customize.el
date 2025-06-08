@@ -21,8 +21,8 @@
        rainbow-delimiters review-mode ruby-electric rust-mode shimbun
        terraform-mode treemacs-icons-dired treemacs-magit
        treemacs-nerd-icons treemacs-projectile treemacs-tab-bar
-       treesit-auto typescript-mode vertico vterm-toggle wanderlust
-       web-mode yafolding yasnippet-snippets))
+       treesit-auto treesit-fold typescript-mode vertico vterm-toggle
+       wanderlust web-mode yafolding yasnippet-snippets))
  '(package-vc-selected-packages
     '((pgmacs :url "https://github.com/emarsden/pgmacs" :branch "main")
        (pg :url "https://github.com/emarsden/pg-el" :branch "main")

@@ -13,6 +13,9 @@
   (setq treesit-font-lock-level 4)
   )
 
+(use-package treesit-fold
+  :ensure t)
+
 (use-package terraform-ts-mode
   :disabled t
   :ensure t
