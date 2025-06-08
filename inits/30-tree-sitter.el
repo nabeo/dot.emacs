@@ -14,7 +14,12 @@
   )
 
 (use-package treesit-fold
-  :ensure t)
+  :ensure t
+  :config
+  (global-treesit-fold-mode 1)
+  (global-treesit-fold-indicators-mode 1)
+  (setq treesit-fold-line-count-show t)
+  (setq treesit-fold-line-count-format " <%d lines> "))
 
 (use-package terraform-ts-mode
   :disabled t
