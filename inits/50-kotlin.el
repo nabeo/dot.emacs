@@ -8,6 +8,7 @@
 
 (use-package flycheck-kotlin
   :ensure t
+  :if (executable-find "ktlint")        ; brew install ktlint
   :after (flycheck)
   :hook
   (kotlin-mode . flycheck-mode)
