@@ -13,6 +13,7 @@
 
 (use-package kubel
   :ensure t
+  :if (executable-find "kubectl")
   :after (vterm)
   :config
   (kubel-vterm-setup)
