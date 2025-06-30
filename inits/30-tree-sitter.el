@@ -15,6 +15,9 @@
 
 (use-package treesit-fold
   :ensure t
+  :bind
+  (:map treesit-fold-mode-map
+        ("M-RET" . treesit-fold-toggle))
   :config
   (global-treesit-fold-mode 1)
   (global-treesit-fold-indicators-mode 1)
