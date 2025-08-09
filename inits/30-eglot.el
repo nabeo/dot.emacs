@@ -25,7 +25,7 @@
   (:map eglot-mode-map
         ("C-c r" . eglot-rename))
   :config
-  (setq eglot-connect-timeout 120)
+  (setq eglot-connect-timeout nil)
 
   ;; User-specific configuration
   ;; https://www.gnu.org/software/emacs/manual/html_node/eglot/User_002dspecific-configuration.html
