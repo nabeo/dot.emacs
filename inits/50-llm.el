@@ -19,8 +19,9 @@
   ;; デフォルトのプロバイダー
   (setopt ellama-provider
 	    (make-llm-ollama
-	     :chat-model "gemma3:12b"
-	     :embedding-model "gemma3:12b"))
+	      :chat-model "gemma3n:e4b-it-q8_0"
+	      :embedding-model "gemma3n:e4b-it-q8_0"
+        :default-chat-non-standard-params '(("num_ctx" . 32768))))
   (setopt ellama-summarization-provider
 	    (make-llm-ollama
 	     :chat-model "mistral:7b"
