@@ -37,35 +37,61 @@
   ;; ellama-provider-select で選択できる
   (setopt ellama-providers
 	        '(
-            ;; https://ollama.com/library/codestral/tags
-             ("codestral" . (make-llm-ollama
-                              :chat-model "codestral:22b-v0.1-q3_K_S"
-                              :embedding-model "codestral:22b-v0.1-q3_K_S"))
-             ("codellama" . (make-llm-ollama
-                              :chat-model "codellama:13b-code-q4_K_S"
-                              ))
+             ;; https://ollama.com/library/gpt-oss/tags
+             ("gpt-oss:20b" .
+               (make-llm-ollama
+                 :chat-model "gpt-oss:20b"
+                 :embedding-model "gpt-oss:20b"))
+             ;; https://ollama.com/library/gemma3n/tags
+             ("gemma3n:e4b-it-q8_0" .
+               (make-llm-ollama
+                 :chat-model "gemma3n:e4b-it-q8_0"
+                 :embedding-model "gemma3n:e4b-it-q8_0"))
+             ("gemma3n:e4b-it-fp16" .
+               (make-llm-ollama
+                 :chat-model "gemma3n:e4b-it-fp16"
+                 :embedding-model "gemma3n:e4b-it-fp16"))
+             ;; https://ollama.com/library/codestral/tags
+             ("codestral:22b-v0.1-q3_K_S" .
+               (make-llm-ollama
+                 :chat-model "codestral:22b-v0.1-q3_K_S"
+                 :embedding-model "codestral:22b-v0.1-q3_K_S"))
+             ;; https://ollama.com/library/codellama/tags
+             ("codellama:13b-code-q4_K_S" .
+               (make-llm-ollama
+                 :chat-model "codellama:13b-code-q4_K_S"))
              ;; https://ollaama.com/library/gemma3/tags
-             ("gemma3" . (make-llm-ollama
-                          :chat-model "gemma3:12b"
-                          :embedding-model "gemma3:12b"))
+             ("gemma3:12b" .
+               (make-llm-ollama
+                 :chat-model "gemma3:12b"
+                 :embedding-model "gemma3:12b"))
              ;; https://ollama.com/library/gemma2/tags
-             ("gemma2" . (make-llm-ollama
-                           :chat-model "gemma2:27b-instruct-q4_K_S"
-                           :embedding-model "gemma2:27b-instruct-q4_K_S"))
+             ("gemma2:27b-instruct-q4_K_S" .
+               (make-llm-ollama
+                 :chat-model "gemma2:27b-instruct-q4_K_S"
+                 :embedding-model "gemma2:27b-instruct-q4_K_S"))
              ;; https://ollama.com/library/llama3.1/tags
-             ("llama3.1" . (make-llm-ollama
-                             :chat-model "llama3.1:8b"
-                             :embedding-model "llama3.1:8b"))
-             ("mistral" . (make-llm-ollama
-                            :chat-model "mistral:7b"))
-             ("phi4" . (make-llm-ollama
-                         :chat-model "phi4:14b-q4_K_M"))
-             ("phi4-reasoning" . (make-llm-ollama
-                                   :chat-model "phi4-reasoning:14b-plus-q8_0"))
+             ("llama3.1:8b" .
+               (make-llm-ollama
+                 :chat-model "llama3.1:8b"
+                 :embedding-model "llama3.1:8b"))
+             ;; https://ollama.com/library/mistral/tags
+             ("mistral:7b" .
+               (make-llm-ollama
+                 :chat-model "mistral:7b"))
+             ;; https://ollama.com/library/phi4/tags
+             ("phi4:14b-q4_K_M" .
+               (make-llm-ollama
+                 :chat-model "phi4:14b-q4_K_M"))
+             ;; https://ollama.com/library/phi4-reasoning/tags
+             ("phi4-reasoning:14b-plus-q8_0" .
+               (make-llm-ollama
+                 :chat-model "phi4-reasoning:14b-plus-q8_0"))
              ;; Google Gemini
-             ("Gemini 2.0 Flash" . (make-llm-gemini
-                                     :chat-model "gemini-2.0-flash-exp"
-                                     :key (auth-source-pick-first-password :host "gemini")))
+             ("Gemini 2.0 Flash" .
+               (make-llm-gemini
+                 :chat-model "gemini-2.0-flash-exp"
+                 :key (auth-source-pick-first-password :host "gemini")))
             ))
 
   ;; Naming new sessions with llm
