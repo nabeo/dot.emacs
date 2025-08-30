@@ -23,7 +23,7 @@
        terraform-mode treemacs-icons-dired treemacs-magit
        treemacs-nerd-icons treemacs-projectile treemacs-tab-bar
        treesit-auto treesit-fold typescript-mode vertico vterm-toggle
-       wanderlust web-mode yafolding yasnippet-snippets))
+       w3m wanderlust web-mode yafolding yasnippet-snippets))
  '(package-vc-selected-packages
     '((deck-slides :url "https://github.com/zonuexe/deck-slides.el"
         :branch "mster")
