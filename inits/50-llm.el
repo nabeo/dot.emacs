@@ -20,7 +20,7 @@
   (setopt ellama-provider
 	    (make-llm-ollama
 	      :chat-model "gemma3n:e4b-it-q8_0"
-	      :embedding-model "gemma3n:e4b-it-q8_0"
+	      :embedding-model "embeddinggemma:300m-bf16"
         :default-chat-non-standard-params '(("num_ctx" . 32768))))
   (setopt ellama-summarization-provider
 	    (make-llm-ollama
@@ -46,11 +46,11 @@
              ("gemma3n:e4b-it-q8_0" .
                (make-llm-ollama
                  :chat-model "gemma3n:e4b-it-q8_0"
-                 :embedding-model "gemma3n:e4b-it-q8_0"))
+                 :embedding-model "embeddinggemma:300m-bf16"))
              ("gemma3n:e4b-it-fp16" .
                (make-llm-ollama
                  :chat-model "gemma3n:e4b-it-fp16"
-                 :embedding-model "gemma3n:e4b-it-fp16"))
+                 :embedding-model "embeddinggemma:300m-bf16"))
              ;; https://ollama.com/library/codestral/tags
              ("codestral:22b-v0.1-q3_K_S" .
                (make-llm-ollama
@@ -64,12 +64,12 @@
              ("gemma3:12b" .
                (make-llm-ollama
                  :chat-model "gemma3:12b"
-                 :embedding-model "gemma3:12b"))
+                 :embedding-model "embeddinggemma:300m-bf16"))
              ;; https://ollama.com/library/gemma2/tags
              ("gemma2:27b-instruct-q4_K_S" .
                (make-llm-ollama
                  :chat-model "gemma2:27b-instruct-q4_K_S"
-                 :embedding-model "gemma2:27b-instruct-q4_K_S"))
+                 :embedding-model "embeddinggemma:300m-bf16"))
              ;; https://ollama.com/library/llama3.1/tags
              ("llama3.1:8b" .
                (make-llm-ollama
@@ -107,6 +107,58 @@
   (setq ellama-summarize-prompt-template "Text:\n%s\n要約して")
   (setq ellama-generate-commit-message-template "あなたは熟練プログラマーです。後の変更点をもとに簡潔なコミットメッセージを書いてください。コミットメッセージの形式は、1行目は変更点の要約、2行目は空行、それ以降の行は変更全体の詳細な説明、です。出力はプロンプト無しで最終的なコミットメッセージだけにしてください。\n\n変更点:\n%s\n")
   (setq ellama-code-review-prompt-template "以下のコードのレビューと改善案を日本語で教えてください:\n```\n%s\n```")
+  )
+
+(use-package gptel
+  :ensure t
+  :config
+  ;; MCP integration
+  (require 'gptel-integrations)
+
+  ;; default model
+  (setq gptel-mode 'claude-3.7-sonnet)
+  (setq gptel-backend (gptel-make-gh-copilot "Copilot" :stream t))
+
+  (setq gptel-use-curl t)
+  (setq gptel-use-tools t)
+  (setq gptel-confirm-tool-calls 'always)
+  (setq gptel-include-tool-results 'auto)
+  (setq gptel--system-message (concat gptel--system-message " Make sure to Japanese langugage."))
+
+  ;; Ollama
+  ;; https://ollama.com/library/gemma3n/tags
+  (gptel-make-ollama "gemma3n:e4b-it-q8_0"
+    :host "localhost:11434"
+    :models '(gemma3n:e4b-it-q8_0)
+    :request-params '(:options (:num_ctx 131072))
+    :stream t
+    )
+  ;; https://ollama.com/library/gpt-oss/tags
+  (gptel-make-ollama "gpt-oss:20b"
+    :host "localhost:11434"
+    :models '(gpt-oss:20b)
+    :request-params '(:options (:num_ctx 131072))
+    :stream t
+    )
+  )
+
+(use-package gptel-magit
+  :ensure t
+  :after (gptel magit)
+  :hook (magit-mode . gptel-magit-install)
+  )
+
+(use-package mcp
+  :ensure t
+  :after (gptel)
+  :custom
+  (mcp-hub-servers
+    `(("MCP_DOKCER" .
+        (:command "docker" :args ("mcp" "gateway" "run")))))
+  :hook
+  (after-init . mcp-hub-start-all-server)
+  :config
+  (require 'mcp-hub)
   )
 
 (provide '50-llm)
