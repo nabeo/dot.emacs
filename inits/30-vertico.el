@@ -222,7 +222,8 @@
          ))
 
 (use-package consult-eglot
-  :ensure t
+  :ensure nil
+  :disabled
   :after (consult eglot)
   :bind
   ([remap xref-find-apropos] . consult-eglot-symbols)
