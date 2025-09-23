@@ -131,6 +131,10 @@
     ("C-c s" . lsp-ui-sideline-mode)
     ("C-c d" . lsp-ui-doc-show)
     )
+  (:map lsp-ui-mode-map
+    ([remap xref-find-definitions] . #'lsp-ui-peek-find-definitions)
+    ([remap xref-find-references] . #'lsp-ui-peek-find-references)
+    )
   :config
   )
 
