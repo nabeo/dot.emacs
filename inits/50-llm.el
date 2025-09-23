@@ -126,17 +126,14 @@
   (setq gptel--system-message (concat gptel--system-message " Make sure to Japanese langugage."))
 
   ;; Ollama
-  ;; https://ollama.com/library/gemma3n/tags
-  (gptel-make-ollama "gemma3n:e4b-it-q8_0"
+  (gptel-make-ollama "ollama"
     :host "localhost:11434"
-    :models '(gemma3n:e4b-it-q8_0)
-    :request-params '(:options (:num_ctx 131072))
-    :stream t
-    )
-  ;; https://ollama.com/library/gpt-oss/tags
-  (gptel-make-ollama "gpt-oss:20b"
-    :host "localhost:11434"
-    :models '(gpt-oss:20b)
+    :models '(
+               ;; https://ollama.com/library/gemma3n/tags
+               gemma3n:e4b-it-q8_0
+               ;; https://ollama.com/library/gpt-oss/tags
+               gpt-oss:20b
+               )
     :request-params '(:options (:num_ctx 131072))
     :stream t
     )
