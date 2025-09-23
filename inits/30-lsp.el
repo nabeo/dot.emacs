@@ -15,8 +15,6 @@
   (lsp-disabled-clients '(tfls))
   ;; https://github.com/emacs-lsp/lsp-mode/issues/3713
   (create-lockfiles nil)
-  ;; M-x lsp-install-server RET kotolin RET or brew install kotolin-language-server
-  (lsp-clients-kotlin-server-executable "kotlin-language-server")
   ;; semantic tokens
   (lsp-semantic-tokens-enable t)
   (lsp-semantic-tokens-honor-refresh-requests t)
@@ -53,6 +51,9 @@
   (terraform-mode . lsp-deferred)
   ;; for yaml
   (yaml-mode . lsp)
+  ;; for kotlin
+  (kotlin-mode . lsp)
+  (kotlin-ts-mode . lsp)
   ;; use with which-key
   (lsp-mode . lsp-enable-which-key-integration)
   :bind
@@ -66,6 +67,21 @@
   ;; lsp-terraform-ls
   (setq lsp-terraform-ls-enable-show-reference t)
   (setq lsp-terraform-ls-prefill-required-fields t)
+
+  ;; kotlin-lsp
+  ;; https://github.com/Kotlin/kotlin-lsp/blob/main/scripts/lsp-kotlin-emacs-lsp-mode.el
+  (defun kotlin-lsp-server-fun ()
+    (list "~/.emacs.d/data/kotlin-lsp/kotlin-lsp.sh" "--stdio"))
+  (add-to-list 'lsp-language-id-configuration '(kotlin-mode . "kotlin-lsp"))
+  (add-to-list 'lsp-language-id-configuration '(kotlin-ts-mode . "kotlin-lsp"))
+  (lsp-register-client
+    (make-lsp-client
+      :new-connection (lsp-stdio-connection #'kotlin-lsp-server-fun)
+      :activation-fn (lsp-activate-on "kotlin-lsp")
+      :priority -1
+      :major-modes '(kotlin-mode kotlin-ts-mode)
+      :server-id 'kotlin-lsp
+      ))
   )
 
 (use-package lsp-ui
