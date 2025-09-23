@@ -147,11 +147,34 @@
 
 (use-package mcp
   :ensure t
-  :after (gptel)
+  :hook (after-init . mcp-hub-start-all-server)
   :custom
   (mcp-hub-servers
-    `(("MCP_DOKCER" .
-        (:command "docker" :args ("mcp" "gateway" "run")))))
+    `(
+       ;; https://github.com/hashicorp/terraform-mcp-server
+       ("terraform" .
+         (:command "terraform-mcp-server" :args ("stdio")))
+
+       ;; https://github.com/awslabs/mcp/tree/main/src/core-mcp-server
+       ("aws_core" .
+         ( :command "uvx" :args ("awslabs.core-mcp-server@latest")
+           :env ( :FASTMCP_LOG_LEVEL "ERROR"
+                  :aws-foundation "true"
+                  :solutions-architect "true")))
+
+       ;; https://github.com/awslabs/mcp/tree/main/src/terraform-mcp-server
+       ("aws_terraform" .
+         (:command "uvx" :args ("awslabs.terraform-mcp-server@latest") :env (:FASTMCP_LOG_LEVEL "ERROR")))
+
+       ;; https://github.com/awslabs/mcp/tree/main/src/aws-documentation-mcp-server
+       ("aws_documentation" .
+         ( :command "uvx" :args ("awslabs.aws-documentation-mcp-server@latest")
+           :env ( :FASTMCP_LOG_LEVEL "ERROR"
+                  :AWS_DOCUMENTATUION_PARTITION "aws")))
+
+       ;; https://github.com/github/github-mcp-server/
+       ;; ("github" . (:url "https://api.githubcopilot.com/mcp/"))
+       ))
   :hook
   (after-init . mcp-hub-start-all-server)
   :config
