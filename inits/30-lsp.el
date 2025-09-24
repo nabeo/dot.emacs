@@ -62,7 +62,7 @@
   :commands (lsp lsp-deferred)
   :config
   ;; lsp-copilot
-  (setq lsp-copilot-enabled nil)
+  (setq lsp-copilot-enabled t)
 
   ;; lsp-terraform-ls
   (setq lsp-terraform-ls-enable-show-reference t)
