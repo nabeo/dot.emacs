@@ -11,8 +11,9 @@
     ("C-p" . company-select-previous)
     ;; C-sで絞り込む
     ("C-s" . company-filter-candidates)
-    ;; TABで候補を設定
-    ("C-i" . company-complete-selection))
+    ;; 候補を確定
+    ("RET" . company-complete-selection)
+    ("M-RET" . company-complete-selection))
   (:map company-search-map
     ;; C-n, C-pで補完候補を次/前の候補を選択
     ("C-n" . company-select-next)
