@@ -4,7 +4,6 @@
 ;;; Code:
 (use-package lsp-mode
   :ensure t
-  :disabled
   :custom
   ;; (create-lockfiles nil)
   (lsp-auto-guess-root t)
@@ -16,8 +15,6 @@
   (lsp-disabled-clients '(tfls))
   ;; https://github.com/emacs-lsp/lsp-mode/issues/3713
   (create-lockfiles nil)
-  ;; M-x lsp-install-server RET kotolin RET or brew install kotolin-language-server
-  (lsp-clients-kotlin-server-executable "kotlin-language-server")
   ;; semantic tokens
   (lsp-semantic-tokens-enable t)
   (lsp-semantic-tokens-honor-refresh-requests t)
@@ -54,6 +51,16 @@
   (terraform-mode . lsp-deferred)
   ;; for yaml
   (yaml-mode . lsp)
+  ;; for kotlin
+  (kotlin-mode . lsp)
+  (kotlin-ts-mode . lsp)
+  ;; for markdown
+  ;; brew install marksman
+  (markdown-mode . lsp)
+  (gfm-mode . lsp)
+  ;; for lua (lua-language-server)
+  (lua-mode . lsp)
+  (lua-ts-mode . lsp)
   ;; use with which-key
   (lsp-mode . lsp-enable-which-key-integration)
   :bind
@@ -67,11 +74,25 @@
   ;; lsp-terraform-ls
   (setq lsp-terraform-ls-enable-show-reference t)
   (setq lsp-terraform-ls-prefill-required-fields t)
+
+  ;; kotlin-lsp
+  ;; https://github.com/Kotlin/kotlin-lsp/blob/main/scripts/lsp-kotlin-emacs-lsp-mode.el
+  (defun kotlin-lsp-server-fun ()
+    (list "~/.emacs.d/data/kotlin-lsp/kotlin-lsp.sh" "--stdio"))
+  (add-to-list 'lsp-language-id-configuration '(kotlin-mode . "kotlin-lsp"))
+  (add-to-list 'lsp-language-id-configuration '(kotlin-ts-mode . "kotlin-lsp"))
+  (lsp-register-client
+    (make-lsp-client
+      :new-connection (lsp-stdio-connection #'kotlin-lsp-server-fun)
+      :activation-fn (lsp-activate-on "kotlin-lsp")
+      :priority -1
+      :major-modes '(kotlin-mode kotlin-ts-mode)
+      :server-id 'kotlin-lsp
+      ))
   )
 
 (use-package lsp-ui
   :ensure t
-  :disabled
   :commands lsp-ui-mode
   :after lsp-mode
   :custom
@@ -117,13 +138,15 @@
     ("C-c s" . lsp-ui-sideline-mode)
     ("C-c d" . lsp-ui-doc-show)
     )
+  (:map lsp-ui-mode-map
+    ([remap xref-find-definitions] . #'lsp-ui-peek-find-definitions)
+    ([remap xref-find-references] . #'lsp-ui-peek-find-references)
+    )
   :config
   )
 
 (use-package lsp-treemacs
-  :ensure nil
-  :disabled
-  :commands lsp-treemacs-errors-list
+  :ensure t
   :after lsp-mode
   :config
   (lsp-treemacs-sync-mode 1)
@@ -131,7 +154,6 @@
 
 (use-package consult-lsp
   :ensure t
-  :disabled
   :after (consult)
   :bind
   (:map lsp-mode-map

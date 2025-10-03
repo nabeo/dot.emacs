@@ -5,22 +5,23 @@
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
     '(bbdb bbdb-vcard chezmoi combobulate command-log-mode company-box
-       company-quickhelp consult-company consult-eglot consult-ghq
-       consult-git-log-grep consult-ls-git consult-projectile copilot
-       copilot-chat cp5022x deck-slides diff-hl direx docker
-       docker-compose-mode dockerfile-mode doom-modeline doom-themes
-       editorconfig ellama embark-consult envrc flycheck-eglot
-       flycheck-inline flycheck-kotlin forge git-link
+       company-quickhelp consult-company consult-ghq
+       consult-git-log-grep consult-ls-git consult-lsp
+       consult-projectile copilot copilot-chat cp5022x deck-slides
+       diff-hl direx docker docker-compose-mode dockerfile-mode
+       doom-modeline doom-themes editorconfig ellama embark-consult
+       envrc flycheck-inline flycheck-kotlin forge git-link
        gnu-elpa-keyring-update go-projectile gptel gptel-magit
        graphql-ts-mode groovy-mode howm ibuffer-projectile id-manager
        init-loader json-mode jsonnet-mode k8s-mode kotlin-mode
-       kotlin-ts-mode kubedoc kubel lua-mode magit-find-file
-       magit-popup magit-svn marginalia mermaid-mode migemo mise
-       nerd-icons-completion orderless pass pg pgmacs pinentry
-       podcaster poly-ansible poly-erb poly-markdown poly-rst
-       poly-ruby popwin projectile-git-autofetch protobuf-mode puni
-       py-yapf rainbow-delimiters review-mode ruby-electric rust-mode
-       shimbun terraform-mode treemacs-icons-dired treemacs-magit
+       kotlin-ts-mode kubedoc kubel lsp-mode lsp-treemacs lsp-ui
+       lua-mode magit-find-file magit-popup magit-svn marginalia
+       mermaid-mode migemo mise nerd-icons-completion orderless pass
+       pg pgmacs pinentry podcaster poly-ansible poly-erb
+       poly-markdown poly-rst poly-ruby popwin
+       projectile-git-autofetch protobuf-mode puni py-yapf
+       rainbow-delimiters review-mode ruby-electric rust-mode shimbun
+       terraform-mode treemacs-icons-dired treemacs-magit
        treemacs-nerd-icons treemacs-projectile treemacs-tab-bar
        treesit-auto treesit-fold typescript-mode vertico vterm-toggle
        w3m wanderlust web-mode yafolding yasnippet-snippets))

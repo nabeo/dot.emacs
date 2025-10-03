@@ -3,6 +3,7 @@
 
 ;;; Code:
 (use-package eglot
+  :disabled
   :commands (eglot-ensure)
   :hook
   ((go-mode go-ts-mode) . eglot-ensure) ; brew install gopls
@@ -73,7 +74,8 @@
   )
 
 (use-package flycheck-eglot
-  :ensure t
+  :ensure nil
+  :disabled
   :after (flycheck eglot)
   :custom (flycheck-eglot-exclusive nil)
   :config
