@@ -146,8 +146,7 @@
   )
 
 (use-package lsp-treemacs
-  :ensure nil
-  :commands lsp-treemacs-errors-list
+  :ensure t
   :after lsp-mode
   :config
   (lsp-treemacs-sync-mode 1)
