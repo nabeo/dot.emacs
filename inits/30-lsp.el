@@ -22,6 +22,8 @@
   (lsp-enable-links t)
   ;; completion provider
   (lsp-completion-provider :capf)
+  ;; auto format on save by lsp
+  (lsp-format-buffer-on-save t)
   :init
   (setq gc-cons-threshold 100000000)
   (setq read-process-output-max (* 1024 1024)) ; 1mb
