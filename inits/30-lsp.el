@@ -24,6 +24,7 @@
   (lsp-completion-provider :capf)
   ;; auto format on save by lsp
   (lsp-format-buffer-on-save t)
+  (lsp-format-buffer-on-save-list '("kotlin-mode" "kotlin-ts-mode"))
   :init
   (setq gc-cons-threshold 100000000)
   (setq read-process-output-max (* 1024 1024)) ; 1mb
