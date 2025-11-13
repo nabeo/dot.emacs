@@ -33,8 +33,6 @@
        (pg :url "https://github.com/emarsden/pg-el" :branch "main")
        (combobulate :url "https://github.com/mickeynp/combobulate"
          :branch "master")))
- '(safe-local-variable-values
-    '((jsonnet-indent-level . 2) (hcl-indent-level . 2)))
  '(warning-minimum-level :error)
  '(warning-minimum-log-level :error))
 (custom-set-faces

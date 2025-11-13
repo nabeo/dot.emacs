@@ -8,6 +8,7 @@
   :mode
   ("\\.jsonnet\\'" . jsonnet-mode)
   :init
+  :custom (jsonnet-indent-line 2)
   :config
   (setq jsonnet-use-smie t)
   )

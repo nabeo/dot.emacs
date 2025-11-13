@@ -2,6 +2,12 @@
 ;;; Commentary:
 
 ;;; Code:
+(use-package hcl-mode
+  :ensure t
+  :mode ("\\.hcl\\'" . hcl-mode)
+  :custom (hcl-indent-level 2)
+  )
+
 (use-package terraform-mode
   :ensure t
   :hook
