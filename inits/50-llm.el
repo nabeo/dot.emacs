@@ -116,7 +116,7 @@
   (require 'gptel-integrations)
 
   ;; default model
-  (setq gptel-mode 'claude-3.7-sonnet)
+  (setq gptel-mode 'gemini-3-pro-preview)
   (setq gptel-backend (gptel-make-gh-copilot "Copilot" :stream t))
 
   (setq gptel-use-curl t)
