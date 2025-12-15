@@ -4,8 +4,8 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-    '(bbdb bbdb-vcard chezmoi combobulate command-log-mode company-box
-       company-quickhelp consult-company consult-ghq
+    '(agent-shell bbdb bbdb-vcard chezmoi combobulate command-log-mode
+       company-box company-quickhelp consult-company consult-ghq
        consult-git-log-grep consult-ls-git consult-lsp
        consult-projectile copilot copilot-chat cp5022x deck-slides
        diff-hl direx docker docker-compose-mode dockerfile-mode

@@ -181,5 +181,11 @@
   (require 'mcp-hub)
   )
 
+(use-package agent-shell
+  :ensure t
+  :ensure-system-package
+  ((cursor-agent-acp . "npm install -g @blowmage/cursor-agent-acp"))
+  )
+
 (provide '50-llm)
 ;;; 50-llm.el ends here
