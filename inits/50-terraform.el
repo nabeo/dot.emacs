@@ -8,7 +8,7 @@
   :custom (hcl-indent-level 2)
   :init
   (custom-set-variables
-   '(ignored-local-variable-values '((hcl-indent-level . 2))))
+   '(ignored-local-variable-values '((hcl-indent-level . 4) (hcl-indent-level . 2))))
   )
 
 (use-package terraform-mode
