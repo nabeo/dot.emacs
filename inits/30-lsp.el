@@ -82,17 +82,18 @@
   ;; kotlin-lsp
   ;; https://github.com/Kotlin/kotlin-lsp/blob/main/scripts/lsp-kotlin-emacs-lsp-mode.el
   (defun kotlin-lsp-server-fun ()
-    (list "~/.emacs.d/data/kotlin-lsp/kotlin-lsp.sh" "--stdio"))
-  (add-to-list 'lsp-language-id-configuration '(kotlin-mode . "kotlin-lsp"))
-  (add-to-list 'lsp-language-id-configuration '(kotlin-ts-mode . "kotlin-lsp"))
-  (lsp-register-client
-    (make-lsp-client
-      :new-connection (lsp-stdio-connection #'kotlin-lsp-server-fun)
-      :activation-fn (lsp-activate-on "kotlin-lsp")
-      :priority -1
-      :major-modes '(kotlin-mode kotlin-ts-mode)
-      :server-id 'kotlin-lsp
-      ))
+    (list "~/.local/share/kotlin-lsp/kotlin-lsp.sh" "--stdio"))
+  (cond ((file-executable-p "~/.local/share/kotlin-lsp/kotlin-lsp.sh")
+          (add-to-list 'lsp-language-id-configuration '(kotlin-mode . "kotlin-lsp"))
+          (add-to-list 'lsp-language-id-configuration '(kotlin-ts-mode . "kotlin-lsp"))
+          (lsp-register-client
+            (make-lsp-client
+              :new-connection (lsp-stdio-connection #'kotlin-lsp-server-fun)
+              :activation-fn (lsp-activate-on "kotlin-lsp")
+              :priority -1
+              :major-modes '(kotlin-mode kotlin-ts-mode)
+              :server-id 'kotlin-lsp
+              ))))
   )
 
 (use-package lsp-ui
