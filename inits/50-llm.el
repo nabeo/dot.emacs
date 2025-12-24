@@ -19,7 +19,7 @@
   ;; デフォルトのプロバイダー
   (setopt ellama-provider
 	    (make-llm-ollama
-	      :chat-model "gemma3n:e4b-it-q8_0"
+	      :chat-model "gpt-oss-safeguard:20b"
 	      :embedding-model "embeddinggemma:300m-bf16"
         :default-chat-non-standard-params '(("num_ctx" . 32768))))
   (setopt ellama-summarization-provider
