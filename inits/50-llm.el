@@ -36,67 +36,67 @@
 
   ;; ellama-provider-select で選択できる
   (setopt ellama-providers
-	        '(
-             ;; https://ollama.com/library/gpt-oss/tags
-             ("gpt-oss:20b" .
-               (make-llm-ollama
-                 :chat-model "gpt-oss:20b"
-                 :embedding-model "embeddinggemma:300m-bf16"))
-             ;; https://ollama.com/library/gemma3n/tags
-             ("gemma3n:e4b-it-q8_0" .
-               (make-llm-ollama
-                 :chat-model "gemma3n:e4b-it-q8_0"
-                 :embedding-model "embeddinggemma:300m-bf16"))
-             ("gemma3n:e4b-it-fp16" .
-               (make-llm-ollama
-                 :chat-model "gemma3n:e4b-it-fp16"
-                 :embedding-model "embeddinggemma:300m-bf16"))
-             ;; https://ollama.com/library/codestral/tags
-             ("codestral:22b-v0.1-q3_K_S" .
-               (make-llm-ollama
-                 :chat-model "codestral:22b-v0.1-q3_K_S"
-                 :embedding-model "embeddinggemma:300m-bf16"))
-             ;; https://ollama.com/library/codellama/tags
-             ("codellama:13b-code-q4_K_S" .
-               (make-llm-ollama
-                 :chat-model "codellama:13b-code-q4_K_S"
-                 :embedding-model "embeddinggemma:300m-bf16"))
-             ;; https://ollaama.com/library/gemma3/tags
-             ("gemma3:12b" .
-               (make-llm-ollama
-                 :chat-model "gemma3:12b"
-                 :embedding-model "embeddinggemma:300m-bf16"))
-             ;; https://ollama.com/library/gemma2/tags
-             ("gemma2:27b-instruct-q4_K_S" .
-               (make-llm-ollama
-                 :chat-model "gemma2:27b-instruct-q4_K_S"
-                 :embedding-model "embeddinggemma:300m-bf16"))
-             ;; https://ollama.com/library/llama3.1/tags
-             ("llama3.1:8b" .
-               (make-llm-ollama
-                 :chat-model "llama3.1:8b"
-                 :embedding-model "embeddinggemma:300m-bf16"))
-             ;; https://ollama.com/library/mistral/tags
-             ("mistral:7b" .
-               (make-llm-ollama
-                 :chat-model "mistral:7b"
-                 :embedding-model "embeddinggemma:300m-bf16"))
-             ;; https://ollama.com/library/phi4/tags
-             ("phi4:14b-q4_K_M" .
-               (make-llm-ollama
-                 :chat-model "phi4:14b-q4_K_M"
-                 :embedding-model "embeddinggemma:300m-bf16"))
-             ;; https://ollama.com/library/phi4-reasoning/tags
-             ("phi4-reasoning:14b-plus-q8_0" .
-               (make-llm-ollama
-                 :chat-model "phi4-reasoning:14b-plus-q8_0"
-                 :embedding-model "embeddinggemma:300m-bf16"))
-             ;; Google Gemini
-             ("Gemini 2.0 Flash" .
-               (make-llm-gemini
-                 :chat-model "gemini-2.0-flash-exp"
-                 :key (auth-source-pick-first-password :host "gemini")))
-            ))
+	  '(
+       ;; https://ollama.com/library/gpt-oss/tags
+       ("gpt-oss:20b" .
+         (make-llm-ollama
+           :chat-model "gpt-oss:20b"
+           :embedding-model "embeddinggemma:300m-bf16"))
+       ;; https://ollama.com/library/gemma3n/tags
+       ("gemma3n:e4b-it-q8_0" .
+         (make-llm-ollama
+           :chat-model "gemma3n:e4b-it-q8_0"
+           :embedding-model "embeddinggemma:300m-bf16"))
+       ("gemma3n:e4b-it-fp16" .
+         (make-llm-ollama
+           :chat-model "gemma3n:e4b-it-fp16"
+           :embedding-model "embeddinggemma:300m-bf16"))
+       ;; https://ollama.com/library/codestral/tags
+       ("codestral:22b-v0.1-q3_K_S" .
+         (make-llm-ollama
+           :chat-model "codestral:22b-v0.1-q3_K_S"
+           :embedding-model "embeddinggemma:300m-bf16"))
+       ;; https://ollama.com/library/codellama/tags
+       ("codellama:13b-code-q4_K_S" .
+         (make-llm-ollama
+           :chat-model "codellama:13b-code-q4_K_S"
+           :embedding-model "embeddinggemma:300m-bf16"))
+       ;; https://ollaama.com/library/gemma3/tags
+       ("gemma3:12b" .
+         (make-llm-ollama
+           :chat-model "gemma3:12b"
+           :embedding-model "embeddinggemma:300m-bf16"))
+       ;; https://ollama.com/library/gemma2/tags
+       ("gemma2:27b-instruct-q4_K_S" .
+         (make-llm-ollama
+           :chat-model "gemma2:27b-instruct-q4_K_S"
+           :embedding-model "embeddinggemma:300m-bf16"))
+       ;; https://ollama.com/library/llama3.1/tags
+       ("llama3.1:8b" .
+         (make-llm-ollama
+           :chat-model "llama3.1:8b"
+           :embedding-model "embeddinggemma:300m-bf16"))
+       ;; https://ollama.com/library/mistral/tags
+       ("mistral:7b" .
+         (make-llm-ollama
+           :chat-model "mistral:7b"
+           :embedding-model "embeddinggemma:300m-bf16"))
+       ;; https://ollama.com/library/phi4/tags
+       ("phi4:14b-q4_K_M" .
+         (make-llm-ollama
+           :chat-model "phi4:14b-q4_K_M"
+           :embedding-model "embeddinggemma:300m-bf16"))
+       ;; https://ollama.com/library/phi4-reasoning/tags
+       ("phi4-reasoning:14b-plus-q8_0" .
+         (make-llm-ollama
+           :chat-model "phi4-reasoning:14b-plus-q8_0"
+           :embedding-model "embeddinggemma:300m-bf16"))
+       ;; Google Gemini
+       ("Gemini 2.0 Flash" .
+         (make-llm-gemini
+           :chat-model "gemini-2.0-flash-exp"
+           :key (auth-source-pick-first-password :host "gemini")))
+       ))
 
   ;; Naming new sessions with llm
   (setopt ellama-naming-provider
