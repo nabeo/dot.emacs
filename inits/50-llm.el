@@ -142,6 +142,8 @@
                gemma3n:e4b-it-q8_0
                ;; https://ollama.com/library/gpt-oss/tags
                gpt-oss:20b
+               ;; https://ollama.com/library/gpt-oss-safeguard
+               gpt-oss-safeguard:20b
                )
     :request-params '(:options (:num_ctx 131072))
     :stream t
