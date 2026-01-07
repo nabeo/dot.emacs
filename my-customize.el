@@ -14,17 +14,16 @@
        gnu-elpa-keyring-update go-projectile gptel gptel-magit
        graphql-ts-mode groovy-mode howm ibuffer-projectile id-manager
        init-loader json-mode jsonnet-mode k8s-mode kotlin-mode
-       kotlin-ts-mode kubedoc kubel lsp-mode lsp-treemacs lsp-ui
-       lua-mode magit-find-file magit-popup magit-svn marginalia
-       mermaid-mode migemo mise nerd-icons-completion orderless pass
-       pg pgmacs pinentry podcaster poly-ansible poly-erb
-       poly-markdown poly-rst poly-ruby popwin
-       projectile-git-autofetch protobuf-mode puni py-yapf
-       rainbow-delimiters review-mode ruby-electric rust-mode shimbun
+       kotlin-ts-mode kubedoc lsp-mode lsp-treemacs lsp-ui lua-mode
+       magit-find-file magit-popup magit-svn marginalia mermaid-mode
+       migemo mise nerd-icons-completion orderless pass pg pgmacs
+       pinentry podcaster poly-ansible poly-erb poly-markdown poly-rst
+       poly-ruby popwin projectile-git-autofetch protobuf-mode puni
+       py-yapf rainbow-delimiters review-mode ruby-electric rust-mode
        terraform-mode treemacs-icons-dired treemacs-magit
        treemacs-nerd-icons treemacs-projectile treemacs-tab-bar
-       treesit-auto treesit-fold typescript-mode vertico vterm-toggle
-       w3m wanderlust web-mode yafolding yasnippet-snippets))
+       treesit-auto treesit-fold typescript-mode w3m wanderlust
+       yafolding))
  '(package-vc-selected-packages
     '((deck-slides :url "https://github.com/zonuexe/deck-slides.el"
         :branch "mster")
