@@ -28,11 +28,11 @@
 	     :embedding-model "nomic-embed-text"
 	     :default-chat-non-standard-params '(("num_ctx" . 32768))))
   ;; 翻訳用プロバイダー
-  ;; https://ollama.com/library/aya-expanse
+  ;; https://ollama.com/library/translategemma
   (setopt ellama-translation-provider
 	  (make-llm-ollama
-	   :chat-model "aya-expanse:8b-q5_K_M"
-	   :embedding-model "aya-expanse:8b-q5_K_M"))
+	   :chat-model "translategemma:12b-it-q4_K_M"
+	   :embedding-model "embeddinggemma:300m-bf16"))
 
   ;; ellama-provider-select で選択できる
   (setopt ellama-providers
