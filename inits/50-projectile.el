@@ -22,6 +22,14 @@
   (setq projectile-enable-caching t)
   (setq projectile-file-exists-remote-cache-expire nil)
   (setq projectile-file-exists-local-cache-expire (* 5 60))
+
+  ;; project discovery
+  (setq projectile-auto-discover t)
+  (setq projectile-project-search-path '(("~/src" . 2) ("~/src" . 3)))
+
+  ;; remove missing project automatically
+  (setq projectile-auto-cleanup-known-projects t)
+
   :config
   ;; ignore files and directory
   (add-to-list 'projectile-globally-ignored-directories "tmp")
