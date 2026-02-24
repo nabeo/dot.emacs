@@ -4,6 +4,7 @@
 ;;; Code:
 (use-package copilot
   :ensure t
+  :disabled
   :hook
   (prog-mode . copilot-mode)
   (yaml-mode . copilot-mode)
@@ -22,6 +23,7 @@
 
 (use-package copilot-chat
   :ensure t
+  :disabled
   :after copilot
   :bind
   (:map git-commit-mode-map

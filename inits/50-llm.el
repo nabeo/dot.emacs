@@ -126,28 +126,25 @@
 
   ;; default model
   (setq gptel-mode 'gemini-3-pro-preview)
-  (setq gptel-backend (gptel-make-gh-copilot "Copilot" :stream t))
+  (setq gptel-backend (gptel-make-ollama "ollama"
+                        :host "localhost:11434"
+                        :models '(
+                                   ;; https://ollama.com/library/gemma3n/tags
+                                   gemma3n:e4b-it-q8_0
+                                   ;; https://ollama.com/library/gpt-oss/tags
+                                   gpt-oss:20b
+                                   ;; https://ollama.com/library/gpt-oss-safeguard
+                                   gpt-oss-safeguard:20b
+                                   )
+                        :request-params '(:options (:num_ctx 131072))
+                        :stream t
+                        ))
 
   (setq gptel-use-curl t)
   (setq gptel-use-tools t)
   (setq gptel-confirm-tool-calls 'always)
   (setq gptel-include-tool-results 'auto)
   (setq gptel--system-message (concat gptel--system-message " Make sure to Japanese langugage."))
-
-  ;; Ollama
-  (gptel-make-ollama "ollama"
-    :host "localhost:11434"
-    :models '(
-               ;; https://ollama.com/library/gemma3n/tags
-               gemma3n:e4b-it-q8_0
-               ;; https://ollama.com/library/gpt-oss/tags
-               gpt-oss:20b
-               ;; https://ollama.com/library/gpt-oss-safeguard
-               gpt-oss-safeguard:20b
-               )
-    :request-params '(:options (:num_ctx 131072))
-    :stream t
-    )
   )
 
 (use-package gptel-magit
