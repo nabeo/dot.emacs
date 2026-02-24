@@ -58,10 +58,6 @@
   ;; for kotlin
   (kotlin-mode . lsp)
   (kotlin-ts-mode . lsp)
-  ;; for markdown
-  ;; brew install marksman
-  (markdown-mode . lsp)
-  (gfm-mode . lsp)
   ;; for lua (lua-language-server)
   (lua-mode . lsp)
   (lua-ts-mode . lsp)
