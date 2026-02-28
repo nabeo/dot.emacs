@@ -4,7 +4,7 @@
 ;;; Code:
 (use-package ellama
   :ensure t
-  ;; :if (executable-find "ollama")
+  :if (executable-find "ollama")
   :bind ("C-c e" . ellama-transient-main-menu)
   :init
   (require 'llm)
@@ -120,6 +120,7 @@
 
 (use-package gptel
   :ensure t
+  :if (executable-find "ollama")
   :config
   ;; MCP integration
   (require 'gptel-integrations)
@@ -155,6 +156,7 @@
 
 (use-package mcp
   :ensure t
+  :if (executable-find "ollama")
   :hook (after-init . mcp-hub-start-all-server)
   :custom
   (mcp-hub-servers
@@ -191,6 +193,7 @@
 
 (use-package agent-shell
   :ensure t
+  :if (executable-find "cursor-agent")
   :ensure-system-package
   ((cursor-agent-acp . "npm install -g @blowmage/cursor-agent-acp"))
   )
