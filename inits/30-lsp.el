@@ -78,8 +78,8 @@
   ;; kotlin-lsp
   ;; https://github.com/Kotlin/kotlin-lsp/blob/main/scripts/lsp-kotlin-emacs-lsp-mode.el
   (defun kotlin-lsp-server-fun ()
-    (list "~/.local/share/kotlin-lsp/kotlin-lsp.sh" "--stdio"))
-  (cond ((file-executable-p "~/.local/share/kotlin-lsp/kotlin-lsp.sh")
+    (list "kotlin-lsp" "--stdio"))
+  (cond ((executable-find "kotlin-lsp")
           (add-to-list 'lsp-language-id-configuration '(kotlin-mode . "kotlin-lsp"))
           (add-to-list 'lsp-language-id-configuration '(kotlin-ts-mode . "kotlin-lsp"))
           (lsp-register-client
