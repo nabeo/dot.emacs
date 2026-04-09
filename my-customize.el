@@ -10,7 +10,7 @@
        consult-projectile cp5022x deck-slides diff-hl direx docker
        docker-compose-mode dockerfile-mode doom-modeline doom-themes
        editorconfig ellama embark-consult envrc flycheck-inline
-       flycheck-kotlin forge git-link gnu-elpa-keyring-update
+       flycheck-kotlin forge ghostel git-link gnu-elpa-keyring-update
        go-projectile gptel gptel-magit graphql-ts-mode groovy-mode
        howm ibuffer-projectile id-manager init-loader json-mode
        jsonnet-mode k8s-mode kotlin-mode kotlin-ts-mode kubedoc

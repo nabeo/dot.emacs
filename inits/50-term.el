@@ -42,5 +42,8 @@
 
   )
 
+(use-package ghostel
+  :ensure t)
+
 (provide '50-term)
 ;;; 50-term.el ends here
