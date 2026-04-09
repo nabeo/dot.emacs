@@ -193,9 +193,13 @@
 
 (use-package agent-shell
   :ensure t
-  :if (executable-find "cursor-agent")
+  :if (executable-find "claude")
   :ensure-system-package
-  ((cursor-agent-acp . "npm install -g @blowmage/cursor-agent-acp"))
+  ((claude . "brew install claude-code")
+    (claude-agent-acp . "npm install -g @agentclientprotocol/claude-agent-acp"))
+  :config
+  (setq agent-shell-anthropic-authentication
+    (agent-shell-anthropic-make-authentication :login t))
   )
 
 (provide '50-llm)
