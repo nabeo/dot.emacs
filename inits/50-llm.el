@@ -19,7 +19,7 @@
   ;; デフォルトのプロバイダー
   (setopt ellama-provider
 	    (make-llm-ollama
-	      :chat-model "gpt-oss-safeguard:20b"
+	      :chat-model "gemma4:e4b-it-q8_0"
 	      :embedding-model "embeddinggemma:300m-bf16"
         :default-chat-non-standard-params '(("num_ctx" . 32768))))
   (setopt ellama-summarization-provider
@@ -28,15 +28,19 @@
 	     :embedding-model "nomic-embed-text"
 	     :default-chat-non-standard-params '(("num_ctx" . 32768))))
   ;; 翻訳用プロバイダー
-  ;; https://ollama.com/library/translategemma
   (setopt ellama-translation-provider
 	  (make-llm-ollama
-	   :chat-model "translategemma:12b-it-q4_K_M"
+	   :chat-model "gemma4:e4b-it-q8_0"
 	   :embedding-model "embeddinggemma:300m-bf16"))
 
   ;; ellama-provider-select で選択できる
   (setopt ellama-providers
 	  '(
+       ;; https://ollama.com/library/gemma4
+       ("gemma4:e4b-it-q8_0"
+         (make-llm-ollama
+           :chat-model "gemma4:e4b-it-q8_0"
+           :embedding-model "embeddinggemma:300m-bf16"))
        ;; https://ollama.com/library/gpt-oss-safeguard
         ("gpt-oss-safeguard:20b" .
           (make-llm-ollama
