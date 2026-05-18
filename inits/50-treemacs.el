@@ -97,6 +97,12 @@
   :ensure t)
 
 (use-package treemacs-tab-bar ;;treemacs-tab-bar if you use tab-bar-mode
+  ;; treemacs-tab-bar を有効にすると、タブ切り替え時に treemacs がワークスペースを
+  ;; 切り替え、lsp-treemacs-sync-mode の同期処理により LSP ワークスペースフォルダも
+  ;; 更新される。その結果、切り替え先タブの treemacs ワークスペースに含まれない
+  ;; プロジェクトの LSP サーバが意図せず終了してしまうため、一時的に無効化している。
+  ;; 参照: lsp-treemacs--treemacs->lsp / treemacs-switch-workspace-hook
+  :disabled t
   :after (treemacs)
   :ensure t
   :config (treemacs-set-scope-type 'Tabs))
