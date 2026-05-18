@@ -134,6 +134,8 @@
   (setq gptel-backend (gptel-make-ollama "ollama"
                         :host "localhost:11434"
                         :models '(
+                                   ;; https://ollama.com/library/gemma4
+                                   gemma4:e4b-it-q8_0
                                    ;; https://ollama.com/library/gemma3n/tags
                                    gemma3n:e4b-it-q8_0
                                    ;; https://ollama.com/library/gpt-oss/tags
