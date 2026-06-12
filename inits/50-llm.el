@@ -80,7 +80,6 @@
   (require 'gptel-integrations)
 
   ;; default model
-  (setq gptel-mode 'gemini-3-pro-preview)
   (setq gptel-backend (gptel-make-ollama "ollama"
                         :host "localhost:11434"
                         :models '(
