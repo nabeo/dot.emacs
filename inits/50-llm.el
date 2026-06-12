@@ -19,27 +19,31 @@
   ;; デフォルトのプロバイダー
   (setopt ellama-provider
 	    (make-llm-ollama
-	      :chat-model "gemma4:e4b-it-q8_0"
+	      :chat-model "gemma4:12b-it-qat"
 	      :embedding-model "embeddinggemma:300m-bf16"
         :default-chat-non-standard-params '(("num_ctx" . 32768))))
   (setopt ellama-summarization-provider
 	    (make-llm-ollama
-	     :chat-model "mistral:7b"
+	     :chat-model "gemma4:e4b-it-qat"
 	     :embedding-model "nomic-embed-text"
 	     :default-chat-non-standard-params '(("num_ctx" . 32768))))
   ;; 翻訳用プロバイダー
   (setopt ellama-translation-provider
 	  (make-llm-ollama
-	   :chat-model "gemma4:e4b-it-q8_0"
+	   :chat-model "gemma4:e4b-it-qat"
 	   :embedding-model "embeddinggemma:300m-bf16"))
 
   ;; ellama-provider-select で選択できる
   (setopt ellama-providers
 	  '(
        ;; https://ollama.com/library/gemma4
-       ("gemma4:e4b-it-q8_0"
+       ("gemma4:12b-it-qat"
          (make-llm-ollama
-           :chat-model "gemma4:e4b-it-q8_0"
+           :chat-model "gemma4:12b-it-qat"
+           :embedding-model "embeddinggemma:300m-bf16"))
+       ("gemma4:e4b-it-qat"
+         (make-llm-ollama
+           :chat-model "gemma4:e4b-it-qat"
            :embedding-model "embeddinggemma:300m-bf16"))
        ;; https://ollama.com/library/gpt-oss-safeguard
         ("gpt-oss-safeguard:20b" .
@@ -110,7 +114,7 @@
   ;; Naming new sessions with llm
   (setopt ellama-naming-provider
 	    (make-llm-ollama
-	     :chat-model "llama3:8b-instruct-q8_0"
+	     :chat-model "gemma4:e2b-it-qat"
 	     :embedding-model "nomic-embed-text"
 	     :default-chat-non-standard-params '(("stop" . ("\n")))))
   (setopt ellama-naming-scheme 'ellama-generate-name-by-llm)
