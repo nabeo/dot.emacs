@@ -85,9 +85,7 @@
                         :host "localhost:11434"
                         :models '(
                                    ;; https://ollama.com/library/gemma4
-                                   gemma4:e4b-it-q8_0
-                                   ;; https://ollama.com/library/gemma3n/tags
-                                   gemma3n:e4b-it-q8_0
+                                   gemma4:12b-it-qat
                                    ;; https://ollama.com/library/gpt-oss/tags
                                    gpt-oss:20b
                                    ;; https://ollama.com/library/gpt-oss-safeguard
