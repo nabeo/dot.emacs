@@ -46,10 +46,10 @@
            :chat-model "gemma4:e4b-it-qat"
            :embedding-model "embeddinggemma:300m-bf16"))
        ;; https://ollama.com/library/gpt-oss-safeguard
-        ("gpt-oss-safeguard:20b" .
-          (make-llm-ollama
-            :chat-model "gpt-oss-safeguard:20b"
-            :embedding-model "embeddinggemma:300m-bf16"))
+       ("gpt-oss-safeguard:20b" .
+         (make-llm-ollama
+           :chat-model "gpt-oss-safeguard:20b"
+           :embedding-model "embeddinggemma:300m-bf16"))
        ;; https://ollama.com/library/gpt-oss/tags
        ("gpt-oss:20b" .
          (make-llm-ollama
