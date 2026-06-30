@@ -19,7 +19,7 @@
   ;; デフォルトのプロバイダー
   (setopt ellama-provider
 	    (make-llm-ollama
-	      :chat-model "gemma4:12b-it-qat"
+	      :chat-model "gemma4:26b-mlx"
 	      :embedding-model "embeddinggemma:300m-bf16"
         :default-chat-non-standard-params '(("num_ctx" . 32768))))
   (setopt ellama-summarization-provider
@@ -37,9 +37,9 @@
   (setopt ellama-providers
 	  '(
        ;; https://ollama.com/library/gemma4
-       ("gemma4:12b-it-qat"
+       ("gemma4:26b-mlx"
          (make-llm-ollama
-           :chat-model "gemma4:12b-it-qat"
+           :chat-model "gemma4:26b-mlx"
            :embedding-model "embeddinggemma:300m-bf16"))
        ("gemma4:e4b-it-qat"
          (make-llm-ollama
@@ -84,7 +84,7 @@
                         :host "localhost:11434"
                         :models '(
                                    ;; https://ollama.com/library/gemma4
-                                   gemma4:12b-it-qat
+                                   gemma4:26b-mlx
                                    ;; https://ollama.com/library/gpt-oss/tags
                                    gpt-oss:20b
                                    ;; https://ollama.com/library/gpt-oss-safeguard
