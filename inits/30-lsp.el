@@ -83,14 +83,14 @@
   (setq kotlin-lsp-bin (concat my/homebrew-prefix "/bin/kotlin-lsp"))
   (defun kotlin-lsp-server-fun ()
     (list kotlin-lsp-bin "--stdio"))
+  ;; kotlin-language-server は使わない
+  (add-to-list 'lsp-disabled-clients 'kotlin-ls)
   (cond ((executable-find kotlin-lsp-bin)
-          (add-to-list 'lsp-language-id-configuration '(kotlin-mode . "kotlin-lsp"))
-          (add-to-list 'lsp-language-id-configuration '(kotlin-ts-mode . "kotlin-lsp"))
           (lsp-register-client
             (make-lsp-client
               :new-connection (lsp-stdio-connection #'kotlin-lsp-server-fun)
-              :activation-fn (lsp-activate-on "kotlin-lsp")
-              :priority -1
+              :activation-fn (lsp-activate-on "kotlin")
+              :priority 1
               :major-modes '(kotlin-mode kotlin-ts-mode)
               :server-id 'kotlin-lsp
               ))))
