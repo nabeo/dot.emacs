@@ -80,15 +80,7 @@
 
   ;; kotlin-lsp
   ;; https://github.com/Kotlin/kotlin-lsp/blob/main/scripts/lsp-kotlin-emacs-lsp-mode.el
-  (setq kotlin-lsp-version "262.9593.0")
-  (setq kotlin-lsp-bin
-    (concat
-      my/homebrew-prefix
-      "/Caskroom/kotlin-lsp/"
-      kotlin-lsp-version
-      "/kotlin-server-"
-      kotlin-lsp-version
-      "/bin/intellij-server"))
+  (setq kotlin-lsp-bin (concat my/homebrew-prefix "/bin/kotlin-lsp"))
   (defun kotlin-lsp-server-fun ()
     (list kotlin-lsp-bin "--stdio"))
   (cond ((executable-find kotlin-lsp-bin)
