@@ -85,17 +85,34 @@
     (list kotlin-lsp-bin "--stdio"))
   ;; kotlin-language-server は使わない
   (add-to-list 'lsp-disabled-clients 'kotlin-ls)
-  (cond ((executable-find kotlin-lsp-bin)
+  (cond ((file-executable-p kotlin-lsp-bin)
+          ;; inlay hint 系の設定
+          ;; 設定可能なオプションは kotlin-vscode/package.json を見る
+          (lsp-register-custom-settings
+            `(("jetbrains.kotlin"
+                ,(lsp-ht
+                   ("hints.settings.types.property" t)
+                   ("hints.settings.types.variable" t)
+                   ("hints.type.function.return" t)
+                   ("hints.type.function.parameter" t)
+                   ("hints.settings.lambda.return" t)
+                   ("hints.lambda.receivers.parameters" t)
+                   ("hints.settings.value.ranges" t)
+                   ("hints.value.kotlin.time" t)
+                   ("hints.parameters" t)
+                   ("hints.parameters.compiled" t)))))
+          ;; lsp-clients に kotlin-lsp を追加
           (lsp-register-client
             (make-lsp-client
               :new-connection (lsp-stdio-connection #'kotlin-lsp-server-fun)
               :activation-fn (lsp-activate-on "kotlin")
               :priority 1
-              :major-modes '(kotlin-mode kotlin-ts-mode)
               :server-id 'kotlin-lsp
               ))))
-  )
 
+  ;; textDocument/inlayHint
+  (setq lsp-inlay-hint-enable t)
+  )
 (use-package lsp-ui
   :ensure t
   ;; :commands lsp-ui-mode
