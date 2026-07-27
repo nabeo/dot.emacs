@@ -80,7 +80,7 @@
 
   ;; kotlin-lsp
   ;; https://github.com/Kotlin/kotlin-lsp/blob/main/scripts/lsp-kotlin-emacs-lsp-mode.el
-  (setq kotlin-lsp-version "262.8190.0")
+  (setq kotlin-lsp-version "262.9593.0")
   (setq kotlin-lsp-bin
     (concat
       my/homebrew-prefix
