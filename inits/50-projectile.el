@@ -43,6 +43,11 @@
   (add-to-list 'projectile-globally-ignored-files ".gitignore")
   (add-to-list 'projectile-globally-ignored-files ".gitkeep")
 
+
+  ;; モノレポ構成の Terraform リポジトリの場合は terraform-ls の indexing で時間がかかりすぎるので
+  ;; .terraform.lock.hcl を基準に root を絞る
+  (add-to-list 'projectile-project-root-files-bottom-up ".terraform.lock.hcl")
+
   ;; use ivy/counsel
   ;; (setq projectile-completion-system 'ivy)
   ;; (setq projectile-switch-project-action 'counsel-projectile-find-file)
