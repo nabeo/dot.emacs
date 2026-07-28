@@ -19,6 +19,8 @@
     (expand-file-name "data/projectile.cache" user-emacs-directory))
   (setq projectile-known-projects-file
     (expand-file-name "data/projectile-bookmarks.eld" user-emacs-directory))
+  (setq projectile-frecency-file
+    (expand-file-name "data/projectile-frecency.eld" user-emacs-directory))
   (setq projectile-enable-caching t)
   (setq projectile-file-exists-remote-cache-expire nil)
   (setq projectile-file-exists-local-cache-expire (* 5 60))
