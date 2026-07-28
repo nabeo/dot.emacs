@@ -11,8 +11,6 @@
   (lsp-pyls-server-command (expand-file-name (concat my/homebrew-prefix "/bin/pylsp")))
   ;; brew install llvm
   (lsp-clients-clangd-executableb (expand-file-name (concat my/homebrew-prefix "/opt/llvm/bin/clangd")))
-  ;; https://emacs-lsp.github.io/lsp-mode/page/lsp-terraform-ls/#server-note
-  (lsp-disabled-clients '(tfls))
   ;; https://github.com/emacs-lsp/lsp-mode/issues/3713
   (create-lockfiles nil)
   ;; semantic tokens
@@ -55,7 +53,7 @@
   ;; for Terraform
   ;; brew install terraform-ls
   ;; https://github.com/hashicorp/terraform-ls/blob/main/docs/USAGE.md#emacs
-  (terraform-mode . lsp-deferred)
+  (terraform-mode . lsp)
   ;; for yaml
   (yaml-mode . lsp)
   ;; for kotlin
@@ -75,6 +73,9 @@
   (setq lsp-copilot-enabled nil)
 
   ;; lsp-terraform-ls
+  ;; https://emacs-lsp.github.io/lsp-mode/page/lsp-terraform-ls/#server-note
+  ;; disable terraform-lsp
+  (add-to-list 'lsp-disabled-clients 'tfls)
   (setq lsp-terraform-ls-enable-show-reference t)
   (setq lsp-terraform-ls-prefill-required-fields t)
 
