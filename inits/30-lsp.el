@@ -24,8 +24,12 @@
   (lsp-format-buffer-on-save t)
   (lsp-format-buffer-on-save-list '("kotlin-mode" "kotlin-ts-mode"))
 
-  ;; mini buffer にすべての情報を表示する
-  (lsp-eldoc-render-all t)
+  ;; hover のドキュメントは lsp-ui-doc の child frame だけに表示する
+  ;; lsp-eldoc-function が minibuffer (echo area) に出す分を止める
+  ;; lsp-ui-doc は eldoc を経由せず自前で textDocument/hover を投げるので child frame の表示には影響しない
+  (lsp-eldoc-enable-hover nil)
+  ;; lsp-eldoc-render-all は lsp-eldoc-function 専用なので上記により無効
+  ;; (lsp-eldoc-render-all t)
   :init
   (setq gc-cons-threshold 100000000)
   (setq read-process-output-max (* 1024 1024)) ; 1mb
@@ -128,9 +132,15 @@
   ;; (lsp-ui-doc-max-width 150)
   ;; (lsp-ui-doc-max-height 30)
   (lsp-ui-doc-use-childframe t)
-  (lsp-ui-doc-use-webkit t)
+  ;; webkit (xwidget) 経路は使わない
+  ;; lsp-ui-doc--make-frame が make-xwidget した xwidget に 'callback を
+  ;; 設定せず current-global-map に [xwidget-event] を bind しているが、
+  ;; special-event-map の xwidget-event-handler が先に処理して javascript-callback を捨ててしまう。
+  ;; その結果 lsp-ui-doc--webkit-resize-callback が呼ばれず、child frame が
+  ;; 9x16px のまま可視化されない
+  (lsp-ui-doc-use-webkit nil)
   (lsp-ui-doc-alignment 'window) ;; window or frame
-  ;; (lsp-ui-doc-show-with-cursor t)
+  (lsp-ui-doc-show-with-cursor t)
   ;; (lsp-ui-doc-show-with-mouse nil)
   ;; (lsp-ui-doc-delay 0.5)
   ;; lsp-ui-flycheck
@@ -160,6 +170,8 @@
     ("C-c m" . lsp-ui-imenu)
     ("C-c s" . lsp-ui-sideline-mode)
     ("C-c d" . lsp-ui-doc-show)
+    ;; child frame にフォーカスを移す (戻るときは child frame 内で q)
+    ("C-c D" . lsp-ui-doc-focus-frame)
     )
   (:map lsp-ui-mode-map
     ([remap xref-find-definitions] . #'lsp-ui-peek-find-definitions)
