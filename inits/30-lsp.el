@@ -178,6 +178,38 @@
     ([remap xref-find-references] . #'lsp-ui-peek-find-references)
     )
   :config
+  ;; default-frame-alist にある (alpha . (95 . 75)) が child frame にも継承される。
+  ;; child frame はフォーカスを持たないので非アクティブ側の 75% が適用されて半透明になるため、doc の child frame だけ不透明にする
+  (add-to-list 'lsp-ui-doc-frame-parameters '(alpha . 100))
+
+  ;; child frame 内のコードブロックが判読不能になる問題への対処
+  ;; lsp-mode は hover の markdown をコードブロックごと font-lock するので、
+  ;; コード部分の face は (font-lock-*-face markdown-code-face) になる。
+  ;; doom-themes は markdown-code-face に default とは別の明るい背景を
+  ;; 割り当てるため、そこに font-lock-comment-face などが載って潰れる
+  ;; (doom-challenger-deep でコントラスト比 1.03、
+  ;;  doom-winter-is-coming-dark-blue で 1.36 = ほぼ同色)。
+  ;; child frame ではコードブロックの追加背景を消して地色に揃える
+  (defun nabeo/lsp-ui-doc-remap-code-faces (&rest _)
+    "doc の child frame でコードブロックの追加背景を消す。"
+    (lsp-ui-doc--with-buffer
+      (setq-local face-remapping-alist
+                  (append face-remapping-alist
+                          '((markdown-code-face lsp-ui-doc-background)
+                            (markdown-inline-code-face lsp-ui-doc-background))))))
+  (advice-add 'lsp-ui-doc--render-buffer :after #'nabeo/lsp-ui-doc-remap-code-faces)
+
+  ;; 地色そのものもテーマ任せにせず default を一律で少し暗くしたものにする。
+  ;; doom-winter-is-coming-dark-blue の lsp-ui-doc-background (#062e5a) は
+  ;; default (#011627) より明るく、コメント色が沈んでしまうため
+  (defun nabeo/lsp-ui-doc-adjust-background (&rest _)
+    "`lsp-ui-doc-background' を default 背景より少し暗い色に揃える。"
+    (when (fboundp 'doom-darken)
+      (set-face-background 'lsp-ui-doc-background
+                           (doom-darken (face-attribute 'default :background nil t) 0.15))))
+  (nabeo/lsp-ui-doc-adjust-background)
+  ;; テーマ切り替え時にも追従させる
+  (add-hook 'enable-theme-functions #'nabeo/lsp-ui-doc-adjust-background)
   )
 
 (use-package lsp-treemacs
