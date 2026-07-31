@@ -159,6 +159,18 @@
   ;; claude 本体のログインセッションをつかう
   (setq agent-shell-anthropic-authentication
     (agent-shell-anthropic-make-authentication :login t))
+
+  ;; パーミッション要求時に通知音を鳴らす
+  ;; ACP 経由だと CLI の TUI を通らないため settings.json の
+  ;; Notification/permission_prompt hook が発火しない。その代替。
+  ;; nil を返すので通常のパーミッション UI はそのまま表示される
+  ;; 将来 read の自動承認などを足す場合は、この関数の中で条件分岐して
+  ;; :respond を呼び t を返す (組み込みの agent-shell-permission-allow-always が参考になる)
+  (setq agent-shell-permission-responder-function
+    (lambda (_permission)
+      (start-process "agent-shell-notify" nil
+        (expand-file-name "~/.local/bin/claude-cli-hook.sh"))
+      nil))
   )
 
 (provide '50-llm)
