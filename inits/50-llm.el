@@ -144,13 +144,17 @@
   (require 'mcp-hub)
   )
 
+;; 以下の外部コマンドを手動で導入しておくこと
+;; (:ensure-system-package は system-packages が未導入だと黙って無視されるのでつかわない)
+;;   claude           : npm install -g @anthropic-ai/claude-code
+;;   claude-agent-acp : npm install -g @agentclientprotocol/claude-agent-acp
+;;                      agent-shell と Claude Code をつなぐ ACP ブリッジで
+;;                      agent-shell-anthropic-claude-acp-command の既定値
 (use-package agent-shell
   :ensure t
   :if (executable-find "claude")
-  :ensure-system-package
-  ((claude . "brew install claude-code")
-    (claude-agent-acp . "npm install -g @agentclientprotocol/claude-agent-acp"))
   :config
+  ;; claude 本体のログインセッションをつかう
   (setq agent-shell-anthropic-authentication
     (agent-shell-anthropic-make-authentication :login t))
   )
