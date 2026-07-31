@@ -153,6 +153,8 @@
 (use-package agent-shell
   :ensure t
   :if (executable-find "claude")
+  :bind (:map agent-shell-mode-map
+          ("<backtab>" . agent-shell-cycle-session-mode))
   :config
   ;; claude 本体のログインセッションをつかう
   (setq agent-shell-anthropic-authentication
