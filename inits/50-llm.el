@@ -173,5 +173,10 @@
       nil))
   )
 
+(use-package agent-shell-manager
+  :ensure t
+  :vc (:url "https://github.com/jethrokuan/agent-shell-manager")
+  :after agent-shell)
+
 (provide '50-llm)
 ;;; 50-llm.el ends here

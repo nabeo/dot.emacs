@@ -4,9 +4,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-    '(agent-shell bbdb bbdb-vcard chezmoi combobulate command-log-mode
-       company-box company-quickhelp consult-company consult-ghq
-       consult-git-log-grep consult-ls-git consult-lsp
+    '(agent-shell agent-shell-manager bbdb bbdb-vcard chezmoi combobulate
+       command-log-mode company-box company-quickhelp consult-company
+       consult-ghq consult-git-log-grep consult-ls-git consult-lsp
        consult-projectile cp5022x deck-slides diff-hl direx docker
        docker-compose-mode dockerfile-mode doom-modeline doom-themes
        editorconfig ellama embark-consult envrc flycheck-inline
@@ -25,7 +25,9 @@
        treesit-auto treesit-fold typescript-mode w3m wanderlust
        yafolding yasnippet yasnippet-snippets))
  '(package-vc-selected-packages
-    '((deck-slides :url "https://github.com/zonuexe/deck-slides.el"
+    '((agent-shell-manager :url
+        "https://github.com/jethrokuan/agent-shell-manager")
+       (deck-slides :url "https://github.com/zonuexe/deck-slides.el"
          :branch "mster")
        (pgmacs :url "https://github.com/emarsden/pgmacs" :branch
          "main")
