@@ -42,13 +42,10 @@
   (add-hook 'ruby-mode-hook
     #'(lambda ()
         (ruby-electric-mode t)
-        (if (eq emacs-bzr-p t)
-          (progn
-            (abbrev-mode 1)
-            (electric-pair-mode t)
-            (electric-indent-mode t)
-            (electric-layout-mode t)))))
-  )
+        (abbrev-mode 1)
+        (electric-pair-mode t)
+        (electric-indent-mode t)
+        (electric-layout-mode t))))
 
 (provide '50-ruby)
 ;;; 50-ruby.el ends here
