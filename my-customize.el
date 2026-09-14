@@ -3,6 +3,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
+ '(ignored-local-variable-values '((hcl-indent-level . 4) (hcl-indent-level . 2) (terraform-indent-level . 2) (terraform-indent-level . 4)))
  '(package-selected-packages
     '(agent-shell agent-shell-manager bbdb bbdb-vcard chezmoi combobulate
        command-log-mode company-box company-quickhelp consult-company
