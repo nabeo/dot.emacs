@@ -16,14 +16,14 @@
        howm ibuffer-projectile id-manager init-loader json-mode
        jsonnet-mode k8s-mode kotlin-mode kotlin-ts-mode kubedoc
        lsp-mode lsp-treemacs lsp-ui lua-mode magit-find-file
-       magit-popup magit-svn marginalia mermaid-mode migemo mise
+       magit-popup magit-svn marginalia mcp mermaid-mode migemo mise
        nerd-icons-completion orderless pass pg pgmacs pinentry
        podcaster poly-ansible poly-erb poly-markdown poly-rst
        poly-ruby popwin projectile-git-autofetch protobuf-mode puni
        py-yapf rainbow-delimiters request review-mode ruby-electric
        rust-mode terraform-mode treemacs-icons-dired treemacs-magit
        treemacs-nerd-icons treemacs-projectile treemacs-tab-bar
-       treesit-auto treesit-fold typescript-mode w3m wanderlust
+       treesit-auto treesit-fold typescript-mode vertico vterm vterm-toggle w3m wanderlust
        yafolding yasnippet yasnippet-snippets))
  '(package-vc-selected-packages
     '((agent-shell-manager :url
