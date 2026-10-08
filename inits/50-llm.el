@@ -139,12 +139,22 @@
 ;;   claude-agent-acp : npm install -g @agentclientprotocol/claude-agent-acp
 ;;                      agent-shell と Claude Code をつなぐ ACP ブリッジで
 ;;                      agent-shell-anthropic-claude-acp-command の既定値
+;;   codex     : npm install -g @openai/codex
+;;   codex-acp : npm install -g @agentclientprotocol/codex-acp
+;;   acpx      : npm install -g acpx
 (use-package agent-shell
   :ensure t
-  :if (executable-find "claude")
+  :if (or (executable-find "claude") (executable-find "codex-acp"))
   :bind (:map agent-shell-mode-map
           ("<backtab>" . agent-shell-cycle-session-mode))
   :config
+  ;; codex 向け
+  (require 'agent-shell-openai)
+  (setq agent-shell-openai-authentication
+    (agent-shell-openai-make-authentication :login t))
+  (setq agent-shell-preferred-agent-config 'codex)
+  (setq agent-shell-openai-codex-acp-command '("codex-acp"))
+
   ;; claude 本体のログインセッションをつかう
   (setq agent-shell-anthropic-authentication
     (agent-shell-anthropic-make-authentication :login t))
