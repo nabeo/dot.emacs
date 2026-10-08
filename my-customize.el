@@ -23,8 +23,9 @@
        py-yapf rainbow-delimiters request review-mode ruby-electric
        rust-mode terraform-mode treemacs-icons-dired treemacs-magit
        treemacs-nerd-icons treemacs-projectile treemacs-tab-bar
-       treesit-auto treesit-fold typescript-mode vertico vterm vterm-toggle w3m wanderlust
-       yafolding yasnippet yasnippet-snippets))
+       treesit-auto treesit-fold typescript-mode vertico vterm
+       vterm-toggle w3m wanderlust yafolding yasnippet
+       yasnippet-snippets))
  '(package-vc-selected-packages
     '((agent-shell-manager :url
         "https://github.com/jethrokuan/agent-shell-manager")
@@ -35,7 +36,8 @@
        (pg :url "https://github.com/emarsden/pg-el" :branch "main")
        (combobulate :url "https://github.com/mickeynp/combobulate"
          :branch "master")))
- '(safe-local-variable-values '((terraform-indent-level . 4)))
+ '(safe-local-variable-values
+    '((terraform-indent-level . 2) (terraform-indent-level . 4)))
  '(warning-minimum-level :error)
  '(warning-minimum-log-level :error))
 (custom-set-faces
