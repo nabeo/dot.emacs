@@ -152,11 +152,9 @@
     (agent-shell-anthropic-make-authentication :login t))
 
   ;; パーミッション要求時に通知音を鳴らす
-  ;; ACP 経由だと CLI の TUI を通らないため settings.json の
-  ;; Notification/permission_prompt hook が発火しない。その代替。
-  ;; nil を返すので通常のパーミッション UI はそのまま表示される
-  ;; 将来 read の自動承認などを足す場合は、この関数の中で条件分岐して
-  ;; :respond を呼び t を返す (組み込みの agent-shell-permission-allow-always が参考になる)
+  ;; claude-agent-acp は ~/.claude/settings.json のフックを読むので Stop などは発火するが、
+  ;; 権限確認は ACP 側で処理されるため Notification/permission_prompt は発火しない。その穴埋め。
+  ;; ターン完了の通知は settings.json の Stop に任せる (ここで鳴らすと二重になる)
   (setq agent-shell-permission-responder-function
     (lambda (_permission)
       (start-process "agent-shell-notify" nil
@@ -164,10 +162,44 @@
       nil))
   )
 
-(use-package agent-shell-manager
+(use-package agent-shell-workspace
   :ensure t
-  :vc (:url "https://github.com/jethrokuan/agent-shell-manager")
-  :after agent-shell)
+  :vc (:url "https://github.com/gveres/agent-shell-workspace")
+  :init
+  ;; サイドバーの各行にはバッファ名の " @ " より後ろ（プロジェクト名）が出る。
+  ;; 既定の 24 桁だと長いリポジトリ名が切れるので少し広げる
+  (setq agent-shell-workspace-sidebar-width 32)
+  :bind (:map tab-prefix-map
+          ;; C-z C-z で編集タブと Agents タブを行き来する
+          ("C-z" . agent-shell-workspace-toggle)))
+
+(use-package agent-shell-attention
+  :ensure t
+  :vc (:url "https://github.com/ultronozm/agent-shell-attention.el")
+  :after agent-shell
+  :demand t
+  :bind (:map tab-prefix-map
+          ;; 入力待ちのシェルにジャンプする
+          ("j" . agent-shell-attention-jump))
+  :config
+  (agent-shell-attention-mode 1)
+  )
+
+(use-package agent-recall
+  :ensure t
+  :hook (agent-shell-mode . agent-recall-track-sessions)
+  :bind (:prefix-map nabeo/agent-recall-map
+          :prefix "C-c a"
+          ("s" . agent-recall-consult-search)  ; 全文検索（トランスクリプトごとにまとめて表示）
+          ("b" . agent-recall-browse)          ; プロジェクト×日時で一覧してプレビュー
+          ("r" . agent-recall-resume)          ; 過去のセッションを再開
+          ("i" . agent-recall-reindex))        ; 索引を作り直す
+  :custom
+  (agent-recall-search-paths '("~/src"))
+  (agent-recall-index-file
+    (expand-file-name "data/agent-recall-index.eld" user-emacs-directory))
+  (agent-recall-search-function 'consult-ripgrep)
+  (agent-recall-browse-sort 'modified-desc))
 
 (provide '50-llm)
 ;;; 50-llm.el ends here

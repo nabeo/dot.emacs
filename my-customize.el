@@ -5,7 +5,8 @@
  ;; If there is more than one, they won't work right.
  '(ignored-local-variable-values '((hcl-indent-level . 4) (hcl-indent-level . 2)))
  '(package-selected-packages
-    '(agent-shell agent-shell-manager bbdb bbdb-vcard chezmoi combobulate
+    '(agent-recall agent-shell agent-shell-attention
+       agent-shell-workspace bbdb bbdb-vcard chezmoi combobulate
        command-log-mode company-box company-quickhelp consult-company
        consult-ghq consult-git-log-grep consult-ls-git consult-lsp
        consult-projectile cp5022x deck-slides diff-hl direx docker
@@ -27,8 +28,10 @@
        vterm-toggle w3m wanderlust yafolding yasnippet
        yasnippet-snippets))
  '(package-vc-selected-packages
-    '((agent-shell-manager :url
-        "https://github.com/jethrokuan/agent-shell-manager")
+    '((agent-shell-attention :url
+        "https://github.com/ultronozm/agent-shell-attention.el")
+       (agent-shell-workspace :url
+         "https://github.com/gveres/agent-shell-workspace")
        (deck-slides :url "https://github.com/zonuexe/deck-slides.el"
          :branch "mster")
        (pgmacs :url "https://github.com/emarsden/pgmacs" :branch
