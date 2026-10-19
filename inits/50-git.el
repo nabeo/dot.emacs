@@ -6,6 +6,10 @@
   :ensure t
   :bind
   (("C-x g" . magit-status))
+  :init
+  ;; forge 20261018.1903 の既定のキー割り当ては magit-repos より前に
+  ;; magit-repolist-mode-map を参照して void-variable になるので使わない
+  (setq forge-add-default-bindings nil)
   :config
   (setq auto-revert-check-vc-info t)
   )
