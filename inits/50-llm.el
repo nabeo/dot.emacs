@@ -198,6 +198,8 @@
   (agent-recall-search-paths '("~/src"))
   (agent-recall-index-file
     (expand-file-name "data/agent-recall-index.eld" user-emacs-directory))
+  (agent-recall-metadata-file
+    (expand-file-name "data/agent-recall-metadata.el" user-emacs-directory))
   (agent-recall-search-function 'consult-ripgrep)
   (agent-recall-browse-sort 'modified-desc))
 
