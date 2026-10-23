@@ -1,4 +1,4 @@
-;;; 30-lsp --- lsp-mode
+;;; 30-lsp --- lsp-mode  -*- lexical-binding: t; -*-
 ;;; Commentary:
 
 ;;; Code:
@@ -230,7 +230,6 @@
 ;; https://github.com/emacs-lsp/dap-mode
 (use-package dap-mode
   :ensure t
-  :disabled
   :after (lsp-treemacs)
   :config
   (dap-auto-configure-mode 1)
@@ -238,6 +237,77 @@
   (dap-tooltip-mode 1)
   (tooltip-mode 1)
   (require 'dap-dlv-go)
+
+  ;; dap-kotlin は fwcd/kotlin-debug-adapter 専用なので使わない
+  (defun my/dap-kotlin-lsp-guess-main-class ()
+    (when-let* ((file (buffer-file-name))
+                 ((string-suffix-p ".kt" file)))
+      (let ((package (save-excursion
+                       (goto-char (point-min))
+                       (when (re-search-forward "^[ \t]*package[ \t]+\\([[:alnum:]_.]+\\)" nil t)
+                         (match-string-no-properties 1))))
+             (class (concat (capitalize (substring (file-name-base file) 0 1))
+                      (substring (file-name-base file) 1)
+                      "Kt")))
+        (if package (concat package "." class) class))))
+
+  (defun my/dap-kotlin-lsp-provider (conf)
+    (let* ((root (or (lsp-workspace-root) default-directory))
+            (port (lsp-request "workspace/executeCommand"
+                    (list :command "start_debug_server"
+                      :arguments (vector (lsp--path-to-uri root))))))
+      (unless (plist-get conf :mainClass)
+        (setq conf (plist-put conf :mainClass
+                     (read-string "mainClass: " (my/dap-kotlin-lsp-guess-main-class)))))
+      (unless (plist-get conf :cwd)
+        (setq conf (plist-put conf :cwd root)))
+      ;; JAVA_HOME を先に使わないのは、VS Code 拡張と同じくモジュールの JDK とクラスパスをサーバーに決めさせるため
+      (let ((resolved (lsp-request "workspace/executeCommand"
+                        (list :command "intellij.java.resolveLaunch"
+                          :arguments (vector (list :uri (lsp--buffer-uri)
+                                               :mainClass (plist-get conf :mainClass)))))))
+        (pcase-dolist (`(,key . ,resolved-key) '((:javaExec . :javaExec)
+                                                  (:classPaths . :classpath)
+                                                  (:modulePaths . :modulePath)
+                                                  (:moduleContentPaths . :moduleContentPaths)
+                                                  (:moduleName . :moduleName)
+                                                  (:vmArgs . :vmArgs)))
+          (when-let* (((not (plist-get conf key)))
+                       (value (lsp-get resolved resolved-key)))
+            (setq conf (plist-put conf key value)))))
+      (unless (plist-get conf :javaExec)
+        (setq conf (plist-put conf :javaExec
+                     (or (when-let* ((java-home (getenv "JAVA_HOME"))
+                                      (java (expand-file-name "bin/java" java-home))
+                                      ((file-executable-p java)))
+                           java)
+                       (executable-find "java")))))
+      (when (and (equal (plist-get conf :type) "intellij_gradle")
+              (not (plist-get conf :buildToolTarget)))
+        (let ((target (lsp-request "workspace/executeCommand"
+                        (list :command "intellij.java.resolveBuildToolLaunch"
+                          :arguments (vector (list :uri (lsp--buffer-uri)
+                                               :mainClass (plist-get conf :mainClass)))))))
+          (setq conf (plist-put conf :buildToolTarget
+                       (list :uri (lsp--buffer-uri)
+                         :moduleName (lsp-get target :moduleName)
+                         :projectPath (or (plist-get conf :projectPath) (lsp-get target :projectPath))
+                         :sourceSet (or (plist-get conf :sourceSet) (lsp-get target :sourceSet))
+                         :toolArgs (vconcat (plist-get conf :gradleArgs)))))))
+      (unless (plist-get conf :host)
+        (setq conf (plist-put conf :host "127.0.0.1")))
+      (plist-put conf :debugServer port)))
+
+  (dap-register-debug-provider "intellij_jvm" #'my/dap-kotlin-lsp-provider)
+  (dap-register-debug-provider "intellij_gradle" #'my/dap-kotlin-lsp-provider)
+  (dap-register-debug-template "Kotlin Launch (mainClass)"
+    (list :type "intellij_jvm"
+      :request "launch"
+      :name "Kotlin Launch (mainClass)"))
+  (dap-register-debug-template "Kotlin Launch via Gradle (mainClass)"
+    (list :type "intellij_gradle"
+      :request "launch"
+      :name "Kotlin Launch via Gradle (mainClass)"))
   )
 
 (provide '30-lsp)
