@@ -251,49 +251,164 @@
                       "Kt")))
         (if package (concat package "." class) class))))
 
+  (defvar my/dap-kotlin-gradle-debug-timeout 120
+    "Seconds to wait for the JDWP listening line of `gradle --debug-jvm'.")
+
+  (defvar my/dap-kotlin-gradle-stop-timeout 30
+    "Seconds to wait for the previous `gradle --debug-jvm' to exit.")
+
+  (defvar my/dap-kotlin-gradle-process nil)
+
+  (defun my/dap-kotlin-gradle-stop (proc)
+    (when (process-live-p proc)
+      (interrupt-process proc)))
+
+  (defun my/dap-kotlin-gradle-stop-and-wait (proc)
+    (when (process-live-p proc)
+      (interrupt-process proc)
+      (let ((deadline (+ (float-time) my/dap-kotlin-gradle-stop-timeout)))
+        (while (and (process-live-p proc) (< (float-time) deadline))
+          (accept-process-output proc 0.5)))
+      (when (process-live-p proc)
+        (kill-process proc)
+        (let ((deadline (+ (float-time) 5)))
+          (while (and (process-live-p proc) (< (float-time) deadline))
+            (accept-process-output proc 0.5))))))
+
+  ;; :cleanup-function を使わないのは、dap-mode が dap--refresh-breakpoints の後に呼ぶので、そこでエラーになると Gradle が残るため
+  (defun my/dap-kotlin-gradle-stop-on-terminated (session)
+    (when-let* ((id (plist-get (dap--debug-session-launch-args session) :gradleDebugId))
+                 (proc my/dap-kotlin-gradle-process)
+                 ((equal id (process-get proc 'my/dap-kotlin-gradle-debug-id))))
+      (my/dap-kotlin-gradle-stop proc)))
+
+  (add-hook 'dap-terminated-hook #'my/dap-kotlin-gradle-stop-on-terminated)
+
+  (defun my/dap-kotlin-gradle-stop-on-start-failure (start launch-args)
+    (if-let* ((id (plist-get launch-args :gradleDebugId)))
+      (condition-case err
+        (funcall start launch-args)
+        ((error quit)
+          (when-let* ((proc my/dap-kotlin-gradle-process)
+                       ((equal id (process-get proc 'my/dap-kotlin-gradle-debug-id))))
+            (my/dap-kotlin-gradle-stop-and-wait proc))
+          (signal (car err) (cdr err))))
+      (funcall start launch-args)))
+
+  (advice-add 'dap-start-debugging-noexpand :around #'my/dap-kotlin-gradle-stop-on-start-failure)
+
+  (defun my/dap-kotlin-gradle-find-port (buffer)
+    (with-current-buffer buffer
+      (save-excursion
+        (goto-char (point-min))
+        (when (re-search-forward "Listening for transport dt_socket at address: \\([0-9]+\\)\r?\n" nil t)
+          (string-to-number (match-string 1))))))
+
+  (defun my/dap-kotlin-gradle-start (conf root id)
+    (unless (or (listp (plist-get conf :gradleArgs)) (vectorp (plist-get conf :gradleArgs)))
+      (user-error ":gradleArgs must be a list or vector of strings, not %S" (plist-get conf :gradleArgs)))
+    ;; 空いているポートを選ばずに前の Gradle を止めるのは、--debug-jvm の JDWP のポートが 5005 で固定で、前の JVM が残ると次の起動が bind に失敗するため
+    (my/dap-kotlin-gradle-stop-and-wait my/dap-kotlin-gradle-process)
+    (let* ((default-directory root)
+            (gradlew (expand-file-name "gradlew" root))
+            (buffer (let ((buffer (get-buffer-create "*kotlin-gradle-debug*")))
+                      (if (get-buffer-process buffer)
+                        (generate-new-buffer "*kotlin-gradle-debug*")
+                        buffer)))
+            (proc (progn
+                    (with-current-buffer buffer
+                      (erase-buffer)
+                      (setq default-directory root))
+                    (make-process :name "kotlin-gradle-debug"
+                      :buffer buffer
+                      :command (append (list (if (file-executable-p gradlew) gradlew "gradle")
+                                         (or (plist-get conf :gradleTask) "run"))
+                                 (plist-get conf :gradleArgs)
+                                 (list "--debug-jvm"))
+                      :connection-type 'pipe
+                      :noquery t)))
+            (_ (progn
+                 (process-put proc 'my/dap-kotlin-gradle-debug-id id)
+                 (setq my/dap-kotlin-gradle-process proc)))
+            (deadline (+ (float-time) my/dap-kotlin-gradle-debug-timeout))
+            port)
+      (unwind-protect
+        (progn
+          (while (and (not (setq port (my/dap-kotlin-gradle-find-port buffer)))
+                   (process-live-p proc)
+                   (< (float-time) deadline))
+            (accept-process-output proc 0.5))
+          (unless port
+            (display-buffer buffer)
+            (user-error (if (process-live-p proc)
+                          "Gradle did not print the JDWP port within %s seconds"
+                          "Gradle exited before printing the JDWP port")
+              my/dap-kotlin-gradle-debug-timeout)))
+        (unless port
+          (my/dap-kotlin-gradle-stop proc)))
+      (cons proc port)))
+
+  (defun my/dap-kotlin-lsp-check-attach (conf)
+    (let* ((port (plist-get conf :port))
+            (port (if (and (stringp port) (string-match-p "\\`[0-9]+\\'" port))
+                    (string-to-number port)
+                    port))
+            (host (plist-get conf :host)))
+      (unless (and (natnump port) (<= 1 port 65535))
+        (user-error "Attach needs :port of the JDWP agent between 1 and 65535, not %S" (plist-get conf :port)))
+      ;; JDWP の接続先のホストを渡さないのは、kotlin-lsp 263.7084.0 の AttachRequestArguments が port と restart しか受け取らないため
+      (unless (member host '(nil "127.0.0.1" "localhost"))
+        (user-error ":host is the address of the kotlin-lsp DAP server and kotlin-lsp cannot attach to a JDWP agent on %s" host))
+      (plist-put (copy-sequence conf) :port port)))
+
   (defun my/dap-kotlin-lsp-provider (conf)
+    (when (and (equal (plist-get conf :type) "intellij_jvm")
+            (equal (plist-get conf :request) "attach"))
+      (setq conf (my/dap-kotlin-lsp-check-attach conf)))
     (let* ((root (or (lsp-workspace-root) default-directory))
             (port (lsp-request "workspace/executeCommand"
                     (list :command "start_debug_server"
                       :arguments (vector (lsp--path-to-uri root))))))
-      (unless (plist-get conf :mainClass)
-        (setq conf (plist-put conf :mainClass
-                     (read-string "mainClass: " (my/dap-kotlin-lsp-guess-main-class)))))
-      (unless (plist-get conf :cwd)
-        (setq conf (plist-put conf :cwd root)))
-      ;; JAVA_HOME を先に使わないのは、VS Code 拡張と同じくモジュールの JDK とクラスパスをサーバーに決めさせるため
-      (let ((resolved (lsp-request "workspace/executeCommand"
-                        (list :command "intellij.java.resolveLaunch"
-                          :arguments (vector (list :uri (lsp--buffer-uri)
-                                               :mainClass (plist-get conf :mainClass)))))))
-        (pcase-dolist (`(,key . ,resolved-key) '((:javaExec . :javaExec)
-                                                  (:classPaths . :classpath)
-                                                  (:modulePaths . :modulePath)
-                                                  (:moduleContentPaths . :moduleContentPaths)
-                                                  (:moduleName . :moduleName)
-                                                  (:vmArgs . :vmArgs)))
-          (when-let* (((not (plist-get conf key)))
-                       (value (lsp-get resolved resolved-key)))
-            (setq conf (plist-put conf key value)))))
-      (unless (plist-get conf :javaExec)
-        (setq conf (plist-put conf :javaExec
-                     (or (when-let* ((java-home (getenv "JAVA_HOME"))
-                                      (java (expand-file-name "bin/java" java-home))
-                                      ((file-executable-p java)))
-                           java)
-                       (executable-find "java")))))
-      (when (and (equal (plist-get conf :type) "intellij_gradle")
-              (not (plist-get conf :buildToolTarget)))
-        (let ((target (lsp-request "workspace/executeCommand"
-                        (list :command "intellij.java.resolveBuildToolLaunch"
-                          :arguments (vector (list :uri (lsp--buffer-uri)
-                                               :mainClass (plist-get conf :mainClass)))))))
-          (setq conf (plist-put conf :buildToolTarget
-                       (list :uri (lsp--buffer-uri)
-                         :moduleName (lsp-get target :moduleName)
-                         :projectPath (or (plist-get conf :projectPath) (lsp-get target :projectPath))
-                         :sourceSet (or (plist-get conf :sourceSet) (lsp-get target :sourceSet))
-                         :toolArgs (vconcat (plist-get conf :gradleArgs)))))))
+      (cond
+        ((and (equal (plist-get conf :type) "intellij_jvm")
+           (equal (plist-get conf :request) "attach"))
+          ;; mainClass の確認と intellij.java.resolveLaunch を使わないのは、起動済みの JVM に JDWP で接続するだけなので起動の設定が要らないため
+          conf)
+        ((equal (plist-get conf :type) "intellij_gradle")
+          ;; buildToolTarget (intellij.java.resolveBuildToolLaunch) を使わないのは、起動するクラスを mainClass で毎回指定する必要があるため
+          (pcase-let* ((id (format "%d-%s" (emacs-pid) (format-time-string "%s.%N")))
+                        (`(,_gradle . ,jdwp-port) (my/dap-kotlin-gradle-start conf root id)))
+            (setq conf (copy-sequence conf))
+            (setq conf (plist-put conf :request "attach"))
+            (setq conf (plist-put conf :port jdwp-port))
+            (setq conf (plist-put conf :gradleDebugId id))))
+        (t
+          (unless (plist-get conf :mainClass)
+            (setq conf (plist-put conf :mainClass
+                         (read-string "mainClass: " (my/dap-kotlin-lsp-guess-main-class)))))
+          (unless (plist-get conf :cwd)
+            (setq conf (plist-put conf :cwd root)))
+          ;; JAVA_HOME を先に使わないのは、VS Code 拡張と同じくモジュールの JDK とクラスパスをサーバーに決めさせるため
+          (let ((resolved (lsp-request "workspace/executeCommand"
+                            (list :command "intellij.java.resolveLaunch"
+                              :arguments (vector (list :uri (lsp--buffer-uri)
+                                                   :mainClass (plist-get conf :mainClass)))))))
+            (pcase-dolist (`(,key . ,resolved-key) '((:javaExec . :javaExec)
+                                                      (:classPaths . :classpath)
+                                                      (:modulePaths . :modulePath)
+                                                      (:moduleContentPaths . :moduleContentPaths)
+                                                      (:moduleName . :moduleName)
+                                                      (:vmArgs . :vmArgs)))
+              (when-let* (((not (plist-get conf key)))
+                           (value (lsp-get resolved resolved-key)))
+                (setq conf (plist-put conf key value)))))
+          (unless (plist-get conf :javaExec)
+            (setq conf (plist-put conf :javaExec
+                         (or (when-let* ((java-home (getenv "JAVA_HOME"))
+                                          (java (expand-file-name "bin/java" java-home))
+                                          ((file-executable-p java)))
+                               java)
+                           (executable-find "java")))))))
       (unless (plist-get conf :host)
         (setq conf (plist-put conf :host "127.0.0.1")))
       (plist-put conf :debugServer port)))
@@ -304,10 +419,15 @@
     (list :type "intellij_jvm"
       :request "launch"
       :name "Kotlin Launch (mainClass)"))
-  (dap-register-debug-template "Kotlin Launch via Gradle (mainClass)"
+  (dap-register-debug-template "Kotlin Launch via Gradle (--debug-jvm)"
     (list :type "intellij_gradle"
       :request "launch"
-      :name "Kotlin Launch via Gradle (mainClass)"))
+      :name "Kotlin Launch via Gradle (--debug-jvm)"))
+  (dap-register-debug-template "Kotlin Attach (5005)"
+    (list :type "intellij_jvm"
+      :request "attach"
+      :name "Kotlin Attach (5005)"
+      :port 5005))
   )
 
 (provide '30-lsp)
