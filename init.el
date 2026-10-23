@@ -43,6 +43,6 @@
   :ensure t
   :config
   (setq init-loader-show-log-after-init nil)
-  (init-loader-load "~/.emacs.d/inits"))
+  (init-loader-load (locate-user-emacs-file "inits")))
 
 (global-font-lock-mode t)
