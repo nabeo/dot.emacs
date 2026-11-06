@@ -107,32 +107,6 @@
   :hook (magit-mode . gptel-magit-install)
   )
 
-(use-package mcp
-  :ensure t
-  :if (executable-find "ollama")
-  :hook (after-init . mcp-hub-start-all-server)
-  :custom
-  (mcp-hub-servers
-    `(
-       ;; https://github.com/hashicorp/terraform-mcp-server
-       ("terraform" .
-         (:command "terraform-mcp-server" :args ("stdio")))
-
-       ;; https://github.com/awslabs/mcp/tree/main/src/aws-documentation-mcp-server
-       ("aws_documentation" .
-         ( :command "awslabs.aws-documentation-mcp-server"
-           :env ( :FASTMCP_LOG_LEVEL "ERROR"
-                  :AWS_DOCUMENTATUION_PARTITION "aws")))
-
-       ;; https://github.com/github/github-mcp-server/
-       ;; ("github" . (:url "https://api.githubcopilot.com/mcp/"))
-       ))
-  :hook
-  (after-init . mcp-hub-start-all-server)
-  :config
-  (require 'mcp-hub)
-  )
-
 ;; 以下の外部コマンドを手動で導入しておくこと
 ;; (:ensure-system-package は system-packages が未導入だと黙って無視されるのでつかわない)
 ;;   claude           : npm install -g @anthropic-ai/claude-code
