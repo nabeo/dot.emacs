@@ -177,5 +177,16 @@
   (agent-recall-search-function 'consult-ripgrep)
   (agent-recall-browse-sort 'modified-desc))
 
+(use-package agent-recall
+  :ensure t
+  :config
+  (setq agent-recall-search-paths '("~/src" "~/.emacs.d"))
+  ;; Search backend
+  ;; consult-ripgrep (requires ripgrep + vertico/consult)
+  (setq agent-recall-search-function 'consult-ripgrep)
+  ;; Browse sort order
+  ;; Most recently modified first (recommended — resumed sessions float to top)
+  (setq agent-recall-browse-sort 'modified-desc))
+
 (provide '50-llm)
 ;;; 50-llm.el ends here
