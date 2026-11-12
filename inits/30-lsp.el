@@ -66,6 +66,9 @@
   ;; for lua (lua-language-server)
   (lua-mode . lsp)
   (lua-ts-mode . lsp)
+  ;; for markdown (remark-language-server)
+  (markdown-mode . lsp)
+  (gfm-mode . lsp)
   ;; use with which-key
   (lsp-mode . lsp-enable-which-key-integration)
   :bind
